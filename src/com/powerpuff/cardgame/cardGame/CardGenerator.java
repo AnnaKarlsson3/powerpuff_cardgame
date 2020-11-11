@@ -15,13 +15,13 @@ public class CardGenerator {
         List<String[]> cardsInfo = new ArrayList<>();
         try {
             cardsInfo = Files.lines(path)
-                    .map(s -> s.split(","))
+                    .map(s -> s.split(";"))
                     .collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
         List<Card> cards= new ArrayList<>();
-        cardsInfo.forEach((cardInfo -> cards.add(new Card(cardInfo[0],"Card",Integer.parseInt(cardInfo[1])))));
+        cardsInfo.forEach((cardInfo -> cards.add(new Card(cardInfo[1],cardInfo[0],Integer.parseInt(cardInfo[2])))));
         cards.forEach(System.out::println);
         return cards;
     }
