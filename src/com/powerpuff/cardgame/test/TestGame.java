@@ -1,9 +1,8 @@
 package com.powerpuff.cardgame.test;
 
 import com.powerpuff.cardgame.cardGame.Game;
-import org.junit.Test;
-
-import static junit.framework.TestCase.assertTrue;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestGame {
 

@@ -21,7 +21,7 @@ public class CardGenerator {
             e.printStackTrace();
         }
         List<Card> cards= new ArrayList<>();
-        cardsInfo.forEach(cardInfo -> cards.add(new Card(cardInfo[0],Integer.parseInt(cardInfo[1]))));
+        cardsInfo.forEach((cardInfo -> cards.add(new Card(cardInfo[0],"Card",Integer.parseInt(cardInfo[1])))));
         cards.forEach(System.out::println);
         return cards;
     }
