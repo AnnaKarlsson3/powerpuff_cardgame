@@ -27,24 +27,26 @@ public class Game {
             display.printEndMessage();
             action.inputMenu();
             endGame();
-
+            gameOver(hp, playerDeckList);
         }
 
 
-          gameOver(hp, playerDeckList);
-        }
 
+        }
+        
+
+    public boolean gameOver(int hp, ArrayList<Card> playerDeckList) {
+        if (hp == 0 || playerDeckList.size() == 0) {
+            return gameOver = true;
+        } else {
+            return gameOver = false;
+        }
     }
-
-    public boolean gameOver(int hp, ArrayList<Card> playerDeckList){
-      if(hp == 0 || playerDeckList.size() == 0){
-          return gameOver = true;
-      }else{
-          return gameOver = false;
-      }
 
     void endGame() {
         gameOver = true;
     }
 
 }
+
+
