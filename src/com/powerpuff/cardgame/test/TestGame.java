@@ -12,4 +12,10 @@ public class TestGame {
         assertTrue(!game.gameOver);
     }
 
+    @Test
+    public void testEndGame(){
+        Game game = new Game();
+        assertFalse(game.gameOver);
+    }
+
 }
