@@ -8,12 +8,6 @@ public class Game {
 
     public void run() {
         while (!gameOver){
-
-
-
-
-
-
             display.printEndMessage();
             action.inputMenu();
             endGame();
