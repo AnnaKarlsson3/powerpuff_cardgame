@@ -20,13 +20,13 @@ public class TestGame {
     @Test
     public void testGameOver(){
         Game game = new Game();
-         int hp = 0;
-         ArrayList<Card> playerDeck = game.playerDeckList;
-         playerDeck.clear();
 
-            if (hp == 0 || playerDeck.size() == 0){
+          if (game.hp == 0 || game.playerDeckList.size() == 0){
                 assertTrue(game.gameOver);
             }
+            else{
+                assertFalse(game.gameOver);
+          }
         }
 
     }

@@ -18,7 +18,6 @@ public class Game {
         this.hp = player.getHp();
         this.playerDeck = new PlayerDeck();
         this.playerDeckList = playerDeck.getPlayerCards();
-
     }
 
     public void run() {
@@ -31,6 +30,11 @@ public class Game {
     }
 
     public boolean gameOver(int hp, ArrayList<Card> playerDeckList){
-      return gameOver;
+      if(hp == 0 || playerDeckList.size() == 0){
+          return gameOver = true;
+      }else{
+          return gameOver = false;
+      }
+
     }
 }
