@@ -10,7 +10,13 @@ import java.util.stream.Collectors;
 
 public class CardGenerator {
 
-    public List<Card> generateCardsAndGet(){
+    private List<Card> commonDeck = new ArrayList<>();
+
+    public CardGenerator() {
+        generateCardsAndGet();
+    }
+
+    public List<Card> generateCardsAndGet() {
         Path path = Paths.get("src/card.csv");
         List<String[]> cardsInfo = new ArrayList<>();
         try {
@@ -20,9 +26,17 @@ public class CardGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<Card> cards= new ArrayList<>();
-        cardsInfo.forEach((cardInfo -> cards.add(new Card(cardInfo[1],cardInfo[0],Integer.parseInt(cardInfo[2])))));
-        cards.forEach(System.out::println);
-        return cards;
+        commonDeck = new ArrayList<>();
+        cardsInfo.forEach((cardInfo -> commonDeck.add(new Card(cardInfo[1], cardInfo[0], Integer.parseInt(cardInfo[2])))));
+        commonDeck.forEach(System.out::println);
+        return commonDeck;
+    }
+
+    public void setCommonDeck(List<Card> commonDeck) {
+        this.commonDeck = commonDeck;
+    }
+
+    public List<Card> getCommonDeck() {
+        return commonDeck;
     }
 }
