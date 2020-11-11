@@ -1,9 +1,12 @@
 package com.powerpuff.cardgame.test;
 
 import com.powerpuff.cardgame.cardGame.Game;
-import org.junit.Test;
+import com.powerpuff.cardgame.cardGame.Player;
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static junit.framework.TestCase.assertTrue;
+import java.util.ArrayList;
+
 
 public class TestGame {
 
@@ -13,4 +16,17 @@ public class TestGame {
         assertTrue(!game.gameOver);
     }
 
-}
+    @Test
+    public void testGameOver(){
+        Game game = new Game();
+         int hp = 0;
+         
+
+            if (hp == 0){
+                assertTrue(game.gameOver);
+            }
+        }
+
+    }
+
+

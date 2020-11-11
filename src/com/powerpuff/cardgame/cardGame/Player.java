@@ -5,6 +5,8 @@ public class Player {
     private int hp = 20;
     private String name;
 
+    public Player(){}
+
     public Player(String name){
         this.name = name;
     }
