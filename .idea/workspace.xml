@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f28bbb8-3d3f-45a2-9433-af5a1cacdef5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/cardGame/Action.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/cardGame/Display.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/test/TestAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/test/TestDisplay.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/cardGame/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/cardGame/Player.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/test/TestGame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/test/TestPlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/powerpuff/cardgame/cardGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/cardGame/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/powerpuff/cardgame/test/TestGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/test/TestGame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +47,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestGame.testStartGame">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.powerpuff.cardgame.Main" />
       <module name="powerpuff_cardgame" />
@@ -100,9 +100,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestGame.testStartGame" />
-        <item itemvalue="JUnit.TestGame.testEndGame" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.TestGame.testEndGame" />
+        <item itemvalue="JUnit.TestGame.testStartGame" />
       </list>
     </recent_temporary>
   </component>
@@ -111,5 +111,24 @@
   </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/powerpuff/cardgame/cardGame/Action.java</url>
+          <line>8</line>
+          <properties class="com.powerpuff.cardgame.cardGame.Action" method="inputMenu">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/powerpuff/cardgame/cardGame/Game.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
