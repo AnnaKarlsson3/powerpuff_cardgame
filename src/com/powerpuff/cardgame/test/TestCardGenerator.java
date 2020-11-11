@@ -15,7 +15,7 @@ public class TestCardGenerator {
 
     @Test
     void testGenerateCards() {
-        Assertions.assertEquals( 100 ,cardGenerator.generateCards().size() );
+        Assertions.assertEquals( 100 ,cardGenerator.generateCardsAndGet().size() );
     }
 
     @AfterEach

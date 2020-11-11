@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 public class CardGenerator {
 
-    public List<Card> generateCards(){
+    public List<Card> generateCardsAndGet(){
         Path path = Paths.get("src/card.csv");
         List<String[]> cardsInfo = new ArrayList<>();
         try {
