@@ -3,6 +3,8 @@ package com.powerpuff.cardgame.cardGame;
 import java.util.ArrayList;
 
 public class Game {
+    Action action = new Action();
+    Display display = new Display();
 
     //12.2 Skapa tom metod GameOver (boolean) (if hp is not 0 and cardDeck.lenght is not 0) = true i Game-class, gör test metod, gör klart metod
 
@@ -22,6 +24,11 @@ public class Game {
 
     public void run() {
         while (!gameOver){
+            display.printEndMessage();
+            action.inputMenu();
+            endGame();
+
+        }
 
 
           gameOver(hp, playerDeckList);
@@ -36,5 +43,8 @@ public class Game {
           return gameOver = false;
       }
 
+    void endGame() {
+        gameOver = true;
     }
+
 }

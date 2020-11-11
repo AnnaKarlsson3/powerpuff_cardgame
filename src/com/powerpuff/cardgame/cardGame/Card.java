@@ -34,4 +34,12 @@ public class Card {
     public void setPoint(int point) {
         this.point = point;
     }
+
+    @Override
+    public String toString() {
+        return "Card{" +
+                "type='" + type + '\'' +
+                ", point=" + point +
+                '}';
+    }
 }

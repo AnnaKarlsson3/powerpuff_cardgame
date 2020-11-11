@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
+import org.junit.jupiter.api.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestGame {
 
@@ -32,3 +34,10 @@ public class TestGame {
     }
 
 
+    @Test
+    public void testEndGame(){
+        Game game = new Game();
+        assertFalse(game.gameOver);
+    }
+
+}
