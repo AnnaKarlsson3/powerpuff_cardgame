@@ -1,18 +1,29 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
+import java.util.List;
+//import java.util.stream.Collectors;
+
+import static java.util.Arrays.stream;
 
 public class Hand {
 
-    //PlayerDeck playersDeck = new PlayersDeck();
-    ArrayList cardsInHand = new ArrayList(5);
+    //PlayerDeck playerDeck;
+    List<Card> cardsInHand = new ArrayList<Card>(5);
 
-    public ArrayList getCardsInHand() {
-        return cardsInHand;
+    public Hand(){
+        //this.playerDeck = new PlayerDeck()
+        //this.cardsInHand = setCardsInHand(playerDeck
+        //        stream().limit(5).collect(Collectors.toList());
     }
 
-    public void setCardsInHand(ArrayList cardsInHand) {
-        this.cardsInHand = cardsInHand;
+    public ArrayList getCardsInHand() {
+        return (ArrayList) cardsInHand;
+    }
+
+    public void setCardsInHand(List<Card> firstFiveInDeck) {
+        //get first five elements out of the playersDeck
+        this.cardsInHand = firstFiveInDeck;
     }
 
     public void addNewCardToHand(){
