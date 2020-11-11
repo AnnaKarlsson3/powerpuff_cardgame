@@ -8,23 +8,29 @@ public class Game {
 
     public boolean gameOver = false;
     public Player player;
+    public PlayerDeck playerDeck;
+    public ArrayList<Card> playerDeckList;
     public int hp;
 
 
     public Game(){
         this.player = new Player();
         this.hp = player.getHp();
-        gameOver(hp);
+        this.playerDeck = new PlayerDeck();
+        this.playerDeckList = playerDeck.getPlayerCards();
+
     }
 
     public void run() {
         while (!gameOver){
 
+
+            gameOver(hp, playerDeckList);
         }
 
     }
 
-    public boolean gameOver(int hp){
+    public boolean gameOver(int hp, ArrayList<Card> playerDeckList){
       return gameOver;
     }
 }

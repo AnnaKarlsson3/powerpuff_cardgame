@@ -20,9 +20,8 @@ public class TestGame {
     public void testGameOver(){
         Game game = new Game();
          int hp = 0;
-         
 
-            if (hp == 0){
+            if (hp == 0 || game.playerDeckList.size() == 0){
                 assertTrue(game.gameOver);
             }
         }
