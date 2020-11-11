@@ -25,7 +25,7 @@ public class Game {
         while (!gameOver){
 
 
-            gameOver(hp, playerDeckList);
+          gameOver(hp, playerDeckList);
         }
 
     }
