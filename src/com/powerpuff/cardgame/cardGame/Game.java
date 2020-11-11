@@ -33,7 +33,7 @@ public class Game {
 
 
         }
-        
+
 
     public boolean gameOver(int hp, ArrayList<Card> playerDeckList) {
         if (hp == 0 || playerDeckList.size() == 0) {
