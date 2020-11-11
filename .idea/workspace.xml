@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2f28bbb8-3d3f-45a2-9433-af5a1cacdef5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/test/TestGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/powerpuff_cardgame.iml" beforeDir="false" afterPath="$PROJECT_DIR$/powerpuff_cardgame.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/powerpuff/cardgame/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/powerpuff/cardgame/cardGame/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/powerpuff/cardgame/cardGame/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/cardGame/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/cardGame/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/test/TestGame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/powerpuff_cardgame/com/powerpuff/cardgame/test/TestPlayer.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
