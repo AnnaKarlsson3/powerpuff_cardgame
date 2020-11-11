@@ -39,6 +39,7 @@ public class Card {
     public String toString() {
         return "Card{" +
                 "type='" + type + '\'' +
+                ", name='" + name + '\'' +
                 ", point=" + point +
                 '}';
     }
