@@ -8,7 +8,7 @@ public class TestCardGenerator {
 
 
     @BeforeEach
-    void setupThis(){
+    void init(){
         System.out.println("@BeforeEach executed");
         cardGenerator = new CardGenerator();
     }
