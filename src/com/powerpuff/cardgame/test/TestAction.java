@@ -18,7 +18,6 @@ public class TestAction {
     public void testInputPlayerName(){
 
         assertNotNull(action.playerName, "The name should not be null" );
-        assertTrue(action.playerName.length() > 0, "Name should not be empty (longer than 0)");
     }
 
 

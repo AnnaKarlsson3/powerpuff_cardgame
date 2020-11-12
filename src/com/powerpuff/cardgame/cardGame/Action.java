@@ -29,8 +29,12 @@ public class Action {
     }
 
     public String inputPlayerName() {
-       return null;
+        Scanner scanner = new Scanner(System.in);
+        String action = scanner.nextLine();
+        return playerName = action;
+
     }
+
 }
 
 

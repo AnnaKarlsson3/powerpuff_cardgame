@@ -29,7 +29,7 @@ public class Game {
             display.printEnterNameMessage();
             action.inputPlayerName();
 
-            System.out.println("lenght " + action.playerName.length());
+            System.out.println("lenght " + action.playerName);
 
             //gameTurn-loop
             display.printPlayerHp();
