@@ -4,6 +4,10 @@ public class Display {
 
     public String enterNameMessage = "";
 
+    public Display(){
+        EnterNameMessage();
+    }
+
     public void printEndMessage(){
         System.out.println("If you want to end game, press 0");
     }
@@ -13,7 +17,7 @@ public class Display {
     }
 
     public String EnterNameMessage(){
-        return enterNameMessage;
+       return enterNameMessage = "Enter player name:";
     }
 
 }

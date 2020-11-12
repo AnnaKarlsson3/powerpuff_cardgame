@@ -12,10 +12,8 @@ public class TestDisplay {
     public void testEnterNameMessage(){
         Display display = new Display();
         String actual = display.enterNameMessage;
-        String expected = "Enter player name";
+        String expected = "Enter player name:";
 
-        assertEquals(actual, expected);
-
-        assertEquals("failure - strings are not equal", actual, expected);
+        assertEquals(  expected, actual);
     }
 }
