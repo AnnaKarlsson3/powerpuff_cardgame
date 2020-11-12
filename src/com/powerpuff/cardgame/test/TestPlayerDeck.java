@@ -3,12 +3,10 @@ package com.powerpuff.cardgame.test;
 
 import com.powerpuff.cardgame.cardGame.Card;
 import com.powerpuff.cardgame.cardGame.PlayerDeck;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.api.*;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 
 public class TestPlayerDeck {
@@ -22,21 +20,20 @@ public class TestPlayerDeck {
 
     @Test
     void testPlayerDeckLength(){
-        Assertions.assertEquals( 30, playerDeck.getCardsFromGeneratedCards().size());
+        assertEquals( 30, playerDeck.getCardsFromGeneratedCards().size());
     }
 
     @Test
     void testRemoveFromCommonDeck(){
         playerDeck.removeFromCommonDeck();
-        Assertions.assertFalse(playerDeck.commonDeck.containsAll(playerDeck.playerCards));
+        assertFalse(playerDeck.commonDeck.containsAll(playerDeck.playerCards));
     }
 
     @Test
     void testCheckIfEmpty(){
         List<Card> playerCardstest = null;
-        Assertions.assertEquals(true, playerDeck.checkIfEmpty(playerCardstest));
+        assertEquals(true, playerDeck.checkIfEmpty(playerCardstest));
     }
-
 
     @AfterEach
     void cleanUp(){
