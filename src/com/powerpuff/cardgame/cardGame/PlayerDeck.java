@@ -38,6 +38,11 @@ public class PlayerDeck {
     }
 
     public boolean checkIfEmpty(List<Card> playerCards){
+        if(playerCards == null){
+            isEmpty = true;
+        } else {
+            isEmpty = false;
+        }
         return isEmpty;
     }
 }
