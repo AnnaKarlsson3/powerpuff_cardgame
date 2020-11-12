@@ -5,18 +5,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CardGenerator {
+    //public static ArrayList<Card> cards= new ArrayList<>();
+    private ArrayList<Card> commonDeck = new ArrayList<>();
+    public  ArrayList <Card> shuffledCards = (ArrayList<Card>) commonDeck.clone();
 
-    private List<Card> commonDeck = new ArrayList<>();
 
     public CardGenerator() {
         generateCardsAndGet();
+        shuffleCards(commonDeck);
+        setCommonDeck(commonDeck);
     }
 
-    public List<Card> generateCardsAndGet() {
+    public  List<Card> generateCardsAndGet() {
+
         Path path = Paths.get("src/card.csv");
         List<String[]> cardsInfo = new ArrayList<>();
         try {
@@ -32,11 +38,18 @@ public class CardGenerator {
         return commonDeck;
     }
 
-    public void setCommonDeck(List<Card> commonDeck) {
-        this.commonDeck = commonDeck;
+    public void setCommonDeck(ArrayList<Card> commonDeck) {
+        this.commonDeck =  commonDeck;
     }
 
-    public List<Card> getCommonDeck() {
+    public ArrayList<Card> getCommonDeck() {
+        return commonDeck;
+
+    }
+
+    public ArrayList<Card> shuffleCards (ArrayList<Card> cards){
+        Collections.shuffle(commonDeck);
         return commonDeck;
     }
+
 }
