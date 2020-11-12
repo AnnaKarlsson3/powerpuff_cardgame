@@ -20,6 +20,12 @@ public class Action {
 
         }
     }
+
+    public static void inputPlayerName() {
+        Scanner scanner = new Scanner(System.in);
+        String action = scanner.nextLine();
+        game.playerName = action;
+    }
 }
 
 
