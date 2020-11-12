@@ -17,14 +17,12 @@ public class TestHand {
 
     Hand testHand;
     ArrayList<Card> cardsInHand;
-    PlayerDeck playersDeck;
 
     @BeforeEach
     void init() {
         System.out.println("@BeforeEach executed");
         testHand = new Hand();
         cardsInHand = testHand.getCardsInHand();
-        testHand.getPlayerDeck();
     }
 
     @Test

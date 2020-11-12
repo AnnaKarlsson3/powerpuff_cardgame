@@ -13,6 +13,7 @@ public class Hand {
         this.playerDeck = new PlayerDeck();
         List<Card> firstFiveCardsInDeck = playerDeck.getPlayerCards().stream().limit(5).collect(Collectors.toList());
         setCardsInHand(firstFiveCardsInDeck);
+        setPlayerDeck(removeCardsInHandFromDeck());
     }
 
     public PlayerDeck getPlayerDeck() {
@@ -29,7 +30,6 @@ public class Hand {
 
     public void setCardsInHand(List<Card> firstFiveInDeck) {
         this.cardsInHand = (ArrayList<Card>) firstFiveInDeck;
-        removeCardsInHandFromDeck();
     }
 
     public ArrayList<Card> removeCardsInHandFromDeck() {
