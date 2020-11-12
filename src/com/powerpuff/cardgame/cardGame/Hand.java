@@ -13,10 +13,15 @@ public class Hand {
         this.playerDeck = new PlayerDeck();
         List<Card> firstFiveCardsInDeck = playerDeck.getPlayerCards().stream().limit(5).collect(Collectors.toList());
         setCardsInHand(firstFiveCardsInDeck);
+        setPlayerDeck(removeCardsInHandFromDeck());
     }
 
     public PlayerDeck getPlayerDeck() {
         return playerDeck;
+    }
+
+    public void setPlayerDeck(ArrayList<Card> updatedDeck) {
+        playerDeck.setPlayerCards(updatedDeck);
     }
 
     public ArrayList getCardsInHand() {
@@ -27,29 +32,34 @@ public class Hand {
         this.cardsInHand = (ArrayList<Card>) firstFiveInDeck;
     }
 
-    public Boolean addNewCardToHand(){
+    public Boolean addNewCardToHand() {
         ArrayList<Card> cardsInDeck = playerDeck.getPlayerCards();
-        if(!cardsInDeck.isEmpty()){
-            Card newCard  = cardsInDeck.get(0);
+        if (!cardsInDeck.isEmpty()) {
+            Card newCard = cardsInDeck.get(0);
             cardsInHand.add(newCard);
             removeOneCardFromPlayerDeck(newCard);
             return true;
         }
         return false;
+    }
 
+    public ArrayList<Card> removeCardsInHandFromDeck() {
+        playerDeck.getPlayerCards().removeAll(cardsInHand);
+        return (ArrayList<Card>) playerDeck.getPlayerCards();
     }
 
     private Boolean removeOneCardFromPlayerDeck(Card c) {
-        ArrayList<Card> cardsInDeck = playerDeck.getPlayerCards();
+        List<Card> cardsInDeck = playerDeck.getPlayerCards();
         cardsInDeck.remove(c);
-        playerDeck.setPlayerCards(cardsInDeck);
+        playerDeck.setPlayerCards((ArrayList<Card>) cardsInDeck);
 
         return false;
     }
 
-    public void displayCardsInHand() {
-        //print/show the cards thru display onto gameboard
+    public void displayCardsInHand(){
+        //print names of the cards player is holding
     }
+
 
     public void deletePlayedCard(Card playedCard) {
         //delete the card the player chose to play

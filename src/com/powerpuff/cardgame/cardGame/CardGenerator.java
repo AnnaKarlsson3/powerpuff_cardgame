@@ -21,7 +21,7 @@ public class CardGenerator {
         setCommonDeck(commonDeck);
     }
 
-    public  List<Card> generateCardsAndGet() {
+    public ArrayList<Card> generateCardsAndGet() {
 
         Path path = Paths.get("src/card.csv");
         List<String[]> cardsInfo = new ArrayList<>();

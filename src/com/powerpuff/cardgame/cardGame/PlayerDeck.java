@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 public class PlayerDeck {
 
-    public List<Card> playerCards = new ArrayList<>();
+    public ArrayList<Card> playerCards = new ArrayList<>();
     public CardGenerator cardGenerator = new CardGenerator();
-    public List<Card> commonDeck = cardGenerator.getCommonDeck();
+    public ArrayList<Card> commonDeck = cardGenerator.getCommonDeck();
     public Boolean isEmpty;
 
     public PlayerDeck(){
@@ -17,12 +17,12 @@ public class PlayerDeck {
         System.out.println(commonDeck.size());
     }
 
-    public List<Card> getCardsFromGeneratedCards() {
-        playerCards = commonDeck.stream().limit(30).collect(Collectors.toList());
+    public ArrayList<Card> getCardsFromGeneratedCards() {
+        playerCards = (ArrayList<Card>) commonDeck.stream().limit(30).collect(Collectors.toList());
         return playerCards;
     }
 
-    public List<Card> getPlayerCards() {
+    public ArrayList<Card> getPlayerCards() {
         return playerCards;
     }
 
