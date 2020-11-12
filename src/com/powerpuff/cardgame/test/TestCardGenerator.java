@@ -37,7 +37,9 @@ public class TestCardGenerator {
         CardGenerator.shuffledCards =  (ArrayList<Card>) CardGenerator.cards.clone();
         Assertions.assertArrayEquals(CardGenerator.cards.toArray(), CardGenerator.shuffledCards.toArray(), "Expected both to be equal");
 
+        cardGenerator.shuffleCards(CardGenerator.cards);
 
+        assertFalse(Arrays.equals(CardGenerator.cards.toArray(), CardGenerator.shuffledCards.toArray()), "Expected both not to be equal");
 
 
     }
