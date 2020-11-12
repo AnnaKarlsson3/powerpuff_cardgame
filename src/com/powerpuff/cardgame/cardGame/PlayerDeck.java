@@ -9,6 +9,7 @@ public class PlayerDeck {
     public List<Card> playerCards = new ArrayList<>();
     public CardGenerator cardGenerator = new CardGenerator();
     public List<Card> commonDeck = cardGenerator.getCommonDeck();
+    public Boolean isEmpty;
 
     public PlayerDeck(){
         getCardsFromGeneratedCards();
@@ -36,7 +37,12 @@ public class PlayerDeck {
         this.playerCards = playerCards;
     }
 
-    public void checkIfEmpty(){
-
+    public boolean checkIfEmpty(List<Card> playerCards){
+        if(playerCards == null){
+            isEmpty = true;
+        } else {
+            isEmpty = false;
+        }
+        return isEmpty;
     }
 }
