@@ -6,9 +6,9 @@ import java.util.stream.Collectors;
 
 public class PlayerDeck {
 
-    private List<Card> playerCards = new ArrayList<>();
+    public List<Card> playerCards = new ArrayList<>();
     public CardGenerator cardGenerator = new CardGenerator();
-    List<Card> commonDeck = cardGenerator.getCommonDeck();
+    public List<Card> commonDeck = cardGenerator.getCommonDeck();
 
     public PlayerDeck(){
         getCardsFromGeneratedCards();
