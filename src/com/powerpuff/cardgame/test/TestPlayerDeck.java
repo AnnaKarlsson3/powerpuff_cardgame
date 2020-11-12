@@ -18,6 +18,11 @@ public class TestPlayerDeck {
         Assertions.assertEquals( 30, playerDeck.getCardsFromGeneratedCards().size());
     }
 
+    @Test
+    void testRemoveFromCommonDeck(){
+        Assertions.assertEquals( 30, playerDeck.removeFromCommonDeck().size());
+    }
+
     @AfterEach
     void cleanUp(){
         System.out.println("@AfterEach executed");

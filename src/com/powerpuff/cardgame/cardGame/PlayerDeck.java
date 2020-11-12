@@ -6,22 +6,29 @@ import java.util.stream.Collectors;
 
 public class PlayerDeck {
 
-    private ArrayList<Card> playerCards = new ArrayList<>();
-    CardGenerator cardGenerator;
+    private List<Card> playerCards = new ArrayList<>();
+    public CardGenerator cardGenerator = new CardGenerator();
+    List<Card> commonDeck = cardGenerator.getCommonDeck();
 
     public PlayerDeck(){
         getCardsFromGeneratedCards();
+        removeFromCommonDeck();
+        System.out.println(commonDeck.size());
     }
 
     public List<Card> getCardsFromGeneratedCards() {
-        List<Card> commonDeck = cardGenerator.getCommonDeck();
-        List<Card> playerCards = commonDeck.stream().limit(30).collect(Collectors.toList());;
+        playerCards = commonDeck.stream().limit(30).collect(Collectors.toList());
         return playerCards;
     }
 
-    public ArrayList<Card> getPlayerCards() {
+    public List<Card> getPlayerCards() {
         return playerCards;
     }
+
+    public List<Card> removeFromCommonDeck(){
+        return null;
+    }
+
 
     public void setPlayerCards(ArrayList<Card> playerCards) {
         this.playerCards = playerCards;
