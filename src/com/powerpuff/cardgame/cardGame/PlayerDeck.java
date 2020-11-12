@@ -5,7 +5,7 @@ import java.util.List;
 
 public class PlayerDeck {
 
-    private ArrayList<Card> PlayerCards = new ArrayList<Card>();
+    private ArrayList<Card> playerCards = new ArrayList<Card>();
 
     public PlayerDeck(){
         getCardsFromGeneratedCards();
@@ -13,15 +13,15 @@ public class PlayerDeck {
     }
 
     public List<Card> getCardsFromGeneratedCards() {
-        return null;
+        return playerCards;
     }
 
     public ArrayList<Card> getPlayerCards() {
-        return PlayerCards;
+        return playerCards;
     }
 
     public void setPlayerCards(ArrayList<Card> playerCards) {
-        PlayerCards = playerCards;
+        this.playerCards = playerCards;
     }
 
     public void checkIfEmpty(){
