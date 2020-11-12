@@ -16,23 +16,31 @@ import java.util.stream.Collectors;
 public class TestHand {
 
     Hand testHand;
+    ArrayList<Card> cardsInHand;
+    PlayerDeck playersDeck;
+
 
     @BeforeEach
     void init() {
         System.out.println("@BeforeEach executed");
         testHand = new Hand();
+        cardsInHand = testHand.getCardsInHand();
+        testHand.getPlayerDeck();
     }
 
     @Test
     public void testCardsInHand() {
         System.out.println("=== Test for cards in hand executed ===");
-
-        PlayerDeck playersDeck = testHand.getPlayerDeck();
-        ArrayList<Card> cardsInHand = testHand.getCardsInHand();
         List<Card> firstFiveCardsInDeck = playersDeck.getPlayerCards().stream().limit(5).collect(Collectors.toList());
 
         assertArrayEquals(firstFiveCardsInDeck.toArray(), cardsInHand.toArray());
         assertEquals(5, cardsInHand.size());
+    }
+
+    @Test
+    public void testRemoveCardsInHandFromDeck(){
+        testHand.removeCardsInHandFromDeck();
+        assertFalse(playersDeck.commonDeck.containsAll(playersDeck.playerCards));
     }
 
     @AfterEach

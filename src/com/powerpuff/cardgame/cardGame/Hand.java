@@ -19,12 +19,20 @@ public class Hand {
         return playerDeck;
     }
 
+    public void setPlayerDeck(ArrayList<Card> updatedDeck){
+        playerDeck.setPlayerCards(updatedDeck);
+    }
+
     public ArrayList getCardsInHand() {
         return cardsInHand;
     }
 
     public void setCardsInHand(List<Card> firstFiveInDeck) {
         this.cardsInHand = (ArrayList<Card>) firstFiveInDeck;
+    }
+
+    public ArrayList<Card> removeCardsInHandFromDeck(){
+        return null;
     }
 
     public void addNewCardToHand(){
