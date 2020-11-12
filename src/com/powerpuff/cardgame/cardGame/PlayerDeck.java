@@ -26,9 +26,9 @@ public class PlayerDeck {
         return playerCards;
     }
 
-    public List<Card> removeFromCommonDeck(){
+    public ArrayList<Card> removeFromCommonDeck(){
         commonDeck.removeAll(playerCards);
-        cardGenerator.setCommonDeck((ArrayList<Card>) commonDeck);
+        cardGenerator.setCommonDeck(commonDeck);
         return commonDeck;
     }
 
@@ -37,7 +37,7 @@ public class PlayerDeck {
         this.playerCards = playerCards;
     }
 
-    public boolean checkIfEmpty(List<Card> playerCards){
+    public boolean checkIfEmpty(ArrayList<Card> playerCards){
         if(playerCards == null){
             isEmpty = true;
         } else {
