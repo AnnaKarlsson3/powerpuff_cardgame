@@ -39,8 +39,8 @@ public class TestHand {
 
     @Test
     public void testRemoveCardsInHandFromDeck(){
-        testHand.removeCardsInHandFromDeck();
-        assertFalse(playersDeck.commonDeck.containsAll(playersDeck.playerCards));
+        ArrayList<Card> updatedDeck = testHand.removeCardsInHandFromDeck();
+        assertFalse(updatedDeck.containsAll(cardsInHand));
     }
 
     @AfterEach
