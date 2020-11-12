@@ -9,7 +9,7 @@ public class Hand {
     PlayerDeck playerDeck;
     ArrayList<Card> cardsInHand;
 
-    public Hand(){
+    public Hand() {
         this.playerDeck = new PlayerDeck();
         List<Card> firstFiveCardsInDeck = playerDeck.getPlayerCards().stream().limit(5).collect(Collectors.toList());
         setCardsInHand(firstFiveCardsInDeck);
@@ -19,7 +19,7 @@ public class Hand {
         return playerDeck;
     }
 
-    public void setPlayerDeck(ArrayList<Card> updatedDeck){
+    public void setPlayerDeck(ArrayList<Card> updatedDeck) {
         playerDeck.setPlayerCards(updatedDeck);
     }
 
@@ -29,21 +29,23 @@ public class Hand {
 
     public void setCardsInHand(List<Card> firstFiveInDeck) {
         this.cardsInHand = (ArrayList<Card>) firstFiveInDeck;
+        removeCardsInHandFromDeck();
     }
 
-    public ArrayList<Card> removeCardsInHandFromDeck(){
-        return null;
+    public ArrayList<Card> removeCardsInHandFromDeck() {
+        playerDeck.getPlayerCards().removeAll(cardsInHand);
+        return (ArrayList<Card>) playerDeck.getPlayerCards();
     }
 
-    public void addNewCardToHand(){
+    public void addNewCardToHand() {
         //in the end/beginning of a turn
     }
 
-    public void displayCardsInHand(){
+    public void displayCardsInHand() {
         //print/show the cards thru display onto gameboard
     }
 
-    public void deletePlayedCard(Card playedCard){
+    public void deletePlayedCard(Card playedCard) {
         //delete the card the player chose to play
     }
 
