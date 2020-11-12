@@ -6,16 +6,15 @@ import java.util.stream.Collectors;
 
 public class PlayerDeck {
 
-    private ArrayList<Card> playerCards = new ArrayList<Card>();
+    private ArrayList<Card> playerCards = new ArrayList<>();
+    CardGenerator cardGenerator;
 
     public PlayerDeck(){
         getCardsFromGeneratedCards();
-
     }
 
     public List<Card> getCardsFromGeneratedCards() {
-        CardGenerator cardgen = new CardGenerator();
-        List<Card> commonDeck = cardgen.getCommonDeck();
+        List<Card> commonDeck = cardGenerator.getCommonDeck();
         List<Card> playerCards = commonDeck.stream().limit(30).collect(Collectors.toList());;
         return playerCards;
     }
