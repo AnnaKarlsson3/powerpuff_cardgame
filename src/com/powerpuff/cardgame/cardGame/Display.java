@@ -10,6 +10,7 @@ public class Display {
     public int hp = player.getHp();
     public String playerHp = "";
     public String enterNameMessage = "";
+    Hand h = new Hand();
 
 
     public Display(){
@@ -39,13 +40,11 @@ public class Display {
 
 
     public ArrayList<Card> getCardsInHand (ArrayList<Card> cardsInHand ){
-        Hand h = new Hand();
         h.getCardsInHand();
        return cardsInHand;
     }
 
     public void printCards(){
-        Hand h = new Hand();
         System.out.println(h.cardsInHand);
     }
 
