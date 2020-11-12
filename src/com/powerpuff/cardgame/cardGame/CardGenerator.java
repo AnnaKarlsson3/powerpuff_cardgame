@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 public class CardGenerator {
     public static List<Card> cards= new ArrayList<>();
 
+
     public static List<Card> generateCardsAndGet(){
         Path path = Paths.get("src/card.csv");
         List<String[]> cardsInfo = new ArrayList<>();
@@ -28,17 +29,7 @@ public class CardGenerator {
         return cards;
     }
 
-    public List shuffleCards (List<Card> cards){
-        return null;
-    }
 
 
 
-    /*
-    public List shuffleCards(List<Card> cards){
-        Collections.shuffle(cards);
-        return cards;
-    }
-
-     */
 }
