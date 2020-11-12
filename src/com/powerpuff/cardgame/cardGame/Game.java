@@ -1,6 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     Action action = new Action();
@@ -8,7 +9,7 @@ public class Game {
     public boolean gameOver = false;
     public Player player;
     public PlayerDeck playerDeck;
-    public ArrayList<Card> playerDeckList;
+    public List<Card> playerDeckList;
     public int hp;
     String playerName;
 
@@ -36,7 +37,7 @@ public class Game {
         }
 
 
-    public boolean gameOver(int hp, ArrayList<Card> playerDeckList) {
+    public boolean gameOver(int hp, List<Card> playerDeckList) {
         if (hp == 0 || playerDeckList.size() == 0) {
              gameOver = true;
         }
