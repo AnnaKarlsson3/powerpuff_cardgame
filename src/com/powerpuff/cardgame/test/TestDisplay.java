@@ -2,6 +2,7 @@ package com.powerpuff.cardgame.test;
 
 import com.powerpuff.cardgame.cardGame.Display;
 import com.powerpuff.cardgame.cardGame.Game;
+import com.powerpuff.cardgame.cardGame.Hand;
 import com.powerpuff.cardgame.cardGame.Player;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -37,6 +38,9 @@ public class TestDisplay {
 
     @Test
     public void testDisplayCardsInHand(){
+      Hand hand = new Hand();
+
+      assertFalse(hand.getCardsInHand().toArray().length == 5);
 
     }
 
