@@ -28,7 +28,7 @@ public class PlayerDeck {
 
     public List<Card> removeFromCommonDeck(){
         commonDeck.removeAll(playerCards);
-        cardGenerator.setCommonDeck(commonDeck);
+        cardGenerator.setCommonDeck((ArrayList<Card>) commonDeck);
         return commonDeck;
     }
 

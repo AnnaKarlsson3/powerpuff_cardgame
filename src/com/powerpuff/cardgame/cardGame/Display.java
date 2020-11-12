@@ -17,7 +17,6 @@ public class Display {
         System.out.println("If you want to end game, press 0");
     }
 
-
     public void printEnterNameMessage(){
         System.out.println(enterNameMessage);
     }
