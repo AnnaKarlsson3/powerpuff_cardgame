@@ -1,11 +1,14 @@
 package com.powerpuff.cardgame.test;
 
 
+import com.powerpuff.cardgame.cardGame.Card;
 import com.powerpuff.cardgame.cardGame.PlayerDeck;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 
 public class TestPlayerDeck {
@@ -26,6 +29,12 @@ public class TestPlayerDeck {
     void testRemoveFromCommonDeck(){
         playerDeck.removeFromCommonDeck();
         Assertions.assertFalse(playerDeck.commonDeck.containsAll(playerDeck.playerCards));
+    }
+
+    @Test
+    void testCheckIfEmpty(){
+        List<Card> playerCardstest = null;
+        Assertions.assertEquals(true, playerDeck.checkIfEmpty(playerCardstest));
     }
 
 
