@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class Action {
     private static Game game = new Game();
 
-    public String playerName;
+    public String playerName = "";
 
     public Action(){
+
     }
 
 
