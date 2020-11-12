@@ -6,16 +6,14 @@ import java.util.List;
 public class Game {
     Action action = new Action();
     Display display = new Display();
-
-    //12.2 Skapa tom metod GameOver (boolean) (if hp is not 0 and cardDeck.lenght is not 0) = true i Game-class, gör test metod, gör klart metod
-
     public boolean gameOver = false;
     public Player player;
     public PlayerDeck playerDeck;
     public List<Card> playerDeckList;
     public int hp;
+    String playerName;
 
-
+ //1.7 skapa metod InputPlayerName (create new player - gameClass)
     public Game(){
         this.player = new Player();
         this.hp = player.getHp();
@@ -25,10 +23,20 @@ public class Game {
 
     public void run() {
         while (!gameOver){
+
+
+            //startGame
+            display.printEnterNameMessage();
+            action.inputPlayerName();
+
+            //gameTurn-loop
+            display.printPlayerHp();
+            gameOver(hp, playerDeckList);
+
+
             display.printEndMessage();
             action.inputMenu();
             endGame();
-            gameOver(hp, playerDeckList);
         }
 
         }
@@ -44,6 +52,7 @@ public class Game {
     void endGame() {
         gameOver = true;
     }
+
 
 }
 
