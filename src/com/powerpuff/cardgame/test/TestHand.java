@@ -19,7 +19,6 @@ public class TestHand {
     ArrayList<Card> cardsInHand;
     PlayerDeck playersDeck;
 
-
     @BeforeEach
     void init() {
         System.out.println("@BeforeEach executed");
@@ -31,14 +30,14 @@ public class TestHand {
     @Test
     public void testCardsInHand() {
         System.out.println("=== Test for cards in hand executed ===");
-        List<Card> firstFiveCardsInDeck = playersDeck.getPlayerCards().stream().limit(5).collect(Collectors.toList());
 
-        assertArrayEquals(firstFiveCardsInDeck.toArray(), cardsInHand.toArray());
         assertEquals(5, cardsInHand.size());
     }
 
     @Test
     public void testRemoveCardsInHandFromDeck(){
+        System.out.println("=== Test for removing cards in hand from deck ===");
+
         ArrayList<Card> updatedDeck = testHand.removeCardsInHandFromDeck();
         assertFalse(updatedDeck.containsAll(cardsInHand));
     }
