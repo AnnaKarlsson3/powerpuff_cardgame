@@ -33,13 +33,13 @@ public class TestCardGenerator {
 
     @Test
         public void testShuffleMethod(){
-        CardGenerator.generateCardsAndGet();
-        CardGenerator.shuffledCards =  (ArrayList<Card>) CardGenerator.cards.clone();
-        Assertions.assertArrayEquals(CardGenerator.cards.toArray(), CardGenerator.shuffledCards.toArray(), "Expected both to be equal");
+        cardGenerator.generateCardsAndGet();
+        cardGenerator.shuffledCards =  (ArrayList<Card>) cardGenerator.getCommonDeck().clone();
+        Assertions.assertArrayEquals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray(), "Expected both to be equal");
 
-        cardGenerator.shuffleCards(CardGenerator.cards);
+        cardGenerator.shuffleCards(cardGenerator.getCommonDeck());
 
-        assertFalse(Arrays.equals(CardGenerator.cards.toArray(), CardGenerator.shuffledCards.toArray()), "Expected both not to be equal");
+        assertFalse(Arrays.equals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray()), "Expected both not to be equal");
 
 
     }
