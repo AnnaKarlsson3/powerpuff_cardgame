@@ -7,7 +7,7 @@ public class PlayerDeck {
     private ArrayList<Card> PlayerCards = new ArrayList<Card>();
 
     public PlayerDeck(){
-        PlayerCards.add(new Card("fighter", "Card 1", 2));
+       /* PlayerCards.add(new Card("fighter", "Card 1", 2));
         PlayerCards.add(new Card("fighter", "Card 2", 5));
         PlayerCards.add(new Card("fighter", "Card 3", 1));
         PlayerCards.add(new Card("fighter", "Card 4", 3));
@@ -35,7 +35,7 @@ public class PlayerDeck {
         PlayerCards.add(new Card("action", "Card 27", 5));
         PlayerCards.add(new Card("action", "Card 28", 2));
         PlayerCards.add(new Card("action", "Card 29", 1));
-        PlayerCards.add(new Card("action", "Card 30", 1));
+        PlayerCards.add(new Card("action", "Card 30", 1));*/
 
     }
 
@@ -45,5 +45,9 @@ public class PlayerDeck {
 
     public void setPlayerCards(ArrayList<Card> playerCards) {
         PlayerCards = playerCards;
+    }
+
+    public void checkIfEmpty(){
+        
     }
 }
