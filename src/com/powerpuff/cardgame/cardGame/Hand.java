@@ -28,7 +28,11 @@ public class Hand {
     }
 
     public Boolean addNewCardToHand(){
-
+        if(!playerDeck.getPlayerCards().isEmpty()){
+            Card newCard  = playerDeck.getPlayerCards().get(0);
+            cardsInHand.add(newCard);
+            return true;
+        }
         return false;
 
     }
