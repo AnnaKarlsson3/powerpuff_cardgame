@@ -31,7 +31,7 @@ public class Display {
     }
 
     public String printPlayerHpMessage(){
-        return "";
+        return playerHp = "Player HP is: " + hp;
     }
 
 }
