@@ -37,17 +37,19 @@ public class TestHand {
 
     @Test
     public void testAddNewCardToHand(){
-        if(testHand.getPlayerDeck().getPlayerCards().isEmpty()){
+        ArrayList<Card> cardsBeforeRemovedOne = testHand.getPlayerDeck().getPlayerCards();
+        int sizeBeforeRemove = cardsBeforeRemovedOne.size();
+
+        if(cardsBeforeRemovedOne.isEmpty()){
             assertFalse(testHand.addNewCardToHand());
+
         }else{
             assertTrue(testHand.addNewCardToHand());
+            ArrayList<Card> cardsAfterRemovedOne = testHand.getPlayerDeck().getPlayerCards();
+            assertFalse(sizeBeforeRemove == cardsAfterRemovedOne.size());
         }
     }
-//    @Test
-//    public void testRemoveOneCardFromPlayerDeck(){
-//        Card c = testHand.getPlayerDeck().getPlayerCards().get(0);
-//        assertTrue(testHand.removeOneCardFromPlayerDeck(c));
-//    }
+
 
     @AfterEach
     void cleanUp() {

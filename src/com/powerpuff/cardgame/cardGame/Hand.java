@@ -28,8 +28,9 @@ public class Hand {
     }
 
     public Boolean addNewCardToHand(){
-        if(!playerDeck.getPlayerCards().isEmpty()){
-            Card newCard  = playerDeck.getPlayerCards().get(0);
+        ArrayList<Card> cardsInDeck = playerDeck.getPlayerCards();
+        if(!cardsInDeck.isEmpty()){
+            Card newCard  = cardsInDeck.get(0);
             cardsInHand.add(newCard);
             return true;
         }
@@ -37,7 +38,8 @@ public class Hand {
 
     }
 
-    public Boolean removeOneCardFromPlayerDeck(Card c) {
+    private Boolean removeOneCardFromPlayerDeck(Card c) {
+
 
         return false;
     }
