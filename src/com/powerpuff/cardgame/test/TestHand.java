@@ -37,13 +37,12 @@ public class TestHand {
 
     @Test
     public void testAddNewCardToHand(){
-        ArrayList<Card> cardsBeforeRemovedOne = testHand.getPlayerDeck().getPlayerCards();
-        int sizeBeforeRemove = cardsBeforeRemovedOne.size();
 
-        if(cardsBeforeRemovedOne.isEmpty()){
+        if(testHand.getPlayerDeck().getPlayerCards().isEmpty()){
             assertFalse(testHand.addNewCardToHand());
 
         }else{
+            int sizeBeforeRemove = testHand.getPlayerDeck().getPlayerCards().size();
             assertTrue(testHand.addNewCardToHand());
             ArrayList<Card> cardsAfterRemovedOne = testHand.getPlayerDeck().getPlayerCards();
             assertFalse(sizeBeforeRemove == cardsAfterRemovedOne.size());
