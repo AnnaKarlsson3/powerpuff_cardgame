@@ -1,6 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Display {
 
@@ -10,9 +11,11 @@ public class Display {
     public String playerHp = "";
     public String enterNameMessage = "";
 
+
     public Display(){
         enterNameMessage();
         printPlayerHpMessage();
+
     }
 
     public void printEndMessage(){
@@ -34,8 +37,28 @@ public class Display {
 
     public String printPlayerHpMessage(){ return playerHp = "Player HP is: " + hp; }
 
-    public ArrayList<Hand> cardsInHand(ArrayList <Hand> cardsInHand ){
-        return null;
+
+    public ArrayList<Card> getCardsInHand (ArrayList<Card> cardsInHand ){
+        Hand h = new Hand();
+        h.getCardsInHand();
+       return cardsInHand;
     }
+
+    public void printCards(){
+        Hand h = new Hand();
+        System.out.println(h.cardsInHand);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

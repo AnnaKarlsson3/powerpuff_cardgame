@@ -44,22 +44,17 @@ public class TestDisplay {
     public void testDisplayCardsInHandLength(){
       Hand hand = new Hand();
       assertTrue(hand.getCardsInHand().toArray().length == 5);
-
-
-
     }
 
     @Test
     public void testDisplayCardsInHandPrint(){
         Hand hand = new Hand();
         ArrayList cards = hand.getCardsInHand();
-
-        ArrayList actual = display.cardsInHand(hand.getCardsInHand());
+        ArrayList actual = display.getCardsInHand(hand.getCardsInHand());
         ArrayList expected = cards;
-
         assertEquals(expected, actual);
-
     }
+
 
     @AfterEach
     void cleanUp(){
