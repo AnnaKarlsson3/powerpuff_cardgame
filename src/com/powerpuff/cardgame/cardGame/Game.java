@@ -22,15 +22,20 @@ public class Game {
 
     public void run() {
         while (!gameOver){
+
+
+            //startGame
             display.printEnterNameMessage();
             action.inputPlayerName();
+
+            //gameTurn-loop
+            display.printPlayerHp();
+            gameOver(hp, playerDeckList);
+
 
             display.printEndMessage();
             action.inputMenu();
             endGame();
-
-
-            gameOver(hp, playerDeckList);
         }
 
         }
