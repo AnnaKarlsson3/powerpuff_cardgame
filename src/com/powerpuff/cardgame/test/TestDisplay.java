@@ -5,6 +5,10 @@ import com.powerpuff.cardgame.cardGame.Game;
 import com.powerpuff.cardgame.cardGame.Hand;
 import com.powerpuff.cardgame.cardGame.Player;
 import org.junit.jupiter.api.*;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestDisplay {
@@ -37,10 +41,23 @@ public class TestDisplay {
     }
 
     @Test
-    public void testDisplayCardsInHand(){
+    public void testDisplayCardsInHandLength(){
       Hand hand = new Hand();
+      assertTrue(hand.getCardsInHand().toArray().length == 5);
 
-      assertFalse(hand.getCardsInHand().toArray().length == 5);
+
+
+    }
+
+    @Test
+    public void testDisplayCardsInHandPrint(){
+        Hand hand = new Hand();
+        ArrayList cards = hand.getCardsInHand();
+
+        ArrayList actual = display.cardsInHand(hand.getCardsInHand());
+        ArrayList expected = cards;
+
+        assertEquals(expected, actual);
 
     }
 
