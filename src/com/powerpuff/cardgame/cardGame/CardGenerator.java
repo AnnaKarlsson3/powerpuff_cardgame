@@ -5,12 +5,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class CardGenerator {
+    public static List<Card> cards= new ArrayList<>();
 
-    public List<Card> generateCardsAndGet(){
+
+    public static List<Card> generateCardsAndGet(){
         Path path = Paths.get("src/card.csv");
         List<String[]> cardsInfo = new ArrayList<>();
         try {
@@ -20,9 +23,13 @@ public class CardGenerator {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        List<Card> cards= new ArrayList<>();
+
         cardsInfo.forEach((cardInfo -> cards.add(new Card(cardInfo[1],cardInfo[0],Integer.parseInt(cardInfo[2])))));
         cards.forEach(System.out::println);
         return cards;
     }
+
+
+
+
 }
