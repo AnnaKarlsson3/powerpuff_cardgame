@@ -35,6 +35,20 @@ public class TestHand {
         assertEquals(5, cardsInHand.size());
     }
 
+    @Test
+    public void testAddNewCardToHand(){
+        if(testHand.getPlayerDeck().getPlayerCards().isEmpty()){
+            assertFalse(testHand.addNewCardToHand());
+        }else{
+            assertTrue(testHand.addNewCardToHand());
+        }
+    }
+//    @Test
+//    public void testRemoveOneCardFromPlayerDeck(){
+//        Card c = testHand.getPlayerDeck().getPlayerCards().get(0);
+//        assertTrue(testHand.removeOneCardFromPlayerDeck(c));
+//    }
+
     @AfterEach
     void cleanUp() {
         System.out.println("@AfterEach executed");

@@ -9,7 +9,7 @@ public class Hand {
     PlayerDeck playerDeck;
     ArrayList<Card> cardsInHand;
 
-    public Hand(){
+    public Hand() {
         this.playerDeck = new PlayerDeck();
         List<Card> firstFiveCardsInDeck = playerDeck.getPlayerCards().stream().limit(5).collect(Collectors.toList());
         setCardsInHand(firstFiveCardsInDeck);
@@ -27,15 +27,22 @@ public class Hand {
         this.cardsInHand = (ArrayList<Card>) firstFiveInDeck;
     }
 
-    public void addNewCardToHand(){
-        //in the end/beginning of a turn
+    public Boolean addNewCardToHand(){
+
+        return false;
+
     }
 
-    public void displayCardsInHand(){
+    public Boolean removeOneCardFromPlayerDeck(Card c) {
+
+        return false;
+    }
+
+    public void displayCardsInHand() {
         //print/show the cards thru display onto gameboard
     }
 
-    public void deletePlayedCard(Card playedCard){
+    public void deletePlayedCard(Card playedCard) {
         //delete the card the player chose to play
     }
 
