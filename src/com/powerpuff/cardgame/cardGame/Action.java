@@ -5,6 +5,12 @@ import java.util.Scanner;
 public class Action {
     private static Game game = new Game();
 
+    public String playerName;
+
+    public Action(){
+    }
+
+
 
     public static void inputMenu() {
         Scanner scanner = new Scanner(System.in);
@@ -21,10 +27,8 @@ public class Action {
         }
     }
 
-    public static void inputPlayerName() {
-        Scanner scanner = new Scanner(System.in);
-        String action = scanner.nextLine();
-        game.playerName = action;
+    public String inputPlayerName() {
+       return null;
     }
 }
 

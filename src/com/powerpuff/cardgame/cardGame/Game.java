@@ -11,7 +11,7 @@ public class Game {
     public PlayerDeck playerDeck;
     public List<Card> playerDeckList;
     public int hp;
-    String playerName;
+
 
  //1.7 skapa metod InputPlayerName (create new player - gameClass)
     public Game(){
@@ -28,6 +28,8 @@ public class Game {
             //startGame
             display.printEnterNameMessage();
             action.inputPlayerName();
+
+
 
             //gameTurn-loop
             display.printPlayerHp();
