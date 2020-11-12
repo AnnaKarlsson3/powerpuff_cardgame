@@ -1,5 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
+import java.util.ArrayList;
+
 public class Display {
 
     //11.2 skapa tom metod printHP i Display-class, gör testmetod, gör klart metod
@@ -17,6 +19,7 @@ public class Display {
         System.out.println("If you want to end game, press 0");
     }
 
+
     public void printEnterNameMessage(){
         System.out.println(enterNameMessage);
     }
@@ -29,8 +32,10 @@ public class Display {
         System.out.println(playerHp);
     }
 
-    public String printPlayerHpMessage(){
-        return playerHp = "Player HP is: " + hp;
+    public String printPlayerHpMessage(){ return playerHp = "Player HP is: " + hp; }
+
+    public ArrayList<Hand> cardsInHand(ArrayList <Hand> cardsInHand ){
+        return null;
     }
 
 }
