@@ -2,6 +2,7 @@ package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PlayerDeck {
 
@@ -13,6 +14,9 @@ public class PlayerDeck {
     }
 
     public List<Card> getCardsFromGeneratedCards() {
+        CardGenerator cardgen = new CardGenerator();
+        List<Card> commonDeck = cardgen.getCommonDeck();
+        List<Card> playerCards = commonDeck.stream().limit(30).collect(Collectors.toList());;
         return playerCards;
     }
 
