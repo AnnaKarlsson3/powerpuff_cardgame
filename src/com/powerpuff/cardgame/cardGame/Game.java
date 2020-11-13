@@ -42,7 +42,6 @@ public class Game {
         //game
         while (!gameOver){
 
-
             gameTurn();
 
             gameOver();
@@ -53,7 +52,7 @@ public class Game {
     }
 
     public void playerTurn(){
-
+        System.out.println("playerTurn" + player.getName());
         //print playername turn
         display.printPlayerName(player.getName());
         System.out.println("playerTurn " + player.getName());
@@ -114,13 +113,24 @@ public class Game {
             gameOver = true;
         }
         return gameOver;
-        }
+    }
 
     void endGame() {
         gameOver = true;
     }
 
+    public int updateHp(Player player, Card playersCard, Card opponentsCard) {
+        int hp = player.getHp();
+        if (playersCard.getType().equals("Action")) {
+            hp = hp + playersCard.getPoint();
+        }
+        if (opponentsCard.getType().equals("Fighter")) {
+            hp = hp - opponentsCard.getPoint();
+        }
+
+        player.setHp(hp);
+        return hp;
+    }
+
 
 }
-
-
