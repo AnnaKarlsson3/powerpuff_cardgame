@@ -7,8 +7,8 @@ import java.util.stream.Collectors;
 
 public class Display {
 
-
-
+    Player player = new Player();
+    public int hp = player.getHp();
     public String playerHp = "";
     public String enterNameMessage = "";
     public String playerNameTurn = "";
@@ -63,10 +63,16 @@ public class Display {
                 .map(card -> numbers.getAndIncrement() + ". Name: " + card.getName()
                         + " Type: " + card.getType() + " Points: " + card.getPoint() + "\n")
                 .collect(Collectors.toList());
-
         return cardsList;
     }
 
+    public void printCardsInHand(){
+        List<String> numberedCards = addNumberCardsInHand();
 
+        String formattedCardsInhand = numberedCards
+                .stream()
+                .collect(Collectors.joining("", "", ""));
+        System.out.println(formattedCardsInhand);
+    }
 
 }
