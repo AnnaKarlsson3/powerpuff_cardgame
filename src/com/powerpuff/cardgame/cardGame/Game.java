@@ -37,6 +37,11 @@ public class Game {
         player.setName(action.playerName);
 
 
+        //get cards for the player
+        player.getHand().getPlayerDeck().getCardsFromGeneratedCards();
+
+
+
         randomStart();
 
         //game
