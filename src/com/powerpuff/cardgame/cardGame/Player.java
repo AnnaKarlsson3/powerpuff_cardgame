@@ -2,7 +2,7 @@ package com.powerpuff.cardgame.cardGame;
 
 public class Player {
 
-    private int hp = 20;
+    private int hp;
     private String name;
     private Hand hand;
 
