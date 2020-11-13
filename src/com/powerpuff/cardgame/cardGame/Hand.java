@@ -58,7 +58,11 @@ public class Hand {
 
     public Boolean deletePlayedCard(Card playedCard) {
 
-        return null;
+        if (this.cardsInHand.contains(playedCard)) {
+            this.cardsInHand.remove(playedCard);
+            return true;
+        }
+        return false;
     }
 
 }
