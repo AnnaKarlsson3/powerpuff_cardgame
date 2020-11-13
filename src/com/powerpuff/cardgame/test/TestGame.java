@@ -31,12 +31,20 @@ public class TestGame {
 
 
     @Test
-    public void testGameTurn(){
+    public void testRandomStart(){
         //test if math.random gives 0 or 1 in first Turn!
         Game game = new Game();
-        int counter = game.random;
-        counter = 2;
+        game.randomStart();
+        int counter = game.counter;
+        System.out.println(counter);
         assertTrue(counter <= 1, "counter is 0 or 1");
+    }
+
+    @Test
+    public void testGameTurn(){
+        Game game = new Game();
+
+
 
     }
 

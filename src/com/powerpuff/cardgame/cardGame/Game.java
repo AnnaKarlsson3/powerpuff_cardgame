@@ -12,7 +12,7 @@ public class Game {
     public List<Card> playerDeckList = playerDeck.getPlayerCards();
     public int hp;
     public int counter;
-    public int random ;
+    public int game = 0;
 
     public Game(){
     }
@@ -25,20 +25,21 @@ public class Game {
         action.inputPlayerName();
         player = new Player(action.playerName);
 
+        randomStart();
+
         //game
         while (!gameOver){
+
             gameTurn();
-            playerTurn();
 
             gameOver(hp, playerDeckList);
 
         }
 
-
-        }
+    }
 
     public void playerTurn(){
-
+        System.out.println("playerTurn");
         //print playername turn
         //print your cards in hand
         //input card choice
@@ -50,22 +51,26 @@ public class Game {
         //print playerHp status
         //execute drawOnCard from deck
         //execute delete oneCard from deck
-        display.printPlayerHp();
+       // display.printPlayerHp();
 
 
         //put in menu? print continue?
-        display.printEndMessage();
-        action.inputMenu();
-        endGame();
+       // display.printEndMessage();
+        //action.inputMenu();
+        //endGame();
     }
 
     public void computerTurn(){
-
+        System.out.println("computerTurn");
     }
 
     public void gameTurn(){
 
 
+    }
+
+    public int randomStart(){
+        return counter = (int) (Math.random()*2);
     }
 
 
