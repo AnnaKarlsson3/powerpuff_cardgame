@@ -4,14 +4,16 @@ public class Player {
 
     private int hp = 20;
     private String name;
+    private Hand hand;
 
-    public Player(){}
+    public Player() {
+    }
 
-    public Player(String name){
+    public Player(String name) {
         this.name = name;
-            }
+    }
 
-    public String getName(){
+    public String getName() {
         return name;
     }
 
@@ -21,5 +23,9 @@ public class Player {
 
     public int getHp() {
         return hp;
+    }
+
+    public Hand getHand() {
+        return hand;
     }
 }
