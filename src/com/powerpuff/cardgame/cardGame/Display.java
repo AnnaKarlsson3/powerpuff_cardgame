@@ -12,7 +12,7 @@ public class Display {
     public String playerHp = "";
     public String enterNameMessage = "";
     public String playerNameTurn = "";
-    Hand h = new Hand();
+    Hand hand = new Hand();
 
 
     public Display(){
