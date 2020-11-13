@@ -55,7 +55,6 @@ public class TestDisplay {
         assertEquals(expected, actual);
     }
 
-
     @AfterEach
     void cleanUp(){
         System.out.println("@AfterEach executed");
