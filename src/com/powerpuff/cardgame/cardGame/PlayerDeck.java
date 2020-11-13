@@ -1,7 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class PlayerDeck {
@@ -14,11 +13,11 @@ public class PlayerDeck {
     public PlayerDeck(){
         getCardsFromGeneratedCards();
         removeFromCommonDeck();
-        System.out.println(commonDeck.size());
     }
 
     public ArrayList<Card> getCardsFromGeneratedCards() {
         playerCards = (ArrayList<Card>) commonDeck.stream().limit(30).collect(Collectors.toList());
+        removeFromCommonDeck();
         return playerCards;
     }
 

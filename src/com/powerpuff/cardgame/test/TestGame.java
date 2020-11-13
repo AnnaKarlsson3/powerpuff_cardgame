@@ -2,6 +2,7 @@ package com.powerpuff.cardgame.test;
 
 
 import com.powerpuff.cardgame.cardGame.Card;
+import com.powerpuff.cardgame.cardGame.Computer;
 import com.powerpuff.cardgame.cardGame.Game;
 import com.powerpuff.cardgame.cardGame.Player;
 import org.junit.jupiter.api.*;
@@ -54,14 +55,40 @@ public class TestGame {
         assertFalse(game.gameOver);
     }
 
-    @Test
-    public void testUpdateHp() {
-        Player player = new Player();
-        player.setHp(20);
-        Card playersCard = new Card("Action", "hi", 3);
-        Card opponentsCard = new Card("Fighter", "Hello", 2);
-        assertEquals(21, game.updateHp(player, playersCard, opponentsCard));
+//    @Test
+//    public void testUpdateHp() {
+//        Player player = new Player();
+//        player.setHp(20);
+//        Card playersCard = new Card("Action", "hi", 3);
+//        Card opponentsCard = new Card("Fighter", "Hello", 2);
+//        assertEquals(21, game.updateHp(player, playersCard, opponentsCard));
+//    }
 
+    @Test
+    public void testUpdateHpOfPlayer() {
+        Player player = game.player;
+        Computer computer = game.computer;
+        int computerHpBeforeUpdate = computer.getHp();
+        Card playedCard1 = new Card("Action", "apple", 3);
+        assertEquals(player.getHp() + 3, game.updateHpOfPlayer(playedCard1));
+
+        Card playedCard2 = new Card("Fighter", "Orange", 5);
+        game.updateHpOfPlayer(playedCard2);
+        assertFalse(computerHpBeforeUpdate == computer.getHp());
+
+    }
+
+    @Test
+    public void testUpdateHpOfComputer() {
+        Player player = game.player;
+        Computer computer = game.computer;
+        int playerHpBeforeUpdate = player.getHp();
+        Card playedCard = new Card("Action", "hello", 5);
+        assertEquals(computer.getHp() + 5, game.updateHpOfComputer(playedCard));
+
+        Card playedCard2 = new Card("Fighter", "Hi", 3);
+        game.updateHpOfComputer(playedCard2);
+        assertFalse(playerHpBeforeUpdate == player.getHp());
 
     }
 

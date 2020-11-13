@@ -1,7 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Game {
     Action action = new Action();
@@ -35,6 +34,10 @@ public class Game {
         display.printEnterNameMessage();
         action.inputPlayerName();
         player.setName(action.playerName);
+
+
+        //get cards for the player
+        player.getHand().getPlayerDeck().getCardsFromGeneratedCards();
 
 
         randomStart();
@@ -103,11 +106,11 @@ public class Game {
 
     public boolean gameOver() {
 
-        playerDeck  =  player.getHand().getPlayerDeck().getPlayerCards();
-        computerDeck  =  computer.getHand().getPlayerDeck().getPlayerCards();
+        playerDeck = player.getHand().getPlayerDeck().getPlayerCards();
+        computerDeck = computer.getHand().getPlayerDeck().getPlayerCards();
 
         if (player.getHp() == 0 || playerDeck.size() == 0) {
-             gameOver = true;
+            gameOver = true;
         }
         if (computer.getHp() == 0 || computerDeck.size() == 0) {
             gameOver = true;
@@ -119,18 +122,41 @@ public class Game {
         gameOver = true;
     }
 
-    public int updateHp(Player player, Card playersCard, Card opponentsCard) {
-        int hp = player.getHp();
-        if (playersCard.getType().equals("Action")) {
-            hp = hp + playersCard.getPoint();
+    public int updateHpOfPlayer(Card playedCard) {
+        int playerHp = player.getHp();
+        if (playedCard.getType().equals("Action")) {
+            playerHp = playerHp + playedCard.getPoint();
+            player.setHp(playerHp);
+        } else {
+            computer.setHp(computer.getHp() - playedCard.getPoint());
         }
-        if (opponentsCard.getType().equals("Fighter")) {
-            hp = hp - opponentsCard.getPoint();
-        }
-
-        player.setHp(hp);
-        return hp;
+        return playerHp;
     }
+
+    public int updateHpOfComputer(Card playedCard) {
+        int computerHp = computer.getHp();
+        if (playedCard.getType().equals("Action")) {
+            computerHp = computerHp + playedCard.getPoint();
+            computer.setHp(computerHp);
+        } else {
+            player.setHp(player.getHp() - playedCard.getPoint());
+        }
+        return computerHp;
+    }
+
+
+//    public int updateHp(Player player, Card playersCard, Card opponentsCard) {
+//        int hp = player.getHp();
+//        if (playersCard.getType().equals("Action")) {
+//            hp = hp + playersCard.getPoint();
+//        }
+//        if (opponentsCard.getType().equals("Fighter")) {
+//            hp = hp - opponentsCard.getPoint();
+//        }
+//
+//        player.setHp(hp);
+//        return hp;
+//    }
 
 
 }

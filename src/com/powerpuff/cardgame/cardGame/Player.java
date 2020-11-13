@@ -13,8 +13,7 @@ public class Player {
     public Player(String name, int hp, Hand hand) {
         this.hp = hp;
         this.name = name;
-        this.hand = hand;
-
+        this.hand = new Hand();
     }
 
     public String getName(){
