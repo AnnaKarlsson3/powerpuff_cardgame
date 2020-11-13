@@ -41,13 +41,6 @@ public class TestGame {
 
         assertTrue(condition, "counter is 0 or 1");
 
-
-
-
-
-
-
-
     }
 
 

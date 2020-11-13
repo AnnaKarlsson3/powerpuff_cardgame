@@ -11,8 +11,8 @@ public class Game {
     public PlayerDeck playerDeck = new PlayerDeck();
     public List<Card> playerDeckList = playerDeck.getPlayerCards();
     public int hp;
-    public int counter;
-    public int firstTurn;
+    public int counter = 2;
+    public int firstTurn = 1;
 
  //1.7 skapa metod InputPlayerName (create new player - gameClass)
     public Game(){
