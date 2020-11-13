@@ -32,8 +32,9 @@ public class Action {
         Scanner scanner = new Scanner(System.in);
         String action = scanner.nextLine();
         return playerName = action;
-
     }
+
+
 
 }
 

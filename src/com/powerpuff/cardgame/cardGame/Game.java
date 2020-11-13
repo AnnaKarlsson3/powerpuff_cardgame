@@ -1,64 +1,90 @@
 package com.powerpuff.cardgame.cardGame;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
     Action action = new Action();
     Display display = new Display();
-    private boolean isGameOver = false;
-    private Player player;
-    private Player computerPlayer;
-    //public PlayerDeck playerDeck;
-    //public List<Card> playerDeckList;
-    //private int playerHp;
+    public boolean gameOver = false;
+    public Player player;
+    public PlayerDeck playerDeck = new PlayerDeck();
+    public List<Card> playerDeckList = playerDeck.getPlayerCards();
+    public int hp;
+    public int counter;
+    public int game = 0;
 
-
- //1.7 skapa metod InputPlayerName (create new player - gameClass)
     public Game(){
-        this.player = new Player();
-        this.computerPlayer = new Player();
-        //this.playerHp = player.getHp();
-
-        //this.playerDeck = new PlayerDeck();
-        //this.playerDeckList = playerDeck.getPlayerCards();
     }
 
     public void run() {
-        while (!isGameOver){
 
+        //startGame/menu
 
-            //startGame
-            display.printEnterNameMessage();
-            action.inputPlayerName();
+        display.printEnterNameMessage();
+        action.inputPlayerName();
+        player = new Player();
+        player.setName(action.playerName);
 
-            System.out.println("lenght " + action.playerName);
+        randomStart();
 
-            //gameTurn-loop
-            display.printPlayerHp();
+        //game
+        while (!gameOver){
+
+            gameTurn();
+
             gameOver(hp, playerDeckList);
 
-
-            display.printEndMessage();
-            action.inputMenu();
-            endGame();
         }
 
-        }
+    }
+
+    public void playerTurn(){
+        System.out.println("playerTurn");
+        //print playername turn
+        //print your cards in hand
+        //input card choice
+        //execute playedcard in playerclass/computerclass
+        //execute delete onCard from hand
+        //print witch card played
+        //execute opponent hp - cardDamage
+        //print opponent hp status
+        //print playerHp status
+        //execute drawOnCard from deck
+        //execute delete oneCard from deck
+        // display.printPlayerHp();
+
+
+        //put in menu? print continue?
+        // display.printEndMessage();
+        //action.inputMenu();
+        //endGame();
+    }
+
+    public void computerTurn(){
+        System.out.println("computerTurn");
+    }
+
+    public void gameTurn(){
+
+
+    }
+
+    public int randomStart(){
+        return counter = (int) (Math.random()*2);
+    }
 
 
     public boolean gameOver(int hp, List<Card> playerDeckList) {
+        hp = player.getHp();
         if (hp == 0 || playerDeckList.size() == 0) {
-             isGameOver = true;
+            gameOver = true;
         }
-        return isGameOver;
+        return gameOver;
     }
 
     void endGame() {
-        isGameOver = true;
+        gameOver = true;
     }
 
 
 }
-
-
