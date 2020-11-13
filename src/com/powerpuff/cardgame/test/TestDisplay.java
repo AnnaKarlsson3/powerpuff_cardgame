@@ -58,24 +58,15 @@ public class TestDisplay {
     public void testNumerationOfCardsInHand(){
         List<String> numberedCards = display.addNumberCardsInHand();
 
-                numberedCards
+               List<String> cardNumbers = numberedCards
                         .stream()
                         .map(card -> card.substring(0, 1))
-                        .forEach(card -> System.out.println(card));
-//        (card -> {
-//            List<String> cardNumbers =
-//                    .stream()
-                        //.collect(Collectors.toList());
-
-        //.filter(card -> card.matches("[1-5].")).filter(card -> card.matches("[1-5]"))
-
-        System.out.println("numbered cards " + numberedCards);
-        //System.out.println("card numbers " + cardNumbers);
+                        .collect(Collectors.toList());
 
         List<String> listOfNumbers = Stream.of("1", "2", "3", "4", "5")
                 .collect(Collectors.toList());
 
-        //assertEquals(cardNumbers, listOfNumbers);
+        assertEquals(listOfNumbers, cardNumbers);
     }
 
     @AfterEach

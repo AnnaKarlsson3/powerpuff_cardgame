@@ -52,7 +52,8 @@ public class Display {
         AtomicInteger numbers = new AtomicInteger(1);
 
         List<String> cardsList = cardsInHand.stream()
-                .map(card -> numbers.getAndIncrement() + ". " + card.getName() + card.getPoint() + card.getType())
+                .map(card -> numbers.getAndIncrement() + ". Name: " + card.getName()
+                        + " Type: " + card.getType() + " Points: " + card.getPoint() + "\n")
                 .collect(Collectors.toList());
 
         return cardsList;
