@@ -84,7 +84,7 @@ public class TestGame {
         Computer computer = game.computer;
         int playerHpBeforeUpdate = player.getHp();
         Card playedCard = new Card("Action", "hello", 5);
-        assertEquals(25, game.updateHpOfComputer(playedCard));
+        assertEquals(computer.getHp() + 5, game.updateHpOfComputer(playedCard));
 
         Card playedCard2 = new Card("Fighter", "Hi", 3);
         game.updateHpOfComputer(playedCard2);

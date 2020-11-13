@@ -15,7 +15,7 @@ public class Game {
     public int counter;
 
 
-    public Game(){
+    public Game() {
         player = new Player();
         computer = new Computer();
         computer.setHp(20);
@@ -40,11 +40,10 @@ public class Game {
         player.getHand().getPlayerDeck().getCardsFromGeneratedCards();
 
 
-
         randomStart();
 
         //game
-        while (!gameOver){
+        while (!gameOver) {
 
             gameTurn();
 
@@ -55,7 +54,7 @@ public class Game {
 
     }
 
-    public void playerTurn(){
+    public void playerTurn() {
         System.out.println("playerTurn" + player.getName());
         //print playername turn
         display.printPlayerName(player.getName());
@@ -77,41 +76,39 @@ public class Game {
 
 
         //put in menu? print continue?
-       // display.printEndMessage();
+        // display.printEndMessage();
         //action.inputMenu();
         //endGame();
     }
 
-    public void computerTurn(){
+    public void computerTurn() {
         System.out.println("computerTurn");
         System.out.println("computer Hp: " + computer.getHp());
     }
 
-    public void gameTurn(){
-        if(counter == 0)
-        {
+    public void gameTurn() {
+        if (counter == 0) {
             playerTurn();
             computerTurn();
         }
-        if(counter == 1)
-        {
+        if (counter == 1) {
             computerTurn();
             playerTurn();
         }
     }
 
-    public int randomStart(){
-        return counter = (int) (Math.random()*2);
+    public int randomStart() {
+        return counter = (int) (Math.random() * 2);
     }
 
 
     public boolean gameOver() {
 
-        playerDeck  =  player.getHand().getPlayerDeck().getPlayerCards();
-        computerDeck  =  computer.getHand().getPlayerDeck().getPlayerCards();
+        playerDeck = player.getHand().getPlayerDeck().getPlayerCards();
+        computerDeck = computer.getHand().getPlayerDeck().getPlayerCards();
 
         if (player.getHp() == 0 || playerDeck.size() == 0) {
-             gameOver = true;
+            gameOver = true;
         }
         if (computer.getHp() == 0 || computerDeck.size() == 0) {
             gameOver = true;
@@ -123,14 +120,27 @@ public class Game {
         gameOver = true;
     }
 
-    public int updateHpOfPlayer(Card playedCard){
-        return 0;
+    public int updateHpOfPlayer(Card playedCard) {
+        int playerHp = player.getHp();
+        if (playedCard.getType().equals("Action")) {
+            playerHp = playerHp + playedCard.getPoint();
+            player.setHp(playerHp);
+        } else {
+            computer.setHp(computer.getHp() - playedCard.getPoint());
+        }
+        return playerHp;
     }
 
-    public int updateHpOfComputer(Card playedCard){
-       return 0;
+    public int updateHpOfComputer(Card playedCard) {
+        int computerHp = computer.getHp();
+        if (playedCard.getType().equals("Action")) {
+            computerHp = computerHp + playedCard.getPoint();
+            computer.setHp(computerHp);
+        } else {
+            player.setHp(player.getHp() - playedCard.getPoint());
+        }
+        return computerHp;
     }
-
 
 
 //    public int updateHp(Player player, Card playersCard, Card opponentsCard) {
