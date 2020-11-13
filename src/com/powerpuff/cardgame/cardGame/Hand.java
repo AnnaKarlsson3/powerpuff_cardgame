@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 public class Hand {
 
     PlayerDeck playerDeck;
-    ArrayList<Card> cardsInHand;
+   public ArrayList<Card> cardsInHand;
 
     public Hand() {
         this.playerDeck = new PlayerDeck();

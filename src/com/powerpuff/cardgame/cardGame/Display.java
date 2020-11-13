@@ -2,6 +2,8 @@ package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Display {
 
@@ -44,19 +46,10 @@ public class Display {
        return cardsInHand;
     }
 
-    public void printCards(){
-        System.out.println(h.cardsInHand);
+
+    public List <String> addNumberCardsInHand(){
+        return null;
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

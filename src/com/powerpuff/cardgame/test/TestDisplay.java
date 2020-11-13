@@ -1,13 +1,12 @@
 package com.powerpuff.cardgame.test;
 
-import com.powerpuff.cardgame.cardGame.Display;
-import com.powerpuff.cardgame.cardGame.Game;
-import com.powerpuff.cardgame.cardGame.Hand;
-import com.powerpuff.cardgame.cardGame.Player;
+import com.powerpuff.cardgame.cardGame.*;
 import org.junit.jupiter.api.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -53,6 +52,22 @@ public class TestDisplay {
         ArrayList actual = display.getCardsInHand(hand.getCardsInHand());
         ArrayList expected = cards;
         assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testNumerationOfCardsInHand(){
+
+        Hand hand = new Hand();
+        ArrayList <Card> cards = hand.getCardsInHand();
+        List<String> steamCardsNumbers = display.addNumberCardsInHand();
+        
+        int[] nums =  {1, 2, 3, 4, 5};
+        int[] numbersFromCard = {};
+
+        assertArrayEquals(numbersFromCard, nums);
+
+
+
     }
 
     @AfterEach
