@@ -6,7 +6,9 @@ public class Player {
     private String name;
     private Hand hand;
 
-    public Player(){}
+    public Player(){
+        hand = new Hand();
+    }
 
     public Player(String name, int hp, Hand hand) {
         this.hp = hp;

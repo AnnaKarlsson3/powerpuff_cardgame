@@ -1,5 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -8,9 +9,10 @@ public class Game {
     public boolean gameOver = false;
     public Player player;
     public Computer computer;
-    public PlayerDeck playerDeck = new PlayerDeck();
-    public List<Card> playerDeckList = playerDeck.getPlayerCards();
-    public int playerHp;
+    public ArrayList<Card> playerDeck;
+    public ArrayList<Card> computerDeck;
+
+
     public int counter;
 
 
@@ -19,15 +21,16 @@ public class Game {
         computer = new Computer();
         computer.setHp(20);
         player.setHp(20);
-        playerHp = player.getHp();
         display = new Display();
+        System.out.println(player.getHand().getCardsInHand().size());
+        System.out.println(player.getHand().getPlayerDeck().getPlayerCards().size());
+
+
     }
 
     public void run() {
 
         //startGame/menu
-
-
 
         display.printEnterNameMessage();
         action.inputPlayerName();
@@ -39,18 +42,25 @@ public class Game {
         //game
         while (!gameOver){
 
+
             gameTurn();
 
-            gameOver(playerHp, playerDeckList);
-
+            gameOver();
         }
+
+        //print hwo won
 
     }
 
     public void playerTurn(){
-        System.out.println("playerTurn" + player.getName());
+
         //print playername turn
+        display.printPlayerName(player.getName());
+        System.out.println("playerTurn " + player.getName());
+
         //print your cards in hand
+        System.out.println(player.getHand().getCardsInHand());
+
         //input card choice
         //execute playedcard in playerclass/computerclass
         //execute delete onCard from hand
@@ -60,7 +70,7 @@ public class Game {
         //print playerHp status
         //execute drawOnCard from deck
         //execute delete oneCard from deck
-        display.printPlayerHp(playerHp);
+        display.printPlayerHp(player.getHp());
 
 
         //put in menu? print continue?
@@ -71,7 +81,7 @@ public class Game {
 
     public void computerTurn(){
         System.out.println("computerTurn");
-        System.out.println("computer playerHp: " + computer.getHp());
+        System.out.println("computer Hp: " + computer.getHp());
     }
 
     public void gameTurn(){
@@ -92,12 +102,19 @@ public class Game {
     }
 
 
-    public boolean gameOver(int hp, List<Card> playerDeckList) {
-        if (hp == 0 || playerDeckList.size() == 0) {
+    public boolean gameOver() {
+
+        playerDeck  =  player.getHand().getPlayerDeck().getPlayerCards();
+        computerDeck  =  computer.getHand().getPlayerDeck().getPlayerCards();
+
+        if (player.getHp() == 0 || playerDeck.size() == 0) {
              gameOver = true;
         }
+        if (computer.getHp() == 0 || computerDeck.size() == 0) {
+            gameOver = true;
+        }
         return gameOver;
-    }
+        }
 
     void endGame() {
         gameOver = true;

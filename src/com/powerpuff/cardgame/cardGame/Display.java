@@ -9,12 +9,12 @@ public class Display {
 
     public String playerHp = "";
     public String enterNameMessage = "";
+    public String playerNameTurn = "";
     Hand h = new Hand();
 
 
     public Display(){
         enterNameMessage();
-
     }
 
     public void printEndMessage(){
@@ -31,12 +31,20 @@ public class Display {
     }
 
 
-    public void printPlayerHp(int hp){
-        printPlayerHpMessage(hp);
-        System.out.println(playerHp);
+    public void printPlayerName(String name){
+        playerNameTurn();
     }
 
-    public String printPlayerHpMessage(int hp){ return playerHp = "Player HP is: " + hp; }
+    public String playerNameTurn(){
+        return "";
+    }
+
+    public void printPlayerHp(int hp){
+        printPlayerHpMessage();
+        System.out.println(playerHp +hp);
+    }
+
+    public String printPlayerHpMessage(){ return playerHp = "Player HP is: "; }
 
 
     public ArrayList<Card> getCardsInHand (ArrayList<Card> cardsInHand ){
