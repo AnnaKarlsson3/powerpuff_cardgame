@@ -7,13 +7,14 @@ public class Game {
     Display display = new Display();
     public boolean gameOver = false;
     public Player player;
+    public Computer opponent;
     public PlayerDeck playerDeck = new PlayerDeck();
     public List<Card> playerDeckList = playerDeck.getPlayerCards();
-    public int hp;
+    //public int hp;
     public int counter;
     public int game = 0;
 
-    public Game(){
+    public Game() {
     }
 
     public void run() {
@@ -28,17 +29,17 @@ public class Game {
         randomStart();
 
         //game
-        while (!gameOver){
+        while (!gameOver) {
 
             gameTurn();
 
-            gameOver(hp, playerDeckList);
+            //gameOver(hp, playerDeckList);
 
         }
 
     }
 
-    public void playerTurn(){
+    public void playerTurn() {
         System.out.println("playerTurn");
         //print playername turn
         //print your cards in hand
@@ -60,17 +61,17 @@ public class Game {
         //endGame();
     }
 
-    public void computerTurn(){
+    public void computerTurn() {
         System.out.println("computerTurn");
     }
 
-    public void gameTurn(){
+    public void gameTurn() {
 
 
     }
 
-    public int randomStart(){
-        return counter = (int) (Math.random()*2);
+    public int randomStart() {
+        return counter = (int) (Math.random() * 2);
     }
 
 
@@ -84,6 +85,10 @@ public class Game {
 
     void endGame() {
         gameOver = true;
+    }
+
+    public int updateHp(Player player, Card playersCard, Card opponentsCard) {
+        return 0;
     }
 
 
