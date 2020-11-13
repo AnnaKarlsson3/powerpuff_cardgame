@@ -1,6 +1,5 @@
 package com.powerpuff.cardgame.cardGame;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -23,7 +22,8 @@ public class Game {
 
         display.printEnterNameMessage();
         action.inputPlayerName();
-        player = new Player(action.playerName);
+        player = new Player();
+        player.setName(action.playerName);
 
         randomStart();
 

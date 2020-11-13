@@ -4,15 +4,22 @@ public class Player {
 
     private int hp = 20;
     private String name;
+    private Hand hand;
 
     public Player(){}
 
-    public Player(String name){
+    public Player(String name, int hp, Hand hand) {
+        this.hp = hp;
         this.name = name;
-            }
+        this.hand = hand;
+    }
 
     public String getName(){
         return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setHp(int hp) {
@@ -21,5 +28,13 @@ public class Player {
 
     public int getHp() {
         return hp;
+    }
+
+    public Hand getHand() {
+        return hand;
+    }
+
+    public void setHand(Hand hand) {
+        this.hand = hand;
     }
 }
