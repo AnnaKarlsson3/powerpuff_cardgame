@@ -123,18 +123,28 @@ public class Game {
         gameOver = true;
     }
 
-    public int updateHp(Player player, Card playersCard, Card opponentsCard) {
-        int hp = player.getHp();
-        if (playersCard.getType().equals("Action")) {
-            hp = hp + playersCard.getPoint();
-        }
-        if (opponentsCard.getType().equals("Fighter")) {
-            hp = hp - opponentsCard.getPoint();
-        }
-
-        player.setHp(hp);
-        return hp;
+    public int updateHpOfPlayer(Card playedCard){
+        return 0;
     }
+
+    public int updateHpOfComputer(Card playedCard){
+       return 0;
+    }
+
+
+
+//    public int updateHp(Player player, Card playersCard, Card opponentsCard) {
+//        int hp = player.getHp();
+//        if (playersCard.getType().equals("Action")) {
+//            hp = hp + playersCard.getPoint();
+//        }
+//        if (opponentsCard.getType().equals("Fighter")) {
+//            hp = hp - opponentsCard.getPoint();
+//        }
+//
+//        player.setHp(hp);
+//        return hp;
+//    }
 
 
 }
