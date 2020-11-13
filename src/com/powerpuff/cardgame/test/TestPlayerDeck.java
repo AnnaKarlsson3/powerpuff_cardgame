@@ -28,7 +28,6 @@ public class TestPlayerDeck {
 
     @Test
     void testRemoveFromCommonDeck(){
-        playerDeck.removeFromCommonDeck();
         assertFalse(playerDeck.commonDeck.containsAll(playerDeck.playerCards));
     }
 
