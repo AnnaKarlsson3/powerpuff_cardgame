@@ -55,6 +55,19 @@ public class TestHand {
         assertFalse(deck.containsAll(cardsInHand));
     }
 
+    @Test
+    public void testDeletePlayedCard(){
+        Card card = new Card("type","card1",7);
+        if(cardsInHand.contains(card)){
+            assertTrue(testHand.deletePlayedCard(card),"Expected to to be true");
+        }else{
+            assertFalse(testHand.deletePlayedCard(card),"Expected to be false");
+        }
+
+
+
+    }
+
     @AfterEach
     void cleanUp() {
         System.out.println("@AfterEach executed");

@@ -29,12 +29,20 @@ public class TestDisplay {
     }
 
     @Test
-    public void testPrintPlayerHpMessage(){
-        Player player = new Player();
-        int hp = player.getHp();
+    public void testPlayerName(){
+       display.playerNameTurn();
 
+        String actual = display.playerNameTurn;
+        String expected = " it´s your turn!" ;
+
+        assertEquals(  expected, actual);
+    }
+
+    @Test
+    public void testPrintPlayerHpMessage(){
+        display.printPlayerHpMessage();
         String actual = display.playerHp;
-        String expected = "Player HP is: " + hp;
+        String expected = "Player HP is: ";
 
         assertEquals(  expected, actual);
     }

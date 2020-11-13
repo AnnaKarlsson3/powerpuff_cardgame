@@ -7,18 +7,16 @@ import java.util.stream.Collectors;
 
 public class Display {
 
-    //11.2 skapa tom metod printHP i Display-class, gör testmetod, gör klart metod
-    Player player = new Player();
-    public int hp = player.getHp();
+
+
     public String playerHp = "";
     public String enterNameMessage = "";
-    Hand hand = new Hand();
+    public String playerNameTurn = "";
+    Hand h = new Hand();
 
 
     public Display(){
         enterNameMessage();
-        printPlayerHpMessage();
-
     }
 
     public void printEndMessage(){
@@ -34,11 +32,21 @@ public class Display {
        return enterNameMessage = "Enter player name:";
     }
 
-    public void printPlayerHp(){
-        System.out.println(playerHp);
+
+    public void printPlayerName(String name){
+        playerNameTurn();
     }
 
-    public String printPlayerHpMessage(){ return playerHp = "Player HP is: " + hp; }
+    public String playerNameTurn(){
+        return "";
+    }
+
+    public void printPlayerHp(int hp){
+        printPlayerHpMessage();
+        System.out.println(playerHp +hp);
+    }
+
+    public String printPlayerHpMessage(){ return playerHp = "Player HP is: "; }
 
 
     public ArrayList<Card> getCardsInHand (ArrayList<Card> cardsInHand ){
