@@ -48,8 +48,8 @@ public class CardGenerator {
     }
 
     public ArrayList<Card> shuffleCards (ArrayList<Card> cards){
-        Collections.shuffle(commonDeck);
-        return commonDeck;
+        Collections.shuffle(cards);
+        return cards;
     }
 
 }
