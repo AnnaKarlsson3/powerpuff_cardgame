@@ -39,6 +39,17 @@ public class TestDisplay {
         assertEquals(  expected, actual);
     }
 
+
+    @Test
+    public void tprintComputerTurnMessage(){
+        display.printComputerTurn();
+
+        String actual = display.computerTurn;
+        String expected = "computer´s turn!" ;
+
+        assertEquals(  expected, actual);
+    }
+
     @Test
     public void testPrintPlayerHpMessage(){
         display.printPlayerHpMessage();

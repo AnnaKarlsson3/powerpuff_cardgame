@@ -10,6 +10,7 @@ public class Display {
     public String playerHp = "";
     public String enterNameMessage = "";
     public String playerNameTurn = "";
+    public String computerTurn = "";
     Hand h = new Hand();
 
 
@@ -33,9 +34,19 @@ public class Display {
 
     public void printPlayerName(String name){
         playerNameTurn();
+        System.out.println(name + playerNameTurn);
     }
 
     public String playerNameTurn(){
+        return playerNameTurn = " it´s your turn!";
+    }
+
+    public void printComputerTurn(){
+        printComputerTurnMessage();
+        
+    }
+
+    public String printComputerTurnMessage(){
         return "";
     }
 

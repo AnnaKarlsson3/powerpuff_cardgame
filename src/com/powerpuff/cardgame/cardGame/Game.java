@@ -52,10 +52,9 @@ public class Game {
     }
 
     public void playerTurn(){
-        System.out.println("playerTurn" + player.getName());
+
         //print playername turn
         display.printPlayerName(player.getName());
-        System.out.println("playerTurn " + player.getName());
 
         //print your cards in hand
         System.out.println(player.getHand().getCardsInHand());
@@ -79,7 +78,8 @@ public class Game {
     }
 
     public void computerTurn(){
-        System.out.println("computerTurn");
+        display.printComputerTurn();
+
         System.out.println("computer Hp: " + computer.getHp());
     }
 
