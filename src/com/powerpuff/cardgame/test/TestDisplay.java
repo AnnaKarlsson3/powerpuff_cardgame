@@ -59,8 +59,11 @@ public class TestDisplay {
 
         Hand hand = new Hand();
         ArrayList <Card> cards = hand.getCardsInHand();
-        List<String> steamCardsNumbers = display.addNumberCardsInHand();
-        
+        List<String> steamCardsNumbers = display.addNumberCardsInHand().stream().filter(card -> card.matches("[0-5].")).collect(Collectors.toList());
+        //System.out.println(steamCardsNumbers);
+
+
+
         int[] nums =  {1, 2, 3, 4, 5};
         int[] numbersFromCard = {};
 
