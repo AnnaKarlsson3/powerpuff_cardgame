@@ -34,12 +34,9 @@ public class TestGame {
     public void testGameTurn(){
         //test if math.random gives 0 or 1 in first Turn!
         Game game = new Game();
-        int counter = game.counter;
-        int firstTurn = game.firstTurn;
-
-        BooleanSupplier condition = () -> firstTurn == 1 && counter <= 1;
-
-        assertTrue(condition, "counter is 0 or 1");
+        int counter = game.random;
+        counter = 2;
+        assertTrue(counter <= 1, "counter is 0 or 1");
 
     }
 
