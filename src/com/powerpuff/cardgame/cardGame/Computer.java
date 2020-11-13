@@ -8,7 +8,7 @@ public class Computer extends Player{
     }
 
     public Computer(String name, int hp, Hand hand) {
-        super(name = "Opponent", hp, hand);
+        super(name, hp, hand);
     }
 
 
