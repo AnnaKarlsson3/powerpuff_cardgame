@@ -27,13 +27,14 @@ public class TestHand {
 
     @Test
     public void testCardsInHand() {
-        System.out.println("=== Test for cards in hand executed ===");
+        System.out.println("=== Executed test for cards in hand executed ===");
 
         assertEquals(5, cardsInHand.size());
     }
 
     @Test
     public void testAddNewCardToHand(){
+        System.out.println("=== Executed test for adding a card to the hand ===");
 
         if(testHand.getPlayerDeck().getPlayerCards().isEmpty()){
             assertFalse(testHand.addNewCardToHand());
@@ -46,19 +47,17 @@ public class TestHand {
         }
     }
 
-
     @Test
     public void testRemoveCardsInHandFromDeck(){
-        System.out.println("=== Test for removing cards in hand from deck ===");
+        System.out.println("=== Executed test for removing cards in hand from deck ===");
+        ArrayList<Card> deck = testHand.getPlayerDeck().getPlayerCards();
 
-        ArrayList<Card> updatedDeck = testHand.removeCardsInHandFromDeck();
-        assertFalse(updatedDeck.containsAll(cardsInHand));
+        assertFalse(deck.containsAll(cardsInHand));
     }
 
     @AfterEach
     void cleanUp() {
         System.out.println("@AfterEach executed");
     }
-
 
 }
