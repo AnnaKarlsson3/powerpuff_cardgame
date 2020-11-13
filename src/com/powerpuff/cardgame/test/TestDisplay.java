@@ -32,7 +32,9 @@ public class TestDisplay {
     @Test
     public void testPrintPlayerHpMessage(){
         Player player = new Player();
+        player.setHp(20);
         int hp = player.getHp();
+        display.printPlayerHpMessage(hp);
 
         String actual = display.playerHp;
         String expected = "Player HP is: " + hp;

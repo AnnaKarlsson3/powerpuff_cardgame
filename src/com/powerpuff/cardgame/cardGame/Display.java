@@ -5,9 +5,8 @@ import java.util.Arrays;
 
 public class Display {
 
-    //11.2 skapa tom metod printHP i Display-class, gör testmetod, gör klart metod
-    Player player = new Player();
-    public int hp = player.getHp();
+
+
     public String playerHp = "";
     public String enterNameMessage = "";
     Hand h = new Hand();
@@ -15,7 +14,6 @@ public class Display {
 
     public Display(){
         enterNameMessage();
-        printPlayerHpMessage();
 
     }
 
@@ -32,11 +30,13 @@ public class Display {
        return enterNameMessage = "Enter player name:";
     }
 
-    public void printPlayerHp(){
+
+    public void printPlayerHp(int hp){
+        printPlayerHpMessage(hp);
         System.out.println(playerHp);
     }
 
-    public String printPlayerHpMessage(){ return playerHp = "Player HP is: " + hp; }
+    public String printPlayerHpMessage(int hp){ return playerHp = "Player HP is: " + hp; }
 
 
     public ArrayList<Card> getCardsInHand (ArrayList<Card> cardsInHand ){
