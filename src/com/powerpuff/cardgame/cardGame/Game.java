@@ -88,7 +88,16 @@ public class Game {
     }
 
     public int updateHp(Player player, Card playersCard, Card opponentsCard) {
-        return 0;
+        int hp = player.getHp();
+        if (playersCard.getType().equals("Action")) {
+            hp = hp + playersCard.getPoint();
+        }
+        if (opponentsCard.getType().equals("Fighter")) {
+            hp = hp - opponentsCard.getPoint();
+        }
+
+        player.setHp(hp);
+        return hp;
     }
 
 
