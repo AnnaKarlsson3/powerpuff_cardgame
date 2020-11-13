@@ -41,16 +41,6 @@ public class TestGame {
     }
 
     @Test
-    public void testGameTurn(){
-        Game game = new Game();
-
-
-
-    }
-
-
-
-    @Test
     public void testEndGame(){
         Game game = new Game();
         assertFalse(game.gameOver);
