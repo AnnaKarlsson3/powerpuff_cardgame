@@ -1,12 +1,14 @@
 package com.powerpuff.cardgame.test;
 
 import com.powerpuff.cardgame.cardGame.*;
+import com.sun.org.apache.xerces.internal.xs.StringList;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -56,20 +58,16 @@ public class TestDisplay {
 
     @Test
     public void testNumerationOfCardsInHand(){
+        List<String> steamCardsNumbers =
+                display.addNumberCardsInHand()
+                        .stream()
+                        .filter(card -> card.matches("[1-5].")).filter(card -> card.matches("[0-5]"))
+                        .collect(Collectors.toList());
 
-        Hand hand = new Hand();
-        ArrayList <Card> cards = hand.getCardsInHand();
-        List<String> steamCardsNumbers = display.addNumberCardsInHand().stream().filter(card -> card.matches("[0-5].")).collect(Collectors.toList());
-        //System.out.println(steamCardsNumbers);
+        List<String> listOfNumbers = Stream.of("1", "2", "3", "4", "5")
+                .collect(Collectors.toList());
 
-
-
-        int[] nums =  {1, 2, 3, 4, 5};
-        int[] numbersFromCard = {};
-
-        assertArrayEquals(numbersFromCard, nums);
-
-
+        assertEquals(steamCardsNumbers, listOfNumbers);
 
     }
 
