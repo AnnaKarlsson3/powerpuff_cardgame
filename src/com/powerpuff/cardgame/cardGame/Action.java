@@ -21,6 +21,9 @@ public class Action {
             case 0:
                 game.endGame();
                 break;
+            case 1:
+
+                break;
 
             default:
                 System.out.println("Invalid");

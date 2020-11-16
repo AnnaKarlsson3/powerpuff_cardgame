@@ -47,7 +47,6 @@ public class Game {
 
             gameTurn();
 
-            gameOver();
         }
 
         //print hwo won
@@ -62,28 +61,62 @@ public class Game {
         //print your cards in hand
         display.printCardsInHand(player.getHand().getCardsInHand());
 
-        //input card choice
-        //execute playedcard in playerclass/computerclass
-        //execute delete onCard from hand
-        //print witch card played
-        //execute opponent playerHp - cardDamage
-        //print opponent playerHp status
-        //print playerHp status
-        //execute drawOnCard from deck
-        //execute delete oneCard from deck
-        display.printPlayerHp(player.getHp());
 
+        //input card choice
+        //display playedcard in playerclass/computerclass
+        //display.formatCardToPlay(card);
+
+
+        //execute opponent playerHp - cardDamage
+       // updateHpIfPlayersTurn(card);
+
+        //print playerHp status
+        display.printPlayerHp(player.getHp());
+        //print computer playerHp status
+        display.printComputerHp(computer.getHp());
+
+
+        //execute drawOnCard and delete oneCard from deck
+        player.getHand().addNewCardToHand();
+
+        //execute delete onCard from hand
+        // player.getHand().deletePlayedCard(Card);
+
+        gameOver();
 
         //put in menu? print continue?
-       // display.printEndMessage();
-        //action.inputMenu();
-        //endGame();
+        display.printEndMessage();
+        action.inputMenu();
+        endGame();
     }
 
     public void computerTurn(){
         display.printComputerTurn();
 
-        System.out.println("computer Hp: " + computer.getHp());
+        //choose card to play
+        Card playedCard = computer.playCard();
+        if(playedCard == null){
+            endGame();
+        }
+
+        //display played card
+        display.formatCardToPlay(playedCard);
+
+        updateHpIfComputersTurn(playedCard);
+
+        //print playerHp status
+        display.printPlayerHp(player.getHp());
+        //print computer playerHp status
+        display.printComputerHp(computer.getHp());
+
+        //remove card from hand
+        computer.getHand().deletePlayedCard(playedCard);
+
+        //get onCardfrom hand and remove oneCard from Deck
+        computer.getHand().addNewCardToHand();
+
+        gameOver();
+
     }
 
     public void gameTurn(){
@@ -121,7 +154,7 @@ public class Game {
         gameOver = true;
     }
 
-    public int updateHpOfPlayer(Card playedCard) {
+    public int updateHpIfPlayersTurn(Card playedCard) {
         int playerHp = player.getHp();
         if (playedCard.getType().equals("Action")) {
             playerHp = playerHp + playedCard.getPoint();
@@ -132,7 +165,7 @@ public class Game {
         return playerHp;
     }
 
-    public int updateHpOfComputer(Card playedCard) {
+    public int updateHpIfComputersTurn(Card playedCard) {
         int computerHp = computer.getHp();
         if (playedCard.getType().equals("Action")) {
             computerHp = computerHp + playedCard.getPoint();
