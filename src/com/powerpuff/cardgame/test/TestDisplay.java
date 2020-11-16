@@ -60,7 +60,7 @@ public class TestDisplay {
 
     @Test
     public void testPrintComputerHpMessage() {
-        display.printPlayerHpMessage();
+        display.printComputerHpMessage();
         String actual = display.computerHp;
         String expected = "Computer HP is: ";
 

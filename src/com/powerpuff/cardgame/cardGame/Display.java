@@ -63,11 +63,11 @@ public class Display {
 
     public void printComputerHp(int hp) {
         printComputerHpMessage();
-
+        System.out.println(computerHp + hp);
     }
 
     public String printComputerHpMessage() {
-        return "";
+        return computerHp = "Computer HP is: ";
     }
 
 
