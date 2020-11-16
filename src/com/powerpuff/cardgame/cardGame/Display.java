@@ -103,6 +103,9 @@ public class Display {
     }
 
     public void printWinner(Player player){
+        System.out.println(" ");
+        System.out.println("------- Game Over -------");
+        System.out.println(" ");
         System.out.println("The Winner is:");
         System.out.println(player.getName());
     }
