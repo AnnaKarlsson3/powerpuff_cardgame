@@ -1,5 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
+
 public class Computer extends Player{
 
     public Computer() {
@@ -11,7 +12,8 @@ public class Computer extends Player{
         super(name, hp, hand);
     }
 
-
-
+    public Card playCard(){
+        return null;
+    }
 
 }
