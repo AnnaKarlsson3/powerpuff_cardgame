@@ -152,9 +152,11 @@ public class Game {
         computerHand = computer.getHand().getCardsInHand();
 
         if (player.getHp() <= 0 || playerHand.size() == 0) {
+            display.printWinner(computer);
             gameOver = true;
         }
         if (computer.getHp() <= 0 || computerHand.size() == 0) {
+            display.printWinner(player);
             gameOver = true;
         }
 
