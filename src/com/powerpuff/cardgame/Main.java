@@ -6,8 +6,7 @@ import com.powerpuff.cardgame.cardGame.PlayerDeck;
 public class Main {
 
     public static void main(String[] args) {
-        //new Game().run();
-        PlayerDeck deck = new PlayerDeck();
-        deck.getCardsFromGeneratedCards();
+        new Game().run();
+
     }
 }
