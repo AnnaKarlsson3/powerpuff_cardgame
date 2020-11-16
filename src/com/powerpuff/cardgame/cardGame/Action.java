@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Action {
     private static Game game = new Game();
-    private List <Card> selectedCard = null;
+    private List<Card> selectedCard = null;
     public String playerName = "";
 
     public Action(List<Card> selectedCardList) {
@@ -22,7 +22,7 @@ public class Action {
         Scanner scanner = new Scanner(System.in);
         int action = scanner.nextInt();
 
-        switch (action){
+        switch (action) {
             case 0:
                 game.endGame();
                 break;
@@ -40,42 +40,20 @@ public class Action {
     }
 
 
-    public Card selectCard(Card card) {
+    public Card selectCard(Hand hand) {
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
+        return findCardByNumber(number, hand);
 
-        switch (number){
-            case 1:
-                findCardByNumber(0);
-                break;
-            case 2:
-                findCardByNumber(1);
-                break;
-
-            case 3:
-                findCardByNumber(2);
-                break;
-
-            case 4:
-                findCardByNumber(3);
-                break;
-
-            case 5:
-                findCardByNumber(4);
-                break;
-
-            default:  System.out.println("Invalid");
-        }
-
-        return card;
 
     }
 
-    public int findCardByNumber(int numberInHand) {
-       game.player.getHand().cardsInHand.get(numberInHand);
-       
-        return numberInHand;
+
+    public Card findCardByNumber(int numberInHand, Hand hand) {
+        return hand.cardsInHand.get(numberInHand - 1);
+
     }
+
 }
 
 
