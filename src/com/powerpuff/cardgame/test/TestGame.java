@@ -39,7 +39,9 @@ public class TestGame {
 
         Assertions.assertArrayEquals(playerHand.toArray(), playerHandEmpty.toArray(), "Expected both to be equal");
 
+        playerHandEmpty.clear();
 
+        assertFalse(Arrays.equals(playerHand.toArray(), playerHandEmpty.toArray()), "Expected both not to be equal");
 
 
 
