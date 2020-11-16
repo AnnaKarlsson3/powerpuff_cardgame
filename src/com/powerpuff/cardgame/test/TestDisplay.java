@@ -58,12 +58,6 @@ public class TestDisplay {
         assertEquals(  expected, actual);
     }
 
-    @Test
-    public void testDisplayCardsInHandLength(){
-      Hand hand = new Hand();
-      assertTrue(hand.getCardsInHand().toArray().length == 5);
-    }
-
 
     @Test
     public void testNumerationOfCardsInHand(){
@@ -80,6 +74,15 @@ public class TestDisplay {
                 .collect(Collectors.toList());
 
         assertEquals(listOfNumbers, cardNumbers);
+    }
+
+    @Test
+    public void testDisplayPlayedCard(){
+        Hand hand = new Hand();
+        String cardToPrint = display.getCardToPlay((Card) hand.getCardsInHand().get(0));
+        String expectedString = ("You just played " + cardToPrint );
+
+        assertEquals(expectedString, cardToPrint);
     }
 
     @AfterEach

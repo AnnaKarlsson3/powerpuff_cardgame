@@ -79,4 +79,12 @@ public class Display {
         System.out.println(formattedCardsInHand);
     }
 
+    public String getCardToPlay(Card chosenCardNr){
+        return null;
+    }
+
+    public void printPlayedCard(){
+
+    }
+
 }
