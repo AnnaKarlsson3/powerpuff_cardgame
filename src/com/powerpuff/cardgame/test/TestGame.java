@@ -43,7 +43,7 @@ public class TestGame {
 
         assertFalse(Arrays.equals(playerHand.toArray(), playerHandEmpty.toArray()), "Expected both not to be equal");
 
-        BooleanSupplier condition = () -> hp == 0 || playerHandEmpty.size() == 0;
+        BooleanSupplier condition = () -> hp <= 0 || playerHandEmpty.size() == 0;
         assertTrue(condition, "should be true");
 
         //if condition is true, set boolean to true
@@ -54,15 +54,7 @@ public class TestGame {
     }
 
 
-    @Test
-    public void testRandomStart() {
-        //test if math.random gives 0 or 1 in first Turn!
-        //Game game = new Game();
-        game.randomStart();
-        int counter = game.counter;
-        System.out.println(counter);
-        assertTrue(counter <= 1, "counter is 0 or 1");
-    }
+
 
     @Test
     public void testEndGame() {
