@@ -47,17 +47,14 @@ public class Action {
 
 
     public Card selectCard(Hand hand) {
-        Scanner scanner = new Scanner(System.in);
-        int number = scanner.nextInt();
-        return findCardByNumber(number, hand);
+     return null;
 
 
     }
 
 
     public Card findCardByNumber(int numberInHand, Hand hand) {
-        Card card = hand.cardsInHand.get(numberInHand-1);
-        return card;
+       return null;
 
     }
 

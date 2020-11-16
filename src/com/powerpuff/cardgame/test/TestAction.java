@@ -18,7 +18,7 @@ public class TestAction {
     @BeforeEach
     void init(){
         System.out.println("@BeforeEach executed");
-        //action = new Action(selectedCardList);
+        action = new Action();
     }
 
     @Test
@@ -32,20 +32,16 @@ public class TestAction {
     @Test
     public void testChooseOneCard(){
         Hand hand = new Hand();
-        int numberInHand = 4;
+        int numberInHand = 3;
 
 
         Card card1 = hand.cardsInHand.get(numberInHand-1);
 
         Card card2 = action.findCardByNumber(numberInHand, hand);
 
-        //assertEquals(card1, card2 );
-
+        assertEquals(card1, card2 );
         assertNotNull(card1);
         assertNotNull(card2);
-
-
-        System.out.println("the card from test" + card2);
 
 
     }
