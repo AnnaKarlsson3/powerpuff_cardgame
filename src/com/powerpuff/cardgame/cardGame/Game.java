@@ -8,8 +8,8 @@ public class Game {
     public boolean gameOver = false;
     public Player player;
     public Computer computer;
-    public ArrayList<Card> playerDeck;
-    public ArrayList<Card> computerDeck;
+    public ArrayList<Card> playerHand;
+    public ArrayList<Card> computerHand;
 
 
     public int counter;
@@ -106,16 +106,7 @@ public class Game {
 
     public boolean gameOver() {
 
-        playerDeck = player.getHand().getPlayerDeck().getPlayerCards();
-        computerDeck = computer.getHand().getPlayerDeck().getPlayerCards();
-
-        if (player.getHp() == 0 || playerDeck.size() == 0) {
-            gameOver = true;
-        }
-        if (computer.getHp() == 0 || computerDeck.size() == 0) {
-            gameOver = true;
-        }
-        return gameOver;
+      return false;
     }
 
     void endGame() {
