@@ -46,9 +46,10 @@ public class TestGame {
         BooleanSupplier condition = () -> hp == 0 || playerHandEmpty.size() == 0;
         assertTrue(condition, "should be true");
 
-        
+        //if condition is true, set boolean to true
+        gameover = true;
 
-
+        assertTrue(gameover == true);
 
 
     }
