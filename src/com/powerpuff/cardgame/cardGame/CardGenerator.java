@@ -51,5 +51,4 @@ public class CardGenerator {
         Collections.shuffle(cards);
         return cards;
     }
-
 }
