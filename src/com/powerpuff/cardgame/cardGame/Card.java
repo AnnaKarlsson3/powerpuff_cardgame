@@ -11,6 +11,7 @@ public class Card {
         this.point = point;
     }
 
+
     public String getType() {
         return type;
     }

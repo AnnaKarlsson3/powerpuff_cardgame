@@ -1,16 +1,20 @@
 package com.powerpuff.cardgame.cardGame;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Action {
+
     //private static Game game = new Game();
+
 
     public String playerName = "";
 
-    public Action(){
+
+
+    public Action() {
 
     }
-
 
 
     public static void inputMenu(Game game) {
@@ -18,7 +22,7 @@ public class Action {
         Scanner scanner = new Scanner(System.in);
         int action = scanner.nextInt();
 
-        switch (action){
+        switch (action) {
             case 0:
                 game.endGame();
                 break;
@@ -42,6 +46,19 @@ public class Action {
     }
 
 
+    public Card selectCard(Hand hand) {
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        return findCardByNumber(number, hand);
+
+    }
+
+
+    public Card findCardByNumber(int numberInHand, Hand hand) {
+        Card card = hand.cardsInHand.get(numberInHand-1);
+        return card;
+
+    }
 
 }
 

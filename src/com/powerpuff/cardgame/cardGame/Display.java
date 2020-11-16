@@ -83,7 +83,6 @@ public class Display {
     }
 
     public void printCardsInHand(ArrayList<Card> cardsInHand) {
-
         List<String> numberedCards = addNumberCardsInHand(cardsInHand);
 
         String formattedCardsInHand = (String) numberedCards
@@ -101,6 +100,11 @@ public class Display {
     public void printPlayedCard(String cardToPrint) {
         playedCard = cardToPrint;
         printPlayedCardMessage();
+    }
+
+    public void printWinner(Player player){
+        System.out.println("The Winner is:");
+        System.out.println(player.getName());
     }
 
     public void printPlayedCardMessage() {

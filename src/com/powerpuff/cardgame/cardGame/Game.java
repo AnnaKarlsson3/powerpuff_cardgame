@@ -1,6 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     Action action = new Action();
@@ -12,19 +13,19 @@ public class Game {
     public ArrayList<Card> computerHand;
 
 
-    public int counter;
 
 
-    public Game() {
+    public Game(){
         player = new Player();
         computer = new Computer();
         computer.setHp(20);
         player.setHp(20);
-        playerHand = player.getHand().getCardsInHand();
-        computerHand = computer.getHand().getCardsInHand();
         display = new Display();
-        //System.out.println(player.getHand().getCardsInHand().size());
-        //System.out.println(player.getHand().getPlayerDeck().getPlayerCards().size());
+        System.out.println(player.getHand().getCardsInHand().size());
+        System.out.println(player.getHand().getPlayerDeck().getPlayerCards().size());
+
+
+
 
 
     }
@@ -33,47 +34,48 @@ public class Game {
 
         //startGame/menu
 
-
         display.printEnterNameMessage();
         action.inputPlayerName();
         player.setName(action.playerName);
 
 
         //get cards for the player
+        //player.getHand().getPlayerDeck().getCardsFromGeneratedCards();
+
 
 
         //randomStart();
 
         //game
-        while (!gameOver) {
+        while (!gameOver){
+
+
             playerTurn();
+
+            gameOver();
+
             display.printEndMessage();
             action.inputMenu(this);
             if (gameOver) break;
+
             computerTurn();
+
+            gameOver();
+
+
         }
 
         //print hwo won
 
     }
 
-    public int randomStart() {
-        return counter = (int) (Math.random() * 2);
-    }
-
-    public void gameTurn() {
-        if (counter == 0) {
-            playerTurn();
-            computerTurn();
-        }
-        if (counter == 1) {
-            computerTurn();
-            playerTurn();
-        }
-    }
+   /* public int randomStart(){
+        return counter = (int) (Math.random()*2);
+    }*/
 
 
-    public void playerTurn() {
+
+    public void playerTurn(){
 
         //print playername turn
         display.printPlayerName(player.getName());
@@ -81,6 +83,8 @@ public class Game {
         //print your cards in hand
         display.printCardsInHand(player.getHand().getCardsInHand());
 
+
+        List<String> cardsinHandFromDisplay =  display.addNumberCardsInHand(player.getHand().getCardsInHand());
 
         //input card choice
         //display playedcard in playerclass/computerclass
@@ -100,20 +104,19 @@ public class Game {
         player.getHand().addNewCardToHand();
 
         //execute delete onCard from hand
-        //player.getHand().deletePlayedCard(Card);
+        // player.getHand().deletePlayedCard(Card);
 
 
-        gameOver();
 
 
     }
 
-    public void computerTurn() {
+    public void computerTurn(){
         display.printComputerTurn();
 
         //choose card to play
         Card playedCard = computer.playCard();
-        if (playedCard == null) {
+        if(playedCard == null){
             endGame();
         }
 
@@ -133,33 +136,35 @@ public class Game {
         //get onCardfrom hand and remove oneCard from Deck
         computer.getHand().addNewCardToHand();
 
-        gameOver();
+
 
     }
 
 
+
     public boolean gameOver() {
+        playerHand = player.getHand().getCardsInHand();
+        computerHand = computer.getHand().getCardsInHand();
 
+        if (player.getHp() <= 0 || playerHand.size() == 0) {
+            display.printWinner(computer);
+            gameOver = true;
+        }
+        if (computer.getHp() <= 0 || computerHand.size() == 0) {
+            display.printWinner(player);
+            gameOver = true;
+        }
 
-        if (player.getHp() == 0 || playerHand.size() == 0) {
-            gameOver = true;
-        } else {
-            gameOver = false;
-        }
-        if (computer.getHp() == 0 || computerHand.size() == 0) {
-            gameOver = true;
-        } else {
-            gameOver = false;
-        }
         return gameOver;
     }
 
     void endGame() {
-        this.gameOver = true;
+        gameOver = true;
     }
 
-    void continueGame() {
-        this.gameOver = false;
+
+    public void continueGame() {
+        gameOver = false;
     }
 
     public int updateHpIfPlayersTurn(Card playedCard) {
