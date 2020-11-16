@@ -5,13 +5,9 @@ import java.util.Scanner;
 
 public class Action {
     private static Game game = new Game();
-    private List<Card> selectedCard = null;
     public String playerName = "";
 
-    public Action(List<Card> selectedCardList) {
 
-
-    }
 
     public Action() {
 
