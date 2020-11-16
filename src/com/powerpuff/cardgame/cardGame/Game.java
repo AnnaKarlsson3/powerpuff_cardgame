@@ -60,7 +60,7 @@ public class Game {
         display.printPlayerName(player.getName());
 
         //print your cards in hand
-        System.out.println(player.getHand().getCardsInHand());
+        display.printCardsInHand(player.getHand().getCardsInHand());
 
         //input card choice
         //execute playedcard in playerclass/computerclass
