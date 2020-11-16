@@ -1,5 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -44,7 +45,7 @@ public class Action {
         return null;
     }
 
-    public List<Card> findCardByNumber(String s) {
+    public List<String> findCardByNumber(List<String> cardList) {
         return null;
     }
 }

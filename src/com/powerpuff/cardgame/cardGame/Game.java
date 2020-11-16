@@ -1,6 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     Action action = new Action();
@@ -61,6 +62,12 @@ public class Game {
 
         //print your cards in hand
         display.printCardsInHand(player.getHand().getCardsInHand());
+
+        List<String> cardsinHandFromDisplay =  display.addNumberCardsInHand(player.getHand().getCardsInHand());
+
+        action.findCardByNumber(cardsinHandFromDisplay);
+
+        System.out.println(action.findCardByNumber(cardsinHandFromDisplay));
 
         //input card choice
         //execute playedcard in playerclass/computerclass
