@@ -47,11 +47,30 @@ public class Game {
 
             gameTurn();
 
+
         }
 
         //print hwo won
 
     }
+
+    public int randomStart(){
+        return counter = (int) (Math.random()*2);
+    }
+
+    public void gameTurn(){
+        if(counter == 0)
+        {
+            playerTurn();
+            computerTurn();
+        }
+        if(counter == 1)
+        {
+            computerTurn();
+            playerTurn();
+        }
+    }
+
 
     public void playerTurn(){
 
@@ -84,10 +103,8 @@ public class Game {
 
         gameOver();
 
-        //put in menu? print continue?
-        display.printEndMessage();
-        action.inputMenu();
-        endGame();
+
+
     }
 
     public void computerTurn(){
@@ -119,22 +136,6 @@ public class Game {
 
     }
 
-    public void gameTurn(){
-        if(counter == 0)
-        {
-            playerTurn();
-            computerTurn();
-        }
-        if(counter == 1)
-        {
-            computerTurn();
-            playerTurn();
-        }
-    }
-
-    public int randomStart(){
-        return counter = (int) (Math.random()*2);
-    }
 
 
     public boolean gameOver() {
@@ -143,15 +144,24 @@ public class Game {
 
         if (player.getHp() == 0 || playerHand.size() == 0) {
             gameOver = true;
+        }else{
+            gameOver = false;
         }
         if (computer.getHp() == 0 || computerHand.size() == 0) {
             gameOver = true;
+        }
+        else{
+            gameOver = false;
         }
         return gameOver;
     }
 
     void endGame() {
         gameOver = true;
+    }
+
+    void continueGame() {
+        gameOver = false;
     }
 
     public int updateHpIfPlayersTurn(Card playedCard) {
