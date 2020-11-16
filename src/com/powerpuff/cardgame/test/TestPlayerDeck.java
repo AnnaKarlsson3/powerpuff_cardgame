@@ -28,13 +28,16 @@ public class TestPlayerDeck {
 
     @Test
     void testRemoveFromCommonDeck(){
+        playerDeck.getCardsFromGeneratedCards();
         assertFalse(playerDeck.commonDeck.containsAll(playerDeck.playerCards));
+        System.out.println(playerDeck.commonDeck.size());
     }
 
     @Test
     void testCheckIfEmpty(){
         ArrayList<Card> playerCardstest = null;
         assertTrue(playerDeck.checkIfEmpty(playerCardstest));
+
     }
 
     @AfterEach
