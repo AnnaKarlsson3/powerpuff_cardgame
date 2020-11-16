@@ -12,7 +12,6 @@ public class Game {
     public ArrayList<Card> computerHand;
 
 
-    public int counter;
 
 
     public Game(){
@@ -37,16 +36,33 @@ public class Game {
 
 
         //get cards for the player
-        player.getHand().getPlayerDeck().getCardsFromGeneratedCards();
+        //player.getHand().getPlayerDeck().getCardsFromGeneratedCards();
 
 
-        randomStart();
+
+        //randomStart();
 
         //game
         while (!gameOver){
 
-            gameTurn();
 
+            playerTurn();
+
+            gameOver();
+            if(gameOver == true){
+                break;
+            }
+
+            computerTurn();
+
+                gameOver();
+                if(gameOver == true){
+                    break;
+                }
+
+                
+            display.printEndMessage();
+            //action
 
         }
 
@@ -54,22 +70,10 @@ public class Game {
 
     }
 
-    public int randomStart(){
+   /* public int randomStart(){
         return counter = (int) (Math.random()*2);
-    }
+    }*/
 
-    public void gameTurn(){
-        if(counter == 0)
-        {
-            playerTurn();
-            computerTurn();
-        }
-        if(counter == 1)
-        {
-            computerTurn();
-            playerTurn();
-        }
-    }
 
 
     public void playerTurn(){
@@ -101,7 +105,6 @@ public class Game {
         //execute delete onCard from hand
         // player.getHand().deletePlayedCard(Card);
 
-        gameOver();
 
 
 
@@ -132,7 +135,7 @@ public class Game {
         //get onCardfrom hand and remove oneCard from Deck
         computer.getHand().addNewCardToHand();
 
-        gameOver();
+
 
     }
 
@@ -142,17 +145,13 @@ public class Game {
         playerHand = player.getHand().getCardsInHand();
         computerHand = computer.getHand().getCardsInHand();
 
-        if (player.getHp() == 0 || playerHand.size() == 0) {
-            gameOver = true;
-        }else{
-            gameOver = false;
-        }
-        if (computer.getHp() == 0 || computerHand.size() == 0) {
+        if (player.getHp() <= 0 || playerHand.size() == 0) {
             gameOver = true;
         }
-        else{
-            gameOver = false;
+        if (computer.getHp() <= 0 || computerHand.size() == 0) {
+            gameOver = true;
         }
+
         return gameOver;
     }
 
@@ -160,9 +159,6 @@ public class Game {
         gameOver = true;
     }
 
-    void continueGame() {
-        gameOver = false;
-    }
 
     public int updateHpIfPlayersTurn(Card playedCard) {
         int playerHp = player.getHp();
