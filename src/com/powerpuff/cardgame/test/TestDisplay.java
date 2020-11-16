@@ -40,7 +40,7 @@ public class TestDisplay {
 
 
     @Test
-    public void tprintComputerTurnMessage() {
+    public void testPrintComputerTurnMessage() {
         display.printComputerTurn();
 
         String actual = display.computerTurn;
@@ -54,6 +54,15 @@ public class TestDisplay {
         display.printPlayerHpMessage();
         String actual = display.playerHp;
         String expected = "Player HP is: ";
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testPrintComputerHpMessage() {
+        display.printComputerHpMessage();
+        String actual = display.computerHp;
+        String expected = "Computer HP is: ";
 
         assertEquals(expected, actual);
     }
@@ -82,7 +91,7 @@ public class TestDisplay {
         Card card = (Card) hand.getCardsInHand().get(0);
 
         display.formatCardToPlay(card);
-        String expected = "You played - Name: " + card.getName() + ", Type: " + card.getType() + ", Points: " + card.getPoint();
+        String expected = "Played card - Name: " + card.getName() + ", Type: " + card.getType() + ", Points: " + card.getPoint();
         String actual = display.playedCard;
 
         System.out.println(actual);
