@@ -34,21 +34,21 @@ public class TestAction {
         Hand hand = new Hand();
         int numberInHand = 4;
 
-        Card card = action.findCardByNumber(numberInHand, hand);
 
-        //assertEquals(card, hand.getCardsInHand().get(numberInHand-1) );
+        Card card1 = hand.cardsInHand.get(numberInHand-1);
 
-        assertNull(action.findCardByNumber(numberInHand, hand));
-        System.out.println("the card from test" + card);
+        Card card2 = action.findCardByNumber(numberInHand, hand);
+
+        //assertEquals(card1, card2 );
+
+        assertNotNull(card1);
+        assertNotNull(card2);
+
+
+        System.out.println("the card from test" + card2);
 
 
     }
-
-
-
-
-
-
 
 
     @AfterEach

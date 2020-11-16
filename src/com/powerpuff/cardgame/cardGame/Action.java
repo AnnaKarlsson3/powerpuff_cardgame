@@ -56,7 +56,8 @@ public class Action {
 
 
     public Card findCardByNumber(int numberInHand, Hand hand) {
-        return hand.cardsInHand.get(numberInHand - 1);
+        Card card = hand.cardsInHand.get(numberInHand-1);
+        return card;
 
     }
 
