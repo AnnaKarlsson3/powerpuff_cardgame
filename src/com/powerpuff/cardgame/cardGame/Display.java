@@ -49,7 +49,7 @@ public class Display {
     }
 
     public String printComputerTurnMessage(){
-        return "";
+        return computerTurn = "computer´s turn!";
     }
 
     public void printPlayerHp(int hp){
