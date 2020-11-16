@@ -79,10 +79,13 @@ public class TestDisplay {
     @Test
     public void testDisplayPlayedCard(){
         Hand hand = new Hand();
-        String cardToPrint = display.getCardToPlay((Card) hand.getCardsInHand().get(0));
-        String expectedString = ("You just played " + cardToPrint );
+        Card card = (Card) hand.getCardsInHand().get(0);
 
-        assertEquals(expectedString, cardToPrint);
+        display.formatCardToPlay(card);
+        String expected = "You played - Name: " + card.getName() + "Type: " + card.getType() + "Points: " + card.getPoint();
+        String actual = display.playedCard;
+
+        assertEquals(expected, actual);
     }
 
     @AfterEach

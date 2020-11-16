@@ -13,6 +13,7 @@ public class Display {
     public String enterNameMessage = "";
     public String playerNameTurn = "";
     public String  computerTurn = "";
+    public String playedCard = "";
 
 
     public Display(){
@@ -80,12 +81,15 @@ public class Display {
         System.out.println(formattedCardsInHand);
     }
 
-    public String getCardToPlay(Card chosenCardNr){
+    public Card formatCardToPlay(Card chosenCard){
         return null;
     }
 
-    public void printPlayedCard(){
+    public void printPlayedCard(String cardToPrint){
+    }
 
+    public String printPlayedCardMessage(){
+        return null;
     }
 
 }
