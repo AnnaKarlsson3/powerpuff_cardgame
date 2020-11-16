@@ -39,7 +39,7 @@ public class TestAction {
             fail();
         }
 
-        assertNotEquals(1, selectedCardList.size());
+        assertEquals(1, selectedCardList.size());
 
     }
 
