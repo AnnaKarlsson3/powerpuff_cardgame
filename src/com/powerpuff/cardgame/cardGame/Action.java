@@ -1,6 +1,5 @@
 package com.powerpuff.cardgame.cardGame;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ public class Action {
     public String playerName = "";
 
     public Action(List<Card> selectedCardList) {
-        selectedCardList.add((Card) selectedCard);
+
 
     }
 
@@ -42,11 +41,40 @@ public class Action {
 
 
     public Card selectCard(Card card) {
-        return null;
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+
+        switch (number){
+            case 1:
+                findCardByNumber(0);
+                break;
+            case 2:
+                findCardByNumber(1);
+                break;
+
+            case 3:
+                findCardByNumber(2);
+                break;
+
+            case 4:
+                findCardByNumber(3);
+                break;
+
+            case 5:
+                findCardByNumber(4);
+                break;
+
+            default:  System.out.println("Invalid");
+        }
+
+        return card;
+
     }
 
-    public List<String> findCardByNumber(List<String> cardList) {
-        return null;
+    public int findCardByNumber(int numberInHand) {
+       game.player.getHand().cardsInHand.get(numberInHand);
+       
+        return numberInHand;
     }
 }
 

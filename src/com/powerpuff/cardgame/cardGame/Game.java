@@ -26,6 +26,7 @@ public class Game {
         System.out.println(player.getHand().getPlayerDeck().getPlayerCards().size());
 
 
+
     }
 
     public void run() {
@@ -65,9 +66,7 @@ public class Game {
 
         List<String> cardsinHandFromDisplay =  display.addNumberCardsInHand(player.getHand().getCardsInHand());
 
-        action.findCardByNumber(cardsinHandFromDisplay);
 
-        System.out.println(action.findCardByNumber(cardsinHandFromDisplay));
 
         //input card choice
         //execute playedcard in playerclass/computerclass

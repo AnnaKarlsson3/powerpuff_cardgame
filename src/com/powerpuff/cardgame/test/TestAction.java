@@ -25,6 +25,8 @@ public class TestAction {
         assertNotNull(action.playerName, "The name should not be null" );
     }
 
+
+
     @Test
     public void testSelectedCard(){
         Action action = null;
@@ -44,16 +46,18 @@ public class TestAction {
 
     }
 
+
+
     @Test
     public void testChooseOneCard(){
-        /*//list should be 0 if no number macthes
-        List<Card> cardOnPosition = action.findCardByNumber("6");
+        //list should be 0 if no number macthes
+        List<String> cardOnPosition = action.findCardByNumber(6);
         assertEquals(0, cardOnPosition.size());
 
         //list should be 1 if a number matches
         action.selectCard(new Card("action", "actionCard1", 5));
-        cardOnPosition = action.findCardByNumber("3");
-        assertEquals(1, cardOnPosition.size());*/
+        cardOnPosition = action.findCardByNumber(3);
+        assertEquals(1, cardOnPosition.size());
 
     }
 
