@@ -11,6 +11,7 @@ public class PlayerDeck {
     public Boolean isEmpty;
 
     public PlayerDeck(){
+        getCardsFromGeneratedCards();
 
     }
 

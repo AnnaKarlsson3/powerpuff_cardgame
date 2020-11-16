@@ -34,7 +34,7 @@ public class CardGenerator {
         }
         commonDeck = new ArrayList<>();
         cardsInfo.forEach((cardInfo -> commonDeck.add(new Card(cardInfo[1], cardInfo[0], Integer.parseInt(cardInfo[2])))));
-        commonDeck.forEach(System.out::println);
+        //commonDeck.forEach(System.out::println);
         return commonDeck;
     }
 
