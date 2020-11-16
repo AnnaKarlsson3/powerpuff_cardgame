@@ -52,7 +52,7 @@ public class Game {
 
             playerTurn();
 
-            gameOver();
+            //gameOver();
 
             display.printEndMessage();
             action.inputMenu(this);
@@ -87,24 +87,27 @@ public class Game {
         List<String> cardsinHandFromDisplay =  display.addNumberCardsInHand(player.getHand().getCardsInHand());
 
         //input card choice
+        Card card = action.selectCard(player.getHand());
         //display playedcard in playerclass/computerclass
-        //display.formatCardToPlay(card);
+        display.formatCardToPlay(card);
 
 
         //execute opponent playerHp - cardDamage
-        // updateHpIfPlayersTurn(card);
+         updateHpIfPlayersTurn(card);
 
         //print playerHp status
         display.printPlayerHp(player.getHp());
         //print computer playerHp status
         display.printComputerHp(computer.getHp());
 
+        //execute delete onCard from hand
+        player.getHand().deletePlayedCard(card);
+
 
         //execute drawOnCard and delete oneCard from deck
         player.getHand().addNewCardToHand();
 
-        //execute delete onCard from hand
-        // player.getHand().deletePlayedCard(Card);
+
 
 
 
