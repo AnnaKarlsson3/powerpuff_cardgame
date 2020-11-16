@@ -8,58 +8,60 @@ import java.util.stream.Collectors;
 public class Display {
 
 
-
     public String playerHp = "";
     public String enterNameMessage = "";
     public String playerNameTurn = "";
-    public String  computerTurn = "";
+    public String computerTurn = "";
+    public String playedCard = "";
 
 
-    public Display(){
+    public Display() {
         enterNameMessage();
     }
 
-    public void printEndMessage(){
+    public void printEndMessage() {
         System.out.println("If you want to end game, press 0");
     }
 
 
-    public void printEnterNameMessage(){
+    public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
     }
 
-    public String enterNameMessage(){
-       return enterNameMessage = "Enter player name:";
+    public String enterNameMessage() {
+        return enterNameMessage = "Enter player name:";
     }
 
 
-    public void printPlayerName(String name){
+    public void printPlayerName(String name) {
         playerNameTurn();
         System.out.println(name + playerNameTurn);
     }
 
-    public String playerNameTurn(){
+    public String playerNameTurn() {
         return playerNameTurn = " it´s your turn!";
     }
 
-    public void printComputerTurn(){
+    public void printComputerTurn() {
         printComputerTurnMessage();
 
     }
 
-    public String printComputerTurnMessage(){
+    public String printComputerTurnMessage() {
         return computerTurn = "computer´s turn!";
     }
 
-    public void printPlayerHp(int hp){
+    public void printPlayerHp(int hp) {
         printPlayerHpMessage();
-        System.out.println(playerHp +hp);
+        System.out.println(playerHp + hp);
     }
 
-    public String printPlayerHpMessage(){ return playerHp = "Player HP is: "; }
-    
+    public String printPlayerHpMessage() {
+        return playerHp = "Player HP is: ";
+    }
 
-    public List<String> addNumberCardsInHand(ArrayList<Card> cardsInHand){
+
+    public List<String> addNumberCardsInHand(ArrayList<Card> cardsInHand) {
 
         AtomicInteger numbers = new AtomicInteger(1);
 
@@ -70,7 +72,7 @@ public class Display {
         return cardList;
     }
 
-    public void printCardsInHand(ArrayList<Card> cardsInHand){
+    public void printCardsInHand(ArrayList<Card> cardsInHand) {
 
         List<String> numberedCards = addNumberCardsInHand(cardsInHand);
 
@@ -78,6 +80,21 @@ public class Display {
                 .stream()
                 .collect(Collectors.joining("", "", ""));
         System.out.println(formattedCardsInHand);
+    }
+
+    public Card formatCardToPlay(Card chosenCard) {
+        String formattedCard = "You played - Name: " + chosenCard.getName() + ", Type: " + chosenCard.getType() + ", Points: " + chosenCard.getPoint();
+        printPlayedCard(formattedCard);
+        return chosenCard;
+    }
+
+    public void printPlayedCard(String cardToPrint) {
+        playedCard = cardToPrint;
+        printPlayedCardMessage();
+    }
+
+    public void printPlayedCardMessage() {
+        System.out.println(playedCard);
     }
 
 }
