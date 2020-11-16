@@ -9,6 +9,7 @@ public class Display {
 
 
     public String playerHp = "";
+    public String computerHp ="";
     public String enterNameMessage = "";
     public String playerNameTurn = "";
     public String computerTurn = "";
@@ -20,7 +21,7 @@ public class Display {
     }
 
     public void printEndMessage() {
-        System.out.println("If you want to end game, press 0");
+        System.out.println("To endTurn and continue press 2, to end game, press 0");
     }
 
 
@@ -60,6 +61,15 @@ public class Display {
         return playerHp = "Player HP is: ";
     }
 
+    public void printComputerHp(int hp) {
+        printComputerHpMessage();
+        System.out.println(computerHp + hp);
+    }
+
+    public String printComputerHpMessage() {
+        return computerHp = "Computer HP is: ";
+    }
+
 
     public List<String> addNumberCardsInHand(ArrayList<Card> cardsInHand) {
 
@@ -83,7 +93,7 @@ public class Display {
     }
 
     public Card formatCardToPlay(Card chosenCard) {
-        String formattedCard = "You played - Name: " + chosenCard.getName() + ", Type: " + chosenCard.getType() + ", Points: " + chosenCard.getPoint();
+        String formattedCard = "Played card - Name: " + chosenCard.getName() + ", Type: " + chosenCard.getType() + ", Points: " + chosenCard.getPoint();
         printPlayedCard(formattedCard);
         return chosenCard;
     }

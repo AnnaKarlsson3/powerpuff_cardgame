@@ -19,6 +19,7 @@ public class Action {
 
 
     public static void inputMenu() {
+        Display display = new Display();
         Scanner scanner = new Scanner(System.in);
         int action = scanner.nextInt();
 
@@ -26,9 +27,14 @@ public class Action {
             case 0:
                 game.endGame();
                 break;
+            case 2:
+                break;
 
             default:
                 System.out.println("Invalid");
+                display.printEndMessage();
+                inputMenu();
+
 
         }
     }
