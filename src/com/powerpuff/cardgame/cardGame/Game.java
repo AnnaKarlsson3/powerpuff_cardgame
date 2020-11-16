@@ -105,8 +105,16 @@ public class Game {
 
 
     public boolean gameOver() {
+        playerHand = player.getHand().getCardsInHand();
+        computerHand = computer.getHand().getCardsInHand();
 
-      return false;
+        if (player.getHp() == 0 || playerHand.size() == 0) {
+            gameOver = true;
+        }
+        if (computer.getHp() == 0 || computerHand.size() == 0) {
+            gameOver = true;
+        }
+        return gameOver;
     }
 
     void endGame() {
