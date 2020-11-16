@@ -43,6 +43,11 @@ public class TestGame {
 
         assertFalse(Arrays.equals(playerHand.toArray(), playerHandEmpty.toArray()), "Expected both not to be equal");
 
+        BooleanSupplier condition = () -> hp == 0 || playerHandEmpty.size() == 0;
+        assertTrue(condition, "should be true");
+
+        
+
 
 
 
