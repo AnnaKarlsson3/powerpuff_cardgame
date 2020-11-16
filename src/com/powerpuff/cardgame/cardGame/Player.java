@@ -2,9 +2,9 @@ package com.powerpuff.cardgame.cardGame;
 
 public class Player {
 
-    private int hp;
-    private String name;
-    private Hand hand;
+    public int hp;
+    public String name;
+    public Hand hand;
 
     public Player(){
         hand = new Hand();
