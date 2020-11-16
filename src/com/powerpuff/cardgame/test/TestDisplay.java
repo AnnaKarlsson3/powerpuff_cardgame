@@ -15,69 +15,63 @@ public class TestDisplay {
     Display display;
 
     @BeforeEach
-    void init(){
+    void init() {
         System.out.println("@BeforeEach executed");
         display = new Display();
     }
 
     @Test
-    public void testEnterNameMessage(){
+    public void testEnterNameMessage() {
         String actual = display.enterNameMessage;
         String expected = "Enter player name:";
 
-        assertEquals(  expected, actual);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void testPlayerName(){
-       display.playerNameTurn();
+    public void testPlayerName() {
+        display.playerNameTurn();
 
         String actual = display.playerNameTurn;
-        String expected = " it´s your turn!" ;
+        String expected = " it´s your turn!";
 
-        assertEquals(  expected, actual);
+        assertEquals(expected, actual);
     }
 
     /*
 
     @Test
-    public void tprintComputerTurnMessage(){
+    public void tprintComputerTurnMessage() {
         display.printComputerTurn();
 
         String actual = display.computerTurn;
-        String expected = "computer´s turn!" ;
+        String expected = "computer´s turn!";
 
-        assertEquals(  expected, actual);
+        assertEquals(expected, actual);
     }
 
      */
 
     @Test
-    public void testPrintPlayerHpMessage(){
+    public void testPrintPlayerHpMessage() {
         display.printPlayerHpMessage();
         String actual = display.playerHp;
         String expected = "Player HP is: ";
 
-        assertEquals(  expected, actual);
-    }
-
-    @Test
-    public void testDisplayCardsInHandLength(){
-      Hand hand = new Hand();
-      assertTrue(hand.getCardsInHand().toArray().length == 5);
+        assertEquals(expected, actual);
     }
 
 
     @Test
-    public void testNumerationOfCardsInHand(){
+    public void testNumerationOfCardsInHand() {
         Hand hand = new Hand();
 
         List<String> numberedCards = display.addNumberCardsInHand(hand.getCardsInHand());
 
-               List<String> cardNumbers = numberedCards
-                        .stream()
-                        .map(card -> card.substring(0, 1))
-                        .collect(Collectors.toList());
+        List<String> cardNumbers = numberedCards
+                .stream()
+                .map(card -> card.substring(0, 1))
+                .collect(Collectors.toList());
 
         List<String> listOfNumbers = Stream.of("1", "2", "3", "4", "5")
                 .collect(Collectors.toList());
@@ -85,8 +79,22 @@ public class TestDisplay {
         assertEquals(listOfNumbers, cardNumbers);
     }
 
+    @Test
+    public void testDisplayPlayedCard() {
+        Hand hand = new Hand();
+        Card card = (Card) hand.getCardsInHand().get(0);
+
+        display.formatCardToPlay(card);
+        String expected = "You played - Name: " + card.getName() + ", Type: " + card.getType() + ", Points: " + card.getPoint();
+        String actual = display.playedCard;
+
+        System.out.println(actual);
+
+        assertEquals(expected, actual);
+    }
+
     @AfterEach
-    void cleanUp(){
+    void cleanUp() {
         System.out.println("@AfterEach executed");
     }
 }

@@ -9,8 +9,8 @@ public class Game {
     public boolean gameOver = false;
     public Player player;
     public Computer computer;
-    public ArrayList<Card> playerDeck;
-    public ArrayList<Card> computerDeck;
+    public ArrayList<Card> playerHand;
+    public ArrayList<Card> computerHand;
 
 
     public int counter;
@@ -111,14 +111,13 @@ public class Game {
 
 
     public boolean gameOver() {
+        playerHand = player.getHand().getCardsInHand();
+        computerHand = computer.getHand().getCardsInHand();
 
-        playerDeck = player.getHand().getPlayerDeck().getPlayerCards();
-        computerDeck = computer.getHand().getPlayerDeck().getPlayerCards();
-
-        if (player.getHp() == 0 || playerDeck.size() == 0) {
+        if (player.getHp() == 0 || playerHand.size() == 0) {
             gameOver = true;
         }
-        if (computer.getHp() == 0 || computerDeck.size() == 0) {
+        if (computer.getHp() == 0 || computerHand.size() == 0) {
             gameOver = true;
         }
         return gameOver;

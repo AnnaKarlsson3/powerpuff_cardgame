@@ -11,13 +11,12 @@ public class PlayerDeck {
     public Boolean isEmpty;
 
     public PlayerDeck(){
-        getCardsFromGeneratedCards();
-        removeFromCommonDeck();
+
     }
 
     public ArrayList<Card> getCardsFromGeneratedCards() {
         playerCards = (ArrayList<Card>) commonDeck.stream().limit(30).collect(Collectors.toList());
-        removeFromCommonDeck();
+        removeFromCommonDeck(playerCards);
         return playerCards;
     }
 
@@ -25,8 +24,9 @@ public class PlayerDeck {
         return playerCards;
     }
 
-    public ArrayList<Card> removeFromCommonDeck(){
-        commonDeck.removeAll(playerCards);
+    public ArrayList<Card> removeFromCommonDeck(ArrayList<Card> playerCardsFromGen){
+
+        commonDeck.removeAll(playerCardsFromGen);
         cardGenerator.setCommonDeck(commonDeck);
         return commonDeck;
     }

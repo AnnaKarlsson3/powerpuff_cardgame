@@ -8,6 +8,7 @@ import com.powerpuff.cardgame.cardGame.Player;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.function.BooleanSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -30,12 +31,26 @@ public class TestGame {
 
     @Test
     public void testGameOver() {
+        boolean gameover = false;
         int hp = 0;
-        ArrayList<Object> playerDeckList = new ArrayList<>();
+        Player player = new Player();
+        ArrayList<Card> playerHand = player.getHand().getCardsInHand();
+        ArrayList<Card> playerHandEmpty = (ArrayList<Card>) player.getHand().getCardsInHand().clone();
 
-        BooleanSupplier condition = () -> hp == 0 || playerDeckList.size() == 0;
+        Assertions.assertArrayEquals(playerHand.toArray(), playerHandEmpty.toArray(), "Expected both to be equal");
 
-        assertTrue(condition, "boolean gameover should be true");
+        playerHandEmpty.clear();
+
+        assertFalse(Arrays.equals(playerHand.toArray(), playerHandEmpty.toArray()), "Expected both not to be equal");
+
+        BooleanSupplier condition = () -> hp == 0 || playerHandEmpty.size() == 0;
+        assertTrue(condition, "should be true");
+
+        //if condition is true, set boolean to true
+        gameover = true;
+
+        assertTrue(gameover == true);
+
     }
 
 
