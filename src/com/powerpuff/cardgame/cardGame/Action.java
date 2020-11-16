@@ -9,6 +9,7 @@ public class Action {
     public String playerName = "";
 
     public Action(List<Card> selectedCardList) {
+        selectedCardList.add((Card) selectedCard);
 
     }
 
@@ -39,7 +40,11 @@ public class Action {
     }
 
 
-    public Card selectCard() {
+    public Card selectCard(Card card) {
+        return null;
+    }
+
+    public List<Card> findCardByNumber(String s) {
         return null;
     }
 }

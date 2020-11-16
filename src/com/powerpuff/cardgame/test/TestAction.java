@@ -40,6 +40,20 @@ public class TestAction {
         }
 
         assertEquals(1, selectedCardList.size());
+        assertNotNull(action.selectCard(new Card("action", "actionCard1", 5)));
+
+    }
+
+    @Test
+    public void testChooseOneCard(){
+        //list should be 0 if no number macthes
+        List<Card> cardOnPosition = action.findCardByNumber("6");
+        assertEquals(0, cardOnPosition.size());
+
+        //list should be 1 if a number matches
+        action.selectCard(new Card("action", "actionCard1", 5));
+        cardOnPosition = action.findCardByNumber("3");
+        assertEquals(1, cardOnPosition.size());
 
     }
 
