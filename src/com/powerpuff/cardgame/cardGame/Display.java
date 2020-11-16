@@ -12,6 +12,7 @@ public class Display {
     public String playerHp = "";
     public String enterNameMessage = "";
     public String playerNameTurn = "";
+    public String  computerTurn = "";
 
 
     public Display(){
