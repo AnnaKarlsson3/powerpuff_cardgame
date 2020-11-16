@@ -53,18 +53,12 @@ public class TestDisplay {
       assertTrue(hand.getCardsInHand().toArray().length == 5);
     }
 
-    @Test
-    public void testDisplayCardsInHandPrint(){
-        Hand hand = new Hand();
-        ArrayList cards = hand.getCardsInHand();
-        ArrayList actual = display.getCardsInHand(hand.getCardsInHand());
-        ArrayList expected = cards;
-        assertEquals(expected, actual);
-    }
 
     @Test
     public void testNumerationOfCardsInHand(){
-        List<String> numberedCards = display.addNumberCardsInHand();
+        Hand hand = new Hand();
+
+        List<String> numberedCards = display.addNumberCardsInHand(hand.getCardsInHand());
 
                List<String> cardNumbers = numberedCards
                         .stream()

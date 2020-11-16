@@ -12,7 +12,6 @@ public class Display {
     public String playerHp = "";
     public String enterNameMessage = "";
     public String playerNameTurn = "";
-    Hand hand = new Hand();
 
 
     public Display(){
@@ -47,32 +46,27 @@ public class Display {
     }
 
     public String printPlayerHpMessage(){ return playerHp = "Player HP is: "; }
+    
 
+    public List<String> addNumberCardsInHand(ArrayList<Card> cardsInHand){
 
-    public ArrayList<Card> getCardsInHand (ArrayList<Card> cardsInHand ){
-        hand.getCardsInHand();
-       return cardsInHand;
-    }
-
-
-    public List<String> addNumberCardsInHand(){
-        ArrayList<Card> cardsInHand = hand.getCardsInHand();
         AtomicInteger numbers = new AtomicInteger(1);
 
-        List<String> cardsList = cardsInHand.stream()
+        List<String> cardList = cardsInHand.stream()
                 .map(card -> numbers.getAndIncrement() + ". Name: " + card.getName()
                         + " Type: " + card.getType() + " Points: " + card.getPoint() + "\n")
                 .collect(Collectors.toList());
-        return cardsList;
+        return cardList;
     }
 
-    public void printCardsInHand(){
-        List<String> numberedCards = addNumberCardsInHand();
+    public void printCardsInHand(ArrayList<Card> cardsInHand){
 
-        String formattedCardsInhand = numberedCards
+        List<String> numberedCards = addNumberCardsInHand(cardsInHand);
+
+        String formattedCardsInHand = (String) numberedCards
                 .stream()
                 .collect(Collectors.joining("", "", ""));
-        System.out.println(formattedCardsInhand);
+        System.out.println(formattedCardsInHand);
     }
 
 }
