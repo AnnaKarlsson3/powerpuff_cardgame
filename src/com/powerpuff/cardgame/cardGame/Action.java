@@ -26,7 +26,7 @@ public class Action {
             case 0:
                 game.endGame();
                 break;
-            case 2:
+            case 1:
                 game.continueGame();
                 break;
 
