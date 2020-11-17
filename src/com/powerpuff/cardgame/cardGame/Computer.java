@@ -27,14 +27,12 @@ public class Computer extends Player{
                             .filter(c -> c.getType().startsWith("Action"))
                             .max(Comparator.comparing(Card::getPoint))
                             .orElseThrow(NoSuchElementException::new);
-                    System.out.println(maxAction);
                     return maxAction;
                 } catch (NoSuchElementException e) {
                     Card fighter = cardsInHand.stream()
                             .filter(c -> c.getType().startsWith("Fighter"))
                             .max(Comparator.comparing(Card::getPoint))
                             .orElseThrow(NoSuchElementException::new);
-                    System.out.println(fighter);
                     return fighter;
                 }
             } else {
@@ -43,14 +41,12 @@ public class Computer extends Player{
                             .filter(c -> c.getType().startsWith("Fighter"))
                             .max(Comparator.comparing(Card::getPoint))
                             .orElseThrow(NoSuchElementException::new);
-                    System.out.println(maxFighter);
                     return maxFighter;
                 } catch (NoSuchElementException e) {
                     Card action = cardsInHand.stream()
                             .filter(c -> c.getType().startsWith("Action"))
                             .max(Comparator.comparing(Card::getPoint))
                             .orElseThrow(NoSuchElementException::new);
-                    System.out.println(action);
                     return action;
                 }
             }

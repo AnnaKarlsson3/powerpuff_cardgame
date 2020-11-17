@@ -45,7 +45,7 @@ public class Display {
 
     public void printComputerTurn() {
         printComputerTurnMessage();
-
+        System.out.println(computerTurn);
     }
 
     public String printComputerTurnMessage() {
@@ -109,6 +109,13 @@ public class Display {
         System.out.println(" ");
         System.out.println("The Winner is:");
         System.out.println(player.getName());
+    }
+
+    public void printTie(){
+        System.out.println(" ");
+        System.out.println("------- Game Over -------");
+        System.out.println(" ");
+        System.out.println("The game ended in a tie");
     }
 
     public void printPlayedCardMessage() {
