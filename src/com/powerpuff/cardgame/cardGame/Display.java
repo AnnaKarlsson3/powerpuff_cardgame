@@ -45,7 +45,7 @@ public class Display {
 
     public void printComputerTurn() {
         printComputerTurnMessage();
-
+        System.out.println(computerTurn);
     }
 
     public String printComputerTurnMessage() {
