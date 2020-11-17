@@ -12,6 +12,8 @@ public class Game {
     public ArrayList<Card> computerHand;
 
 
+
+
     public Game(){
         player = new Player();
         computer = new Computer();
@@ -50,6 +52,8 @@ public class Game {
         display.addNumberCardsInHand(player.getHand().getCardsInHand());
 
         Card card = action.selectCard(player.getHand());
+        //display playedcard in playerclass/computerclass
+
         display.formatCardToPlay(card);
 
         updateHpIfPlayersTurn(card);
