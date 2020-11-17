@@ -21,7 +21,7 @@ public class Display {
     }
 
     public void printEndMessage() {
-        System.out.println("To endTurn and continue press 2, to end game, press 0");
+        System.out.println("To end turn and continue press 2, to end game, press 0");
     }
 
 
@@ -76,8 +76,8 @@ public class Display {
         AtomicInteger numbers = new AtomicInteger(1);
 
         List<String> cardList = cardsInHand.stream()
-                .map(card -> numbers.getAndIncrement() + ". Name: " + card.getName()
-                        + " Type: " + card.getType() + " Points: " + card.getPoint() + "\n")
+                .map(card -> numbers.getAndIncrement() + ". Type: " + card.getType()
+                        + " - Name: " + card.getName() + " - Points: " + card.getPoint() + "\n")
                 .collect(Collectors.toList());
         return cardList;
     }
@@ -88,11 +88,12 @@ public class Display {
         String formattedCardsInHand = (String) numberedCards
                 .stream()
                 .collect(Collectors.joining("", "", ""));
-        System.out.println(formattedCardsInHand);
+        System.out.println("The cards in your hand:\n" + formattedCardsInHand +
+                "\nWhat card do you want to play? Enter the number.\n");
     }
 
     public Card formatCardToPlay(Card chosenCard) {
-        String formattedCard = "Played card - Name: " + chosenCard.getName() + ", Type: " + chosenCard.getType() + ", Points: " + chosenCard.getPoint();
+        String formattedCard = "Played card - Type: " + chosenCard.getType() + " - Name: " + chosenCard.getName() + " - Points: " + chosenCard.getPoint();
         printPlayedCard(formattedCard);
         return chosenCard;
     }
