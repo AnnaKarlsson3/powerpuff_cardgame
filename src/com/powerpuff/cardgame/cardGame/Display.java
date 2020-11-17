@@ -89,7 +89,7 @@ public class Display {
                 .stream()
                 .collect(Collectors.joining("", "", ""));
         System.out.println("The cards in your hand:\n" + formattedCardsInHand +
-                "What card do you want to play?\n");
+                "\nWhat card do you want to play? Enter the number.\n");
     }
 
     public Card formatCardToPlay(Card chosenCard) {
