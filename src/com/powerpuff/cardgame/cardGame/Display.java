@@ -114,5 +114,8 @@ public class Display {
     public void printPlayedCardMessage() {
         System.out.println(playedCard);
     }
+    public void printPlayAgain(){
+        System.out.print("Play again? (Y/N): ");
+    }
 
 }

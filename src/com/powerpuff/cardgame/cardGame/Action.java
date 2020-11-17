@@ -60,6 +60,12 @@ public class Action {
 
     }
 
+    public static boolean playAgain() {
+        Scanner keyboard = new Scanner(System.in);
+        String replay = keyboard.nextLine();
+        return false;  //or equalsIgnoreCase
+    }
+
 }
 
 

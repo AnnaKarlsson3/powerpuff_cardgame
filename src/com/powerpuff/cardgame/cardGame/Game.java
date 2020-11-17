@@ -52,6 +52,7 @@ public class Game {
             gameOver();
 
             display.printEndMessage();
+
             action.inputMenu(this);
             if (gameOver) break;
 
@@ -64,6 +65,11 @@ public class Game {
 
 
         }
+        display.printPlayAgain();
+        Action.playAgain();
+
+
+
 
         //print hwo won
 
