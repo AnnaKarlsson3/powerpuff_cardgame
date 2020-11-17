@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 public class Computer extends Player{
 
     public Computer() {
-        super.setName("Opponent");
+        super.setName("Computer");
 
     }
 

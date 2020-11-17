@@ -25,9 +25,6 @@ public class Game {
         System.out.println(player.getHand().getPlayerDeck().getPlayerCards().size());
 
 
-
-
-
     }
 
     public void run() {
@@ -52,7 +49,6 @@ public class Game {
 
             playerTurn();
 
-            //gameOver();
 
             display.printEndMessage();
             action.inputMenu(this);
@@ -63,9 +59,10 @@ public class Game {
             gameOver();
 
 
+
+
         }
 
-        //print hwo won
 
     }
 
@@ -84,11 +81,12 @@ public class Game {
         display.printCardsInHand(player.getHand().getCardsInHand());
 
 
-        List<String> cardsinHandFromDisplay =  display.addNumberCardsInHand(player.getHand().getCardsInHand());
+        display.addNumberCardsInHand(player.getHand().getCardsInHand());
 
         //input card choice
         Card card = action.selectCard(player.getHand());
         //display playedcard in playerclass/computerclass
+
         display.formatCardToPlay(card);
 
 
@@ -103,13 +101,8 @@ public class Game {
         //execute delete onCard from hand
         player.getHand().deletePlayedCard(card);
 
-
         //execute drawOnCard and delete oneCard from deck
         player.getHand().addNewCardToHand();
-
-
-
-
 
 
     }
@@ -150,11 +143,15 @@ public class Game {
         computerHand = computer.getHand().getCardsInHand();
 
         if (player.getHp() <= 0 || playerHand.size() == 0) {
-            display.printWinner(computer);
+            if(computer.getHp() > player.getHp()){
+                display.printWinner(computer);
+            }
             gameOver = true;
         }
         if (computer.getHp() <= 0 || computerHand.size() == 0) {
-            display.printWinner(player);
+            if(player.getHp() > computer.getHp()){
+                display.printWinner(player);
+            }
             gameOver = true;
         }
 

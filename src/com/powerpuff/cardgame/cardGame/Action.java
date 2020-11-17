@@ -19,6 +19,7 @@ public class Action {
 
     public void inputMenu(Game game) {
 
+
         Display display = new Display();
         boolean cont = true;
         while (cont) {
@@ -29,7 +30,7 @@ public class Action {
                     game.endGame();
                     cont = false;
                     break;
-                case 2:
+                case 1:
                     game.continueGame();
                     cont = false;
                     break;
@@ -38,6 +39,7 @@ public class Action {
                     System.out.println("Invalid");
                     display.printEndMessage();
             }
+
 
         }
 
