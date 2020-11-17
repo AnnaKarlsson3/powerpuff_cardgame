@@ -49,7 +49,7 @@ public class Game {
 
             playerTurn();
 
-            gameOver();
+
 
             display.printEndMessage();
             action.inputMenu(this);
@@ -57,15 +57,13 @@ public class Game {
 
             computerTurn();
 
-                gameOver();
-                if(gameOver == true){
-                    break;
-                }
+            gameOver();
+
+
 
 
         }
 
-        //print hwo won
 
     }
 
@@ -84,29 +82,27 @@ public class Game {
         display.printCardsInHand(player.getHand().getCardsInHand());
 
 
-        List<String> cardsinHandFromDisplay =  display.addNumberCardsInHand(player.getHand().getCardsInHand());
+        display.addNumberCardsInHand(player.getHand().getCardsInHand());
 
         //input card choice
         //display playedcard in playerclass/computerclass
-        //display.formatCardToPlay(card);
+        Card card = action.selectCard(player.getHand());
+        display.formatCardToPlay(card);
 
 
         //execute opponent playerHp - cardDamage
-        // updateHpIfPlayersTurn(card);
+         updateHpIfPlayersTurn(card);
 
         //print playerHp status
         display.printPlayerHp(player.getHp());
         //print computer playerHp status
         display.printComputerHp(computer.getHp());
 
+        //execute delete onCard from hand
+        player.getHand().deletePlayedCard(card);
 
         //execute drawOnCard and delete oneCard from deck
         player.getHand().addNewCardToHand();
-
-        //execute delete onCard from hand
-        // player.getHand().deletePlayedCard(Card);
-
-
 
 
     }
@@ -162,6 +158,7 @@ public class Game {
             if(computer.getHp() == player.getHp()){
                 display.printTie();
             }
+
             gameOver = true;
         }
 

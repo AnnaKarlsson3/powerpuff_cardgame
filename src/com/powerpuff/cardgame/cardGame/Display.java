@@ -21,7 +21,7 @@ public class Display {
     }
 
     public void printEndMessage() {
-        System.out.println("To end turn and continue press 2, to end game, press 0");
+        System.out.println("To continue press 1, to end game, press 0");
     }
 
 
