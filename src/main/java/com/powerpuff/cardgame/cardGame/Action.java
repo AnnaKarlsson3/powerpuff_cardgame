@@ -64,7 +64,7 @@ public class Action {
     public Card selectCard(Hand hand) {
         int number = getIntInput();
 
-        while (number > hand.cardsInHand.size()) {
+        while (number > hand.cardsInHand.size() || number == 0) {
             System.out.println("Invalid input");
             number = getIntInput();
         }
