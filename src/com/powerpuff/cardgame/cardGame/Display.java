@@ -76,8 +76,8 @@ public class Display {
         AtomicInteger numbers = new AtomicInteger(1);
 
         List<String> cardList = cardsInHand.stream()
-                .map(card -> numbers.getAndIncrement() + ". Name: " + card.getName()
-                        + " Type: " + card.getType() + " Points: " + card.getPoint() + "\n")
+                .map(card -> numbers.getAndIncrement() + ". Type: " + card.getType()
+                        + " - Name: " + card.getName() + " - Points: " + card.getPoint() + "\n")
                 .collect(Collectors.toList());
         return cardList;
     }
@@ -88,12 +88,12 @@ public class Display {
         String formattedCardsInHand = (String) numberedCards
                 .stream()
                 .collect(Collectors.joining("", "", ""));
-        System.out.println("\nThe cards in your hand:\n" + formattedCardsInHand +
+        System.out.println("The cards in your hand:\n" + formattedCardsInHand +
                 "What card do you want to play?\n");
     }
 
     public Card formatCardToPlay(Card chosenCard) {
-        String formattedCard = "Played card - Name: " + chosenCard.getName() + ", Type: " + chosenCard.getType() + ", Points: " + chosenCard.getPoint();
+        String formattedCard = "Played card - Type: " + chosenCard.getType() + " - Name: " + chosenCard.getName() + " - Points: " + chosenCard.getPoint();
         printPlayedCard(formattedCard);
         return chosenCard;
     }
