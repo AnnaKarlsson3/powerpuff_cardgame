@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class CardGenerator {
-    //public static ArrayList<Card> cards= new ArrayList<>();
     private ArrayList<Card> commonDeck = new ArrayList<>();
     public  ArrayList <Card> shuffledCards = (ArrayList<Card>) commonDeck.clone();
 
@@ -50,5 +49,4 @@ public class CardGenerator {
         Collections.shuffle(cards);
         return cards;
     }
-
 }

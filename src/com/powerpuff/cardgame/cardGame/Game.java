@@ -1,6 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     Action action = new Action();
@@ -49,9 +50,10 @@ public class Game {
             playerTurn();
 
             gameOver();
-            if(gameOver == true){
-                break;
-            }
+
+            display.printEndMessage();
+            action.inputMenu(this);
+            if (gameOver) break;
 
             computerTurn();
 
@@ -60,9 +62,6 @@ public class Game {
                     break;
                 }
 
-
-            display.printEndMessage();
-            //action
 
         }
 
@@ -85,13 +84,15 @@ public class Game {
         display.printCardsInHand(player.getHand().getCardsInHand());
 
 
+        List<String> cardsinHandFromDisplay =  display.addNumberCardsInHand(player.getHand().getCardsInHand());
+
         //input card choice
         //display playedcard in playerclass/computerclass
         //display.formatCardToPlay(card);
 
 
         //execute opponent playerHp - cardDamage
-       // updateHpIfPlayersTurn(card);
+        // updateHpIfPlayersTurn(card);
 
         //print playerHp status
         display.printPlayerHp(player.getHp());
@@ -146,9 +147,11 @@ public class Game {
         computerHand = computer.getHand().getCardsInHand();
 
         if (player.getHp() <= 0 || playerHand.size() == 0) {
+            display.printWinner(computer);
             gameOver = true;
         }
         if (computer.getHp() <= 0 || computerHand.size() == 0) {
+            display.printWinner(player);
             gameOver = true;
         }
 
@@ -159,6 +162,10 @@ public class Game {
         gameOver = true;
     }
 
+
+    public void continueGame() {
+        gameOver = false;
+    }
 
     public int updateHpIfPlayersTurn(Card playedCard) {
         int playerHp = player.getHp();

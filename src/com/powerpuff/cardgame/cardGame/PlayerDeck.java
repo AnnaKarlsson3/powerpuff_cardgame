@@ -12,6 +12,7 @@ public class PlayerDeck {
 
     public PlayerDeck(){
         getCardsFromGeneratedCards();
+
     }
 
     public ArrayList<Card> getCardsFromGeneratedCards() {
