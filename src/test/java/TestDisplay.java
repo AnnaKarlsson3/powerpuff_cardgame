@@ -36,7 +36,6 @@ public class TestDisplay {
         assertEquals(expected, actual);
     }
 
-    /*
 
     @Test
     public void testPrintComputerTurnMessage() {
@@ -48,7 +47,6 @@ public class TestDisplay {
         assertEquals(expected, actual);
     }
 
-     */
 
     @Test
     public void testPrintPlayerHpMessage() {
@@ -92,7 +90,7 @@ public class TestDisplay {
         Card card = (Card) hand.getCardsInHand().get(0);
 
         display.formatCardToPlay(card);
-        String expected = "Played card - Name: " + card.getName() + ", Type: " + card.getType() + ", Points: " + card.getPoint();
+        String expected = "Played card - Type: " + card.getType() + " - Name: " + card.getName() + " - Points: " + card.getPoint();
         String actual = display.playedCard;
 
         System.out.println(actual);

@@ -12,7 +12,6 @@ public class Game {
     public ArrayList<Card> playerHand;
     public ArrayList<Card> computerHand;
 
-
     public Game(){
         player = new Player();
         computer = new Computer();
@@ -51,7 +50,6 @@ public class Game {
         display.printPlayerName(player.getName());
         display.printCardsInHand(player.getHand().getCardsInHand());
         display.addNumberCardsInHand(player.getHand().getCardsInHand());
-
 
         Card card = action.selectCard(player.getHand());
 
