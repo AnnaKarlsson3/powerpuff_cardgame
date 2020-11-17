@@ -147,11 +147,21 @@ public class Game {
         computerHand = computer.getHand().getCardsInHand();
 
         if (player.getHp() <= 0 || playerHand.size() == 0) {
-            display.printWinner(computer);
+            if(player.getHp() < computer.getHp()){
+                display.printWinner(computer);
+            }
+            if(player.getHp() == computer.getHp()){
+                display.printTie();
+            }
             gameOver = true;
         }
         if (computer.getHp() <= 0 || computerHand.size() == 0) {
-            display.printWinner(player);
+            if(computer.getHp() < player.getHp()){
+                display.printWinner(player);
+            }
+            if(computer.getHp() == player.getHp()){
+                display.printTie();
+            }
             gameOver = true;
         }
 
