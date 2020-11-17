@@ -21,7 +21,7 @@ public class Display {
     }
 
     public void printEndMessage() {
-        System.out.println("To endTurn and continue press 2, to end game, press 0");
+        System.out.println("To end turn and continue press 2, to end game, press 0");
     }
 
 
@@ -88,7 +88,8 @@ public class Display {
         String formattedCardsInHand = (String) numberedCards
                 .stream()
                 .collect(Collectors.joining("", "", ""));
-        System.out.println(formattedCardsInHand);
+        System.out.println("\nThe cards in your hand:\n" + formattedCardsInHand +
+                "What card do you want to play?\n");
     }
 
     public Card formatCardToPlay(Card chosenCard) {
