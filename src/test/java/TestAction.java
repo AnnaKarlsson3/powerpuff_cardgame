@@ -1,4 +1,3 @@
-package com.powerpuff.cardgame.test;
 
 import com.powerpuff.cardgame.cardGame.Action;
 import com.powerpuff.cardgame.cardGame.Card;

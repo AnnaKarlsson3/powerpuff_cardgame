@@ -1,6 +1,3 @@
-package com.powerpuff.cardgame.test;
-
-
 import com.powerpuff.cardgame.cardGame.Card;
 import com.powerpuff.cardgame.cardGame.Computer;
 import com.powerpuff.cardgame.cardGame.Game;

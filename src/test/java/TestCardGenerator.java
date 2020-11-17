@@ -1,5 +1,3 @@
-package com.powerpuff.cardgame.test;
-
 import com.powerpuff.cardgame.cardGame.Card;
 import com.powerpuff.cardgame.cardGame.CardGenerator;
 import org.junit.jupiter.api.*;
