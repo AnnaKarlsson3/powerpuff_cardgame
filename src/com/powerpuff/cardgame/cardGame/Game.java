@@ -64,12 +64,15 @@ public class Game {
 
 
         }
+        playAgain();
+
+
+
+    }
+
+    private void playAgain() {
         display.printPlayAgain();
-        Action.playAgain();
-
-
-
-
+        action.checkInput(this);
 
     }
 
@@ -166,6 +169,11 @@ public class Game {
 
     void endGame() {
         gameOver = true;
+    }
+
+    void reStart () {
+        Game game = new Game();
+        game.run();
     }
 
 
