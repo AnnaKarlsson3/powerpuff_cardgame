@@ -39,13 +39,11 @@ public class TestGameLogic {
 
 
         int beforeBoardListSize = gameLogic.getGameboard().getPlayerActiveCards().size();
-        System.out.println("before" + beforeBoardListSize);
 
         Card card2 = new Card("Fighter","fighterCard",3,3);
         assertTrue(gameLogic.isCardFighter(card2,player),"isCardFighter should be true");
 
         int afterBoardListSize = gameLogic.getGameboard().getPlayerActiveCards().size();
-        System.out.println("after" + afterBoardListSize);
 
         assertNotEquals(beforeBoardListSize,afterBoardListSize);
     }

@@ -9,7 +9,15 @@ public class GameLogic {
     }
 
     public Boolean isCardFighter(Card playedCard, Player player) {
-        return null;
+        if(playedCard.getType().equals("Action")){
+            player.setHp(player.getHp() + playedCard.getPoint());
+            player.getHand().deletePlayedCard(playedCard);
+            player.getHand().addNewCardToHand();
+            return false;
+        }else{
+            gameboard.placePlayerCardOnGameboard(playedCard);
+            return true;
+        }
 
     }
 
