@@ -5,17 +5,8 @@ public class GameLogic {
     private Gameboard gameboard = new Gameboard();
 
 
-    public Boolean isCardFighter(Card playedCard, Player player) {
-        if (playedCard.getType().equals("Action")) {
-            player.setHp(player.getHp() + playedCard.getPoint());
-            player.getHand().deletePlayedCard(playedCard);
-            player.getHand().addNewCardToHand();
-            return false;
-        } else {
-            gameboard.placePlayerCardOnGameboard(playedCard);
-            return true;
-        }
-
+    public String checkCardType(Card playedCard, Player player) {
+        return "";
     }
 
     public void attack(Computer computer, Card attack, Card block) {
