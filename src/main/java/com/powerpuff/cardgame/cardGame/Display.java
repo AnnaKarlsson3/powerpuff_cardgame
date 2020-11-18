@@ -16,6 +16,7 @@ public class Display {
     public String playedCard = "";
 
 
+
     public Display() {
         enterNameMessage();
     }
@@ -122,4 +123,8 @@ public class Display {
         System.out.println(playedCard);
     }
 
+
+    public void printPlayAgain(){
+        System.out.println("Play again y/n?");
+    }
 }

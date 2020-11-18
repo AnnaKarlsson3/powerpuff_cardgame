@@ -90,6 +90,7 @@ public class TestDisplay {
         Card card = (Card) hand.getCardsInHand().get(0);
 
         display.formatCardToPlay(card);
+
         String expected = "Played card - Type: " + card.getType() + " - Name: " + card.getName() + " - Points: " + card.getPoint();
         String actual = display.playedCard;
 
@@ -97,6 +98,8 @@ public class TestDisplay {
 
         assertEquals(expected, actual);
     }
+
+
 
     @AfterEach
     void cleanUp() {

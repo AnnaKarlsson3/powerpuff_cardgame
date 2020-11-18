@@ -79,6 +79,22 @@ public class Action {
 
     }
 
+    public void checkInput(Game game) {
+        Scanner scanner = new Scanner(System.in);
+        String action = scanner.nextLine();
+
+        if (action.equals("y")) {
+            game.reStart();
+
+        }
+        if (action.equals("n")) {
+            game.endGame();
+        } else {
+            System.out.println("choose y/n");
+            checkInput(game);
+        }
+    }
+
 }
 
 
