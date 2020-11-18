@@ -116,6 +116,18 @@ public class TestDisplay {
         assertNotNull(display.blockMessageNoBlockCardsAvailible());
     }
 
+    @Test
+    public void testDisplayActionMessage() {
+        String actual = display.actionMessage();
+        String expected = "Choose attack card";
+
+        assertEquals(actual, expected);
+
+        assertNotNull(display.actionMessage());
+    }
+
+
+
 
     @AfterEach
     void cleanUp() {

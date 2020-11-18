@@ -143,4 +143,7 @@ public class Display {
         return null;
     }
 
+    public String actionMessage() {
+        return null;
+    }
 }
