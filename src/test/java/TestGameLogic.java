@@ -28,8 +28,13 @@ public class TestGameLogic {
         assertTrue(damage2  == 0, "damage should be 0");
             //call blockMethod
 
-        
+        Card attackCard3 = new Card("Fighter", "Lola", 1, 1);
+        Card blockCard3 = new Card("Fighter", "Karlada", 3,3);
 
+        int damage3 = attackCard3.getPoint() - blockCard3.getBlockPointPoint();
+        assertEquals(-2, attackCard3.getPoint() - blockCard3.getBlockPointPoint(), "answer should be -2");
+        assertTrue(damage < blockCard3.getBlockPointPoint(), "damage is less than blockpoints");
+            //call blockMethod
     }
 
 
