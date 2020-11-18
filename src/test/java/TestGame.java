@@ -51,7 +51,6 @@ public class TestGame {
 
     @Test
     public void testEndGame() {
-        //Game game = new Game();
         assertFalse(game.gameOver);
     }
 
