@@ -28,10 +28,12 @@ public class Gameboard {
     }
 
     public Card placePlayerCardOnGameboard(Card card){
-        return null;
+        playerActiveCards.add(card);
+        return card;
     }
 
     public Card placeComputerCardOnGameboard(Card card){
-        return null;
+        computerActiveCards.add(card);
+        return card;
     }
 }
