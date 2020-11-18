@@ -4,11 +4,13 @@ public class Card {
     private String type;
     private String name;
     private int point;
+    private int blockPoint;
 
-    public Card(String type, String name, int point) {
+    public Card(String type, String name, int point, int blockPoint) {
         this.type = type;
         this.name = name;
         this.point = point;
+        this.blockPoint = blockPoint;
     }
 
 
@@ -36,12 +38,21 @@ public class Card {
         this.point = point;
     }
 
+    public int getBlockPointPoint() {
+        return blockPoint;
+    }
+
+    public void setBlockPoint(int blockPoint) {
+        this.blockPoint = blockPoint;
+    }
+
     @Override
     public String toString() {
         return "Card{" +
                 "type='" + type + '\'' +
                 ", name='" + name + '\'' +
-                ", point=" + point +
+                ", point=" + point + '\'' +
+                ", blockpoint=" + blockPoint +
                 '}';
     }
 }

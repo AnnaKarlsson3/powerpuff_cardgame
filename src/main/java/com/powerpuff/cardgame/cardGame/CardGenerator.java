@@ -32,7 +32,7 @@ public class CardGenerator {
             e.printStackTrace();
         }
         commonDeck = new ArrayList<>();
-        cardsInfo.forEach((cardInfo -> commonDeck.add(new Card(cardInfo[1], cardInfo[0], Integer.parseInt(cardInfo[2])))));
+        cardsInfo.forEach((cardInfo -> commonDeck.add(new Card(cardInfo[1], cardInfo[0], Integer.parseInt(cardInfo[2]), Integer.parseInt(cardInfo[3])))));
         return commonDeck;
     }
 
