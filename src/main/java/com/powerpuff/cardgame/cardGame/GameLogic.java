@@ -6,7 +6,15 @@ public class GameLogic {
 
 
     public String checkCardType(Card playedCard, Player player) {
-        return "";
+        if (playedCard.getType().equals("Action")) {
+            player.setHp(player.getHp() + playedCard.getPoint());
+            player.getHand().deletePlayedCard(playedCard);
+            player.getHand().addNewCardToHand();
+        } else {
+            gameboard.placePlayerCardOnGameboard(playedCard);
+        }
+        return playedCard.getType();
+
     }
 
     public void attack(Computer computer, Card attack, Card block) {
