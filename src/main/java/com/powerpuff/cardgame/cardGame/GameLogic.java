@@ -13,6 +13,6 @@ public class GameLogic {
     public void attack(Card attack, Card block){
 
     }
-  
+
 
 }
