@@ -110,6 +110,9 @@ public class TestDisplay {
 
     @Test
     public void testDisplayBlockMessageNoCardsAvailible(){
+        String actual = display.blockMessageNoBlockCardsAvailible();
+        String expected = "No block cards left";
+        assertEquals(expected, actual);
         assertNotNull(display.blockMessageNoBlockCardsAvailible());
     }
 

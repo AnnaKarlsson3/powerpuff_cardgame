@@ -131,7 +131,7 @@ public class Display {
 
     public String blockMessage(){ return displayBlockMessage = "Choose which card you want to block with"; }
 
-    public String blockMessageNoBlockCardsAvailible(){ return null; }
+    public String blockMessageNoBlockCardsAvailible(){ return displayBlockMessageNoCardsAvaiilible = "No block cards left"; }
 
     public String printBlockMessage(){
         System.out.println(blockMessage());
@@ -139,7 +139,7 @@ public class Display {
     }
 
     public String printBlockMessageNoBlockCardsAvailible(){
-
+        System.out.println(blockMessageNoBlockCardsAvailible());
         return null;
     }
 
