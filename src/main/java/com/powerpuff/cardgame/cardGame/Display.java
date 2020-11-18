@@ -16,6 +16,7 @@ public class Display {
     public String playedCard = "";
     public String displayBlockMessage = "";
     public String displayBlockMessageNoCardsAvaiilible = "";
+    public String displayAttackMessage = "";
 
 
     public Display() {
@@ -143,7 +144,12 @@ public class Display {
         return null;
     }
 
-    public String actionMessage() {
+    public String attackMessage() {
+        return displayAttackMessage = "Choose attack card";
+    }
+
+    public String printAttackMessage(){
+        System.out.println(attackMessage());
         return null;
     }
 }

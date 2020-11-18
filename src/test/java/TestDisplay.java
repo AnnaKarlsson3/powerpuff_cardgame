@@ -118,12 +118,10 @@ public class TestDisplay {
 
     @Test
     public void testDisplayActionMessage() {
-        String actual = display.actionMessage();
+        String actual = display.attackMessage();
         String expected = "Choose attack card";
-
         assertEquals(actual, expected);
-
-        assertNotNull(display.actionMessage());
+        assertNotNull(display.attackMessage());
     }
 
 

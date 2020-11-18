@@ -73,7 +73,7 @@ public class Game {
         //check cardType
 
         //if cardsonboardList != null -{
-        //sout: which card do u want to attack with?
+        //display.printAttackMessage();
         //sout: display PLAYERBOARDLIST,
         //input: player choosing number/card to attack with,
 
