@@ -22,7 +22,6 @@ public class TestGame {
 
     @Test
     public void testStartGame() {
-        //Game game = new Game();
         assertTrue(!game.gameOver);
     }
 
@@ -50,23 +49,11 @@ public class TestGame {
 
     }
 
-
-
-
     @Test
     public void testEndGame() {
         //Game game = new Game();
         assertFalse(game.gameOver);
     }
-
-//    @Test
-//    public void testUpdateHp() {
-//        Player player = new Player();
-//        player.setHp(20);
-//        Card playersCard = new Card("Action", "hi", 3);
-//        Card opponentsCard = new Card("Fighter", "Hello", 2);
-//        assertEquals(21, game.updateHp(player, playersCard, opponentsCard));
-//    }
 
     @Test
     public void testUpdateHpOfPlayer() {
@@ -93,6 +80,18 @@ public class TestGame {
         Card playedCard2 = new Card("Fighter", "Hi", 3);
         game.updateHpIfComputersTurn(playedCard2);
         assertFalse(playerHpBeforeUpdate == player.getHp());
+
+    }
+
+    @Test
+    public void testCreateNewGame(){
+        try {
+            new Game();
+        } catch (Exception ex) {
+            fail();
+        }
+        Game game = new Game();
+        assertFalse(game.gameOver);
 
     }
 
