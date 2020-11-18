@@ -54,8 +54,6 @@ public class Action {
         return scanner.nextInt();
     }
 
-
-
     public String inputPlayerName() {
         Scanner scanner = new Scanner(System.in);
         String action = scanner.nextLine();
@@ -66,7 +64,7 @@ public class Action {
     public Card selectCard(Hand hand) {
         int number = getIntInput();
 
-        while (number > hand.cardsInHand.size()) {
+        while (number > hand.cardsInHand.size() || number == 0) {
             System.out.println("Invalid input");
             number = getIntInput();
         }
@@ -79,21 +77,6 @@ public class Action {
         Card card = hand.cardsInHand.get(numberInHand - 1);
         return card;
 
-    }
-
-    public void checkInput(Game game){
-        Scanner scanner = new Scanner(System.in);
-        String action = scanner.nextLine();
-
-        if ( action.equals("y")){
-          game.reStart();
-
-        } if (action.equals("n")){
-            game.endGame();
-        }else{
-            System.out.println("choose y/n");
-            checkInput(game);
-        }
     }
 
 }

@@ -1,6 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Game {
     Action action;
@@ -10,9 +11,6 @@ public class Game {
     public Computer computer;
     public ArrayList<Card> playerHand;
     public ArrayList<Card> computerHand;
-
-
-
 
     public Game(){
         player = new Player();
@@ -31,24 +29,15 @@ public class Game {
 
             playerTurn();
             display.printEndMessage();
-
             action.inputMenu(this);
             if (gameOver) break;
 
             computerTurn();
             gameOver();
+
         }
-        playAgain();
-
 
     }
-
-    private void playAgain() {
-        display.printPlayAgain();
-        action.checkInput(this);
-
-    }
-
 
     public void setPlayerName(){
         display.printEnterNameMessage();
@@ -56,16 +45,17 @@ public class Game {
         player.setName(action.playerName);
     }
 
-
     public void playerTurn(){
+        System.out.println("---------------------");
         display.printPlayerName(player.getName());
         display.printCardsInHand(player.getHand().getCardsInHand());
         display.addNumberCardsInHand(player.getHand().getCardsInHand());
 
         Card card = action.selectCard(player.getHand());
-        //display playedcard in playerclass/computerclass
 
+        System.out.println(" ");
         display.formatCardToPlay(card);
+        System.out.println(" ");
 
         updateHpIfPlayersTurn(card);
 
@@ -73,26 +63,37 @@ public class Game {
         display.printComputerHp(computer.getHp());
 
         player.getHand().deletePlayedCard(card);
+
         player.getHand().addNewCardToHand();
+
+        System.out.println("---------------------");
+        System.out.println(" ");
     }
 
     public void computerTurn(){
+        System.out.println("---------------------");
+        display.printComputerTurn();
 
         Card playedCard = computer.playCard();
         if(playedCard == null){
             endGame();
         }
 
+        System.out.println(" ");
         display.formatCardToPlay(playedCard);
 
         updateHpIfComputersTurn(playedCard);
 
+        System.out.println(" ");
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
 
         computer.getHand().deletePlayedCard(playedCard);
 
         computer.getHand().addNewCardToHand();
+
+        System.out.println("---------------------");
+        System.out.println(" ");
     }
 
     public boolean gameOver() {
@@ -126,12 +127,6 @@ public class Game {
         gameOver = true;
     }
 
-
-    void reStart () {
-        Game game = new Game();
-        game.run();
-    }
-    
     public void continueGame() {
         gameOver = false;
     }
@@ -157,7 +152,4 @@ public class Game {
         }
         return computerHp;
     }
-
-
-
 }
