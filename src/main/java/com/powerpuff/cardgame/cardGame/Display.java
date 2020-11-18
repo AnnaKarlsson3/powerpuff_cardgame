@@ -139,7 +139,7 @@ public class Display {
         return null;
     }
 
-    public String printBlockMessageNoBlockCardsAvailible(){
+    public String printBlockMessageNoBlockCardsAvailable(){
         System.out.println(blockMessageNoBlockCardsAvailible());
         return null;
     }
@@ -150,6 +150,10 @@ public class Display {
 
     public String printAttackMessage(){
         System.out.println(attackMessage());
+        return null;
+    }
+
+    public String attackMessageNoBlockCardsAvailable() {
         return null;
     }
 }

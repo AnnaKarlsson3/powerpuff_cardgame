@@ -1,7 +1,6 @@
 import com.powerpuff.cardgame.cardGame.*;
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -122,6 +121,14 @@ public class TestDisplay {
         String expected = "Choose attack card";
         assertEquals(actual, expected);
         assertNotNull(display.attackMessage());
+    }
+
+    @Test
+    public void testDisplayBlockMessageNoCardsAvailable(){
+        String actual = display.attackMessageNoBlockCardsAvailable();
+        String expected = "No attack cards left";
+
+        assertNotNull(display.attackMessageNoBlockCardsAvailable());
     }
 
 
