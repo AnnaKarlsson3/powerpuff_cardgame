@@ -128,7 +128,11 @@ public class Display {
         System.out.println("Play again y/n?");
     }
 
+    public String blockMessage(){ return displayBlockMessage = "Choose which card you want to block with"; }
+
     public String printBlockMessage(){
+        System.out.println(blockMessage());
         return null;
     }
+
 }

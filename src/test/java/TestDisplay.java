@@ -94,23 +94,19 @@ public class TestDisplay {
         String expected = "Played card - Type: " + card.getType() + " - Name: " + card.getName() + " - Points: " + card.getPoint();
         String actual = display.playedCard;
 
-        System.out.println(actual);
 
         assertEquals(expected, actual);
     }
 
+
     @Test
     public void testDisplayBlockMessage(){
-        String actual = display.displayBlockMessage;
-        String expected = "Choose a card you want to";
+        String actual = display.blockMessage();
+        String expected = "Choose which card you want to block with";
 
-        //assertEquals(expected, actual);
-        
-
-        assertNotNull(display.printBlockMessage());
-
+        assertEquals(expected, actual);
+        assertNotNull(display.blockMessage(), "should not be empty");
     }
-
 
 
     @AfterEach
