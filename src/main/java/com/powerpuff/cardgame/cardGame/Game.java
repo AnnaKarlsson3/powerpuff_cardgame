@@ -36,6 +36,14 @@ public class Game {
             gameOver();
 
         }
+        playAgain();
+
+    }
+
+    private void playAgain() {
+        display.printPlayAgain();
+        action.checkInput(this);
+
 
     }
 
@@ -131,6 +139,11 @@ public class Game {
         gameOver = false;
     }
 
+    void reStart () {
+        Game game = new Game();
+        game.run();
+    }
+
     public int updateHpIfPlayersTurn(Card playedCard) {
         int playerHp = player.getHp();
         if (playedCard.getType().equals("Action")) {
@@ -152,4 +165,6 @@ public class Game {
         }
         return computerHp;
     }
+
+
 }
