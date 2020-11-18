@@ -20,10 +20,18 @@ public class TestGameLogic {
         assertTrue(damage > blockCard.getBlockPointPoint(), "damage is greater than blockpoints");
             computer.setHp(damage);
 
+        Card attackCard2 = new Card("Fighter", "Lola", 1, 1);
+        Card blockCard2 = new Card("Fighter", "Dora", 1,1);
 
+        int damage2 = attackCard2.getPoint() - blockCard2.getBlockPointPoint();
+        assertEquals(0, attackCard2.getPoint() - blockCard2.getBlockPointPoint(), "answer should be 0");
+        assertTrue(damage2  == 0, "damage should be 0");
+            //call blockMethod
+
+        
 
     }
 
-    
+
 
 }
