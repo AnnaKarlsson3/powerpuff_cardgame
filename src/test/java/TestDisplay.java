@@ -99,6 +99,18 @@ public class TestDisplay {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testDisplayBlockMessage(){
+        String actual = display.displayBlockMessage;
+        String expected = "Choose a card you want to";
+
+        //assertEquals(expected, actual);
+        
+
+        assertNotNull(display.printBlockMessage());
+
+    }
+
 
 
     @AfterEach

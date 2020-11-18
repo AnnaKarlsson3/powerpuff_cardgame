@@ -14,7 +14,7 @@ public class Display {
     public String playerNameTurn = "";
     public String computerTurn = "";
     public String playedCard = "";
-
+    public String displayBlockMessage = "";
 
 
     public Display() {
@@ -126,5 +126,9 @@ public class Display {
 
     public void printPlayAgain(){
         System.out.println("Play again y/n?");
+    }
+
+    public String printBlockMessage(){
+        return null;
     }
 }
