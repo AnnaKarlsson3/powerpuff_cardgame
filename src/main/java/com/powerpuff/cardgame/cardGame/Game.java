@@ -23,7 +23,10 @@ public class Game {
 
     public void run() {
 
+
+
         setPlayerName();
+
 
         while (!gameOver) {
 
