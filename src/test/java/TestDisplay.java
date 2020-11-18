@@ -108,6 +108,11 @@ public class TestDisplay {
         assertNotNull(display.blockMessage(), "should not be empty");
     }
 
+    @Test
+    public void testDisplayBlockMessageNoCardsAvailible(){
+        assertNotNull(display.blockMessageNoBlockCardsAvailible());
+    }
+
 
     @AfterEach
     void cleanUp() {
