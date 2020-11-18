@@ -29,6 +29,7 @@ public class Gameboard {
 
     public Card placePlayerCardOnGameboard(Card card){
         playerActiveCards.add(card);
+        setPlayerActiveCards(playerActiveCards);
         return card;
     }
 
