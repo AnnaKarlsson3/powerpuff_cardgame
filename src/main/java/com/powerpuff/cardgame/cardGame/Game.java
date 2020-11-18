@@ -25,7 +25,7 @@ public class Game {
 
         setPlayerName();
 
-        while (!gameOver){
+        while (!gameOver) {
 
             playerTurn();
             display.printEndMessage();
@@ -34,6 +34,7 @@ public class Game {
 
             computerTurn();
             gameOver();
+
 
         }
         playAgain();
@@ -64,6 +65,21 @@ public class Game {
         System.out.println(" ");
         display.formatCardToPlay(card);
         System.out.println(" ");
+
+
+        //check cardType
+
+        //if cardsonboardList != null -{
+        //sout: which card do u want to attack with?
+        //sout: display PLAYERBOARDLIST,
+        //input: player choosing number/card to attack with,
+
+        //-Computer choosing one card to block with/if its not null
+
+        //if(blockCardList == null){setHP(attackpoints)}
+        //else{attackmethod(attackCard, blockCard)}
+
+        //}else display-> no cards on board to attack with
 
         updateHpIfPlayersTurn(card);
 

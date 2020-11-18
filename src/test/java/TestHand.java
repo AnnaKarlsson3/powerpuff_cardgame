@@ -55,7 +55,7 @@ public class TestHand {
 
     @Test
     public void testDeletePlayedCard(){
-        Card card = new Card("type","card1",7);
+        Card card = new Card("type","card1",7, 5);
         if(cardsInHand.contains(card)){
             assertTrue(testHand.deletePlayedCard(card),"Expected to to be true");
         }else{

@@ -22,7 +22,13 @@ public class TestCardGenerator {
     @Test
     void testGenerateCards() {
         Assertions.assertEquals( 100 ,cardGenerator.generateCardsAndGet().size() );
+        assertNotNull(cardGenerator.generateCardsAndGet());
+
     }
+
+
+
+
 
     @AfterEach
     void cleanUp(){
