@@ -15,8 +15,9 @@ public class Display {
     public String computerTurn = "";
     public String playedCard = "";
     public String displayBlockMessage = "";
-    public String displayBlockMessageNoCardsAvaiilible = "";
+    public String displayBlockMessageNoCardsAvailable = "";
     public String displayAttackMessage = "";
+    public String displayAttackMessageNoCardsAvailable = "";
 
 
     public Display() {
@@ -132,7 +133,7 @@ public class Display {
 
     public String blockMessage(){ return displayBlockMessage = "Choose which card you want to block with"; }
 
-    public String blockMessageNoBlockCardsAvailible(){ return displayBlockMessageNoCardsAvaiilible = "No block cards left"; }
+    public String blockMessageNoBlockCardsAvailible(){ return displayBlockMessageNoCardsAvailable = "No block cards left"; }
 
     public String printBlockMessage(){
         System.out.println(blockMessage());
@@ -154,6 +155,11 @@ public class Display {
     }
 
     public String attackMessageNoBlockCardsAvailable() {
+        return displayAttackMessageNoCardsAvailable = "No attack cards left";
+    }
+
+    public String printAttackMessageNoCardsAvailable(){
+        System.out.println(attackMessageNoBlockCardsAvailable());
         return null;
     }
 }

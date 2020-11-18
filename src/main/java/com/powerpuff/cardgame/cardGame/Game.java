@@ -82,7 +82,7 @@ public class Game {
         //if(blockCardList == null){setHP(attackpoints)}
         //else{attackmethod(attackCard, blockCard)}
 
-        //}else display-> no cards on board to attack with
+        //}else display.printAttackMessageNoCardsAvailable();
 
         updateHpIfPlayersTurn(card);
 

@@ -127,7 +127,7 @@ public class TestDisplay {
     public void testDisplayBlockMessageNoCardsAvailable(){
         String actual = display.attackMessageNoBlockCardsAvailable();
         String expected = "No attack cards left";
-
+        assertEquals(expected, actual);
         assertNotNull(display.attackMessageNoBlockCardsAvailable());
     }
 
