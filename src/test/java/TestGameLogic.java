@@ -1,7 +1,5 @@
 
-import com.powerpuff.cardgame.cardGame.Card;
-import com.powerpuff.cardgame.cardGame.Computer;
-import com.powerpuff.cardgame.cardGame.Player;
+import com.powerpuff.cardgame.cardGame.*;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
