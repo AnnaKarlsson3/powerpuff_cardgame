@@ -1,7 +1,6 @@
 
 import com.powerpuff.cardgame.cardGame.Action;
 import com.powerpuff.cardgame.cardGame.Card;
-import com.powerpuff.cardgame.cardGame.Game;
 import com.powerpuff.cardgame.cardGame.Hand;
 import org.junit.jupiter.api.*;
 
@@ -23,6 +22,7 @@ public class TestAction {
 
     @Test
     public void testInputPlayerName(){
+
         assertNotNull(action.playerName, "The name should not be null" );
     }
 
@@ -44,7 +44,6 @@ public class TestAction {
 
 
     }
-
 
 
     @AfterEach
