@@ -78,7 +78,6 @@ public class Game {
 
 
         gameLogic.checkCardType(selectedCardFromHand, player);
-
         if(gameboard.playerActiveCards != null ) {
             display.printAttackMessage();
             display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
