@@ -122,9 +122,6 @@ public class Game {
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
 
-        computer.getHand().deletePlayedCard(playedCard);
-
-        computer.getHand().addNewCardToHand();
 
         System.out.println("---------------------");
         System.out.println(" ");

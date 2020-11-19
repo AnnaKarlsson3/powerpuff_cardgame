@@ -7,7 +7,7 @@ import java.util.NoSuchElementException;
 
 public class Computer extends Player{
 
-
+    Display display = new Display();
 
     public Computer() {
         super.setName("Computer");
@@ -23,31 +23,35 @@ public class Computer extends Player{
         ArrayList<Card> cardsOnBoardPlayer = gameboard.getPlayerActiveCards();
         ArrayList<Card> cardsOnBoardComputer = gameboard.getComputerActiveCards();
 
+        Card playedCard = playCard();
 
-        Card printthis = gameboard.placePlayerCardOnGameboard(setonBoard(cardsInHand));
-
-        System.out.println("set card on board" + printthis);
-
-    }
-
-    private Card setonBoard(ArrayList<Card> cardsInHand) {
-        if (!cardsInHand.isEmpty()) {
-            return cardsInHand.stream()
-                    .filter(c -> c.getType().startsWith("Fighter"))
-                    .max(Comparator.comparing(Card::getBlockPointPoint))
-                    .orElseThrow(NoSuchElementException::new);
+        if( playedCard.getType().equals("Action")){
+            setHp(getHp() + playedCard.getPoint());
+            getHand().deletePlayedCard(playedCard);
+            getHand().addNewCardToHand();
+        } else {
+            gameboard.placeComputerCardOnGameboard(playedCard);
         }
-        return null;
+
+        display.formatCardToPlay(playedCard);
+
+        attack(cardsOnBoardComputer, cardsOnBoardPlayer);
+
+
+
+
+    }
+
+    private Card attack(ArrayList<Card> cardsOnBoardComputer, ArrayList<Card> cardsOnBoardPlayer) {
+        //I want to attack this card
+       Card choosePlayersCard = cardsOnBoardPlayer.stream()
+                                .max(Comparator.comparing(Card::getPoint))
+                                .orElseThrow(NoSuchElementException::new);
+
     }
 
 
-
-
-    public Card attack(){
-        return null;
-    }
-
-    public Card block(){
+    public Card updateBlockPoint(){
         return null;
     }
 
