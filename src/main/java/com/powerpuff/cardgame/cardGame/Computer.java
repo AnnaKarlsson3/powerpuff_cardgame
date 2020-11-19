@@ -65,20 +65,27 @@ public class Computer extends Player{
     public Card blockCard(Card playersCard, Gameboard gameboard){
         ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
 
-        ArrayList<Card> options =  computersCards.stream()
-                .filter(c -> c.getPoint() > playersCard.getPoint())
-                .collect(Collectors.toCollection(ArrayList::new));
-        try {
-            Card choosenCardToBlock = options.stream()
-                    .min(Comparator.comparing(Card::getPoint))
-                    .orElseThrow(NoSuchElementException::new);
-            return choosenCardToBlock;
-        } catch (NoSuchElementException e) {
-            Card chooseMaxCard = computersCards.stream()
-                    .max(Comparator.comparing(Card::getPoint))
-                    .orElseThrow(NoSuchElementException::new);
-            return chooseMaxCard;
+        if(!computersCards.isEmpty()){
+            ArrayList<Card> options =  computersCards.stream()
+                    .filter(c -> c.getPoint() > playersCard.getPoint())
+                    .collect(Collectors.toCollection(ArrayList::new));
+            try {
+                Card choosenCardToBlock = options.stream()
+                        .min(Comparator.comparing(Card::getPoint))
+                        .orElseThrow(NoSuchElementException::new);
+                return choosenCardToBlock;
+            } catch (NoSuchElementException e) {
+                Card chooseMaxCard = computersCards.stream()
+                        .max(Comparator.comparing(Card::getPoint))
+                        .orElseThrow(NoSuchElementException::new);
+                return chooseMaxCard;
+            }
+        } else{
+            System.out.println("Computer doesn't have any card on board");
+            return  null;
         }
+
+
     }
 
     public Card playCard(){

@@ -93,7 +93,7 @@ public class Game {
              Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
 
             //-Computer choosing one card to block with/if its not null
-            if(gameboard.computerActiveCards.size() > 0) {
+            if(gameboard.computerActiveCards.size() == 0) {
                 computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
             }else{gameLogic.attack(computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);}
 
@@ -133,6 +133,26 @@ public class Game {
 
         //Show to attackCard
         Card playedCard = computer.attackCard(gameboard);
+
+
+
+        System.out.println(gameboard.getPlayerActiveCards().toString());
+
+        if(gameboard.computerActiveCards.size() > 0 ) {
+
+
+
+
+            //player blocking
+            Card computerBlockingCard = player.blockCard(selectedCardFromBoard, gameboard);
+
+            //-Computer choosing one card to block with/if its not null
+            if(gameboard.computerActiveCards.size() == 0) {
+                computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
+            }else{gameLogic.attack(computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);}
+
+        }
+        else display.printAttackMessageNoCardsAvailable();
 
 
         System.out.println(" ");
