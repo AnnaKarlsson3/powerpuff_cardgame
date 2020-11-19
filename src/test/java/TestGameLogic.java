@@ -47,13 +47,21 @@ public class TestGameLogic {
 
         Card attackCard = new Card("Fighter", "Piner", 3, 3);
         Card blockCard = new Card("Fighter", "Dora", 1,1);
+        Card attackCard2 = new Card("Fighter", "Kristi", 2, 2);
+        Card blockCard2 = new Card("Fighter", "Berit", 5,5);
+        Card attackCard3 = new Card("Fighter", "Crush", 2, 2);
+        Card blockCard3 = new Card("Fighter", "crain", 2,2);
 
         ArrayList<Card> playerActiveCards = new ArrayList<>();
         playerActiveCards.add(attackCard);
+        playerActiveCards.add(attackCard2);
+        playerActiveCards.add(attackCard3);
         ArrayList<Card> playerActiveCardsCopy = (ArrayList<Card>) playerActiveCards.clone();
 
         ArrayList<Card> computerActiveCards = new ArrayList<>();
         computerActiveCards.add(blockCard);
+        computerActiveCards.add(blockCard2);
+        computerActiveCards.add(blockCard3);
         ArrayList<Card> computerActiveCardsCopy = (ArrayList<Card>) computerActiveCards.clone();
 
 
@@ -64,10 +72,16 @@ public class TestGameLogic {
         assertFalse(Arrays.equals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray()), "Expected both not to be equal");
 
 
+        assertTrue(playerActiveCards != null, "should not be null");
+        assertArrayEquals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray(), "Expected both to be equal");
+        assertTrue(attackCard2.getPoint() < blockCard2.getBlockPointPoint(), "attack points should be less than blockpoints");
+            blockCard2.setBlockPoint(blockCard2.getBlockPointPoint() - attackCard2.getPoint());
+
+            playerActiveCards.remove(attackCard2);
+        assertFalse(Arrays.equals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray()), "Expected both not to be equal");
+
 
     }
-
-
 
 
 
