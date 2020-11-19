@@ -3,6 +3,10 @@ import com.powerpuff.cardgame.cardGame.Card;
 import com.powerpuff.cardgame.cardGame.Computer;
 import com.powerpuff.cardgame.cardGame.Player;
 import org.junit.jupiter.api.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -37,6 +41,33 @@ public class TestGameLogic {
         assertTrue(damage < blockCard3.getBlockPointPoint(), "damage is less than blockpoints");
             //call blockMethod
     }
+
+    @Test
+    public void testBlock(){
+
+        Card attackCard = new Card("Fighter", "Piner", 3, 3);
+        Card blockCard = new Card("Fighter", "Dora", 1,1);
+
+        ArrayList<Card> playerActiveCards = new ArrayList<>();
+        playerActiveCards.add(attackCard);
+        ArrayList<Card> playerActiveCardsCopy = (ArrayList<Card>) playerActiveCards.clone();
+
+        ArrayList<Card> computerActiveCards = new ArrayList<>();
+        computerActiveCards.add(blockCard);
+        ArrayList<Card> computerActiveCardsCopy = (ArrayList<Card>) computerActiveCards.clone();
+
+
+        assertTrue(computerActiveCards != null, "should not be null");
+        assertArrayEquals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray(), "Expected both to be equal");
+        assertTrue(attackCard.getPoint() > blockCard.getBlockPointPoint(), "attack points should be greater than blockpoints");
+            computerActiveCards.remove(blockCard);
+        assertFalse(Arrays.equals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray()), "Expected both not to be equal");
+
+
+
+    }
+
+
 
 
 
