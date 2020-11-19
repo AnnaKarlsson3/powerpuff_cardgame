@@ -90,12 +90,13 @@ public class Game {
              Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
 
              //computer blocking
-             computer.blockCard(selectedCardFromBoard, gameboard);
+             Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
 
             //-Computer choosing one card to block with/if its not null
             if(gameboard.computerActiveCards.size() > 0) {
                 computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
-            }//else{gameLogic.attack(selectedCardFromBoard, computer, gameboard.playerActiveCards, gameboard.computerActiveCards)}
+            }else{gameLogic.attack(computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);}
+
         }
         else display.printAttackMessageNoCardsAvailable();
 
