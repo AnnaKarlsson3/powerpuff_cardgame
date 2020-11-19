@@ -66,11 +66,14 @@ public class Game {
 
         Card card = action.selectCard(player.getHand());
 
+        Card card selectedCardFromBoard;
+
         System.out.println(" ");
         display.formatCardToPlay(card);
         System.out.println(" ");
 
 
+        computer.blockCard(selectedCardFromBoard);
         //check cardType
 
         //if cardsonboardList != null -{
@@ -103,7 +106,13 @@ public class Game {
         display.printComputerTurn();
 
         //ComputerLogic
-        computer.computerLogic(gameboard);
+        computer.computerSendToBoard(gameboard);
+
+        computer.attackCard(gameboard);
+
+
+
+
 
 
 

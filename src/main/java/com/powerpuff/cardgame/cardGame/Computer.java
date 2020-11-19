@@ -4,10 +4,10 @@ package com.powerpuff.cardgame.cardGame;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 public class Computer extends Player{
 
-    Display display = new Display();
 
     public Computer() {
         super.setName("Computer");
@@ -18,12 +18,8 @@ public class Computer extends Player{
         super(name, hp, hand);
     }
 
-    public void computerLogic(Gameboard gameboard){
-        ArrayList<Card> cardsInHand = hand.cardsInHand;
-        ArrayList<Card> cardsOnBoardPlayer = gameboard.getPlayerActiveCards();
-        ArrayList<Card> cardsOnBoardComputer = gameboard.getComputerActiveCards();
-
-        Card playedCard = playCard();
+    public void computerSendToBoard(Gameboard gameboard){
+       Card playedCard = playCard();
 
         if( playedCard.getType().equals("Action")){
             setHp(getHp() + playedCard.getPoint());
@@ -33,25 +29,35 @@ public class Computer extends Player{
             gameboard.placeComputerCardOnGameboard(playedCard);
         }
 
-        display.formatCardToPlay(playedCard);
-
-        attack(cardsOnBoardComputer, cardsOnBoardPlayer);
-
-
-
-
     }
 
-    private Card attack(ArrayList<Card> cardsOnBoardComputer, ArrayList<Card> cardsOnBoardPlayer) {
-        //I want to attack this card
-       Card choosePlayersCard = cardsOnBoardPlayer.stream()
-                                .max(Comparator.comparing(Card::getPoint))
-                                .orElseThrow(NoSuchElementException::new);
+    Card attackCard(Gameboard gameboard) {
+        ArrayList<Card> playersCards = gameboard.getPlayerActiveCards();
+        ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
 
+        Card maxPlayersCard = playersCards.stream()
+                .max(Comparator.comparing(Card::getPoint))
+                .orElseThrow(NoSuchElementException::new);
+
+        ArrayList<Card> options =  computersCards.stream()
+                .filter(c -> c.getPoint() >= maxPlayersCard.getPoint())
+                .collect(Collectors.toCollection(ArrayList::new));
+
+        try {
+        Card choosenCard = options.stream()
+                .min(Comparator.comparing(Card::getPoint))
+                .orElseThrow(NoSuchElementException::new);
+        return choosenCard;
+        } catch (NoSuchElementException e) {
+            Card chooseMinCard = computersCards.stream()
+                    .min(Comparator.comparing(Card::getPoint))
+                    .orElseThrow(NoSuchElementException::new);
+            return chooseMinCard;
+        }
     }
 
 
-    public Card updateBlockPoint(){
+    public Card blockCard(){
         return null;
     }
 
