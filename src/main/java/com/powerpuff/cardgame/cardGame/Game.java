@@ -12,6 +12,7 @@ public class Game {
     public ArrayList<Card> computerHand;
     public Gameboard gameboard;
     public GameLogic gameLogic;
+    public Card selectedCardFromBoard = null;
 
 
     public Game(){
@@ -23,6 +24,7 @@ public class Game {
         action = new Action();
         gameboard = new Gameboard();
         gameLogic = new GameLogic();
+
 
     }
 
@@ -75,14 +77,13 @@ public class Game {
         System.out.println(" ");
 
 
-
         gameLogic.checkCardType(selectedCardFromHand, player);
 
         if(gameboard.playerActiveCards != null ) {
             display.printAttackMessage();
             display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
 
-            Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
+             selectedCardFromBoard = action.selectCardFromBoard(gameboard);
 
             //-Computer choosing one card to block with/if its not null
             if(gameboard.computerActiveCards == null) {
