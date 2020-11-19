@@ -66,13 +66,13 @@ public class Game {
 
         Card card = action.selectCard(player.getHand());
 
-        Card card selectedCardFromBoard;
+        Card selectedCardFromBoard;
 
         System.out.println(" ");
         display.formatCardToPlay(card);
         System.out.println(" ");
 
-
+       
         computer.blockCard(selectedCardFromBoard);
         //check cardType
 
