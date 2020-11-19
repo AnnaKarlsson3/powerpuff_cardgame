@@ -22,7 +22,18 @@ public class GameLogic {
     }
 
     public void block (Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards){
+        if(attack.getPoint() > block.getBlockPointPoint()){
+            computerActiveCards.remove(block);
+        }
+        else if(attack.getPoint() < block.getBlockPointPoint()){
+            block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
+            playerActiveCards.remove(attack);
 
+        }
+        else{
+            computerActiveCards.remove(block);
+            playerActiveCards.remove(attack);
+        }
     }
 
 
