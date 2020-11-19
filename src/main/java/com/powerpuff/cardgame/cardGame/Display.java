@@ -73,9 +73,8 @@ public class Display {
     public String printComputerHpMessage() {
         return computerHp = "Computer HP is: ";
     }
-
-
-    public List<String> addNumberCardsInHand(ArrayList<Card> cardsInHand) {
+    
+    public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
 
         AtomicInteger numbers = new AtomicInteger(1);
 
@@ -87,13 +86,29 @@ public class Display {
     }
 
     public void printCardsInHand(ArrayList<Card> cardsInHand) {
-        List<String> numberedCards = addNumberCardsInHand(cardsInHand);
+        List<String> numberedCards = addNumbersToCards(cardsInHand);
 
         String formattedCardsInHand = (String) numberedCards
                 .stream()
                 .collect(Collectors.joining("", "", ""));
         System.out.println("The cards in your hand:\n" + formattedCardsInHand +
                 "\nWhat card do you want to play? Enter the number.\n");
+    }
+
+    public void printPlayersCardsOnBoard(ArrayList<Card> cards){
+        List<String> numberedCards = addNumbersToCards(cards);
+        String playersCards = (String) numberedCards
+                .stream()
+                .collect(Collectors.joining("", "", ""));
+        System.out.println("Your active cards: \n" + playersCards);
+    }
+
+    public void printComputersCardsOnBoard(ArrayList<Card> cards){
+        List<String> numberedCards = addNumbersToCards(cards);
+        String playersCards = (String) numberedCards
+                .stream()
+                .collect(Collectors.joining("", "", ""));
+        System.out.println("Computers active cards: \n" + playersCards);
     }
 
     public Card formatCardToPlay(Card chosenCard) {

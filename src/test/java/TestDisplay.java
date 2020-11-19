@@ -70,7 +70,7 @@ public class TestDisplay {
     public void testNumerationOfCardsInHand() {
         Hand hand = new Hand();
 
-        List<String> numberedCards = display.addNumberCardsInHand(hand.getCardsInHand());
+        List<String> numberedCards = display.addNumbersToCards(hand.getCardsInHand());
 
         List<String> cardNumbers = numberedCards
                 .stream()
