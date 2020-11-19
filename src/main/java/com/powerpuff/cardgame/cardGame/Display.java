@@ -9,7 +9,7 @@ public class Display {
 
 
     public String playerHp = "";
-    public String computerHp ="";
+    public String computerHp = "";
     public String enterNameMessage = "";
     public String playerNameTurn = "";
     public String computerTurn = "";
@@ -74,8 +74,7 @@ public class Display {
         return computerHp = "Computer HP is: ";
     }
 
-
-    public List<String> addNumberCardsInHand(ArrayList<Card> cardsInHand) {
+    public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
 
         AtomicInteger numbers = new AtomicInteger(1);
 
@@ -86,28 +85,45 @@ public class Display {
         return cardList;
     }
 
-    public void printCardsInHand(ArrayList<Card> cardsInHand) {
-        List<String> numberedCards = addNumberCardsInHand(cardsInHand);
-
-        String formattedCardsInHand = (String) numberedCards
+    public String formatCards(List<String> numberedCards) {
+        String formattedCards = (String) numberedCards
                 .stream()
                 .collect(Collectors.joining("", "", ""));
-        System.out.println("The cards in your hand:\n" + formattedCardsInHand +
+        return formattedCards;
+    }
+
+    public void printCardsInHand(ArrayList<Card> cardsInHand) {
+        List<String> numberedCards = addNumbersToCards(cardsInHand);
+
+        System.out.println("The cards in your hand:\n" + formatCards(numberedCards) +
                 "\nWhat card do you want to play? Enter the number.\n");
     }
 
-    public Card formatCardToPlay(Card chosenCard) {
-        String formattedCard = "Played card - Type: " + chosenCard.getType() + " - Name: " + chosenCard.getName() + " - Points: " + chosenCard.getPoint();
-        printPlayedCard(formattedCard);
-        return chosenCard;
+    public void printPlayersCardsOnBoard(ArrayList<Card> cards) {
+        List<String> numberedCards = addNumbersToCards(cards);
+        System.out.println("Your active cards: \n" + formatCards(numberedCards));
     }
 
-    public void printPlayedCard(String cardToPrint) {
-        playedCard = cardToPrint;
+    public void printComputersCardsOnBoard(ArrayList<Card> cards) {
+        List<String> numberedCards = addNumbersToCards(cards);
+        System.out.println("Computers active cards: \n" + formatCards(numberedCards));
+    }
+
+    public String formatCardToPlay(Card chosenCard) {
+        String formattedCard = "Played card - Type: " + chosenCard.getType() + " - Name: " + chosenCard.getName() + " - Points: " + chosenCard.getPoint();
+        return formattedCard;
+    }
+
+    public void printPlayedCard(Card chosenCard) {
+        playedCard = formatCardToPlay(chosenCard);
         printPlayedCardMessage();
     }
 
-    public void printWinner(Player player){
+    public void printPlayedCardMessage() {
+        System.out.println(playedCard);
+    }
+
+    public void printWinner(Player player) {
         System.out.println(" ");
         System.out.println("------- Game Over -------");
         System.out.println(" ");
@@ -115,32 +131,31 @@ public class Display {
         System.out.println(player.getName());
     }
 
-    public void printTie(){
+    public void printTie() {
         System.out.println(" ");
         System.out.println("------- Game Over -------");
         System.out.println(" ");
         System.out.println("The game ended in a tie");
     }
 
-    public void printPlayedCardMessage() {
-        System.out.println(playedCard);
-    }
-
-
-    public void printPlayAgain(){
+    public void printPlayAgain() {
         System.out.println("Play again y/n?");
     }
 
-    public String blockMessage(){ return displayBlockMessage = "Choose which card you want to block with"; }
+    public String blockMessage() {
+        return displayBlockMessage = "Choose which card you want to block with";
+    }
 
-    public String blockMessageNoBlockCardsAvailable(){ return displayBlockMessageNoCardsAvailable = "No block cards left"; }
+    public String blockMessageNoBlockCardsAvailable() {
+        return displayBlockMessageNoCardsAvailable = "No block cards left";
+    }
 
-    public String printBlockMessage(){
+    public String printBlockMessage() {
         System.out.println(blockMessage());
         return null;
     }
 
-    public String printBlockMessageNoBlockCardsAvailable(){
+    public String printBlockMessageNoBlockCardsAvailable() {
         System.out.println(blockMessageNoBlockCardsAvailable());
         return null;
     }
@@ -149,7 +164,7 @@ public class Display {
         return displayAttackMessage = "Choose attack card";
     }
 
-    public String printAttackMessage(){
+    public String printAttackMessage() {
         System.out.println(attackMessage());
         return null;
     }
@@ -158,7 +173,7 @@ public class Display {
         return displayAttackMessageNoCardsAvailable = "No attack cards left";
     }
 
-    public String printAttackMessageNoCardsAvailable(){
+    public String printAttackMessageNoCardsAvailable() {
         System.out.println(attackMessageNoCardsAvailable());
         return null;
     }

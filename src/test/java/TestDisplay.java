@@ -70,7 +70,7 @@ public class TestDisplay {
     public void testNumerationOfCardsInHand() {
         Hand hand = new Hand();
 
-        List<String> numberedCards = display.addNumberCardsInHand(hand.getCardsInHand());
+        List<String> numberedCards = display.addNumbersToCards(hand.getCardsInHand());
 
         List<String> cardNumbers = numberedCards
                 .stream()
@@ -88,11 +88,10 @@ public class TestDisplay {
         Hand hand = new Hand();
         Card card = (Card) hand.getCardsInHand().get(0);
 
-        display.formatCardToPlay(card);
+        display.printPlayedCard(card);
 
         String expected = "Played card - Type: " + card.getType() + " - Name: " + card.getName() + " - Points: " + card.getPoint();
         String actual = display.playedCard;
-
 
         assertEquals(expected, actual);
     }
