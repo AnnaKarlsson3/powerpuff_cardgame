@@ -73,7 +73,7 @@ public class Game {
         //check cardType
 
         //if cardsonboardList != null -{
-        //sout: which card do u want to attack with?
+        //display.printAttackMessage();
         //sout: display PLAYERBOARDLIST,
         //input: player choosing number/card to attack with,
 
@@ -82,7 +82,7 @@ public class Game {
         //if(blockCardList == null){setHP(attackpoints)}
         //else{attackmethod(attackCard, blockCard)}
 
-        //}else display-> no cards on board to attack with
+        //}else display.printAttackMessageNoCardsAvailable();
 
         updateHpIfPlayersTurn(card);
 
