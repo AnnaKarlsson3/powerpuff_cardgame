@@ -7,6 +7,8 @@ import java.util.NoSuchElementException;
 
 public class Computer extends Player{
 
+
+
     public Computer() {
         super.setName("Computer");
 
@@ -14,6 +16,40 @@ public class Computer extends Player{
 
     public Computer(String name, int hp, Hand hand) {
         super(name, hp, hand);
+    }
+
+    public void computerLogic(Gameboard gameboard){
+        ArrayList<Card> cardsInHand = hand.cardsInHand;
+        ArrayList<Card> cardsOnBoardPlayer = gameboard.getPlayerActiveCards();
+        ArrayList<Card> cardsOnBoardComputer = gameboard.getComputerActiveCards();
+
+
+        Card printthis = gameboard.placePlayerCardOnGameboard(setonBoard(cardsOnBoardComputer, cardsInHand));
+
+        System.out.println(printthis);
+
+    }
+
+    private Card setonBoard(ArrayList<Card> cardsOnBoardComputer, ArrayList<Card> cardsInHand) {
+        if (cardsOnBoardComputer.isEmpty()){
+            Card cardWithMaxBlockPoint = cardsInHand.stream()
+                    .filter(c -> c.getType().startsWith("Fighter"))
+                    .max(Comparator.comparing(Card::getBlockPointPoint))
+                    .orElseThrow(NoSuchElementException::new);
+            return cardWithMaxBlockPoint;
+        }
+        return null;
+    }
+
+
+
+
+    public Card attack(){
+        return null;
+    }
+
+    public Card block(){
+        return null;
     }
 
     public Card playCard(){

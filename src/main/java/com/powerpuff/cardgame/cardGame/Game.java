@@ -7,6 +7,7 @@ public class Game {
     Action action;
     Display display;
     public boolean gameOver = false;
+    private Gameboard gameboard;
     public Player player;
     public Computer computer;
     public ArrayList<Card> playerHand;
@@ -15,6 +16,7 @@ public class Game {
     public Game(){
         player = new Player();
         computer = new Computer();
+        gameboard = new Gameboard();
         computer.setHp(20);
         player.setHp(20);
         display = new Display();
@@ -100,6 +102,11 @@ public class Game {
     public void computerTurn(){
         System.out.println("---------------------");
         display.printComputerTurn();
+
+        //ComputerLogic
+        computer.computerLogic(gameboard);
+
+
 
         Card playedCard = computer.playCard();
         if(playedCard == null){
