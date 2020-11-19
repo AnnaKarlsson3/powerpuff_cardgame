@@ -4,10 +4,20 @@ import java.util.ArrayList;
 
 public class GameLogic {
 
+    private Gameboard gameboard = new Gameboard();
 
-    public String checkCardType(Card playedCard){
+
+    public String checkCardType(Card playedCard, Player player) {
+        if (playedCard.getType().equals("Action")) {
+            player.setHp(player.getHp() + playedCard.getPoint());
+            player.getHand().deletePlayedCard(playedCard);
+            player.getHand().addNewCardToHand();
+        } else {
+            gameboard.placePlayerCardOnGameboard(playedCard);
+        }
         return playedCard.getType();
     }
+
 
 
     public void attack(Computer computer, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards){
@@ -36,6 +46,10 @@ public class GameLogic {
         }
     }
 
+
+    public Gameboard getGameboard() {
+        return gameboard;
+    }
 
 
 }

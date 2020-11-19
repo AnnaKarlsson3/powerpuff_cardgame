@@ -11,6 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestGameLogic {
+    Game game;
+    GameLogic gameLogic;
+
+    @BeforeEach
+    public void init() {
+        game = new Game();
+        gameLogic = new GameLogic();
+    }
 
 
     @Test
@@ -94,6 +102,26 @@ public class TestGameLogic {
 
     }
 
+    @Test
+    public void testCheckCardType() {
+
+        Player player = game.player;
+
+
+        Card card1 = new Card("Action", "actionCard", 3, 3);
+        Card card2 = new Card("Fighter", "fighterCard", 3, 3);
+        int beforeBoardListSize = gameLogic.getGameboard().getPlayerActiveCards().size();
+        assertAll(
+                () -> assertEquals("Action", gameLogic.checkCardType(card1, player)),
+                () -> assertEquals("Fighter", gameLogic.checkCardType(card2, player))
+
+        );
+        int afterBoardListSize = gameLogic.getGameboard().getPlayerActiveCards().size();
+        assertNotEquals(beforeBoardListSize,afterBoardListSize);
+
+
+
+    }
 
 
 }
