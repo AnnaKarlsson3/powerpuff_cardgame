@@ -6,6 +6,7 @@ public class Game {
     Action action;
     Display display;
     public boolean gameOver = false;
+    private Gameboard gameboard;
     public Player player;
     public Computer computer;
     public ArrayList<Card> playerHand;
@@ -18,6 +19,7 @@ public class Game {
     public Game(){
         player = new Player();
         computer = new Computer();
+        gameboard = new Gameboard();
         computer.setHp(20);
         player.setHp(20);
         display = new Display();
@@ -72,6 +74,8 @@ public class Game {
 
         Card selectedCardFromHand = action.selectCard(player.getHand());
 
+        Card selectedCardFromBoard;
+
         System.out.println(" ");
         display.formatCardToPlay(selectedCardFromHand);
         System.out.println(" ");
@@ -109,6 +113,17 @@ public class Game {
         System.out.println("---------------------");
         display.printComputerTurn();
 
+        //ComputerLogic
+        computer.computerSendToBoard(gameboard);
+
+        computer.attackCard(gameboard);
+
+
+
+
+
+
+
         Card playedCard = computer.playCard();
         if(playedCard == null){
             endGame();
@@ -123,9 +138,6 @@ public class Game {
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
 
-        computer.getHand().deletePlayedCard(playedCard);
-
-        computer.getHand().addNewCardToHand();
 
         System.out.println("---------------------");
         System.out.println(" ");
