@@ -24,14 +24,14 @@ public class Computer extends Player{
         ArrayList<Card> cardsOnBoardComputer = gameboard.getComputerActiveCards();
 
 
-        Card printthis = gameboard.placePlayerCardOnGameboard(setonBoard(cardsOnBoardComputer, cardsInHand));
+        Card printthis = gameboard.placePlayerCardOnGameboard(setonBoard(cardsInHand));
 
         System.out.println("set card on board" + printthis);
 
     }
 
-    private Card setonBoard(ArrayList<Card> cardsOnBoardComputer, ArrayList<Card> cardsInHand) {
-        if (cardsOnBoardComputer.size() < 2){
+    private Card setonBoard(ArrayList<Card> cardsInHand) {
+        if (!cardsInHand.isEmpty()) {
             return cardsInHand.stream()
                     .filter(c -> c.getType().startsWith("Fighter"))
                     .max(Comparator.comparing(Card::getBlockPointPoint))
