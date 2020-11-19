@@ -1,7 +1,5 @@
 package com.powerpuff.cardgame.cardGame;
 
-import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 
 public class Action {
@@ -13,9 +11,7 @@ public class Action {
     }
 
 
-    public void inputMenu(Game game) {
-
-
+    public void checkGameOptions(Game game) {
         Display display = new Display();
         boolean cont = true;
         while (cont) {
@@ -75,7 +71,7 @@ public class Action {
 
     }
 
-    public void checkInput(Game game) {
+    public void checkInputRestartGame(Game game) {
         Scanner scanner = new Scanner(System.in);
         String action = scanner.nextLine();
 
@@ -87,7 +83,7 @@ public class Action {
             game.endGame();
         } else {
             System.out.println("choose y/n");
-            checkInput(game);
+            checkInputRestartGame(game);
         }
     }
 

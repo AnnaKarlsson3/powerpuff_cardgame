@@ -1,7 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Game {
     Action action;
@@ -22,33 +21,21 @@ public class Game {
     }
 
     public void run() {
-
-
-
         setPlayerName();
-
-
         while (!gameOver) {
-
             playerTurn();
             display.printEndMessage();
-            action.inputMenu(this);
+            action.checkGameOptions(this);
             if (gameOver) break;
-
             computerTurn();
             gameOver();
-
-
         }
         playAgain();
-
     }
 
     private void playAgain() {
         display.printPlayAgain();
-        action.checkInput(this);
-
-
+        action.checkInputRestartGame(this);
     }
 
     public void setPlayerName(){
@@ -61,7 +48,7 @@ public class Game {
         System.out.println("---------------------");
         display.printPlayerName(player.getName());
         display.printCardsInHand(player.getHand().getCardsInHand());
-        display.addNumberCardsInHand(player.getHand().getCardsInHand());
+        display.displayNumberCardsInHand(player.getHand().getCardsInHand());
 
         Card card = action.selectCard(player.getHand());
 
@@ -72,10 +59,13 @@ public class Game {
 
         //check cardType
 
+
+
         //if cardsonboardList != null -{
-        //display.printAttackMessage();
+           //display.printAttackMessage();
         //sout: display PLAYERBOARDLIST,
         //input: player choosing number/card to attack with,
+        //Card actionCard = action.selectCard(player.getHand());
 
         //-Computer choosing one card to block with/if its not null
 
@@ -83,6 +73,7 @@ public class Game {
         //else{attackmethod(attackCard, blockCard)}
 
         //}else display.printAttackMessageNoCardsAvailable();
+
 
         updateHpIfPlayersTurn(card);
 

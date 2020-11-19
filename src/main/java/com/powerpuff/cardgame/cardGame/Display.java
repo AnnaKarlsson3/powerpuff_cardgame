@@ -75,7 +75,7 @@ public class Display {
     }
 
 
-    public List<String> addNumberCardsInHand(ArrayList<Card> cardsInHand) {
+    public List<String> displayNumberCardsInHand(ArrayList<Card> cardsInHand) {
 
         AtomicInteger numbers = new AtomicInteger(1);
 
@@ -87,7 +87,7 @@ public class Display {
     }
 
     public void printCardsInHand(ArrayList<Card> cardsInHand) {
-        List<String> numberedCards = addNumberCardsInHand(cardsInHand);
+        List<String> numberedCards = displayNumberCardsInHand(cardsInHand);
 
         String formattedCardsInHand = (String) numberedCards
                 .stream()
