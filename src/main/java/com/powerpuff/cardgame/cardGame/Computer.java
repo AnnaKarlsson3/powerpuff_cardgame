@@ -26,17 +26,16 @@ public class Computer extends Player{
 
         Card printthis = gameboard.placePlayerCardOnGameboard(setonBoard(cardsOnBoardComputer, cardsInHand));
 
-        System.out.println(printthis);
+        System.out.println("set card on board" + printthis);
 
     }
 
     private Card setonBoard(ArrayList<Card> cardsOnBoardComputer, ArrayList<Card> cardsInHand) {
-        if (cardsOnBoardComputer.isEmpty()){
-            Card cardWithMaxBlockPoint = cardsInHand.stream()
+        if (cardsOnBoardComputer.size() < 2){
+            return cardsInHand.stream()
                     .filter(c -> c.getType().startsWith("Fighter"))
                     .max(Comparator.comparing(Card::getBlockPointPoint))
                     .orElseThrow(NoSuchElementException::new);
-            return cardWithMaxBlockPoint;
         }
         return null;
     }
