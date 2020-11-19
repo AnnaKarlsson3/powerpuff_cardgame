@@ -1,7 +1,6 @@
 import com.powerpuff.cardgame.cardGame.*;
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -71,7 +70,7 @@ public class TestDisplay {
     public void testNumerationOfCardsInHand() {
         Hand hand = new Hand();
 
-        List<String> numberedCards = display.addNumberCardsInHand(hand.getCardsInHand());
+        List<String> numberedCards = display.addNumbersToCards(hand.getCardsInHand());
 
         List<String> cardNumbers = numberedCards
                 .stream()
@@ -89,11 +88,10 @@ public class TestDisplay {
         Hand hand = new Hand();
         Card card = (Card) hand.getCardsInHand().get(0);
 
-        display.formatCardToPlay(card);
+        display.printPlayedCard(card);
 
         String expected = "Played card - Type: " + card.getType() + " - Name: " + card.getName() + " - Points: " + card.getPoint();
         String actual = display.playedCard;
-
 
         assertEquals(expected, actual);
     }
@@ -110,11 +108,29 @@ public class TestDisplay {
 
     @Test
     public void testDisplayBlockMessageNoCardsAvailible(){
-        String actual = display.blockMessageNoBlockCardsAvailible();
+        String actual = display.blockMessageNoBlockCardsAvailable();
         String expected = "No block cards left";
         assertEquals(expected, actual);
-        assertNotNull(display.blockMessageNoBlockCardsAvailible());
+        assertNotNull(display.blockMessageNoBlockCardsAvailable());
     }
+
+    @Test
+    public void testDisplayActionMessage() {
+        String actual = display.attackMessage();
+        String expected = "Choose attack card";
+        assertEquals(actual, expected);
+        assertNotNull(display.attackMessage());
+    }
+
+    @Test
+    public void testDisplayBlockMessageNoCardsAvailable(){
+        String actual = display.attackMessageNoCardsAvailable();
+        String expected = "No attack cards left";
+        assertEquals(expected, actual);
+        assertNotNull(display.attackMessageNoCardsAvailable());
+    }
+
+
 
 
     @AfterEach

@@ -1,7 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Game {
     Action action;
@@ -63,7 +62,7 @@ public class Game {
         System.out.println("---------------------");
         display.printPlayerName(player.getName());
         display.printCardsInHand(player.getHand().getCardsInHand());
-        display.addNumberCardsInHand(player.getHand().getCardsInHand());
+        display.addNumbersToCards(player.getHand().getCardsInHand());
 
         Card card = action.selectCard(player.getHand());
 
@@ -75,7 +74,7 @@ public class Game {
         //check cardType
 
         //if cardsonboardList != null -{
-        //sout: which card do u want to attack with?
+        //display.printAttackMessage();
         //sout: display PLAYERBOARDLIST,
         //input: player choosing number/card to attack with,
 
@@ -84,7 +83,7 @@ public class Game {
         //if(blockCardList == null){setHP(attackpoints)}
         //else{attackmethod(attackCard, blockCard)}
 
-        //}else display-> no cards on board to attack with
+        //}else display.printAttackMessageNoCardsAvailable();
 
         updateHpIfPlayersTurn(card);
 
