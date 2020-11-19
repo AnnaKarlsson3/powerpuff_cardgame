@@ -10,6 +10,10 @@ public class Game {
     public Computer computer;
     public ArrayList<Card> playerHand;
     public ArrayList<Card> computerHand;
+    public Gameboard gameboard;
+    public GameLogic gameLogic;
+    public Card selectedCardFromBoard = null;
+
 
     public Game(){
         player = new Player();
@@ -18,6 +22,10 @@ public class Game {
         player.setHp(20);
         display = new Display();
         action = new Action();
+        gameboard = new Gameboard();
+        gameLogic = new GameLogic();
+
+
     }
 
     public void run() {
@@ -62,33 +70,35 @@ public class Game {
         display.printCardsInHand(player.getHand().getCardsInHand());
         display.addNumbersToCards(player.getHand().getCardsInHand());
 
-        Card card = action.selectCard(player.getHand());
+        Card selectedCardFromHand = action.selectCard(player.getHand());
 
         System.out.println(" ");
-        display.formatCardToPlay(card);
+        display.formatCardToPlay(selectedCardFromHand);
         System.out.println(" ");
 
 
-        //check cardType
+        gameLogic.checkCardType(selectedCardFromHand, player);
 
-        //if cardsonboardList != null -{
-        //display.printAttackMessage();
-        //sout: display PLAYERBOARDLIST,
-        //input: player choosing number/card to attack with,
+        if(gameboard.playerActiveCards != null ) {
+            display.printAttackMessage();
+            display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
 
-        //-Computer choosing one card to block with/if its not null
+             selectedCardFromBoard = action.selectCardFromBoard(gameboard);
 
-        //if(blockCardList == null){setHP(attackpoints)}
-        //else{attackmethod(attackCard, blockCard)}
+            //-Computer choosing one card to block with/if its not null
+            if(gameboard.computerActiveCards == null) {
+                computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
+            }//else{gameLogic.attack(selectedCardFromBoard, computer, gameboard.playerActiveCards, gameboard.computerActiveCards)}
+        }
+        else display.printAttackMessageNoCardsAvailable();
 
-        //}else display.printAttackMessageNoCardsAvailable();
-
-        updateHpIfPlayersTurn(card);
+        //might not be needed
+        updateHpIfPlayersTurn(selectedCardFromHand);
 
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
 
-        player.getHand().deletePlayedCard(card);
+        player.getHand().deletePlayedCard(selectedCardFromHand);
 
         player.getHand().addNewCardToHand();
 
@@ -162,6 +172,7 @@ public class Game {
         game.run();
     }
 
+    // might not be necessary
     public int updateHpIfPlayersTurn(Card playedCard) {
         int playerHp = player.getHp();
         if (playedCard.getType().equals("Action")) {
@@ -172,7 +183,7 @@ public class Game {
         }
         return playerHp;
     }
-
+    // might not be necessary
     public int updateHpIfComputersTurn(Card playedCard) {
         int computerHp = computer.getHp();
         if (playedCard.getType().equals("Action")) {
