@@ -1,5 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
+import java.util.ArrayList;
+
 public class GameLogic {
 
     private Gameboard gameboard = new Gameboard();
@@ -14,18 +16,36 @@ public class GameLogic {
             gameboard.placePlayerCardOnGameboard(playedCard);
         }
         return playedCard.getType();
-
     }
 
-    public void attack(Computer computer, Card attack, Card block) {
+
+
+    public void attack(Computer computer, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards){
         int damage = attack.getPoint() - block.getBlockPointPoint();
-        if (damage > block.getBlockPointPoint())
+        if(damage > block.getBlockPointPoint()) {
             computer.setHp(computer.getHp() - damage);
-            //blockMethod();
-        else if (damage < block.getBlockPointPoint() || damage == 0) {
-            // blockMethod();
+            block(attack, block, playerActiveCards, computerActiveCards);
+        }
+        else {
+           block(attack, block, playerActiveCards, computerActiveCards);
         }
     }
+
+    public void block (Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards){
+        if(attack.getPoint() > block.getBlockPointPoint()){
+            computerActiveCards.remove(block);
+        }
+        else if(attack.getPoint() < block.getBlockPointPoint()){
+            block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
+            playerActiveCards.remove(attack);
+
+        }
+        else{
+            computerActiveCards.remove(block);
+            playerActiveCards.remove(attack);
+        }
+    }
+
 
     public Gameboard getGameboard() {
         return gameboard;
