@@ -18,16 +18,21 @@ public class Computer extends Player{
     }
 
 
-    public void computerSendToBoard(Gameboard gameboard){
+   public void computerSendToBoard(Gameboard gameboard){
         Card playedCard = playCard();
 
-        if( playedCard.getType().equals("Action")){
-            setHp(getHp() + playedCard.getPoint());
-            getHand().deletePlayedCard(playedCard);
-            getHand().addNewCardToHand();
-        } else {
-            gameboard.placeComputerCardOnGameboard(playedCard);
-        }
+           if (playedCard.getType().equals("Action")) {
+               setHp(getHp() + playedCard.getPoint());
+               getHand().deletePlayedCard(playedCard);
+               getHand().addNewCardToHand();
+               System.out.println("Computer Played Action Card: ");
+               System.out.println(playedCard);
+               System.out.println("------------------------");
+           } else {
+               gameboard.placeComputerCardOnGameboard(playedCard);
+               System.out.println("Computer placed a Fighter Card on the Board");
+           }
+
 
     }
 
@@ -57,8 +62,23 @@ public class Computer extends Player{
     }
 
 
-    public Card blockCard(){
-        return null;
+    public Card blockCard(Card playersCard, Gameboard gameboard){
+        ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
+
+        ArrayList<Card> options =  computersCards.stream()
+                .filter(c -> c.getPoint() > playersCard.getPoint())
+                .collect(Collectors.toCollection(ArrayList::new));
+        try {
+            Card choosenCardToBlock = options.stream()
+                    .min(Comparator.comparing(Card::getPoint))
+                    .orElseThrow(NoSuchElementException::new);
+            return choosenCardToBlock;
+        } catch (NoSuchElementException e) {
+            Card chooseMaxCard = computersCards.stream()
+                    .max(Comparator.comparing(Card::getPoint))
+                    .orElseThrow(NoSuchElementException::new);
+            return chooseMaxCard;
+        }
     }
 
     public Card playCard(){
