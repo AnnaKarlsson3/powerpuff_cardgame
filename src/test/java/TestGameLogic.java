@@ -108,16 +108,14 @@ public class TestGameLogic {
 
         Card card1 = new Card("Action", "actionCard", 3, 3);
         Card card2 = new Card("Fighter", "fighterCard", 3, 3);
-        int beforeBoardListSize = gameLogic.getGameboard().getPlayerActiveCards().size();
+        int beforeBoardListSize = game.gameboard.getPlayerActiveCards().size();
         assertAll(
-                () -> assertEquals("Action", gameLogic.checkCardType(card1, player)),
-                () -> assertEquals("Fighter", gameLogic.checkCardType(card2, player))
+                () -> assertEquals("Action", gameLogic.checkCardType(card1, player, game.gameboard)),
+                () -> assertEquals("Fighter", gameLogic.checkCardType(card2, player, game.gameboard))
 
         );
-        int afterBoardListSize = gameLogic.getGameboard().getPlayerActiveCards().size();
+        int afterBoardListSize = game.gameboard.getPlayerActiveCards().size();
         assertNotEquals(beforeBoardListSize,afterBoardListSize);
-
-
 
     }
 

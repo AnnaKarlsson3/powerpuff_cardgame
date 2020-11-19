@@ -4,15 +4,16 @@ import java.util.ArrayList;
 
 public class GameLogic {
 
-    private Gameboard gameboard = new Gameboard();
 
 
-    public String checkCardType(Card playedCard, Player player) {
+
+    public String checkCardType(Card playedCard, Player player, Gameboard gameboard) {
         if (playedCard.getType().equals("Action")) {
             player.setHp(player.getHp() + playedCard.getPoint());
             player.getHand().deletePlayedCard(playedCard);
             player.getHand().addNewCardToHand();
         } else {
+            System.out.println("the played card" + playedCard);
             gameboard.placePlayerCardOnGameboard(playedCard);
         }
         return playedCard.getType();
@@ -47,9 +48,7 @@ public class GameLogic {
     }
 
 
-    public Gameboard getGameboard() {
-        return gameboard;
-    }
+
 
 
 }
