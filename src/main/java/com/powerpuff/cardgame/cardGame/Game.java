@@ -114,6 +114,11 @@ public class Game {
             endGame();
         }
 
+        computer.computerSendToBoard(gameboard);
+
+        computer.attackCard(gameboard);
+
+
         System.out.println(" ");
         display.formatCardToPlay(playedCard);
 
