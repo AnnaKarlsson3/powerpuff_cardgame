@@ -80,6 +80,17 @@ public class TestGameLogic {
             playerActiveCards.remove(attackCard2);
         assertFalse(Arrays.equals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray()), "Expected both not to be equal");
 
+//----------------------
+        playerActiveCardsCopy.remove(attackCard2);
+        assertArrayEquals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray(), "Expected both to be equal");
+        computerActiveCardsCopy.remove(blockCard);
+        assertArrayEquals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray(), "Expected both to be equal");
+
+        assertTrue(attackCard3.getPoint() == blockCard3.getBlockPointPoint(), "attack points should be equal to blockpoints");
+        playerActiveCards.remove(attackCard3);
+        computerActiveCards.remove(blockCard3);
+        assertFalse(Arrays.equals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray()), "Expected both not to be equal");
+        assertFalse(Arrays.equals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray()), "Expected both not to be equal");
 
     }
 
