@@ -114,8 +114,8 @@ public class TestGameLogic {
         Card card2 = new Card("Fighter", "fighterCard", 3, 3);
         int beforeBoardListSize = game.gameboard.getPlayerActiveCards().size();
         assertAll(
-                () -> assertEquals("Action", gameLogic.checkCardType(card1, player, game.gameboard)),
-                () -> assertEquals("Fighter", gameLogic.checkCardType(card2, player, game.gameboard))
+                () -> assertEquals("Action", gameLogic.manageSelectedCardFromHand(card1, player, game.gameboard)),
+                () -> assertEquals("Fighter", gameLogic.manageSelectedCardFromHand(card2, player, game.gameboard))
 
         );
         int afterBoardListSize = game.gameboard.getPlayerActiveCards().size();

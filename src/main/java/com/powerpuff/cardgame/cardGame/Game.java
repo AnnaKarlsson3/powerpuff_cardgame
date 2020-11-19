@@ -78,7 +78,7 @@ public class Game {
 
 
 
-        gameLogic.checkCardType(selectedCardFromHand, player, gameboard);
+        gameLogic.manageSelectedCardFromHand(selectedCardFromHand, player, gameboard);
 
         if(gameboard.playerActiveCards.size() > 0 ) {
 
@@ -100,17 +100,12 @@ public class Game {
         }
         else display.printAttackMessageNoCardsAvailable();
 
-
-
-        //might not be needed
-       // updateHpIfPlayersTurn(selectedCardFromHand);
-
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
 
-        player.getHand().deletePlayedCard(selectedCardFromHand);
+       // player.getHand().deletePlayedCard(selectedCardFromHand);
 
-        player.getHand().addNewCardToHand();
+        //player.getHand().addNewCardToHand();
 
         System.out.println("---------------------");
         System.out.println(" ");
@@ -126,48 +121,34 @@ public class Game {
             endGame();
         }
 
-        //we need a boolean which checks computer/player turn
-       /* if(gameboard.getComputerActiveCards().isEmpty()){
-            playerTurn();
-        }*/
 
-        //Show to attackCard
-
-
-
-
-        System.out.println(gameboard.getPlayerActiveCards().toString());
+        //System.out.println(gameboard.getPlayerActiveCards().toString());
 
         if(gameboard.computerActiveCards.size() > 0 ) {
-
-            Card playedCard = computer.attackCard(gameboard);
+            Card attackCard = computer.attackCard(gameboard);
+            System.out.println("\ncomputer's attack card");
+            System.out.println(attackCard);
+            System.out.println("----------------------------------------------------");
 
             if (gameboard.playerActiveCards.size() == 0) {
-                player.setHp(player.getHp() - playedCard.getPoint());
+                player.setHp(player.getHp() - attackCard.getPoint());
             } else {
                 display.printBlockMessage();
                 display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
                 Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
-                gameLogic.attack(player, playedCard, selectedCardFromBoard, gameboard.playerActiveCards, gameboard.computerActiveCards);
+                gameLogic.attack(player, attackCard, selectedCardFromBoard, gameboard.computerActiveCards, gameboard.playerActiveCards);
             }
             System.out.println(" ");
-            display.formatCardToPlay(playedCard);
-            computer.getHand().deletePlayedCard(playedCard);
+            display.formatCardToPlay(attackCard);
+            computer.getHand().deletePlayedCard(attackCard);
         }
         else System.out.println("computer not having any Cards on board to attack with");
-
-
-
-
-        //updateHpIfComputersTurn(playedCard);
 
         System.out.println(" ");
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
 
-
-
-        computer.getHand().addNewCardToHand();
+        //computer.getHand().addNewCardToHand();
 
         System.out.println("---------------------");
         System.out.println(" ");
@@ -214,27 +195,27 @@ public class Game {
     }
 
     // might not be necessary
-    public int updateHpIfPlayersTurn(Card playedCard) {
-        int playerHp = player.getHp();
-        if (playedCard.getType().equals("Action")) {
-            playerHp = playerHp + playedCard.getPoint();
-            player.setHp(playerHp);
-        } else {
-            computer.setHp(computer.getHp() - playedCard.getPoint());
-        }
-        return playerHp;
-    }
-    // might not be necessary
-    public int updateHpIfComputersTurn(Card playedCard) {
-        int computerHp = computer.getHp();
-        if (playedCard.getType().equals("Action")) {
-            computerHp = computerHp + playedCard.getPoint();
-            computer.setHp(computerHp);
-        } else {
-            player.setHp(player.getHp() - playedCard.getPoint());
-        }
-        return computerHp;
-    }
+//    public int updateHpIfPlayersTurn(Card playedCard) {
+//        int playerHp = player.getHp();
+//        if (playedCard.getType().equals("Action")) {
+//            playerHp = playerHp + playedCard.getPoint();
+//            player.setHp(playerHp);
+//        } else {
+//            computer.setHp(computer.getHp() - playedCard.getPoint());
+//        }
+//        return playerHp;
+//    }
+//    // might not be necessary
+//    public int updateHpIfComputersTurn(Card playedCard) {
+//        int computerHp = computer.getHp();
+//        if (playedCard.getType().equals("Action")) {
+//            computerHp = computerHp + playedCard.getPoint();
+//            computer.setHp(computerHp);
+//        } else {
+//            player.setHp(player.getHp() - playedCard.getPoint());
+//        }
+//        return computerHp;
+//    }
 
 
 }
