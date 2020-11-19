@@ -15,10 +15,6 @@ public class Gameboard {
         return playerActiveCards;
     }
 
-    public void setPlayerActiveCards(ArrayList<Card> playerActiveCards) {
-        this.playerActiveCards = playerActiveCards;
-    }
-
     public ArrayList<Card> getComputerActiveCards() {
         return computerActiveCards;
     }
@@ -27,9 +23,9 @@ public class Gameboard {
         this.computerActiveCards = computerActiveCards;
     }
 
+
     public Card placePlayerCardOnGameboard(Card card){
         playerActiveCards.add(card);
-        setPlayerActiveCards(playerActiveCards);
         return card;
     }
 
@@ -37,4 +33,5 @@ public class Gameboard {
         computerActiveCards.add(card);
         return card;
     }
+
 }

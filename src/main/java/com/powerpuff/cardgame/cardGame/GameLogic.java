@@ -1,11 +1,13 @@
 package com.powerpuff.cardgame.cardGame;
 
+import java.util.ArrayList;
+
 public class GameLogic {
 
-    private Gameboard gameboard = new Gameboard();
 
 
-    public String checkCardType(Card playedCard, Player player) {
+
+    public String checkCardType(Card playedCard, Player player, Gameboard gameboard) {
         if (playedCard.getType().equals("Action")) {
             player.setHp(player.getHp() + playedCard.getPoint());
             player.getHand().deletePlayedCard(playedCard);
@@ -17,19 +19,35 @@ public class GameLogic {
 
     }
 
-    public void attack(Computer computer, Card attack, Card block) {
-        int damage = attack.getPoint() - block.getBlockPointPoint();
-        if (damage > block.getBlockPointPoint())
+    public void attack(Player computer, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards){
+        int damage  = attack.getPoint() - block.getBlockPointPoint();
+        if(attack.getPoint() > block.getBlockPointPoint()) {
             computer.setHp(computer.getHp() - damage);
-            //blockMethod();
-        else if (damage < block.getBlockPointPoint() || damage == 0) {
-            // blockMethod();
+            block(attack, block, playerActiveCards, computerActiveCards);
+        }
+        else {
+            block(attack, block, playerActiveCards, computerActiveCards);
         }
     }
 
-    public Gameboard getGameboard() {
-        return gameboard;
+    public void block (Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards){
+        if(attack.getPoint() > block.getBlockPointPoint()){
+            computerActiveCards.remove(block);
+        }
+        else if(attack.getPoint() < block.getBlockPointPoint()){
+            block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
+            playerActiveCards.remove(attack);
+
+        }
+        else{
+            computerActiveCards.remove(block);
+            playerActiveCards.remove(attack);
+        }
     }
+
+
+
+
 
 
 }

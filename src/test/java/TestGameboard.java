@@ -14,6 +14,7 @@ public class TestGameboard {
         board = new Gameboard();
     }
 
+
     @Test
     public void testAddPlayedCardsToBoard() {
         Hand hand = new Hand();
@@ -23,6 +24,8 @@ public class TestGameboard {
         assertNotNull(playedCard);
         assertEquals(card, playedCard);
     }
+
+
 
 
 

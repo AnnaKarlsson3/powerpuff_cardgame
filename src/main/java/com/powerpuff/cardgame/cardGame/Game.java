@@ -12,7 +12,7 @@ public class Game {
     public ArrayList<Card> computerHand;
     public Gameboard gameboard;
     public GameLogic gameLogic;
-    public Card selectedCardFromBoard = null;
+    //public Card selectedCardFromBoard = null;
 
 
     public Game(){
@@ -78,27 +78,32 @@ public class Game {
 
 
 
-        gameLogic.checkCardType(selectedCardFromHand, player);
-        if(gameboard.playerActiveCards != null ) {
+        gameLogic.checkCardType(selectedCardFromHand, player, gameboard);
+
+        if(gameboard.playerActiveCards.size() > 0 ) {
+
             display.printAttackMessage();
+
             display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
 
-             selectedCardFromBoard = action.selectCardFromBoard(gameboard);
+            Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
 
              //computer blocking
-             computer.blockCard(selectedCardFromBoard, gameboard);
+             Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
+            System.out.println("computer blocking card: " + computerBlockingCard);
 
             //-Computer choosing one card to block with/if its not null
-            if(gameboard.computerActiveCards == null) {
+            if(gameboard.computerActiveCards.size() == 0) {
                 computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
-            }//else{gameLogic.attack(selectedCardFromBoard, computer, gameboard.playerActiveCards, gameboard.computerActiveCards)}
+            }else{gameLogic.attack(computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);}
+
         }
         else display.printAttackMessageNoCardsAvailable();
 
 
 
         //might not be needed
-        updateHpIfPlayersTurn(selectedCardFromHand);
+       // updateHpIfPlayersTurn(selectedCardFromHand);
 
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
@@ -122,24 +127,45 @@ public class Game {
         }
 
         //we need a boolean which checks computer/player turn
-        if(gameboard.getComputerActiveCards().isEmpty()){
+       /* if(gameboard.getComputerActiveCards().isEmpty()){
             playerTurn();
-        }
+        }*/
 
         //Show to attackCard
-        Card playedCard = computer.attackCard(gameboard);
 
 
-        System.out.println(" ");
-        display.formatCardToPlay(playedCard);
 
-        updateHpIfComputersTurn(playedCard);
+
+        System.out.println(gameboard.getPlayerActiveCards().toString());
+
+        if(gameboard.computerActiveCards.size() > 0 ) {
+
+            Card playedCard = computer.attackCard(gameboard);
+
+            if (gameboard.playerActiveCards.size() == 0) {
+                player.setHp(player.getHp() - playedCard.getPoint());
+            } else {
+                display.printBlockMessage();
+                display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
+                gameLogic.attack(player, playedCard, selectedCardFromBoard, gameboard.playerActiveCards, gameboard.computerActiveCards);
+            }
+            System.out.println(" ");
+            display.formatCardToPlay(playedCard);
+            computer.getHand().deletePlayedCard(playedCard);
+        }
+        else System.out.println("computer not having any Cards on board to attack with");
+
+
+
+
+        //updateHpIfComputersTurn(playedCard);
 
         System.out.println(" ");
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
 
-        computer.getHand().deletePlayedCard(playedCard);
+
 
         computer.getHand().addNewCardToHand();
 
