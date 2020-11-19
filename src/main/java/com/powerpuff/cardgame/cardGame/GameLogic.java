@@ -13,16 +13,15 @@ public class GameLogic {
             player.getHand().deletePlayedCard(playedCard);
             player.getHand().addNewCardToHand();
         } else {
-            System.out.println("the played card" + playedCard);
             gameboard.placePlayerCardOnGameboard(playedCard);
         }
         return playedCard.getType();
 
     }
 
-    public void attack(Computer computer, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards){
-        int damage = attack.getPoint() - block.getBlockPointPoint();
-        if(damage > block.getBlockPointPoint()) {
+    public void attack(Player computer, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards){
+        int damage  = attack.getPoint() - block.getBlockPointPoint();
+        if(attack.getPoint() > block.getBlockPointPoint()) {
             computer.setHp(computer.getHp() - damage);
             block(attack, block, playerActiveCards, computerActiveCards);
         }

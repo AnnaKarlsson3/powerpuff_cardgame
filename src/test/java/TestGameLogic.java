@@ -30,6 +30,8 @@ public class TestGameLogic {
         assertTrue(damage > blockCard.getBlockPointPoint(), "damage is greater than blockpoints");
         computer.setHp(computer.getHp() - damage);
 
+
+
         Card attackCard2 = new Card("Fighter", "Lola", 1, 1);
         Card blockCard2 = new Card("Fighter", "Dora", 1,1);
 
