@@ -45,11 +45,6 @@ public class TestGameLogic {
 
         Card attackCard = new Card("Fighter", "Piner", 3, 3);
         Card blockCard = new Card("Fighter", "Dora", 1,1);
-
-        assertEquals(1,  gameLogic.block(attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 1");
-        assertTrue(gameLogic.greater == attackCard.getPoint() > blockCard.getBlockPointPoint(), "attackpoints are greater than blockpoints");
-
-//-----------------------
         ArrayList<Card> playerActiveCards = gameboard.playerActiveCards;
         playerActiveCards.add(attackCard);
         ArrayList<Card> playerActiveCardsCopy = (ArrayList<Card>) playerActiveCards.clone();
@@ -59,7 +54,12 @@ public class TestGameLogic {
         ArrayList<Card> computerActiveCardsCopy = (ArrayList<Card>) computerActiveCards.clone();
 
         assertArrayEquals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray(), "Expected both to be equal");
+        assertEquals(1,  gameLogic.block(attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 1");
+        assertTrue(gameLogic.greater == attackCard.getPoint() > blockCard.getBlockPointPoint(), "attackpoints are greater than blockpoints");
         assertFalse(Arrays.equals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray()), "Expected both not to be equal");
+
+        //--------------------
+        
 
     }
 

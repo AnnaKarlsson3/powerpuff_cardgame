@@ -40,7 +40,8 @@ public class GameLogic {
     public int block(Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
         greater = attack.getPoint() > block.getBlockPointPoint();
         if(greater){
-
+            opponentActiveCards.remove(block);
+            System.out.println("opponent" + block.getName() + "'  is dead\n");
         }
 
         return block.getBlockPointPoint();
