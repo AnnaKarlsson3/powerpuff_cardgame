@@ -23,8 +23,6 @@ public class Computer extends Player{
 
            if (playedCard.getType().equals("Action")) {
                setHp(getHp() + playedCard.getPoint());
-               getHand().deletePlayedCard(playedCard);
-               getHand().addNewCardToHand();
                System.out.println("Computer Played Action Card: ");
                System.out.println(playedCard);
                System.out.println("------------------------");
@@ -33,59 +31,18 @@ public class Computer extends Player{
                System.out.println("Computer placed a Fighter Card on the Board");
            }
 
+            getHand().deletePlayedCard(playedCard);
+            getHand().addNewCardToHand();
 
     }
 
-    Card attackCard(Gameboard gameboard) {
-        ArrayList<Card> playersCards = gameboard.getPlayerActiveCards();
-        ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
-
-        Card maxPlayersCard = playersCards.stream()
-                .max(Comparator.comparing(Card::getPoint))
-                .orElseThrow(NoSuchElementException::new);
-
-        ArrayList<Card> options =  computersCards.stream()
-                .filter(c -> c.getPoint() >= maxPlayersCard.getPoint())
-                .collect(Collectors.toCollection(ArrayList::new));
-
-        try {
-            Card choosenCard = options.stream()
-                    .min(Comparator.comparing(Card::getPoint))
-                    .orElseThrow(NoSuchElementException::new);
-            return choosenCard;
-        } catch (NoSuchElementException e) {
-            Card chooseMinCard = computersCards.stream()
-                    .min(Comparator.comparing(Card::getPoint))
-                    .orElseThrow(NoSuchElementException::new);
-            return chooseMinCard;
-        }
+    public Card attackCard(Gameboard gameboard) {
+        return null;
     }
 
 
     public Card blockCard(Card playersCard, Gameboard gameboard){
-        ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
-
-        if(!computersCards.isEmpty()){
-            ArrayList<Card> options =  computersCards.stream()
-                    .filter(c -> c.getPoint() > playersCard.getPoint())
-                    .collect(Collectors.toCollection(ArrayList::new));
-            try {
-                Card choosenCardToBlock = options.stream()
-                        .min(Comparator.comparing(Card::getPoint))
-                        .orElseThrow(NoSuchElementException::new);
-                return choosenCardToBlock;
-            } catch (NoSuchElementException e) {
-                Card chooseMaxCard = computersCards.stream()
-                        .max(Comparator.comparing(Card::getPoint))
-                        .orElseThrow(NoSuchElementException::new);
-                return chooseMaxCard;
-            }
-        } else{
-            System.out.println("Computer doesn't have any card on board");
-            return  null;
-        }
-
-
+       return null;
     }
 
     public Card playCard(){

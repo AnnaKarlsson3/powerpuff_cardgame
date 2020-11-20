@@ -152,7 +152,6 @@ public class Game {
             }
             System.out.println(" ");
             display.formatCardToPlay(playedCard);
-            computer.getHand().deletePlayedCard(playedCard);
         }
         else System.out.println("computer not having any Cards on board to attack with");
 
@@ -165,9 +164,6 @@ public class Game {
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
 
-
-
-        computer.getHand().addNewCardToHand();
 
         System.out.println("---------------------");
         System.out.println(" ");
