@@ -39,6 +39,7 @@ public class GameLogic {
 
     public void block(Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
 
+
     }
 
 
