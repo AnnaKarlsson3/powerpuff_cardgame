@@ -26,7 +26,7 @@ public class GameLogic {
         damage = attack.getPoint() - block.getBlockPointPoint();
         greater = attack.getPoint() > block.getBlockPointPoint();
         if(greater){
-
+            opponent.setHp(opponent.getHp() - damage);
 
             System.out.println(opponent.getName() + "'s '" + block.getName() + "'  is dead\n");
            // block(attack, block, playerActiveCards, opponentActiveCards);
