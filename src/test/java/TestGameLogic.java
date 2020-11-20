@@ -31,7 +31,7 @@ public class TestGameLogic {
         gameLogic.attack(computer, attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards());
         assertTrue(gameLogic.damage == 2, "damage should be 2");
 
-
+        assertTrue(gameLogic.greater == attackCard.getPoint() > blockCard.getBlockPointPoint(), "attackpoints are greater than blockpoints");
     }
 
     @Test
