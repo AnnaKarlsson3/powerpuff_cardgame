@@ -132,6 +132,7 @@ public class Game {
 
             if (gameboard.playerActiveCards.size() == 0) {
                 player.setHp(player.getHp() - attackCard.getPoint());
+                System.out.println(" Player has no blockCard!");
             } else {
                 display.printBlockMessage();
                 display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
