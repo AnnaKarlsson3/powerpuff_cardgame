@@ -25,7 +25,7 @@ public class GameLogic {
         damage = attack.getPoint() - block.getBlockPointPoint();
         greater = attack.getPoint() > block.getBlockPointPoint();
         if(greater){
-            hpDamage = 0;
+            hpDamage = opponent.getHp() - damage;
 
 
         }
