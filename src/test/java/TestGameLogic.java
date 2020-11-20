@@ -27,9 +27,9 @@ public class TestGameLogic {
         Card attackCard = new Card("Fighter", "Piner", 3, 3);
         Card blockCard = new Card("Fighter", "Dora", 1,1);
 
-        int damage = attackCard.getPoint() - blockCard.getBlockPointPoint();
-        assertEquals(2, gameLogic.attack(computer, attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "answer should be 2");
 
+        gameLogic.attack(computer, attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards());
+        assertTrue(gameLogic.damage == 2, "damage should be 2");
 
 
     }
