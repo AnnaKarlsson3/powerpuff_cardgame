@@ -19,20 +19,11 @@ public class TestCardGenerator {
         cardGenerator = new CardGenerator();
     }
 
-    @Test
+    @Test // test checked again /snehal
     void testGenerateCards() {
-        Assertions.assertEquals( 100 ,cardGenerator.generateCardsAndGet().size() );
         assertNotNull(cardGenerator.generateCardsAndGet());
+        Assertions.assertEquals( 100 ,cardGenerator.generateCardsAndGet().size() );
 
-    }
-
-
-
-
-
-    @AfterEach
-    void cleanUp(){
-        System.out.println("@AfterEach executed");
     }
 
     @Test
@@ -46,6 +37,11 @@ public class TestCardGenerator {
         assertFalse(Arrays.equals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray()), "Expected both not to be equal");
 
 
+    }
+
+    @AfterEach
+    void cleanUp(){
+        System.out.println("@AfterEach executed");
     }
 
 
