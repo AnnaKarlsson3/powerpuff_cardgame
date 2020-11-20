@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-public class Computer extends Player {
+public class Computer extends Player{
 
     public Computer() {
         super.setName("Computer");
@@ -18,32 +18,29 @@ public class Computer extends Player {
     }
 
 
-    public void computerSendToBoard(Gameboard gameboard) {
+   public void computerSendToBoard(Gameboard gameboard){
         Card playedCard = playCard();
-        if (playedCard != null) {
-            if (playedCard.getType().equals("Action")) {
-                setHp(getHp() + playedCard.getPoint());
-                System.out.println("Computer Played Action Card: ");
-                System.out.println(playedCard);
-                System.out.println("------------------------");
-            } else {
-                gameboard.placeComputerCardOnGameboard(playedCard);
-                System.out.println("Computer placed a Fighter Card on the Board");
-            }
+
+           if (playedCard.getType().equals("Action")) {
+               setHp(getHp() + playedCard.getPoint());
+               System.out.println("Computer Played Action Card: ");
+               System.out.println(playedCard);
+               System.out.println("------------------------");
+           } else {
+               gameboard.placeComputerCardOnGameboard(playedCard);
+               System.out.println("Computer placed a Fighter Card on the Board");
+           }
+
             getHand().deletePlayedCard(playedCard);
             getHand().addNewCardToHand();
 
-        } else {
-            System.out.println("computer hand is empty");
-        }
-
-
     }
 
-    Card attackCard(Gameboard gameboard) {
+    public Card attackCard(Gameboard gameboard) {
         ArrayList<Card> playersCards = gameboard.getPlayerActiveCards();
         ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
-        if (!gameboard.getPlayerActiveCards().isEmpty()) {
+
+        try {
             Card maxPlayersCard = playersCards.stream()
                     .max(Comparator.comparing(Card::getPoint))
                     .orElseThrow(NoSuchElementException::new);
@@ -52,35 +49,24 @@ public class Computer extends Player {
                     .filter(c -> c.getPoint() >= maxPlayersCard.getPoint())
                     .collect(Collectors.toCollection(ArrayList::new));
 
-            try {
-                Card choosenCard = options.stream()
-                        .min(Comparator.comparing(Card::getPoint))
-                        .orElseThrow(NoSuchElementException::new);
-                return choosenCard;
-            } catch (NoSuchElementException e) {
-                Card chooseMinCard = computersCards.stream()
-                        .min(Comparator.comparing(Card::getPoint))
-                        .orElseThrow(NoSuchElementException::new);
-                return chooseMinCard;
-            }
-
-        } else {
-            Card maxCard = computersCards.stream()
-                    .max(Comparator.comparing(Card::getPoint))
+            Card choosenCard = options.stream()
+                    .min(Comparator.comparing(Card::getPoint))
                     .orElseThrow(NoSuchElementException::new);
-            return maxCard;
+            return choosenCard;
 
+        } catch (NoSuchElementException e) {
+            return computersCards.stream()
+                    .max(Comparator.comparing(Card::getPoint))
+                    .orElse(null);
         }
-
-
     }
 
 
-    public Card blockCard(Card playersCard, Gameboard gameboard) {
+    public Card blockCard(Card playersCard, Gameboard gameboard){
         ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
 
-        if (!computersCards.isEmpty()) {
-            ArrayList<Card> options = computersCards.stream()
+        if(!computersCards.isEmpty()){
+            ArrayList<Card> options =  computersCards.stream()
                     .filter(c -> c.getPoint() > playersCard.getPoint())
                     .collect(Collectors.toCollection(ArrayList::new));
             try {
@@ -91,18 +77,16 @@ public class Computer extends Player {
             } catch (NoSuchElementException e) {
                 Card chooseMaxCard = computersCards.stream()
                         .max(Comparator.comparing(Card::getPoint))
-                        .orElseThrow(NoSuchElementException::new);
+                        .orElse(null);
                 return chooseMaxCard;
             }
-        } else {
+        } else{
             System.out.println("Computer doesn't have any card on board");
-            return null;
+            return  null;
         }
-
-
     }
 
-    public Card playCard() {
+    public Card playCard(){
         int currentHp = getHp();
         ArrayList<Card> cardsInHand = hand.cardsInHand;
 
