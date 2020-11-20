@@ -18,19 +18,19 @@ public class GameLogic {
 
     }
 
-   public int damage;
+    public int damage;
     public boolean greater;
-    public int attack(Player opponent, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
+    public int hpDamage;
+    public void attack(Player opponent, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
         damage = attack.getPoint() - block.getBlockPointPoint();
         greater = attack.getPoint() > block.getBlockPointPoint();
         if(greater){
-            int hpDamage = 0;
+            hpDamage = 0;
 
-            return hpDamage;
+
         }
 
 
-        return damage;
 
     }
 
