@@ -37,12 +37,53 @@ public class Computer extends Player{
     }
 
     public Card attackCard(Gameboard gameboard) {
-        return null;
+        ArrayList<Card> playersCards = gameboard.getPlayerActiveCards();
+        ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
+
+        try {
+            Card maxPlayersCard = playersCards.stream()
+                    .max(Comparator.comparing(Card::getPoint))
+                    .orElseThrow(NoSuchElementException::new);
+
+            ArrayList<Card> options = computersCards.stream()
+                    .filter(c -> c.getPoint() >= maxPlayersCard.getPoint())
+                    .collect(Collectors.toCollection(ArrayList::new));
+
+            Card choosenCard = options.stream()
+                    .min(Comparator.comparing(Card::getPoint))
+                    .orElseThrow(NoSuchElementException::new);
+            return choosenCard;
+
+        } catch (NoSuchElementException e) {
+            return computersCards.stream()
+                    .max(Comparator.comparing(Card::getPoint))
+                    .orElse(null);
+        }
     }
 
 
     public Card blockCard(Card playersCard, Gameboard gameboard){
-       return null;
+        ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
+
+        if(!computersCards.isEmpty()){
+            ArrayList<Card> options =  computersCards.stream()
+                    .filter(c -> c.getPoint() > playersCard.getPoint())
+                    .collect(Collectors.toCollection(ArrayList::new));
+            try {
+                Card choosenCardToBlock = options.stream()
+                        .min(Comparator.comparing(Card::getPoint))
+                        .orElseThrow(NoSuchElementException::new);
+                return choosenCardToBlock;
+            } catch (NoSuchElementException e) {
+                Card chooseMaxCard = computersCards.stream()
+                        .max(Comparator.comparing(Card::getPoint))
+                        .orElse(null);
+                return chooseMaxCard;
+            }
+        } else{
+            System.out.println("Computer doesn't have any card on board");
+            return  null;
+        }
     }
 
     public Card playCard(){

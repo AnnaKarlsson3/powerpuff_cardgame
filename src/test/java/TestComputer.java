@@ -32,9 +32,9 @@ public class TestComputer {
 
     @Test
     void testAttackCard(){
-        Card computerCard = new Card("Fighter", "MockCard 2", 3 ,3);
+        //Card computerCard = new Card("Fighter", "MockCard 2", 3 ,3);
         ArrayList<Card> computersCards = game.gameboard.getComputerActiveCards();
-        computersCards.add(computerCard);
+        //computersCards.add(computerCard);
         if(!computersCards.isEmpty()){
             assertNotNull(computer.attackCard(game.gameboard));
         } else {
