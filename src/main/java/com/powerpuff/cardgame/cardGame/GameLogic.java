@@ -20,7 +20,8 @@ public class GameLogic {
 
    public int damage;
     public int attack(Player opponent, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
-        damage = 0;
+        damage = attack.getPoint() - block.getBlockPointPoint();
+
 
 
         return damage;
