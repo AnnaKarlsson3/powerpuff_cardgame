@@ -20,6 +20,7 @@ public class GameLogic {
 
     public int damage;
     public boolean greater;
+    public boolean less;
 
     public int attack(Player opponent, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
         damage = attack.getPoint() - block.getBlockPointPoint();
