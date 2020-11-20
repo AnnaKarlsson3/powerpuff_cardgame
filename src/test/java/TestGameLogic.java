@@ -31,6 +31,16 @@ public class TestGameLogic {
         assertTrue(gameLogic.damage == 2, "damage should be 2");
         assertTrue(gameLogic.greater == attackCard.getPoint() > blockCard.getBlockPointPoint(), "attackpoints are greater than blockpoints");
 
+//-----------------------
+
+        Card attackCard3 = new Card("Fighter", "Lola", 1, 1);
+        Card blockCard3 = new Card("Fighter", "Karlada", 3,3);
+        computer.setHp(20);
+
+        assertEquals(20,  gameLogic.attack(computer, attackCard3, blockCard3, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 20");
+        assertTrue(gameLogic.less == attackCard3.getPoint() < blockCard3.getBlockPointPoint(), "attackpoints are less than blockpoints");
+
+
 
 
     }
