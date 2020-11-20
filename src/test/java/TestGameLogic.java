@@ -29,7 +29,7 @@ public class TestGameLogic {
 
         int damage = attackCard.getPoint() - blockCard.getBlockPointPoint();
         assertEquals(2, gameLogic.attack(computer, attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "answer should be 2");
-       
+
 
 
     }
