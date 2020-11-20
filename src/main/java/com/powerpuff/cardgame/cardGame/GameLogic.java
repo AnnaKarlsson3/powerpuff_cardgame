@@ -32,10 +32,7 @@ public class GameLogic {
         }else {
             block(attack, block, playerActiveCards, opponentActiveCards);
         }
-
-
         return opponent.getHp();
-
     }
 
     public int block(Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
@@ -48,11 +45,12 @@ public class GameLogic {
             block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
             playerActiveCards.remove(attack);
             System.out.println("'"+attack.getName() + "' is dead");
+        }else {
+            opponentActiveCards.remove(block);
+            playerActiveCards.remove(attack);
+            System.out.println(" both attack card '" + attack.getName() + "' and block card '" + block.getName() + "' are dead");
         }
-
         return block.getBlockPointPoint();
-
     }
-
-
+    
 }
