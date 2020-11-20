@@ -46,8 +46,9 @@ public class TestGameLogic {
         Card attackCard = new Card("Fighter", "Piner", 3, 3);
         Card blockCard = new Card("Fighter", "Dora", 1,1);
 
-        gameLogic.block(attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards());
+        assertEquals(1,  gameLogic.block(attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 1");
         assertTrue(gameLogic.greater == attackCard.getPoint() > blockCard.getBlockPointPoint(), "attackpoints are greater than blockpoints");
+        
     }
 
 

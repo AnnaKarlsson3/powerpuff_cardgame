@@ -37,8 +37,13 @@ public class GameLogic {
 
     }
 
-    public void block(Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
+    public int block(Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
+        greater = attack.getPoint() > block.getBlockPointPoint();
+        if(greater){
 
+        }
+
+        return block.getBlockPointPoint();
 
     }
 
