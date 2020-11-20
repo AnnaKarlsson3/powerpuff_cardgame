@@ -68,7 +68,7 @@ public class TestGameLogic {
         assertArrayEquals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray(), "Expected both to be equal");
         assertEquals(3,  gameLogic.block(attackCard2, blockCard2, playerActiveCards, computerActiveCards), "hpDamage should be 3");
         assertTrue(gameLogic.less == attackCard2.getPoint() < blockCard2.getBlockPointPoint(), "attackpoints are less than blockpoints");
-
+        assertFalse(Arrays.equals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray()), "Expected both not to be equal");
     }
 
 
