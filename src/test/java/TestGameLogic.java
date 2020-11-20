@@ -27,12 +27,12 @@ public class TestGameLogic {
         Card attackCard = new Card("Fighter", "Piner", 3, 3);
         Card blockCard = new Card("Fighter", "Dora", 1,1);
 
-
-        gameLogic.attack(computer, attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards());
+        assertEquals(18,  gameLogic.attack(computer, attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 18");
         assertTrue(gameLogic.damage == 2, "damage should be 2");
         assertTrue(gameLogic.greater == attackCard.getPoint() > blockCard.getBlockPointPoint(), "attackpoints are greater than blockpoints");
-        assertEquals(18,  computer.getHp() - gameLogic.damage, "hpDamage should be 18");
-        assertTrue(gameLogic.hpDamage == 18, "hpDamage should be equal to 18");
+
+
+
     }
 
     @Test
