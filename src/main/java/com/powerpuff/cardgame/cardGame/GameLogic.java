@@ -46,6 +46,8 @@ public class GameLogic {
             System.out.println("opponent" + block.getName() + "'  is dead\n");
         }else if(less){
             block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
+            playerActiveCards.remove(attack);
+            System.out.println("'"+attack.getName() + "' is dead");
         }
 
         return block.getBlockPointPoint();
