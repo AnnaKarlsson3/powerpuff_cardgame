@@ -25,7 +25,6 @@ public class GameLogic {
     public int attack(Player opponent, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
         damage = attack.getPoint() - block.getBlockPointPoint();
         greater = attack.getPoint() > block.getBlockPointPoint();
-
         if(greater){
             opponent.setHp(opponent.getHp() - damage);
             block(attack, block, playerActiveCards, opponentActiveCards);
@@ -40,7 +39,7 @@ public class GameLogic {
         less = attack.getPoint() < block.getBlockPointPoint() && block.getPoint() > attack.getBlockPointPoint();
         if(greater){
             opponentActiveCards.remove(block);
-            System.out.println("opponent" + block.getName() + "'  is dead\n");
+            System.out.println("opponent '" + block.getName() + "'  is dead\n");
         }else if(less){
                 block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
                 playerActiveCards.remove(attack);
