@@ -22,7 +22,12 @@ public class GameLogic {
     public boolean greater;
     public int attack(Player opponent, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
         damage = attack.getPoint() - block.getBlockPointPoint();
+        greater = attack.getPoint() > block.getBlockPointPoint();
+        if(greater){
+            int hpDamage = 0;
 
+            return hpDamage;
+        }
 
 
         return damage;
