@@ -36,21 +36,24 @@ public class GameLogic {
     }
 
     public int block(Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
-        greater = attack.getPoint() > block.getBlockPointPoint();
-        less = attack.getPoint() < block.getBlockPointPoint();
+        greater = attack.getPoint() > block.getBlockPointPoint() && block.getPoint() < attack.getBlockPointPoint();
+        less = attack.getPoint() < block.getBlockPointPoint() && block.getPoint() > attack.getBlockPointPoint();
         if(greater){
             opponentActiveCards.remove(block);
             System.out.println("opponent" + block.getName() + "'  is dead\n");
         }else if(less){
-            block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
-            playerActiveCards.remove(attack);
-            System.out.println("'"+attack.getName() + "' is dead");
-        }else {
+                block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
+                playerActiveCards.remove(attack);
+                System.out.println("'" + attack.getName() + "' is dead");
+                System.out.println(block.getName() + " blockpoints is now " + block.getBlockPointPoint());
+
+        }
+         else {
             opponentActiveCards.remove(block);
             playerActiveCards.remove(attack);
             System.out.println(" both attack card '" + attack.getName() + "' and block card '" + block.getName() + "' are dead");
         }
         return block.getBlockPointPoint();
     }
-    
+
 }
