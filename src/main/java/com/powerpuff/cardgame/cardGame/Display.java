@@ -80,7 +80,7 @@ public class Display {
 
         List<String> cardList = cardsInHand.stream()
                 .map(card -> numbers.getAndIncrement() + ". Type: " + card.getType()
-                        + " - Name: " + card.getName() + " - Points: " + card.getPoint() + "\n")
+                        + " - Name: " + card.getName() + " - Points: " + card.getPoint() +" - block points: " + card.getBlockPointPoint() + "\n")
                 .collect(Collectors.toList());
         return cardList;
     }
