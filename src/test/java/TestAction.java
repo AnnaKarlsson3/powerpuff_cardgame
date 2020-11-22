@@ -1,7 +1,5 @@
 
-import com.powerpuff.cardgame.cardGame.Action;
-import com.powerpuff.cardgame.cardGame.Card;
-import com.powerpuff.cardgame.cardGame.Hand;
+import com.powerpuff.cardgame.cardGame.*;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -31,19 +29,23 @@ public class TestAction {
     @Test
     public void testChooseOneCard(){
         Hand hand = new Hand();
+        Action action = new Action();
         int numberInHand = 3;
 
-
         Card card1 = hand.cardsInHand.get(numberInHand-1);
-
         Card card2 = action.findCardByNumber(numberInHand, hand);
 
         assertEquals(card1, card2 );
         assertNotNull(card1);
         assertNotNull(card2);
 
+        assertNotNull(action.findCardByNumber(numberInHand, hand));
+        assertFalse(card1.toString().length() == 0);
+
 
     }
+
+
 
 
     @AfterEach
