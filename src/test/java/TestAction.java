@@ -45,6 +45,30 @@ public class TestAction {
 
     }
 
+    @Test
+    public void testSelectCardFromGameBoard(){
+        Game game = new Game();
+        Gameboard gameboard = new Gameboard();
+        int selectedCardOnBoard = 1;
+
+        Card activeCard1 = new Card("Fighter", "MockCard 1", 3 ,3);
+        Card activeCard2 = new Card("Fighter", "MockCard 2", 3 ,3);
+
+        ArrayList<Card> playerActiveCards = game.gameboard.getPlayerActiveCards();
+        playerActiveCards.add(activeCard1);
+        playerActiveCards.add(activeCard2);
+        Card card1 = game.gameboard.getPlayerActiveCards().get(selectedCardOnBoard-1);
+
+
+       assertEquals(card1,activeCard1 );
+
+       Card placedCard = gameboard.placePlayerCardOnGameboard(new Card("Fighter", "Mockcard 3", 3, 3));
+       Card card2 = action.findCardByNumberFromBoard(selectedCardOnBoard, gameboard);
+
+       assertEquals(placedCard, card2);
+
+    }
+
 
 
 
