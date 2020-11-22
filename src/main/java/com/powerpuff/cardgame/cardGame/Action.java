@@ -14,8 +14,6 @@ public class Action {
 
 
     public void inputMenu(Game game) {
-
-
         Display display = new Display();
         boolean cont = true;
         while (cont) {
