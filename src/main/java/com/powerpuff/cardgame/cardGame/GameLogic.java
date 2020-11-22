@@ -8,8 +8,14 @@ public class GameLogic {
 
 
     public String manageSelectedCard(Card playedCard, Player player, Gameboard gameboard) {
-
-        return "";
+        if (playedCard.getType().equals("Action")) {
+            player.setHp(player.getHp() + playedCard.getPoint());
+        } else {
+            gameboard.placePlayerCardOnGameboard(playedCard);
+        }
+        player.getHand().deletePlayedCard(playedCard);
+        player.getHand().addNewCardToHand();
+        return playedCard.getType();
 
     }
 
