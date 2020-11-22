@@ -7,15 +7,9 @@ public class GameLogic {
 
 
 
-    public String checkCardType(Card playedCard, Player player, Gameboard gameboard) {
-        if (playedCard.getType().equals("Action")) {
-            player.setHp(player.getHp() + playedCard.getPoint());
-            player.getHand().deletePlayedCard(playedCard);
-            player.getHand().addNewCardToHand();
-        } else {
-            gameboard.placePlayerCardOnGameboard(playedCard);
-        }
-        return playedCard.getType();
+    public String manageSelectedCard(Card playedCard, Player player, Gameboard gameboard) {
+
+        return "";
 
     }
 

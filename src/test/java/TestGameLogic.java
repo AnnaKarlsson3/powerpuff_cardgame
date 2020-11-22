@@ -105,24 +105,35 @@ public class TestGameLogic {
 
 
     @Test
-    public void testCheckCardType() {
+    public void testManageSelectedCard() {
+        System.out.println("== Test to check logic of manageSelectedCard(), it deletes played cards from hand ==");
+        System.out.println("== Test to check logic of manageSelectedCard(), if c" +
+                "ard it \"fighter\" then playerActiveCardSize will increase by 1 ==");
+
 
         Player player = game.player;
 
 
         Card card1 = new Card("Action", "actionCard", 3, 3);
         Card card2 = new Card("Fighter", "fighterCard", 3, 3);
-        int beforeBoardListSize = game.gameboard.getPlayerActiveCards().size();
+        Card playedCard = (Card) player.getHand().getCardsInHand().get(0);
+
+        int beforePlayerActiveCardSize = game.gameboard.getPlayerActiveCards().size();
+        String action = gameLogic.manageSelectedCard(card1, player, game.gameboard);
+        String fighter = gameLogic.manageSelectedCard(card2, player, game.gameboard);
+        gameLogic.manageSelectedCard(playedCard, player, game.gameboard);
+        int afterPlayerActiveCardSize = game.gameboard.getPlayerActiveCards().size();
+
         assertAll(
-                () -> assertEquals("Action", gameLogic.checkCardType(card1, player, game.gameboard)),
-                () -> assertEquals("Fighter", gameLogic.checkCardType(card2, player, game.gameboard))
+                () -> assertEquals("Action", action),
+                () -> assertEquals("Fighter", fighter),
+                () -> assertFalse(player.getHand().getCardsInHand().contains(playedCard), "playedCard is not in hand anymore"),
+                () -> assertNotEquals(beforePlayerActiveCardSize, afterPlayerActiveCardSize, "size should not be equal")
 
         );
-        int afterBoardListSize = game.gameboard.getPlayerActiveCards().size();
-        assertNotEquals(beforeBoardListSize,afterBoardListSize);
+
 
     }
-
 
 
 
