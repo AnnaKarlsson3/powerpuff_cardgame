@@ -59,36 +59,35 @@ public class TestDisplay {
     }
 
 
-    @Test
-    public void testNumerationOfCardsInHand() {
-        Hand hand = new Hand();
-
-        List<String> numberedCards = display.addNumbersToCards(hand.getCardsInHand());
-
-        List<String> cardNumbers = numberedCards
-                .stream()
-                .map(card -> card.substring(0, 1))
-                .collect(Collectors.toList());
-
-        List<String> listOfNumbers = Stream.of("1", "2", "3", "4", "5")
-                .collect(Collectors.toList());
-
-        assertEquals(listOfNumbers, cardNumbers);
-    }
-
-    @Test
-    public void testDisplayPlayedCard() {
-        Hand hand = new Hand();
-        Card card = (Card) hand.getCardsInHand().get(0);
-
-        display.printPlayedCard(card);
-
-        String expected = "Played card - Type: " + card.getType() + " - Name: " + card.getName() + " - Points: " + card.getPoint();
-        String actual = display.playedCard;
-
-        assertEquals(expected, actual);
-    }
-
+//    @Test
+//    public void testNumerationOfCardsInHand() {
+//        Hand hand = new Hand();
+//
+//        List<String> numberedCards = display.addNumbersToCards(hand.getCardsInHand());
+//
+//        List<String> cardNumbers = numberedCards
+//                .stream()
+//                .map(card -> card.substring(0, 1))
+//                .collect(Collectors.toList());
+//
+//        List<String> listOfNumbers = Stream.of("1", "2", "3", "4", "5")
+//                .collect(Collectors.toList());
+//
+//        assertEquals(listOfNumbers, cardNumbers);
+//    }
+//
+//    @Test
+//    public void testDisplayPlayedCard() {
+//        Hand hand = new Hand();
+//        Card card = (Card) hand.getCardsInHand().get(0);
+//
+//        display.printPlayedCard(card);
+//
+//        String expected = "Played card - Type: " + card.getType() + " - Name: " + card.getName() + " - Points: " + card.getPoint();
+//        String actual = display.playedCard;
+//
+//        assertEquals(expected, actual);
+//    }
 
     @Test
     public void testDisplayBlockMessage(){
