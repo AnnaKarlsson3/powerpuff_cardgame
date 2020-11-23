@@ -230,7 +230,7 @@ public class Display {
         return computerNoAttackCard = "computer is not having any cards on the board to attack with";
     }
 
-    public String printNoAttackCardsComputer(){
+    public String printNoAttackCardsComputer() {
         System.out.println(computerNoAttackCard);
         return null;
     }

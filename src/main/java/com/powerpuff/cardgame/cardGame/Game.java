@@ -104,12 +104,12 @@ public class Game {
 
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
-        System.out.println("---------------------");
+        display.printBreakLine();
         System.out.println(" ");
     }
 
     public void computerTurn(){
-        System.out.println("---------------------");
+        display.printBreakLine();
         display.printComputerTurn();
         computer.computerSendToBoard(gameboard);
 
@@ -121,11 +121,11 @@ public class Game {
                 Card attackCard = computer.attackCard(gameboard);
                 System.out.println("\ncomputer's attack card");
                 System.out.println(attackCard);
-                System.out.println("----------------------------------------------------");
+                display.printBreakLine();
 
                 if (gameboard.playerActiveCards.size() == 0) {
                     player.setHp(player.getHp() - attackCard.getPoint());
-                    System.out.println("Player has no blockCard!");
+                    display.printBlockMessageNoBlockCardsAvailable();
                 } else {
                     display.printBlockMessage();
                     display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
@@ -135,7 +135,8 @@ public class Game {
                 System.out.println(" ");
                 display.formatCardToPlay(attackCard);
                 computer.getHand().deletePlayedCard(attackCard);
-            } else System.out.println("computer not having any Cards on board to attack with");
+            } else
+            display.printNoAttackCardsComputer();
 
 
         }
@@ -146,7 +147,7 @@ public class Game {
 
         //computer.getHand().addNewCardToHand();
 
-        System.out.println("---------------------");
+       display.printBreakLine();
         System.out.println(" ");
     }
 
