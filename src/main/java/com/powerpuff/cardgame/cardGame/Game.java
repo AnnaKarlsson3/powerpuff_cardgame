@@ -1,6 +1,7 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Game {
     Action action;
@@ -30,29 +31,59 @@ public class Game {
 
     }
 
+
+
     public void run() {
 
+        int random_nr = (int)Math.round(Math.random());
 
         setPlayerName();
+
+        if(random_nr == 1){
+            System.out.println("Player is starting first");
+        } else {
+            System.out.println("Computer is starting first");
+        }
+
+
 
 
         while (!gameOver) {
             round++;
             System.out.println("------------------| Round - " + round +" |------------------------------\n");
 
-            playerTurn();
-            display.printEndMessage();
-            action.inputMenu(this);
-            if (gameOver) break;
 
-            computerTurn();
+
+            if( random_nr == 1){
+                playerTurn();
+                display.printEndMessage();
+                action.inputMenu(this);
+                if (gameOver) break;
+
+                computerTurn();
+
+            } else {
+                computerTurn();
+                display.printEndMessage();
+                action.inputMenu(this);
+                if (gameOver) break;
+
+                playerTurn();
+
+            }
+
+
+
+
             gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
+
 
 
         }
         playAgain();
 
     }
+
 
     private void playAgain() {
         display.printPlayAgain();
@@ -66,6 +97,9 @@ public class Game {
         action.inputPlayerName();
         player.setName(action.playerName);
     }
+
+
+
 
     public void playerTurn() {
         display.printPlayerName(player.getName());
