@@ -28,12 +28,12 @@ public class Display {
     public void printEndMessage() {
         System.out.println("To continue press 1, to end game, press 0");
     }
+
+
+
     public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
     }
-
-
-
     public String enterNameMessage() {
         return enterNameMessage = "Enter player name: ";
     }
@@ -54,10 +54,11 @@ public class Display {
         printComputerTurnMessage();
         System.out.println(computerTurn);
     }
-
     public String printComputerTurnMessage() {
-        return computerTurn = "computer´s turn!";
+        return computerTurn;
     }
+
+
 
     public void printPlayerHp(int hp) {
         printPlayerHpMessage();

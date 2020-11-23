@@ -29,20 +29,14 @@ public class TestDisplay {
     public void testPlayerNameTurn() {
         player.setName("Anders");
         String expected = "It´s " + player.getName() + " turn";
-
-       assertEquals(expected, display.playerNameTurn(player.getName()), "Strings should be equal");
-
+        assertEquals(expected, display.playerNameTurn(player.getName()), "Strings should be equal");
     }
 
 
     @Test
     public void testPrintComputerTurnMessage() {
-        display.printComputerTurn();
-
-        String actual = display.computerTurn;
-        String expected = "computer´s turn!";
-
-        assertEquals(expected, actual);
+       String expected = "It´s computer´s turn";
+       assertEquals(expected, display.printComputerTurnMessage(), "strings should be equal");
     }
 
 
