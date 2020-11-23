@@ -19,7 +19,7 @@ public class Display {
     public String displayAttackMessage = "";
     public String displayAttackMessageNoCardsAvailable = "";
     public String computerNoCardsOnBoard = "";
-    public String computerPlacedActionCard ="";
+    public String computerPlayedActionCard ="";
 
 
     public Display() {
@@ -181,11 +181,21 @@ public class Display {
     }
 
 
-    public  String printComputerNoCardsOnBoardMessage(){
+    public  String computerNoCardsOnBoardMessage(){
         return computerNoCardsOnBoard ="Computer doesn't have any card on board";
     }
 
-    public String printComputerPlacedActionCard() {
+    public String printComputerNoCardsOnBoard() {
+        System.out.println(computerNoCardsOnBoardMessage());
+        return null;
+    }
+
+    public String computerPlayedActionCard() {
+        return computerPlayedActionCard = "Computer Played Action Card: ";
+    }
+
+    public String printComputerPlayedActionCard() {
+        System.out.println(computerPlayedActionCard());
         return null;
     }
 }
