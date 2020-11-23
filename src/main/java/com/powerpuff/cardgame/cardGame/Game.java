@@ -18,7 +18,7 @@ public class Game {
     //public Card selectedCardFromBoard = null;
 
 
-    public Game(){
+    public Game() {
         player = new Player();
         computer = new Computer();
         computer.setHp(20);
@@ -32,29 +32,25 @@ public class Game {
     }
 
 
-
     public void run() {
 
-        int random_nr = (int)Math.round(Math.random());
+        int random_nr = (int) Math.round(Math.random());
 
         setPlayerName();
 
-        if(random_nr == 1){
+        if (random_nr == 1) {
             System.out.println("Player is starting first");
         } else {
             System.out.println("Computer is starting first");
         }
 
 
-
-
         while (!gameOver) {
             round++;
-            System.out.println("------------------| Round - " + round +" |------------------------------\n");
+            System.out.println(Display.YELLOW_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
 
 
-
-            if( random_nr == 1){
+            if (random_nr == 1) {
                 playerTurn();
                 display.printEndMessage();
                 action.inputMenu(this);
@@ -73,10 +69,7 @@ public class Game {
             }
 
 
-
-
             gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
-
 
 
         }
@@ -92,13 +85,11 @@ public class Game {
 
     }
 
-    public void setPlayerName(){
+    public void setPlayerName() {
         display.printEnterNameMessage();
         action.inputPlayerName();
         player.setName(action.playerName);
     }
-
-
 
 
     public void playerTurn() {
@@ -142,7 +133,7 @@ public class Game {
         System.out.println(" ");
     }
 
-    public void computerTurn(){
+    public void computerTurn() {
         display.printBreakLine();
         display.printComputerTurn();
         computer.computerSendToBoard(gameboard);
@@ -170,7 +161,7 @@ public class Game {
                 display.printPlayedCard(attackCard);
                 computer.getHand().deletePlayedCard(attackCard);
             } else
-            display.printNoAttackCardsComputer();
+                display.printNoAttackCardsComputer();
 
 
         }
@@ -181,26 +172,26 @@ public class Game {
 
         //computer.getHand().addNewCardToHand();
 
-       display.printBreakLine();
+        display.printBreakLine();
         System.out.println(" ");
     }
 
     public boolean gameOver(ArrayList<Card> playerHand, int playerHp, ArrayList<Card> computerHand, int computerHp) {
 
         if (playerHp <= 0 || playerHand.size() == 0) {
-            if(playerHp < computerHp){
+            if (playerHp < computerHp) {
                 display.printWinner(computer);
             }
-            if(playerHp == computerHp){
+            if (playerHp == computerHp) {
                 display.printTie();
             }
             gameOver = true;
         }
-        if(computerHp <= 0 || computerHand.size() == 0){
-            if(computerHp < playerHp){
+        if (computerHp <= 0 || computerHand.size() == 0) {
+            if (computerHp < playerHp) {
                 display.printWinner(player);
             }
-            if(computerHp == playerHp){
+            if (computerHp == playerHp) {
                 display.printTie();
             }
             gameOver = true;

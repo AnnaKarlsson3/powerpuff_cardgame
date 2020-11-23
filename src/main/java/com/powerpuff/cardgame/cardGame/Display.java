@@ -23,6 +23,12 @@ public class Display {
     public String computerPlayedFighterCard ="";
     public String breakLine = "";
     public String computerNoAttackCard = "";
+    public static final String RESET = "\033[0m";  // Text Reset
+    public static final String YELLOW_BOLD = "\033[1;33m"; // YELLOW
+    public static final String RED_BOLD = "\033[1;31m";    // RED
+    public static final String PURPLE = "\u001B[35m";
+    public static final String RESET_COLOR = "\u001B[0m";
+
 
     public Display() {
         enterNameMessage();
@@ -78,8 +84,7 @@ public class Display {
     private StringBuilder printAsciiCards(ArrayList<Card> cards) {
         StringBuilder asciiCards = new StringBuilder();
 
-        String PURPLE = "\u001B[35m";
-        String RESET_COLOR = "\u001B[0m";
+
         AtomicInteger cardNumber = new AtomicInteger(1);
         AtomicInteger numberInsideCard = new AtomicInteger(1);
 
@@ -87,21 +92,21 @@ public class Display {
                 .stream()
                 .map(card -> PURPLE + cardNumber.getAndIncrement() + ". " + RESET_COLOR + card.getType() + ": " + card.getName())
                 .collect(Collectors.joining(" | ")) + "\n");
-        cards.stream().forEach(card -> asciiCards.append(" ┌───────────┐     "));
+        cards.stream().forEach(card -> asciiCards.append(" ┌──────────┐     "));
         asciiCards.append("\n");
         asciiCards.append(cards
                 .stream()
-                .map(card -> " │ \uD83D\uDCA5" + card.getPoint())
-                .collect(Collectors.joining("       │     ")) + "       |\n");
+                .map(card ->(card.getType().equals("Action")?" │"+RED_BOLD + " ❤":  " │"+YELLOW_BOLD +" \uD83D\uDCA5")+ RESET + card.getPoint() )
+                .collect(Collectors.joining("      │     ")) + "       |\n");
         asciiCards.append(cards
                 .stream()
-                .map(card -> " │ ⛨" + card.getBlockPointPoint())
-                .collect(Collectors.joining("       │     ")) + "       |\n");
+                .map(card -> card.getType().equals("Action")? " │    ": " │"+YELLOW_BOLD +" ⛨" + RESET + card.getBlockPointPoint() )
+                .collect(Collectors.joining("      │     ")) + "       |\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET_COLOR)
-                .collect(Collectors.joining("  │     ")) + "  │\n");
-        cards.stream().forEach(card -> asciiCards.append(" └───────────┘     "));
+                .collect(Collectors.joining(" │     ")) + "  │\n");
+        cards.stream().forEach(card -> asciiCards.append(" └──────────┘     "));
         asciiCards.append("\n");
         return asciiCards;
     }
@@ -123,12 +128,22 @@ public class Display {
     }
 
     public void printPlayedCard(Card chosenCard) {
+        String point="";
+        String blockPoint = "    ";
+        if(chosenCard.getType().equals("Action")){
+            point = RED_BOLD + " ❤"+ RESET + chosenCard.getPoint();
+
+        }else{
+            point = YELLOW_BOLD +" \uD83D\uDCA5"+ RESET + chosenCard.getPoint();
+            blockPoint= YELLOW_BOLD +" ⛨" + RESET + chosenCard.getBlockPointPoint();
+
+        }
 
         final StringBuilder asciiCard = new StringBuilder();
         asciiCard.append(chosenCard.getType() + ": " + chosenCard.getName() + "\n");
         asciiCard.append("┌───────────┐\n");
-        asciiCard.append("│ \uD83D\uDCA5" + chosenCard.getPoint() + "       │\n");
-        asciiCard.append("│ ⛨" + chosenCard.getBlockPointPoint() + "       │\n");
+        asciiCard.append("│ "+point+ "      │\n");
+        asciiCard.append("│ "+blockPoint+ "      │\n");
         asciiCard.append("│           │\n");
         asciiCard.append("└───────────┘\n");
         printPlayedCardMessage(asciiCard);
