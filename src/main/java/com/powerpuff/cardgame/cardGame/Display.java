@@ -90,9 +90,8 @@ public class Display {
                 .stream()
                 .map(card -> PURPLE + cardNumber.getAndIncrement() + ". " + RESET_COLOR + card.getType() + ": " + card.getName())
                 .collect(Collectors.joining(" | ")) + "\n");
-
-        asciiCards.append(" ┌───────────┐   "); asciiCards.append("   ┌───────────┐   "); asciiCards.append("   ┌───────────┐   "); asciiCards.append("   ┌───────────┐   ");
-        asciiCards.append("  ┌───────────┐\n");
+        cards.stream().forEach(card -> asciiCards.append(" ┌───────────┐     "));
+        asciiCards.append("\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │ \uD83D\uDCA5" + card.getPoint())
@@ -105,8 +104,8 @@ public class Display {
                 .stream()
                 .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET_COLOR)
                 .collect(Collectors.joining("  │     ")) + "  │\n");
-        asciiCards.append(" └───────────┘ "); asciiCards.append("     └───────────┘   "); asciiCards.append("   └───────────┘   ");asciiCards.append("   └───────────┘   ");
-        asciiCards.append("  └───────────┘ \n");
+        cards.stream().forEach(card -> asciiCards.append(" └───────────┘     "));
+        asciiCards.append("\n");
         return asciiCards;
     }
 
