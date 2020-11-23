@@ -10,59 +10,52 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestDisplay {
 
     Display display;
+    Player player;
+    Computer computer;
 
     @BeforeEach
     void init() {
         System.out.println("@BeforeEach executed");
         display = new Display();
+        player = new Player();
+        computer = new Computer();
     }
 
     @Test
     public void testEnterNameMessage() {
-        String actual = display.enterNameMessage;
-        String expected = "Enter player name:";
-
-        assertEquals(expected, actual);
+        String expected = "Enter player name: ";
+        assertEquals(expected, display.enterNameMessage(), "strings should be equal");
     }
 
     @Test
-    public void testPlayerName() {
-        display.playerNameTurn();
-
-        String actual = display.playerNameTurn;
-        String expected = " it´s your turn!";
-
-        assertEquals(expected, actual);
+    public void testPlayerNameTurn() {
+        player.setName("Anders");
+        String expected = "It´s " + player.getName() + " turn";
+        assertEquals(expected, display.playerNameTurn(player.getName()), "Strings should be equal");
     }
 
 
     @Test
     public void testPrintComputerTurnMessage() {
-        display.printComputerTurn();
-
-        String actual = display.computerTurn;
-        String expected = "computer´s turn!";
-
-        assertEquals(expected, actual);
+       String expected = "It´s computer´s turn";
+       assertEquals(expected, display.printComputerTurnMessage(), "strings should be equal");
     }
 
 
     @Test
     public void testPrintPlayerHpMessage() {
-        display.printPlayerHpMessage();
-        String actual = display.playerHp;
-        String expected = "Player HP is: ";
+        player.setHp(20);
+        String expected = "Player HP is: " + player.getHp();
 
-        assertEquals(expected, actual);
+        assertEquals(expected, display.printPlayerHpMessage(player.getHp()), "strings should be equal");
     }
 
     @Test
     public void testPrintComputerHpMessage() {
-        display.printComputerHpMessage();
-        String actual = display.computerHp;
-        String expected = "Computer HP is: ";
+        computer.setHp(20);
+        String expected = "Computer HP is: " + computer.getHp();
 
-        assertEquals(expected, actual);
+        assertEquals(expected, display.printComputerHpMessage(computer.getHp()));
     }
 
 
