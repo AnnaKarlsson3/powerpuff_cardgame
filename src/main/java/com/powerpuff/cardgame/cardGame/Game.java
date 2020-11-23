@@ -18,7 +18,7 @@ public class Game {
     //public Card selectedCardFromBoard = null;
 
 
-    public Game(){
+    public Game() {
         player = new Player();
         computer = new Computer();
         computer.setHp(20);
@@ -74,9 +74,7 @@ public class Game {
 
 
 
-
-            gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
-
+            gameOver();
 
 
         }
@@ -92,7 +90,7 @@ public class Game {
 
     }
 
-    public void setPlayerName(){
+    public void setPlayerName() {
         display.printEnterNameMessage();
         action.inputPlayerName();
         player.setName(action.playerName);
@@ -138,12 +136,12 @@ public class Game {
 
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
-        display.printBreakLine();
+        System.out.println("---------------------");
         System.out.println(" ");
     }
 
-    public void computerTurn(){
-        display.printBreakLine();
+    public void computerTurn() {
+        System.out.println("---------------------");
         display.printComputerTurn();
         computer.computerSendToBoard(gameboard);
 
@@ -155,11 +153,11 @@ public class Game {
                 Card attackCard = computer.attackCard(gameboard);
                 System.out.println("\ncomputer's attack card");
                 System.out.println(attackCard);
-                display.printBreakLine();
+                System.out.println("----------------------------------------------------");
 
                 if (gameboard.playerActiveCards.size() == 0) {
                     player.setHp(player.getHp() - attackCard.getPoint());
-                    display.printBlockMessageNoBlockCardsAvailable();
+                    System.out.println("Player has no blockCard!");
                 } else {
                     display.printBlockMessage();
                     display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
@@ -169,8 +167,7 @@ public class Game {
                 System.out.println(" ");
                 display.formatCardToPlay(attackCard);
                 computer.getHand().deletePlayedCard(attackCard);
-            } else
-            display.printNoAttackCardsComputer();
+            } else System.out.println("computer not having any Cards on board to attack with");
 
 
         }
@@ -181,28 +178,31 @@ public class Game {
 
         //computer.getHand().addNewCardToHand();
 
-       display.printBreakLine();
+        System.out.println("---------------------");
         System.out.println(" ");
     }
 
-    public boolean gameOver(ArrayList<Card> playerHand, int playerHp, ArrayList<Card> computerHand, int computerHp) {
+    public boolean gameOver() {
+        playerHand = player.getHand().getCardsInHand();
+        computerHand = computer.getHand().getCardsInHand();
 
-        if (playerHp <= 0 || playerHand.size() == 0) {
-            if(playerHp < computerHp){
+        if (player.getHp() <= 0 || playerHand.size() == 0) {
+            if (player.getHp() < computer.getHp()) {
                 display.printWinner(computer);
             }
-            if(playerHp == computerHp){
+            if (player.getHp() == computer.getHp()) {
                 display.printTie();
             }
             gameOver = true;
         }
-        if(computerHp <= 0 || computerHand.size() == 0){
-            if(computerHp < playerHp){
+        if (computer.getHp() <= 0 || computerHand.size() == 0) {
+            if (computer.getHp() < player.getHp()) {
                 display.printWinner(player);
             }
-            if(computerHp == playerHp){
+            if (computer.getHp() == player.getHp()) {
                 display.printTie();
             }
+
             gameOver = true;
         }
 

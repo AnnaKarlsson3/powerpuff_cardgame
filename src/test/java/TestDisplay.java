@@ -10,52 +10,59 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestDisplay {
 
     Display display;
-    Player player;
-    Computer computer;
 
     @BeforeEach
     void init() {
         System.out.println("@BeforeEach executed");
         display = new Display();
-        player = new Player();
-        computer = new Computer();
     }
 
     @Test
     public void testEnterNameMessage() {
-        String expected = "Enter player name: ";
-        assertEquals(expected, display.enterNameMessage(), "strings should be equal");
+        String actual = display.enterNameMessage;
+        String expected = "Enter player name:";
+
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void testPlayerNameTurn() {
-        player.setName("Anders");
-        String expected = "It´s " + player.getName() + " turn";
-        assertEquals(expected, display.playerNameTurn(player.getName()), "Strings should be equal");
+    public void testPlayerName() {
+        display.playerNameTurn();
+
+        String actual = display.playerNameTurn;
+        String expected = " it´s your turn!";
+
+        assertEquals(expected, actual);
     }
 
 
     @Test
     public void testPrintComputerTurnMessage() {
-       String expected = "It´s computer´s turn";
-       assertEquals(expected, display.printComputerTurnMessage(), "strings should be equal");
+        display.printComputerTurn();
+
+        String actual = display.computerTurn;
+        String expected = "computer´s turn!";
+
+        assertEquals(expected, actual);
     }
 
 
     @Test
     public void testPrintPlayerHpMessage() {
-        player.setHp(20);
-        String expected = "Player HP is: " + player.getHp();
+        display.printPlayerHpMessage();
+        String actual = display.playerHp;
+        String expected = "Player HP is: ";
 
-        assertEquals(expected, display.printPlayerHpMessage(player.getHp()), "strings should be equal");
+        assertEquals(expected, actual);
     }
 
     @Test
     public void testPrintComputerHpMessage() {
-        computer.setHp(20);
-        String expected = "Computer HP is: " + computer.getHp();
+        display.printComputerHpMessage();
+        String actual = display.computerHp;
+        String expected = "Computer HP is: ";
 
-        assertEquals(expected, display.printComputerHpMessage(computer.getHp()));
+        assertEquals(expected, actual);
     }
 
 
@@ -122,50 +129,6 @@ public class TestDisplay {
         assertEquals(expected, actual);
         assertNotNull(display.attackMessageNoCardsAvailable());
     }
-
-    @Test
-    public void testDisplayComputerNoCardsOnBoard(){
-        String actual = display.computerNoCardsOnBoardMessage();
-        String expected = "Computer doesn't have any card on board";
-
-        assertNotNull(display.computerNoCardsOnBoardMessage(), "should not be null");
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void testComputerPlacedActionCardPrint(){
-        String actual = display.computerPlayedActionCard();
-        String expected = "Computer Played Action Card: ";
-
-        assertNotNull(display.computerPlayedActionCard());
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void testComputerPlayedFighterCard(){
-        String actual = display.computerPlacedFighterCard();
-        String expected = "Computer placed a Fighter Card on the Board";
-        assertNotNull(display.computerPlacedFighterCard());
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void testPrintBreakLine () {
-        String actual = display.breakLineMessage();
-        String expected = "------------------------";
-        assertNotNull(display.breakLineMessage());
-        assertEquals(actual, expected);
-    }
-
-    @Test
-    public void testPrintComputerNoAttachCardsMessage () {
-        String actual = display.computerNoAttackCardsMessage();
-        String expected = "computer is not having any cards on the board to attack with";
-        assertEquals(actual, expected);
-        assertNotNull(display.computerNoAttackCardsMessage());
-    }
-
-
 
 
 

@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Action {
     public String playerName = "";
-    Display display = new Display();
 
 
     public Action() {
@@ -101,7 +100,7 @@ public class Action {
         if (action.equals("n")) {
             game.endGame();
         } else {
-            display.printPlayAgain();
+            System.out.println("choose y/n");
             checkInput(game);
         }
     }

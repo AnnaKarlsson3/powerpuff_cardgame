@@ -7,7 +7,6 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Computer extends Player{
-    Display display = new Display();
 
     public Computer() {
         super.setName("Computer");
@@ -24,12 +23,12 @@ public class Computer extends Player{
 
            if (playedCard.getType().equals("Action")) {
                setHp(getHp() + playedCard.getPoint());
-               display.printComputerPlayedActionCard();
+               System.out.println("Computer Played Action Card: ");
                System.out.println(playedCard);
-               display.printBreakLine();
+               System.out.println("------------------------");
            } else {
                gameboard.placeComputerCardOnGameboard(playedCard);
-               display.printComputerPlacedFighterCard();
+               System.out.println("Computer placed a Fighter Card on the Board");
            }
 
             getHand().deletePlayedCard(playedCard);
@@ -82,7 +81,7 @@ public class Computer extends Player{
                 return chooseMaxCard;
             }
         } else{
-            display.printComputerNoCardsOnBoard();
+            System.out.println("Computer doesn't have any card on board");
             return  null;
         }
     }
