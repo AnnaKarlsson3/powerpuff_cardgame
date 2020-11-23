@@ -33,10 +33,8 @@ public class Computer extends Player{
                display.printComputerPlacedFighterCard();
                display.printPlayedCard(playedCard);
            }
-
             getHand().deletePlayedCard(playedCard);
             getHand().addNewCardToHand();
-
     }
 
     public Card attackCard(Gameboard gameboard) {

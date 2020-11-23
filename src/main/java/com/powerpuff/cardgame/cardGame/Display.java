@@ -29,7 +29,7 @@ public class Display {
     }
 
     public void printEndMessage() {
-        System.out.println("To continue press 1, to end game, press 0");
+        System.out.println("To continue, press 1, to end game - press 0");
     }
 
     public void printEnterNameMessage() {
@@ -44,7 +44,7 @@ public class Display {
         System.out.println(playerNameTurn);
     }
     public String playerNameTurn(String name) {
-        return playerNameTurn = "It´s " + name + " turn";
+        return playerNameTurn = "Your turn, " + name + ".";
     }
 
     public void printComputerTurn() {
@@ -52,7 +52,7 @@ public class Display {
         System.out.println(computerTurn);
     }
     public String printComputerTurnMessage() {
-        return computerTurn = "It´s computer´s turn";
+        return computerTurn = "Computer's turn.";
     }
 
     public void printPlayerHp(int hp) {
@@ -118,7 +118,7 @@ public class Display {
     }
 
     public void printComputersCardsOnBoard(ArrayList<Card> cards) {
-        System.out.println("Computers active cards: \n");
+        System.out.println("Computer's cards on the board: \n");
         printCards(cards);
     }
 
@@ -135,7 +135,7 @@ public class Display {
     }
 
     public void printPlayedCardMessage(StringBuilder asciiCard) {
-        System.out.println("\n" + asciiCard);
+        System.out.println(asciiCard);
     }
 
     public void printWinner(Player player) {
@@ -185,7 +185,7 @@ public class Display {
     }
 
     public String attackMessageNoCardsAvailable() {
-        return displayAttackMessageNoCardsAvailable = "No attack cards left";
+        return displayAttackMessageNoCardsAvailable = "No attack cards left.";
     }
 
     public String printAttackMessageNoCardsAvailable() {
@@ -195,7 +195,7 @@ public class Display {
 
 
     public  String computerNoCardsOnBoardMessage(){
-        return computerNoCardsOnBoard ="Computer doesn't have any card on board";
+        return computerNoCardsOnBoard ="Computer doesn't have any cards on the board";
     }
 
     public String printComputerNoCardsOnBoard() {
@@ -204,7 +204,7 @@ public class Display {
     }
 
     public String computerPlayedActionCard() {
-        return computerPlayedActionCard = "Computer Played Action Card: ";
+        return computerPlayedActionCard = "Computer played an Action card: ";
     }
 
     public String printComputerPlayedActionCard() {
@@ -213,7 +213,7 @@ public class Display {
     }
 
     public String computerPlacedFighterCard() {
-        return computerPlayedFighterCard = "Computer placed a Fighter Card on the Board";
+        return computerPlayedFighterCard = "Computer placed a Fighter card on the Board";
     }
 
     public String printComputerPlacedFighterCard() {
@@ -231,7 +231,7 @@ public class Display {
     }
 
     public String computerNoAttackCardsMessage() {
-        return computerNoAttackCard = "computer is not having any cards on the board to attack with";
+        return computerNoAttackCard = "Computer doesn't have any cards to attack with.";
     }
 
     public String printNoAttackCardsComputer() {
