@@ -5,10 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Action {
-
-    //private static Game game = new Game();
-
-
     public String playerName = "";
 
 
@@ -18,8 +14,6 @@ public class Action {
 
 
     public void inputMenu(Game game) {
-
-
         Display display = new Display();
         boolean cont = true;
         while (cont) {
@@ -72,11 +66,43 @@ public class Action {
 
     }
 
+    public Card selectCardFromBoard(Gameboard gameboard) {
+        int number = getIntInput();
+
+        while (number > gameboard.playerActiveCards.size() || number == 0) {
+            System.out.println("Invalid input");
+            number = getIntInput();
+        }
+        return findCardByNumberFromBoard(number, gameboard);
+
+    }
+    public Card findCardByNumberFromBoard (int numberInBoard, Gameboard gameboard) {
+        Card card = gameboard.playerActiveCards.get(numberInBoard - 1);
+        return card;
+
+    }
+
 
     public Card findCardByNumber(int numberInHand, Hand hand) {
         Card card = hand.cardsInHand.get(numberInHand - 1);
         return card;
 
+    }
+
+    public void checkInput(Game game) {
+        Scanner scanner = new Scanner(System.in);
+        String action = scanner.nextLine();
+
+        if (action.equals("y")) {
+            game.reStart();
+
+        }
+        if (action.equals("n")) {
+            game.endGame();
+        } else {
+            System.out.println("choose y/n");
+            checkInput(game);
+        }
     }
 
 }
