@@ -74,10 +74,11 @@ public class Display {
         printComputerHpMessage(hp);
         System.out.println(computerHp);
     }
-
     public String printComputerHpMessage(int hp) {
         return computerHp = "Computer HP is: " + hp;
     }
+
+
 
     public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
 
@@ -182,4 +183,5 @@ public class Display {
         System.out.println(attackMessageNoCardsAvailable());
         return null;
     }
+    
 }
