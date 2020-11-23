@@ -123,6 +123,50 @@ public class TestDisplay {
         assertNotNull(display.attackMessageNoCardsAvailable());
     }
 
+    @Test
+    public void testDisplayComputerNoCardsOnBoard(){
+        String actual = display.computerNoCardsOnBoardMessage();
+        String expected = "Computer doesn't have any card on board";
+
+        assertNotNull(display.computerNoCardsOnBoardMessage(), "should not be null");
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testComputerPlacedActionCardPrint(){
+        String actual = display.computerPlayedActionCard();
+        String expected = "Computer Played Action Card: ";
+
+        assertNotNull(display.computerPlayedActionCard());
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testComputerPlayedFighterCard(){
+        String actual = display.computerPlacedFighterCard();
+        String expected = "Computer placed a Fighter Card on the Board";
+        assertNotNull(display.computerPlacedFighterCard());
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testPrintBreakLine () {
+        String actual = display.breakLineMessage();
+        String expected = "------------------------";
+        assertNotNull(display.breakLineMessage());
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void testPrintComputerNoAttachCardsMessage () {
+        String actual = display.computerNoAttackCardsMessage();
+        String expected = "computer is not having any cards on the board to attack with";
+        assertEquals(actual, expected);
+        assertNotNull(display.computerNoAttackCardsMessage());
+    }
+
+
+
 
 
 
