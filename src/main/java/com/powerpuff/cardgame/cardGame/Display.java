@@ -45,7 +45,7 @@ public class Display {
         System.out.println(playerNameTurn);
     }
     public String playerNameTurn(String name) {
-        return playerNameTurn;
+        return playerNameTurn = "It´s " + name + " turn";
     }
 
 
