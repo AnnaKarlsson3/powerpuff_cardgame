@@ -12,6 +12,8 @@ public class TestDisplay {
     Display display;
     Player player;
     Computer computer;
+    String BOLD = "\u001b[1m";
+    String RESET_COLOR = "\u001B[0m";
 
     @BeforeEach
     void init() {
@@ -23,31 +25,21 @@ public class TestDisplay {
 
     @Test
     public void testEnterNameMessage() {
-        String expected = "Enter player name: ";
+        String expected = BOLD + "Enter player name: " + RESET_COLOR;
         assertEquals(expected, display.enterNameMessage(), "strings should be equal");
-    }
-
-    @Test
-    public void testPrintRulesMessage(){
-        String expected = "Rules: \n *Player vs computer \n *You start round 1 randomly \n *Fighter-Cards has an attackPoint and a blockPoint, if you play an fighter-card you have to put it on the board \n " +
-                "*Action-Cards has an healthPoint and 0 in blockPoints, if you play an action-card, it gives you life according to the healthPoints \n *You can not attack the first round \n" +
-                "*If you have fighters-cards on the board, you have to attack \n *you can only attack with one fighter/round \n *If computer attacks and you have fighters-cards on board, you have to block \n " +
-                "*If your block-cards blockPoints is less then computers attackPoints, or you don't have any block-cards, you will take damage \n *The card with less blockPoints than attackPoints will die in an attack/block \n " +
-                "*You winn when computers health is 0 or it´s deck is empty \n *You loose when your health is 0 or your deck is empty ";
-        assertEquals(expected, display.printRulesMessage(), "Strings should be equal");
     }
 
     @Test
     public void testPlayerNameTurn() {
         player.setName("Anders");
-        String expected = "It´s " + player.getName() + " turn";
+        String expected = BOLD + "It's " + player.getName() + "'s" + " turn" + RESET_COLOR;
         assertEquals(expected, display.playerNameTurn(player.getName()), "Strings should be equal");
     }
 
 
     @Test
     public void testPrintComputerTurnMessage() {
-       String expected = "It´s computer´s turn";
+       String expected = "It's computer's turn";
        assertEquals(expected, display.printComputerTurnMessage(), "strings should be equal");
     }
 
@@ -55,7 +47,7 @@ public class TestDisplay {
     @Test
     public void testPrintPlayerHpMessage() {
         player.setHp(20);
-        String expected = "Player HP is: " + player.getHp();
+        String expected = BOLD + "Player HP is: " + player.getHp() + RESET_COLOR;
 
         assertEquals(expected, display.printPlayerHpMessage(player.getHp()), "strings should be equal");
     }
@@ -63,7 +55,7 @@ public class TestDisplay {
     @Test
     public void testPrintComputerHpMessage() {
         computer.setHp(20);
-        String expected = "Computer HP is: " + computer.getHp();
+        String expected = BOLD + "Computer HP is: " + computer.getHp() + RESET_COLOR;
 
         assertEquals(expected, display.printComputerHpMessage(computer.getHp()));
     }
@@ -173,6 +165,10 @@ public class TestDisplay {
         assertEquals(actual, expected);
         assertNotNull(display.computerNoAttackCardsMessage());
     }
+
+
+
+
 
 
     @AfterEach

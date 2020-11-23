@@ -1,7 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -24,6 +23,9 @@ public class Display {
     public String breakLine = "";
     public String computerNoAttackCard = "";
     public String printRules = "";
+    String BOLD = "\u001b[1m";
+    String RESET_COLOR = "\u001B[0m";
+
 
     public Display() {
         enterNameMessage();
@@ -52,7 +54,7 @@ public class Display {
         System.out.println(enterNameMessage);
     }
     public String enterNameMessage() {
-        return enterNameMessage = "Enter player name: ";
+        return enterNameMessage = BOLD + "Enter player name: " + RESET_COLOR;
     }
 
     public void printPlayerName(String name) {
@@ -60,7 +62,7 @@ public class Display {
         System.out.println(playerNameTurn);
     }
     public String playerNameTurn(String name) {
-        return playerNameTurn = "It´s " + name + " turn";
+        return playerNameTurn = BOLD + "It's " + name + "'s" + " turn" + RESET_COLOR;
     }
 
     public void printComputerTurn() {
@@ -68,7 +70,7 @@ public class Display {
         System.out.println(computerTurn);
     }
     public String printComputerTurnMessage() {
-        return computerTurn = "It´s computer´s turn";
+        return computerTurn = "It's computer's turn";
     }
 
     public void printPlayerHp(int hp) {
@@ -76,7 +78,7 @@ public class Display {
         System.out.println(playerHp);
     }
     public String printPlayerHpMessage(int hp) {
-        return playerHp = "Player HP is: " + hp;
+        return playerHp = BOLD + "Player HP is: " + hp + RESET_COLOR;
     }
 
     public void printComputerHp(int hp) {
@@ -84,7 +86,7 @@ public class Display {
         System.out.println(computerHp);
     }
     public String printComputerHpMessage(int hp) {
-        return computerHp = "Computer HP is: " + hp;
+        return computerHp = BOLD + "Computer HP is: " + hp + RESET_COLOR;
     }
 
     public void printCards(ArrayList<Card> cards){
@@ -95,7 +97,6 @@ public class Display {
         StringBuilder asciiCards = new StringBuilder();
 
         String PURPLE = "\u001B[35m";
-        String RESET_COLOR = "\u001B[0m";
         AtomicInteger cardNumber = new AtomicInteger(1);
         AtomicInteger numberInsideCard = new AtomicInteger(1);
 
