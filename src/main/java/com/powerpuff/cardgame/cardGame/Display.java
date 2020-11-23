@@ -92,11 +92,11 @@ public class Display {
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │ \uD83D\uDCA5" + card.getPoint())
-                .collect(Collectors.joining("       │     ")) + "      |\n");
+                .collect(Collectors.joining("       │     ")) + "       |\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │ ⛨" + card.getBlockPointPoint())
-                .collect(Collectors.joining("       │     ")) + "      |\n");
+                .collect(Collectors.joining("       │     ")) + "       |\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET_COLOR)

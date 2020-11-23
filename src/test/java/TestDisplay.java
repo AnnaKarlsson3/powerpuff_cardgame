@@ -89,7 +89,6 @@ public class TestDisplay {
 //        assertEquals(expected, actual);
 //    }
 
-
     @Test
     public void testDisplayBlockMessage(){
         String actual = display.blockMessage();
