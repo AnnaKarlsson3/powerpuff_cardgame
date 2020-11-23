@@ -84,11 +84,11 @@ public class Display {
         String PURPLE = "\u001B[35m";
         String RESET_COLOR = "\u001B[0m";
 
-        asciiCards.append( PURPLE + "1." + RESET_COLOR + cards.get(0).getType() + " - " + cards.get(0).getName() + " | ");
-        asciiCards.append( PURPLE + "2." + RESET_COLOR + cards.get(1).getType() + " - " + cards.get(1).getName() + " | ");
-        asciiCards.append( PURPLE + "3." + RESET_COLOR + cards.get(2).getType() + " - " + cards.get(2).getName() + " | ");
-        asciiCards.append( PURPLE + "4." + RESET_COLOR + cards.get(3).getType() + " - " + cards.get(3).getName() + " | ");
-        asciiCards.append( PURPLE + "4." + RESET_COLOR + cards.get(4).getType() + " - " + cards.get(4).getName() + "\n");
+        asciiCards.append( PURPLE + "1. " + RESET_COLOR + cards.get(0).getType() + ": " + cards.get(0).getName() + " | ");
+        asciiCards.append( PURPLE + "2. " + RESET_COLOR + cards.get(1).getType() + ": " + cards.get(1).getName() + " | ");
+        asciiCards.append( PURPLE + "3. " + RESET_COLOR + cards.get(2).getType() + ": " + cards.get(2).getName() + " | ");
+        asciiCards.append( PURPLE + "4. " + RESET_COLOR + cards.get(3).getType() + ": " + cards.get(3).getName() + " | ");
+        asciiCards.append( PURPLE + "5. " + RESET_COLOR + cards.get(4).getType() + ": " + cards.get(4).getName() + "\n");
 
         asciiCards.append(" ┌───────────┐   "); asciiCards.append("   ┌───────────┐   "); asciiCards.append("   ┌───────────┐   "); asciiCards.append("   ┌───────────┐   ");
         asciiCards.append("  ┌───────────┐\n");
@@ -96,8 +96,8 @@ public class Display {
         asciiCards.append("  │ \uD83D\uDCA5" + cards.get(4).getPoint() + "       │\n");
         asciiCards.append(" │ ⛨" + cards.get(0).getBlockPointPoint() + "       │ "); asciiCards.append("     │ ⛨" + cards.get(1).getBlockPointPoint() + "       │   ");asciiCards.append("   │ ⛨" + cards.get(2).getBlockPointPoint() + "       │   ");asciiCards.append("   │ ⛨" + cards.get(3).getBlockPointPoint() + "       │   ");
         asciiCards.append("  │ ⛨" + cards.get(4).getBlockPointPoint() + "       │\n");
-        asciiCards.append(" │        " + PURPLE + "1" + RESET_COLOR + "  │ "); asciiCards.append("     │        " + PURPLE + "1" + RESET_COLOR + "  │   ");asciiCards.append("   │        " + PURPLE + "1" + RESET_COLOR + "  │   ");asciiCards.append("   │        " + PURPLE + "1" + RESET_COLOR + "  │   ");
-        asciiCards.append("  │        " + PURPLE + "1" + RESET_COLOR + "  │\n");
+        asciiCards.append(" │        " + PURPLE + "1" + RESET_COLOR + "  │ "); asciiCards.append("     │        " + PURPLE + "2" + RESET_COLOR + "  │   ");asciiCards.append("   │        " + PURPLE + "3" + RESET_COLOR + "  │   ");asciiCards.append("   │        " + PURPLE + "4" + RESET_COLOR + "  │   ");
+        asciiCards.append("  │        " + PURPLE + "5" + RESET_COLOR + "  │\n");
         asciiCards.append(" └───────────┘ "); asciiCards.append("     └───────────┘   "); asciiCards.append("   └───────────┘   ");asciiCards.append("   └───────────┘   ");
         asciiCards.append("  └───────────┘ \n");
         return asciiCards;
