@@ -18,60 +18,69 @@ public class Display {
     public String displayBlockMessageNoCardsAvailable = "";
     public String displayAttackMessage = "";
     public String displayAttackMessageNoCardsAvailable = "";
+    public String computerNoCardsOnBoard = "";
+    public String computerPlayedActionCard ="";
+    public String computerPlayedFighterCard ="";
+    public String breakLine = "";
+    public String computerNoAttackCard = "";
 
 
     public Display() {
         enterNameMessage();
     }
 
+
     public void printEndMessage() {
         System.out.println("To continue press 1, to end game, press 0");
     }
 
 
+
     public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
     }
-
     public String enterNameMessage() {
-        return enterNameMessage = "Enter player name:";
+        return enterNameMessage = "Enter player name: ";
     }
+
 
 
     public void printPlayerName(String name) {
-        playerNameTurn();
-        System.out.println(name + playerNameTurn);
+        playerNameTurn(name);
+        System.out.println(playerNameTurn);
+    }
+    public String playerNameTurn(String name) {
+        return playerNameTurn = "It´s " + name + " turn";
     }
 
-    public String playerNameTurn() {
-        return playerNameTurn = " it´s your turn!";
-    }
+
 
     public void printComputerTurn() {
         printComputerTurnMessage();
         System.out.println(computerTurn);
     }
-
     public String printComputerTurnMessage() {
-        return computerTurn = "computer´s turn!";
+        return computerTurn = "It´s computer´s turn";
     }
+
+
 
     public void printPlayerHp(int hp) {
-        printPlayerHpMessage();
-        System.out.println(playerHp + hp);
+        printPlayerHpMessage(hp);
+        System.out.println(playerHp);
+    }
+    public String printPlayerHpMessage(int hp) {
+        return playerHp = "Player HP is: " + hp;
     }
 
-    public String printPlayerHpMessage() {
-        return playerHp = "Player HP is: ";
-    }
+
 
     public void printComputerHp(int hp) {
-        printComputerHpMessage();
-        System.out.println(computerHp + hp);
+        printComputerHpMessage(hp);
+        System.out.println(computerHp);
     }
-
-    public String printComputerHpMessage() {
-        return computerHp = "Computer HP is: ";
+    public String printComputerHpMessage(int hp) {
+        return computerHp = "Computer HP is: " + hp;
     }
 
     public void printCards(ArrayList<Card> cards){
@@ -191,7 +200,7 @@ public class Display {
         return null;
     }
 
-    public String printBlockMessageNoBlockCardsAvailable() {
+    public String printBlockMessageNoBlockCardsAvailable () {
         System.out.println(blockMessageNoBlockCardsAvailable());
         return null;
     }
@@ -213,4 +222,51 @@ public class Display {
         System.out.println(attackMessageNoCardsAvailable());
         return null;
     }
+
+
+    public  String computerNoCardsOnBoardMessage(){
+        return computerNoCardsOnBoard ="Computer doesn't have any card on board";
+    }
+
+    public String printComputerNoCardsOnBoard() {
+        System.out.println(computerNoCardsOnBoardMessage());
+        return null;
+    }
+
+    public String computerPlayedActionCard() {
+        return computerPlayedActionCard = "Computer Played Action Card: ";
+    }
+
+    public String printComputerPlayedActionCard() {
+        System.out.println(computerPlayedActionCard());
+        return null;
+    }
+
+    public String computerPlacedFighterCard() {
+        return computerPlayedFighterCard = "Computer placed a Fighter Card on the Board";
+    }
+
+    public String printComputerPlacedFighterCard() {
+        System.out.println(computerPlacedFighterCard());
+        return null;
+    }
+
+    public String breakLineMessage() {
+        return breakLine = "------------------------";
+    }
+
+    public String printBreakLine() {
+        System.out.println(breakLineMessage());
+        return null;
+    }
+
+    public String computerNoAttackCardsMessage() {
+        return computerNoAttackCard = "computer is not having any cards on the board to attack with";
+    }
+
+    public String printNoAttackCardsComputer() {
+        System.out.println(computerNoAttackCard);
+        return null;
+    }
+
 }
