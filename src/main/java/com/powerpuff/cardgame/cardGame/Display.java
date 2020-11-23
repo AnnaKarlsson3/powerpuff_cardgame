@@ -55,7 +55,7 @@ public class Display {
         System.out.println(computerTurn);
     }
     public String printComputerTurnMessage() {
-        return computerTurn;
+        return computerTurn = "It´s computer´s turn";
     }
 
 
