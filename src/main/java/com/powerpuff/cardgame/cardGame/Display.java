@@ -83,12 +83,12 @@ public class Display {
 
         String PURPLE = "\u001B[35m";
         String RESET_COLOR = "\u001B[0m";
+        AtomicInteger cardNumber = new AtomicInteger(1);
 
-        asciiCards.append( PURPLE + "1. " + RESET_COLOR + cards.get(0).getType() + ": " + cards.get(0).getName() + " | ");
-        asciiCards.append( PURPLE + "2. " + RESET_COLOR + cards.get(1).getType() + ": " + cards.get(1).getName() + " | ");
-        asciiCards.append( PURPLE + "3. " + RESET_COLOR + cards.get(2).getType() + ": " + cards.get(2).getName() + " | ");
-        asciiCards.append( PURPLE + "4. " + RESET_COLOR + cards.get(3).getType() + ": " + cards.get(3).getName() + " | ");
-        asciiCards.append( PURPLE + "5. " + RESET_COLOR + cards.get(4).getType() + ": " + cards.get(4).getName() + "\n");
+        asciiCards.append(cards
+                .stream()
+                .map(card -> PURPLE + cardNumber.getAndIncrement() + ". " + RESET_COLOR + card.getType() + ": " + card.getName())
+                .collect(Collectors.joining(" | ")) + "\n");
 
         asciiCards.append(" ┌───────────┐   "); asciiCards.append("   ┌───────────┐   "); asciiCards.append("   ┌───────────┐   "); asciiCards.append("   ┌───────────┐   ");
         asciiCards.append("  ┌───────────┐\n");
