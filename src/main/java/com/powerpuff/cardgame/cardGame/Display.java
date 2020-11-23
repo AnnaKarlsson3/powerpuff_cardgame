@@ -35,7 +35,7 @@ public class Display {
 
 
     public String enterNameMessage() {
-        return enterNameMessage = "Enter player name:";
+        return enterNameMessage;
     }
 
 
