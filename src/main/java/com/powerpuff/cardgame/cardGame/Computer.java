@@ -26,7 +26,7 @@ public class Computer extends Player{
                setHp(getHp() + playedCard.getPoint());
                display.printComputerPlayedActionCard();
                System.out.println(playedCard);
-               System.out.println("------------------------");
+               display.printBreakLine();
            } else {
                gameboard.placeComputerCardOnGameboard(playedCard);
                display.printComputerPlacedFighterCard();

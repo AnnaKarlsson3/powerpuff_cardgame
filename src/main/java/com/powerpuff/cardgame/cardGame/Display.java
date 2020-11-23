@@ -22,6 +22,7 @@ public class Display {
     public String computerPlayedActionCard ="";
     public String computerPlayedFighterCard ="";
     public String breakLine = "";
+    public String computerNoAttackCard = "";
 
 
     public Display() {
@@ -159,7 +160,7 @@ public class Display {
         return null;
     }
 
-    public String printBlockMessageNoBlockCardsAvailable() {
+    public String printBlockMessageNoBlockCardsAvailable () {
         System.out.println(blockMessageNoBlockCardsAvailable());
         return null;
     }
@@ -211,10 +212,19 @@ public class Display {
     }
 
     public String breakLineMessage() {
-        return null;
+        return breakLine = "------------------------";
     }
 
     public String printBreakLine() {
+        System.out.println(breakLineMessage());
         return null;
     }
+
+    public String computerNoAttackCardsMessage() {
+        return null;
+    }
+
+
+
+
 }
