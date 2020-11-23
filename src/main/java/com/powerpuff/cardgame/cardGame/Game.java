@@ -43,7 +43,7 @@ public class Game {
             if (gameOver) break;
 
             computerTurn();
-            gameOver();
+            gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
 
 
         }
@@ -155,7 +155,15 @@ public class Game {
         System.out.println(" ");
     }
 
-    public boolean gameOver() {
+    public boolean gameOver(ArrayList<Card> playerHand, int playerHp, ArrayList<Card> computerHand, int computerHp) {
+
+        if (playerHp <= 0 || playerHand.size() == 0) {
+            gameOver = true;
+        }
+        if(computerHp <= 0 || computerHand.size() == 0){
+
+            gameOver = true;
+        }
 
 
         return gameOver;

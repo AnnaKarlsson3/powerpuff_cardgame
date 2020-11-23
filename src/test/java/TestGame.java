@@ -28,23 +28,31 @@ public class TestGame {
     @Test
     public void testGameOver() {
         Player player = new Player();
+        Computer computer = new Computer();
+        computer.setHp(20);
         player.setHp(20);
         ArrayList<Card> playerHand = player.getHand().getCardsInHand();
         ArrayList<Card> playerHandEmpty = (ArrayList<Card>) player.getHand().getCardsInHand().clone();
 
+        ArrayList<Card> computerHand = computer.getHand().getCardsInHand();
+        ArrayList<Card> computerHandEmpty = (ArrayList<Card>) computer.getHand().getCardsInHand().clone();
 
+        assertArrayEquals(computerHand.toArray(), computerHandEmpty.toArray(), "Expected both to be equal");
+        computerHandEmpty.clear();
+        assertFalse(Arrays.equals(computerHand.toArray(), computerHandEmpty.toArray()), "Expected both not to be equal");
 
-        Assertions.assertArrayEquals(playerHand.toArray(), playerHandEmpty.toArray(), "Expected both to be equal");
-        
+        assertArrayEquals(playerHand.toArray(), playerHandEmpty.toArray(), "Expected both to be equal");
+        playerHandEmpty.clear();
+        assertFalse(Arrays.equals(playerHand.toArray(), playerHandEmpty.toArray()), "Expected both not to be equal");
+        player.setHp(0);
 
         assertTrue(playerHandEmpty.size() == 0, "should be true");
         assertTrue(player.getHp() <= 0, "should be true");
 
 
+        assertTrue(game.gameOver(playerHandEmpty, player.getHp(), computerHandEmpty, computer.getHp()), "gameover should return true");
 
-        assertTrue(game.gameOver(), "gameover should return true");
-
-
+//-------------------------------------------
 
 
 
