@@ -84,6 +84,7 @@ public class Display {
         String PURPLE = "\u001B[35m";
         String RESET_COLOR = "\u001B[0m";
         AtomicInteger cardNumber = new AtomicInteger(1);
+        AtomicInteger numberInsideCard = new AtomicInteger(1);
 
         asciiCards.append(cards
                 .stream()
@@ -92,12 +93,18 @@ public class Display {
 
         asciiCards.append(" ┌───────────┐   "); asciiCards.append("   ┌───────────┐   "); asciiCards.append("   ┌───────────┐   "); asciiCards.append("   ┌───────────┐   ");
         asciiCards.append("  ┌───────────┐\n");
-        asciiCards.append(" │ \uD83D\uDCA5" + cards.get(0).getPoint() + "       │    ");asciiCards.append("  │ \uD83D\uDCA5" + cards.get(1).getPoint() + "       │   ");asciiCards.append("   │ \uD83D\uDCA5" + cards.get(2).getPoint() + "       │   ");asciiCards.append("   │ \uD83D\uDCA5" + cards.get(3).getPoint() + "       │   ");
-        asciiCards.append("  │ \uD83D\uDCA5" + cards.get(4).getPoint() + "       │\n");
-        asciiCards.append(" │ ⛨" + cards.get(0).getBlockPointPoint() + "       │ "); asciiCards.append("     │ ⛨" + cards.get(1).getBlockPointPoint() + "       │   ");asciiCards.append("   │ ⛨" + cards.get(2).getBlockPointPoint() + "       │   ");asciiCards.append("   │ ⛨" + cards.get(3).getBlockPointPoint() + "       │   ");
-        asciiCards.append("  │ ⛨" + cards.get(4).getBlockPointPoint() + "       │\n");
-        asciiCards.append(" │        " + PURPLE + "1" + RESET_COLOR + "  │ "); asciiCards.append("     │        " + PURPLE + "2" + RESET_COLOR + "  │   ");asciiCards.append("   │        " + PURPLE + "3" + RESET_COLOR + "  │   ");asciiCards.append("   │        " + PURPLE + "4" + RESET_COLOR + "  │   ");
-        asciiCards.append("  │        " + PURPLE + "5" + RESET_COLOR + "  │\n");
+        asciiCards.append(cards
+                .stream()
+                .map(card -> " │ \uD83D\uDCA5" + card.getPoint())
+                .collect(Collectors.joining("       │     ")) + "      |\n");
+        asciiCards.append(cards
+                .stream()
+                .map(card -> " │ ⛨" + card.getBlockPointPoint())
+                .collect(Collectors.joining("       │     ")) + "      |\n");
+        asciiCards.append(cards
+                .stream()
+                .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET_COLOR)
+                .collect(Collectors.joining("  │     ")) + "  │\n");
         asciiCards.append(" └───────────┘ "); asciiCards.append("     └───────────┘   "); asciiCards.append("   └───────────┘   ");asciiCards.append("   └───────────┘   ");
         asciiCards.append("  └───────────┘ \n");
         return asciiCards;
