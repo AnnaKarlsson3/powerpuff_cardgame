@@ -23,6 +23,7 @@ public class Display {
     public String computerPlayedFighterCard ="";
     public String breakLine = "";
     public String computerNoAttackCard = "";
+    public String printRules = "";
 
     public Display() {
         enterNameMessage();
@@ -31,6 +32,17 @@ public class Display {
     public void printEndMessage() {
         System.out.println("To continue press 1, to end game, press 0");
     }
+
+
+    public void printRules(){
+        printRulesMessage();
+        System.out.println(printRules);
+    }
+
+    public String printRulesMessage(){
+        return printRules;
+    }
+
 
     public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
@@ -105,6 +117,25 @@ public class Display {
         asciiCards.append("\n");
         return asciiCards;
     }
+
+
+  /* public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
+
+        AtomicInteger numbers = new AtomicInteger(1);
+
+        List<String> cardList = cardsInHand.stream()
+                .map(card -> numbers.getAndIncrement() + ". Type: " + card.getType()
+                        + " - Name: " + card.getName() + " - Points: " + card.getPoint() +" - block points: " + card.getBlockPointPoint() + "\n")
+                .collect(Collectors.toList());
+        return cardList;
+    }
+
+    public String formatCards(List<String> numberedCards) {
+        String formattedCards = (String) numberedCards
+                .stream()
+                .collect(Collectors.joining("", "", ""));
+        return formattedCards;
+    }*/
 
     public void printCardsInHand(ArrayList<Card> cardsInHand) {
         System.out.printf("The cards in your hand:\n");
