@@ -11,12 +11,14 @@ public class TestDisplay {
 
     Display display;
     Player player;
+    Computer computer;
 
     @BeforeEach
     void init() {
         System.out.println("@BeforeEach executed");
         display = new Display();
         player = new Player();
+        computer = new Computer();
     }
 
     @Test
@@ -50,11 +52,10 @@ public class TestDisplay {
 
     @Test
     public void testPrintComputerHpMessage() {
-        display.printComputerHpMessage();
-        String actual = display.computerHp;
-        String expected = "Computer HP is: ";
+        computer.setHp(20);
+        String expected = "Computer HP is: " + computer.getHp();
 
-        assertEquals(expected, actual);
+        assertEquals(expected, display.printComputerHpMessage(computer.getHp()));
     }
 
 

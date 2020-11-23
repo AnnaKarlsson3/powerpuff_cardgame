@@ -71,12 +71,12 @@ public class Display {
 
 
     public void printComputerHp(int hp) {
-        printComputerHpMessage();
-        System.out.println(computerHp + hp);
+        printComputerHpMessage(hp);
+        System.out.println(computerHp);
     }
 
-    public String printComputerHpMessage() {
-        return computerHp = "Computer HP is: ";
+    public String printComputerHpMessage(int hp) {
+        return computerHp;
     }
 
     public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
