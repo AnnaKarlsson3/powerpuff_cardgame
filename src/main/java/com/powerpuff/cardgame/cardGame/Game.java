@@ -104,12 +104,12 @@ public class Game {
 
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
-        System.out.println("---------------------");
+       display.printBreakLine();
         System.out.println(" ");
     }
 
     public void computerTurn() {
-        System.out.println("---------------------");
+        display.printBreakLine();
         display.printComputerTurn();
         computer.computerSendToBoard(gameboard);
 
@@ -121,7 +121,7 @@ public class Game {
                 Card attackCard = computer.attackCard(gameboard);
                 System.out.println("\ncomputer's attack card");
                 System.out.println(attackCard);
-                System.out.println("----------------------------------------------------");
+                display.printBreakLine();
 
                 if (gameboard.playerActiveCards.size() == 0) {
                     player.setHp(player.getHp() - attackCard.getPoint());
@@ -146,7 +146,7 @@ public class Game {
 
         //computer.getHand().addNewCardToHand();
 
-        System.out.println("---------------------");
+        display.printBreakLine();
         System.out.println(" ");
     }
 
