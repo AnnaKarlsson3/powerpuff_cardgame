@@ -118,7 +118,7 @@ public class Display {
     }
 
     public void printPlayersCardsOnBoard(ArrayList<Card> cards) {
-        System.out.println("Your active cards: \n");
+        System.out.println("Your cards on the board: \n");
         printCards(cards);
     }
 
@@ -150,7 +150,7 @@ public class Display {
     }
 
     public void printPlayedCardMessage(StringBuilder asciiCard) {
-        System.out.println("Played card: \n" + asciiCard);
+        System.out.println("\n" + asciiCard);
     }
 
     public void printWinner(Player player) {

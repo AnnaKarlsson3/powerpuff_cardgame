@@ -47,6 +47,7 @@ public class Game {
 
         while (!gameOver) {
             round++;
+
             System.out.println(Display.YELLOW_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
 
 
@@ -100,6 +101,7 @@ public class Game {
         Card selectedCardFromHand = action.selectCard(player.getHand());
 
         System.out.println(" ");
+        System.out.println("Played card:");
         display.printPlayedCard(selectedCardFromHand);
         System.out.println(" ");
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
@@ -114,7 +116,8 @@ public class Game {
 
                 //computer blocking
                 Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
-                System.out.println("computer blocking card: " + computerBlockingCard);
+                System.out.println("Computer blocked your attack with: \n");
+                display.printPlayedCard(computerBlockingCard);
 
                 //-Computer choosing one card to block with/if its not null
                 if (gameboard.computerActiveCards.size() == 0) {
@@ -145,7 +148,7 @@ public class Game {
             if (gameboard.computerActiveCards.size() > 0) {
                 Card attackCard = computer.attackCard(gameboard);
                 System.out.println("\ncomputer's attack card");
-                System.out.println(attackCard);
+                //System.out.println(attackCard);
                 display.printBreakLine();
 
                 if (gameboard.playerActiveCards.size() == 0) {

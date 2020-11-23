@@ -165,10 +165,6 @@ public class TestDisplay {
     }
 
 
-
-
-
-
     @AfterEach
     void cleanUp() {
         System.out.println("@AfterEach executed");
