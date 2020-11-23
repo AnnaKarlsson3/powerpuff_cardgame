@@ -78,7 +78,7 @@ public class Game {
 
 
 
-        gameLogic.manageSelectedCardFromHand(selectedCardFromHand, player, gameboard);
+        gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
 
         if(gameboard.playerActiveCards.size() > 0 ) {
 

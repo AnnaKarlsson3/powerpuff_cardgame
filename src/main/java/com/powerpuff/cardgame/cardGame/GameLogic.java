@@ -5,7 +5,8 @@ import java.util.ArrayList;
 public class GameLogic {
 
 
-    public String manageSelectedCardFromHand(Card playedCard, Player player, Gameboard gameboard) {
+
+    public String manageSelectedCard(Card playedCard, Player player, Gameboard gameboard) {
         if (playedCard.getType().equals("Action")) {
             player.setHp(player.getHp() + playedCard.getPoint());
 
