@@ -54,33 +54,6 @@ public class TestGame {
         assertFalse(game.gameOver);
     }
 
-//    @Test
-//    public void testUpdateHpOfPlayer() {
-//        Player player = game.player;
-//        Computer computer = game.computer;
-//        int computerHpBeforeUpdate = computer.getHp();
-//        Card playedCard1 = new Card("Action", "apple", 3, 5);
-//        assertEquals(player.getHp() + 3, game.updateHpIfPlayersTurn(playedCard1));
-//
-//        Card playedCard2 = new Card("Fighter", "Orange", 5, 5);
-//        game.updateHpIfPlayersTurn(playedCard2);
-//        assertFalse(computerHpBeforeUpdate == computer.getHp());
-//
-//    }
-//
-//    @Test
-//    public void testUpdateHpOfComputer() {
-//        Player player = game.player;
-//        Computer computer = game.computer;
-//        int playerHpBeforeUpdate = player.getHp();
-//        Card playedCard = new Card("Action", "hello", 5, 5);
-//        assertEquals(computer.getHp() + 5, game.updateHpIfComputersTurn(playedCard));
-//
-//        Card playedCard2 = new Card("Fighter", "Hi", 3, 5);
-//        game.updateHpIfComputersTurn(playedCard2);
-//        assertFalse(playerHpBeforeUpdate == player.getHp());
-//
-//    }
 
     @Test
     public void testCreateNewGame(){

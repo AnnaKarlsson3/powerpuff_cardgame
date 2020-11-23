@@ -90,8 +90,7 @@ public class TestGameLogic {
     @Test
     public void testManageSelectedCard() {
         System.out.println("== Test to check logic of manageSelectedCard(), it deletes played cards from hand ==");
-        System.out.println("== Test to check logic of manageSelectedCard(), if c" +
-                "ard it \"fighter\" then playerActiveCardSize will increase by 1 ==");
+        System.out.println("== Test to check logic of manageSelectedCard(), if card is \"fighter\" then playerActiveCardSize will increase by 1 ==");
 
 
         Player player = game.player;
