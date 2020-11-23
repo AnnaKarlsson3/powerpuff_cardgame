@@ -18,7 +18,7 @@ public class Game {
     //public Card selectedCardFromBoard = null;
 
 
-    public Game(){
+    public Game() {
         player = new Player();
         computer = new Computer();
         computer.setHp(20);
@@ -32,29 +32,24 @@ public class Game {
     }
 
 
-
     public void run() {
 
-        int random_nr = (int)Math.round(Math.random());
+        int random_nr = (int) Math.round(Math.random());
 
         setPlayerName();
 
-        if(random_nr == 1){
+        if (random_nr == 1) {
             System.out.println("Player is starting first");
         } else {
             System.out.println("Computer is starting first");
         }
 
 
-
-
         while (!gameOver) {
             round++;
-            System.out.println("------------------| Round - " + round +" |------------------------------\n");
+            System.out.println("------------------| Round - " + round + " |------------------------------\n");
 
-
-
-            if( random_nr == 1){
+            if (random_nr == 1) {
                 playerTurn();
                 display.printEndMessage();
                 action.inputMenu(this);
@@ -72,12 +67,7 @@ public class Game {
 
             }
 
-
-
-
             gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
-
-
 
         }
         playAgain();
@@ -92,13 +82,11 @@ public class Game {
 
     }
 
-    public void setPlayerName(){
+    public void setPlayerName() {
         display.printEnterNameMessage();
         action.inputPlayerName();
         player.setName(action.playerName);
     }
-
-
 
 
     public void playerTurn() {
@@ -109,6 +97,7 @@ public class Game {
         Card selectedCardFromHand = action.selectCard(player.getHand());
 
         System.out.println(" ");
+        System.out.println("Played card:");
         display.printPlayedCard(selectedCardFromHand);
         System.out.println(" ");
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
@@ -123,7 +112,8 @@ public class Game {
 
                 //computer blocking
                 Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
-                System.out.println("computer blocking card: " + computerBlockingCard);
+                System.out.println("Computer blocked your attack with: \n");
+                display.printPlayedCard(computerBlockingCard);
 
                 //-Computer choosing one card to block with/if its not null
                 if (gameboard.computerActiveCards.size() == 0) {
@@ -142,7 +132,7 @@ public class Game {
         System.out.println(" ");
     }
 
-    public void computerTurn(){
+    public void computerTurn() {
         display.printBreakLine();
         display.printComputerTurn();
         computer.computerSendToBoard(gameboard);
@@ -154,7 +144,7 @@ public class Game {
             if (gameboard.computerActiveCards.size() > 0) {
                 Card attackCard = computer.attackCard(gameboard);
                 System.out.println("\ncomputer's attack card");
-                System.out.println(attackCard);
+                //System.out.println(attackCard);
                 display.printBreakLine();
 
                 if (gameboard.playerActiveCards.size() == 0) {
@@ -170,7 +160,7 @@ public class Game {
                 display.printPlayedCard(attackCard);
                 computer.getHand().deletePlayedCard(attackCard);
             } else
-            display.printNoAttackCardsComputer();
+                display.printNoAttackCardsComputer();
 
 
         }
@@ -181,26 +171,26 @@ public class Game {
 
         //computer.getHand().addNewCardToHand();
 
-       display.printBreakLine();
+        display.printBreakLine();
         System.out.println(" ");
     }
 
     public boolean gameOver(ArrayList<Card> playerHand, int playerHp, ArrayList<Card> computerHand, int computerHp) {
 
         if (playerHp <= 0 || playerHand.size() == 0) {
-            if(playerHp < computerHp){
+            if (playerHp < computerHp) {
                 display.printWinner(computer);
             }
-            if(playerHp == computerHp){
+            if (playerHp == computerHp) {
                 display.printTie();
             }
             gameOver = true;
         }
-        if(computerHp <= 0 || computerHand.size() == 0){
-            if(computerHp < playerHp){
+        if (computerHp <= 0 || computerHand.size() == 0) {
+            if (computerHp < playerHp) {
                 display.printWinner(player);
             }
-            if(computerHp == playerHp){
+            if (computerHp == playerHp) {
                 display.printTie();
             }
             gameOver = true;
