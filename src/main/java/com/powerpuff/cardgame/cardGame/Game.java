@@ -104,12 +104,12 @@ public class Game {
     public void playerTurn() {
         display.printPlayerName(player.getName());
         display.printCardsInHand(player.getHand().getCardsInHand());
-        display.addNumbersToCards(player.getHand().getCardsInHand());
+        //display.addNumbersToCards(player.getHand().getCardsInHand());
 
         Card selectedCardFromHand = action.selectCard(player.getHand());
 
         System.out.println(" ");
-        display.formatCardToPlay(selectedCardFromHand);
+        display.printPlayedCard(selectedCardFromHand);
         System.out.println(" ");
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
         if (round > 1) {
@@ -167,7 +167,7 @@ public class Game {
                     gameLogic.attack(player, attackCard, selectedCardFromBoard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
                 System.out.println(" ");
-                display.formatCardToPlay(attackCard);
+                display.printPlayedCard(attackCard);
                 computer.getHand().deletePlayedCard(attackCard);
             } else
             display.printNoAttackCardsComputer();
