@@ -29,7 +29,7 @@ public class Computer extends Player{
                System.out.println("------------------------");
            } else {
                gameboard.placeComputerCardOnGameboard(playedCard);
-               System.out.println("Computer placed a Fighter Card on the Board");
+               display.printComputerPlacedFighterCard();
            }
 
             getHand().deletePlayedCard(playedCard);

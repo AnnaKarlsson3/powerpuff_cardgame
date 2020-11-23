@@ -149,9 +149,16 @@ public class TestDisplay {
     }
 
     @Test
-    public void testComputerPlayedBlockCard(){
+    public void testComputerPlayedFighterCard(){
+        String actual = display.computerPlacedFighterCard();
+        String expected = "Computer placed a Fighter Card on the Board";
+        assertNotNull(display.computerPlacedFighterCard());
+        assertEquals(actual, expected);
+    }
 
-        assertNotNull(display.computerPlacedBlockCard());
+    @Test
+    public void testPrintBreakLine () {
+        assertNotNull(display.breakLineMessage());
     }
 
 

@@ -20,7 +20,8 @@ public class Display {
     public String displayAttackMessageNoCardsAvailable = "";
     public String computerNoCardsOnBoard = "";
     public String computerPlayedActionCard ="";
-    public String computerPlayedBlockCard ="";
+    public String computerPlayedFighterCard ="";
+    public String breakLine = "";
 
 
     public Display() {
@@ -200,7 +201,20 @@ public class Display {
         return null;
     }
 
-    public Object computerPlacedBlockCard() {
+    public String computerPlacedFighterCard() {
+        return computerPlayedFighterCard = "Computer placed a Fighter Card on the Board";
+    }
+
+    public String printComputerPlacedFighterCard() {
+        System.out.println(computerPlacedFighterCard());
+        return null;
+    }
+
+    public String breakLineMessage() {
+        return null;
+    }
+
+    public String printBreakLine() {
         return null;
     }
 }
