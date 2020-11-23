@@ -42,11 +42,10 @@ public class TestDisplay {
 
     @Test
     public void testPrintPlayerHpMessage() {
-        display.printPlayerHpMessage();
-        String actual = display.playerHp;
-        String expected = "Player HP is: ";
+        player.setHp(20);
+        String expected = "Player HP is: " + player.getHp();
 
-        assertEquals(expected, actual);
+        assertEquals(expected, display.printPlayerHpMessage(player.getHp()), "strings should be equal");
     }
 
     @Test

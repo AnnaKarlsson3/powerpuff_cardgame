@@ -61,13 +61,14 @@ public class Display {
 
 
     public void printPlayerHp(int hp) {
-        printPlayerHpMessage();
-        System.out.println(playerHp + hp);
+        printPlayerHpMessage(hp);
+        System.out.println(playerHp);
+    }
+    public String printPlayerHpMessage(int hp) {
+        return playerHp;
     }
 
-    public String printPlayerHpMessage() {
-        return playerHp = "Player HP is: ";
-    }
+
 
     public void printComputerHp(int hp) {
         printComputerHpMessage();
