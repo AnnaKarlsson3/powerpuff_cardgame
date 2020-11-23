@@ -17,7 +17,7 @@ public class TestGameLogic {
     public void init() {
         game = new Game();
         gameLogic = new GameLogic();
-        gameboard = new Gameboard();
+        gameboard = game.gameboard;
     }
 
     @Test
@@ -100,11 +100,11 @@ public class TestGameLogic {
         Card card2 = new Card("Fighter", "fighterCard", 3, 3);
         Card playedCard = (Card) player.getHand().getCardsInHand().get(0);
 
-        int beforePlayerActiveCardSize = game.gameboard.getPlayerActiveCards().size();
-        String action = gameLogic.manageSelectedCard(card1, player, game.gameboard);
-        String fighter = gameLogic.manageSelectedCard(card2, player, game.gameboard);
-        gameLogic.manageSelectedCard(playedCard, player, game.gameboard);
-        int afterPlayerActiveCardSize = game.gameboard.getPlayerActiveCards().size();
+        int beforePlayerActiveCardSize = gameboard.getPlayerActiveCards().size();
+        String action = gameLogic.manageSelectedCard(card1, player, gameboard);
+        String fighter = gameLogic.manageSelectedCard(card2, player, gameboard);
+        gameLogic.manageSelectedCard(playedCard, player, gameboard);
+        int afterPlayerActiveCardSize = gameboard.getPlayerActiveCards().size();
 
         assertAll(
 

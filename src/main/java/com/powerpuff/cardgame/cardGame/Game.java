@@ -15,9 +15,6 @@ public class Game {
     public GameLogic gameLogic;
     private int round = 0;
 
-    //public Card selectedCardFromBoard = null;
-
-
     public Game() {
         player = new Player();
         computer = new Computer();
@@ -25,6 +22,8 @@ public class Game {
         player.setHp(20);
         display = new Display();
         action = new Action();
+        playerHand = player.getHand().getCardsInHand();
+        computerHand = computer.getHand().getCardsInHand();
         gameboard = new Gameboard();
         gameLogic = new GameLogic();
 
@@ -48,30 +47,32 @@ public class Game {
         while (!gameOver) {
             round++;
 
-            System.out.println(Display.YELLOW_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
-
+            System.out.println(Display.CYAN_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
 
             if (random_nr == 1) {
                 playerTurn();
+                //gameOver(playerHand, player.getHp(), computerHand, computer.getHp());
+
                 display.printEndMessage();
                 action.inputMenu(this);
                 if (gameOver) break;
 
                 computerTurn();
+                //gameOver(playerHand, player.getHp(), computerHand, computer.getHp());
+
 
             } else {
                 computerTurn();
+                //gameOver(playerHand, player.getHp(), computerHand, computer.getHp());
+
                 display.printEndMessage();
                 action.inputMenu(this);
                 if (gameOver) break;
 
                 playerTurn();
+                //gameOver(playerHand, player.getHp(), computerHand, computer.getHp());
 
             }
-
-
-            gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
-
 
         }
         playAgain();
@@ -96,8 +97,6 @@ public class Game {
     public void playerTurn() {
         display.printPlayerName(player.getName());
         display.printCardsInHand(player.getHand().getCardsInHand());
-        //display.addNumbersToCards(player.getHand().getCardsInHand());
-
         Card selectedCardFromHand = action.selectCard(player.getHand());
 
         System.out.println(" ");
@@ -116,9 +115,10 @@ public class Game {
 
                 //computer blocking
                 Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
-                System.out.println("Computer blocked your attack with: \n");
-                display.printPlayedCard(computerBlockingCard);
-
+                if (computerBlockingCard != null) {
+                    System.out.println("Computer blocked your attack with: ");
+                    display.printPlayedCard(computerBlockingCard);
+                }
                 //-Computer choosing one card to block with/if its not null
                 if (gameboard.computerActiveCards.size() == 0) {
                     computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
@@ -134,6 +134,8 @@ public class Game {
         display.printComputerHp(computer.getHp());
         display.printBreakLine();
         System.out.println(" ");
+        gameOver(playerHand, player.getHp(), computerHand, computer.getHp());
+
     }
 
     public void computerTurn() {
@@ -141,14 +143,11 @@ public class Game {
         display.printComputerTurn();
         computer.computerSendToBoard(gameboard);
 
-        if (gameboard.getComputerActiveCards().isEmpty() && computer.getHand().getCardsInHand().isEmpty()) {
-            endGame();
-        }
         if (round > 1) {
             if (gameboard.computerActiveCards.size() > 0) {
                 Card attackCard = computer.attackCard(gameboard);
                 System.out.println("\ncomputer's attack card");
-                //System.out.println(attackCard);
+                display.printPlayedCard(attackCard);
                 display.printBreakLine();
 
                 if (gameboard.playerActiveCards.size() == 0) {
@@ -161,42 +160,41 @@ public class Game {
                     gameLogic.attack(player, attackCard, selectedCardFromBoard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
                 System.out.println(" ");
-                display.printPlayedCard(attackCard);
-                computer.getHand().deletePlayedCard(attackCard);
             } else
                 display.printNoAttackCardsComputer();
-
 
         }
 
         System.out.println(" ");
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
-
-        //computer.getHand().addNewCardToHand();
-
         display.printBreakLine();
         System.out.println(" ");
+        gameOver(playerHand, player.getHp(), computerHand, computer.getHp());
+
     }
 
     public boolean gameOver(ArrayList<Card> playerHand, int playerHp, ArrayList<Card> computerHand, int computerHp) {
 
-        if (playerHp <= 0 || playerHand.size() == 0) {
-            if (playerHp < computerHp) {
-                display.printWinner(computer);
-            }
+        if (playerHand.isEmpty() && computerHand.isEmpty() && gameboard.getPlayerActiveCards().isEmpty() && gameboard.getComputerActiveCards().isEmpty()) {
             if (playerHp == computerHp) {
                 display.printTie();
             }
-            gameOver = true;
-        }
-        if (computerHp <= 0 || computerHand.size() == 0) {
+            if (playerHp < computerHp) {
+                display.printWinner(computer);
+            }
             if (computerHp < playerHp) {
                 display.printWinner(player);
             }
-            if (computerHp == playerHp) {
-                display.printTie();
-            }
+            gameOver = true;
+        }
+
+        if (playerHp <= 0 || (playerHand.isEmpty() && gameboard.getPlayerActiveCards().isEmpty())) {
+            display.printWinner(computer);
+            gameOver = true;
+        }
+        if (computerHp <= 0 || (computerHand.isEmpty() && gameboard.getComputerActiveCards().isEmpty())) {
+            display.printWinner(player);
             gameOver = true;
         }
 
