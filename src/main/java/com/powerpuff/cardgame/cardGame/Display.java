@@ -221,10 +221,13 @@ public class Display {
     }
 
     public String computerNoAttackCardsMessage() {
-        return null;
+        return computerNoAttackCard = "computer is not having any cards on the board to attack with";
     }
 
-
+    public String printNoAttackCardsComputer(){
+        System.out.println(computerNoAttackCard);
+        return null;
+    }
 
 
 }

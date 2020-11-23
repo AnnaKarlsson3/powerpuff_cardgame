@@ -167,7 +167,7 @@ public class TestDisplay {
     @Test
     public void testPrintComputerNoAttachCardsMessage () {
         String actual = display.computerNoAttackCardsMessage();
-        String expected = "computer is not having any Cards on board to attack with";
+        String expected = "computer is not having any cards on the board to attack with";
         assertEquals(actual, expected);
         assertNotNull(display.computerNoAttackCardsMessage());
     }

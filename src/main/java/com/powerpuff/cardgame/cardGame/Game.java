@@ -143,7 +143,8 @@ public class Game {
             display.formatCardToPlay(attackCard);
             computer.getHand().deletePlayedCard(attackCard);
         }
-        else System.out.println("computer not having any Cards on board to attack with");
+        else display.printNoAttackCardsComputer();
+
 
         System.out.println(" ");
         display.printPlayerHp(player.getHp());
