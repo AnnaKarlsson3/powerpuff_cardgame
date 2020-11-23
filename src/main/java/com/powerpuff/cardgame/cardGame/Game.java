@@ -36,6 +36,7 @@ public class Game {
 
         int random_nr = (int) Math.round(Math.random());
 
+        display.printRules();
         setPlayerName();
 
         if (random_nr == 1) {
