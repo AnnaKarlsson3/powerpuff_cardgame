@@ -18,6 +18,7 @@ public class Display {
     public String displayBlockMessageNoCardsAvailable = "";
     public String displayAttackMessage = "";
     public String displayAttackMessageNoCardsAvailable = "";
+    public String computerNoCardsOnBoard = "";
 
 
     public Display() {
@@ -175,6 +176,10 @@ public class Display {
 
     public String printAttackMessageNoCardsAvailable() {
         System.out.println(attackMessageNoCardsAvailable());
+        return null;
+    }
+
+    public Object displaycomputerNoCardsOnboard() {
         return null;
     }
 }

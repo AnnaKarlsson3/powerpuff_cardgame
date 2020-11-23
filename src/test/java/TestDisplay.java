@@ -130,6 +130,11 @@ public class TestDisplay {
         assertNotNull(display.attackMessageNoCardsAvailable());
     }
 
+    @Test
+    public void testDisplayComputerNoCardsOnBoard(){
+        assertNotNull(display.displaycomputerNoCardsOnboard());
+    }
+
 
 
 
