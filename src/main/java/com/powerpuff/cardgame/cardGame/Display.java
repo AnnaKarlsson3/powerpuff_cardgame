@@ -76,7 +76,7 @@ public class Display {
     }
 
     public String printComputerHpMessage(int hp) {
-        return computerHp;
+        return computerHp = "Computer HP is: " + hp;
     }
 
     public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
