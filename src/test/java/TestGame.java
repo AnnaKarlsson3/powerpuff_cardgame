@@ -32,10 +32,18 @@ public class TestGame {
         ArrayList<Card> playerHand = player.getHand().getCardsInHand();
         ArrayList<Card> playerHandEmpty = (ArrayList<Card>) player.getHand().getCardsInHand().clone();
 
+
+
+        Assertions.assertArrayEquals(playerHand.toArray(), playerHandEmpty.toArray(), "Expected both to be equal");
+        
+
+        assertTrue(playerHandEmpty.size() == 0, "should be true");
+        assertTrue(player.getHp() <= 0, "should be true");
+
+
+
         assertTrue(game.gameOver(), "gameover should return true");
 
-       // BooleanSupplier condition = () -> hp <= 0 || playerHandEmpty.size() == 0;
-        //assertTrue(condition, "should be true");
 
 
 
