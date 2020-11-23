@@ -24,17 +24,13 @@ public class Display {
     public String breakLine = "";
     public String computerNoAttackCard = "";
 
-
     public Display() {
         enterNameMessage();
     }
 
-
     public void printEndMessage() {
         System.out.println("To continue press 1, to end game, press 0");
     }
-
-
 
     public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
@@ -42,8 +38,6 @@ public class Display {
     public String enterNameMessage() {
         return enterNameMessage = "Enter player name: ";
     }
-
-
 
     public void printPlayerName(String name) {
         playerNameTurn(name);
@@ -53,8 +47,6 @@ public class Display {
         return playerNameTurn = "It´s " + name + " turn";
     }
 
-
-
     public void printComputerTurn() {
         printComputerTurnMessage();
         System.out.println(computerTurn);
@@ -63,8 +55,6 @@ public class Display {
         return computerTurn = "It´s computer´s turn";
     }
 
-
-
     public void printPlayerHp(int hp) {
         printPlayerHpMessage(hp);
         System.out.println(playerHp);
@@ -72,8 +62,6 @@ public class Display {
     public String printPlayerHpMessage(int hp) {
         return playerHp = "Player HP is: " + hp;
     }
-
-
 
     public void printComputerHp(int hp) {
         printComputerHpMessage(hp);
@@ -118,54 +106,36 @@ public class Display {
         return asciiCards;
     }
 
-
-    public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
-
-        AtomicInteger numbers = new AtomicInteger(1);
-
-        List<String> cardList = cardsInHand.stream()
-                .map(card -> numbers.getAndIncrement() + ". Type: " + card.getType()
-                        + " - Name: " + card.getName() + " - Points: " + card.getPoint() +" - block points: " + card.getBlockPointPoint() + "\n")
-                .collect(Collectors.toList());
-        return cardList;
-    }
-
-    public String formatCards(List<String> numberedCards) {
-        String formattedCards = (String) numberedCards
-                .stream()
-                .collect(Collectors.joining("", "", ""));
-        return formattedCards;
-    }
-
     public void printCardsInHand(ArrayList<Card> cardsInHand) {
-        List<String> numberedCards = addNumbersToCards(cardsInHand);
-
-        System.out.println("The cards in your hand:\n" + formatCards(numberedCards) +
-                "\nWhat card do you want to play? Enter the number.\n");
+        System.out.printf("The cards in your hand:\n");
+        printCards(cardsInHand);
+        System.out.println("What card do you want to play? Enter the number.\n");
     }
 
     public void printPlayersCardsOnBoard(ArrayList<Card> cards) {
-        List<String> numberedCards = addNumbersToCards(cards);
-        System.out.println("Your active cards: \n" + formatCards(numberedCards));
+        System.out.println("Your active cards: \n");
+        printCards(cards);
     }
 
     public void printComputersCardsOnBoard(ArrayList<Card> cards) {
-        List<String> numberedCards = addNumbersToCards(cards);
-        System.out.println("Computers active cards: \n" + formatCards(numberedCards));
-    }
-
-    public String formatCardToPlay(Card chosenCard) {
-        String formattedCard = "Played card - Type: " + chosenCard.getType() + " - Name: " + chosenCard.getName() + " - Points: " + chosenCard.getPoint();
-        return formattedCard;
+        System.out.println("Computers active cards: \n");
+        printCards(cards);
     }
 
     public void printPlayedCard(Card chosenCard) {
-        playedCard = formatCardToPlay(chosenCard);
-        printPlayedCardMessage();
+
+        final StringBuilder asciiCard = new StringBuilder();
+        asciiCard.append(chosenCard.getType() + ": " + chosenCard.getName() + "\n");
+        asciiCard.append("┌───────────┐\n");
+        asciiCard.append("│ \uD83D\uDCA5" + chosenCard.getPoint() + "       │\n");
+        asciiCard.append("│ ⛨" + chosenCard.getBlockPointPoint() + "       │\n");
+        asciiCard.append("│           │\n");
+        asciiCard.append("└───────────┘\n");
+        printPlayedCardMessage(asciiCard);
     }
 
-    public void printPlayedCardMessage() {
-        System.out.println(playedCard);
+    public void printPlayedCardMessage(StringBuilder asciiCard) {
+        System.out.println("Played card: \n" + asciiCard);
     }
 
     public void printWinner(Player player) {
