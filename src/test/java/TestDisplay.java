@@ -148,6 +148,12 @@ public class TestDisplay {
         assertEquals(actual, expected);
     }
 
+    @Test
+    public void testComputerPlayedBlockCard(){
+
+        assertNotNull(display.computerPlacedBlockCard());
+    }
+
 
 
 

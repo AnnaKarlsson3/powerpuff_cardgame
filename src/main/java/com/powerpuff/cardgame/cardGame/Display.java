@@ -20,6 +20,7 @@ public class Display {
     public String displayAttackMessageNoCardsAvailable = "";
     public String computerNoCardsOnBoard = "";
     public String computerPlayedActionCard ="";
+    public String computerPlayedBlockCard ="";
 
 
     public Display() {
@@ -196,6 +197,10 @@ public class Display {
 
     public String printComputerPlayedActionCard() {
         System.out.println(computerPlayedActionCard());
+        return null;
+    }
+
+    public Object computerPlacedBlockCard() {
         return null;
     }
 }
