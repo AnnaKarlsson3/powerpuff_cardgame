@@ -65,7 +65,7 @@ public class Display {
         System.out.println(playerHp);
     }
     public String printPlayerHpMessage(int hp) {
-        return playerHp;
+        return playerHp = "Player HP is: " + hp;
     }
 
 
