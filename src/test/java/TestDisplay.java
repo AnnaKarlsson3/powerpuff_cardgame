@@ -21,8 +21,7 @@ public class TestDisplay {
 
     @Test
     public void testEnterNameMessage() {
-        String expected = "Enter player name:";
-
+        String expected = "Enter player name: ";
         assertEquals(expected, display.enterNameMessage(), "strings should be equal");
     }
 
