@@ -24,55 +24,61 @@ public class Display {
         enterNameMessage();
     }
 
+
     public void printEndMessage() {
         System.out.println("To continue press 1, to end game, press 0");
     }
 
 
+
     public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
     }
-
     public String enterNameMessage() {
-        return enterNameMessage = "Enter player name:";
+        return enterNameMessage = "Enter player name: ";
     }
+
 
 
     public void printPlayerName(String name) {
-        playerNameTurn();
-        System.out.println(name + playerNameTurn);
+        playerNameTurn(name);
+        System.out.println(playerNameTurn);
+    }
+    public String playerNameTurn(String name) {
+        return playerNameTurn = "It´s " + name + " turn";
     }
 
-    public String playerNameTurn() {
-        return playerNameTurn = " it´s your turn!";
-    }
+
 
     public void printComputerTurn() {
         printComputerTurnMessage();
         System.out.println(computerTurn);
     }
-
     public String printComputerTurnMessage() {
-        return computerTurn = "computer´s turn!";
+        return computerTurn = "It´s computer´s turn";
     }
+
+
 
     public void printPlayerHp(int hp) {
-        printPlayerHpMessage();
-        System.out.println(playerHp + hp);
+        printPlayerHpMessage(hp);
+        System.out.println(playerHp);
+    }
+    public String printPlayerHpMessage(int hp) {
+        return playerHp = "Player HP is: " + hp;
     }
 
-    public String printPlayerHpMessage() {
-        return playerHp = "Player HP is: ";
-    }
+
 
     public void printComputerHp(int hp) {
-        printComputerHpMessage();
-        System.out.println(computerHp + hp);
+        printComputerHpMessage(hp);
+        System.out.println(computerHp);
+    }
+    public String printComputerHpMessage(int hp) {
+        return computerHp = "Computer HP is: " + hp;
     }
 
-    public String printComputerHpMessage() {
-        return computerHp = "Computer HP is: ";
-    }
+
 
     public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
 
@@ -177,4 +183,5 @@ public class Display {
         System.out.println(attackMessageNoCardsAvailable());
         return null;
     }
+
 }
