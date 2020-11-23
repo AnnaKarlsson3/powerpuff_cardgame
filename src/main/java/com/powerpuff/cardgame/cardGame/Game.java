@@ -61,6 +61,7 @@ public class Game {
                 if (gameOver) break;
 
                 computerTurn();
+                gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
 
             } else {
                 computerTurn();
@@ -69,13 +70,14 @@ public class Game {
                 if (gameOver) break;
 
                 playerTurn();
+                gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
 
             }
 
 
 
 
-            gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
+
 
 
 

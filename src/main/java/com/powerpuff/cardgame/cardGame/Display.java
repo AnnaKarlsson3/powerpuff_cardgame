@@ -24,6 +24,22 @@ public class Display {
     public String breakLine = "";
     public String computerNoAttackCard = "";
 
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
+    public static final String RED_BACKGROUND = "\033[41m";    // RED
+    public static final String GREEN_BACKGROUND = "\033[42m";  // GREEN
+    public static final String YELLOW_BACKGROUND = "\033[43m";
+    public static final String YELLOW_BOLD_BRIGHT = "\033[1;93m";// YELLOW
+    public static final String RED_BOLD_BRIGHT = "\033[1;91m";   // RED
+    public static final String RESET = "\033[0m";  // Text Reset
+
 
     public Display() {
         enterNameMessage();
@@ -111,8 +127,48 @@ public class Display {
     }
 
     public void printPlayersCardsOnBoard(ArrayList<Card> cards) {
-        List<String> numberedCards = addNumbersToCards(cards);
-        System.out.println("Your active cards: \n" + formatCards(numberedCards));
+       // List<String> numberedCards = addNumbersToCards(cards);
+       // System.out.println("Your active cards: \n" + formatCards(numberedCards));
+        //String Green = "\u001B[32m";
+        int number = 0;
+        for(Card card:cards){
+            number++;
+            //String cardNumber = Integer.toString(number);
+            String name = card.getName();
+            String type = card.getType();
+            String point = "";
+            if(card.getType().equals("Action")){
+                point= Integer.toString(card.getPoint());
+
+            }else {
+                point = card.getPoint() + "/" + card.getBlockPointPoint();
+            }
+
+            String cardNumber = RED_BOLD_BRIGHT +YELLOW_BACKGROUND+ Integer.toString(number) +"." + RESET;
+            System.out.println(cardNumber);
+            printBox(Integer.toString(number),name,type,point);
+        }
+    }
+
+    public static void printBox(String... strings) {
+        int maxBoxWidth = 10;
+        String line = "+" + fill('-', maxBoxWidth + 2 ) + "+";
+        System.out.println(line);
+        for (String str : strings) {
+            System.out.printf("| %s |%n", padString(str,maxBoxWidth));
+        }
+        System.out.println(line);
+    }
+    private static String fill(char ch, int len) {
+        StringBuilder sb = new StringBuilder(len);
+        for (int i = 0; i < len; i++) {
+            sb.append(ch);
+        }
+        return sb.toString();
+    }
+    private static String padString(String str, int len) {
+        StringBuilder sb = new StringBuilder(str);
+        return sb.append(fill(' ', len - str.length())).toString();
     }
 
     public void printComputersCardsOnBoard(ArrayList<Card> cards) {
