@@ -83,6 +83,40 @@ public class Display {
         return computerHp = "Computer HP is: " + hp;
     }
 
+    public void printCards(ArrayList<Card> cards){
+        System.out.println(printAsciiCards(cards));
+    }
+
+    private StringBuilder printAsciiCards(ArrayList<Card> cards) {
+        StringBuilder asciiCards = new StringBuilder();
+
+        String PURPLE = "\u001B[35m";
+        String RESET_COLOR = "\u001B[0m";
+        AtomicInteger cardNumber = new AtomicInteger(1);
+        AtomicInteger numberInsideCard = new AtomicInteger(1);
+
+        asciiCards.append(cards
+                .stream()
+                .map(card -> PURPLE + cardNumber.getAndIncrement() + ". " + RESET_COLOR + card.getType() + ": " + card.getName())
+                .collect(Collectors.joining(" | ")) + "\n");
+        cards.stream().forEach(card -> asciiCards.append(" ┌───────────┐     "));
+        asciiCards.append("\n");
+        asciiCards.append(cards
+                .stream()
+                .map(card -> " │ \uD83D\uDCA5" + card.getPoint())
+                .collect(Collectors.joining("       │     ")) + "      |\n");
+        asciiCards.append(cards
+                .stream()
+                .map(card -> " │ ⛨" + card.getBlockPointPoint())
+                .collect(Collectors.joining("       │     ")) + "      |\n");
+        asciiCards.append(cards
+                .stream()
+                .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET_COLOR)
+                .collect(Collectors.joining("  │     ")) + "  │\n");
+        cards.stream().forEach(card -> asciiCards.append(" └───────────┘     "));
+        asciiCards.append("\n");
+        return asciiCards;
+    }
 
 
     public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
