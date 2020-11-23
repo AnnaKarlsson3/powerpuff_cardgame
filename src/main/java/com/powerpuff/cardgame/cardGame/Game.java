@@ -158,13 +158,23 @@ public class Game {
     public boolean gameOver(ArrayList<Card> playerHand, int playerHp, ArrayList<Card> computerHand, int computerHp) {
 
         if (playerHp <= 0 || playerHand.size() == 0) {
+            if(playerHp < computerHp){
+                display.printWinner(computer);
+            }
+            if(playerHp == computerHp){
+                display.printTie();
+            }
             gameOver = true;
         }
         if(computerHp <= 0 || computerHand.size() == 0){
-
+            if(computerHp < playerHp){
+                display.printWinner(player);
+            }
+            if(computerHp == playerHp){
+                display.printTie();
+            }
             gameOver = true;
         }
-
 
         return gameOver;
     }
