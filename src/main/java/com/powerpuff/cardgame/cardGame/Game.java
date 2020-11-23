@@ -48,7 +48,7 @@ public class Game {
 
         while (!gameOver) {
             round++;
-            System.out.println("------------------| Round - " + round + " |------------------------------\n");
+            System.out.println("------------------| Round - " + round + " |-------------------- \n");
 
             if (random_nr == 1) {
                 playerTurn();
