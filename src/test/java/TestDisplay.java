@@ -132,7 +132,11 @@ public class TestDisplay {
 
     @Test
     public void testDisplayComputerNoCardsOnBoard(){
-        assertNotNull(display.displaycomputerNoCardsOnboard());
+        String actual = display.printComputerNoCardsOnBoardMessage();
+        String expected = "Computer doesn't have any card on board";
+
+        assertNotNull(display.printComputerNoCardsOnBoardMessage(), "should not be null");
+        assertEquals(actual, expected);
     }
 
 

@@ -63,6 +63,7 @@ public class Computer extends Player{
 
 
     public Card blockCard(Card playersCard, Gameboard gameboard){
+        Display display = new Display();
         ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
 
         if(!computersCards.isEmpty()){
@@ -81,7 +82,7 @@ public class Computer extends Player{
                 return chooseMaxCard;
             }
         } else{
-            System.out.println("Computer doesn't have any card on board");
+            display.printComputerNoCardsOnBoardMessage();
             return  null;
         }
     }

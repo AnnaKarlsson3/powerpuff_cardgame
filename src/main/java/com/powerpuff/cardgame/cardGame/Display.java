@@ -179,7 +179,8 @@ public class Display {
         return null;
     }
 
-    public Object displaycomputerNoCardsOnboard() {
-        return null;
+
+    public  String printComputerNoCardsOnBoardMessage(){
+        return computerNoCardsOnBoard ="Computer doesn't have any card on board";
     }
 }
