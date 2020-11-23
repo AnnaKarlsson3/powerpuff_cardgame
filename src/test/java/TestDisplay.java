@@ -139,6 +139,11 @@ public class TestDisplay {
         assertEquals(actual, expected);
     }
 
+    @Test
+    public void testComputerPlacedActionCardPrint(){
+        assertNotNull(display.printComputerPlacedActionCard());
+    }
+
 
 
 

@@ -19,6 +19,7 @@ public class Display {
     public String displayAttackMessage = "";
     public String displayAttackMessageNoCardsAvailable = "";
     public String computerNoCardsOnBoard = "";
+    public String computerPlacedActionCard ="";
 
 
     public Display() {
@@ -182,5 +183,9 @@ public class Display {
 
     public  String printComputerNoCardsOnBoardMessage(){
         return computerNoCardsOnBoard ="Computer doesn't have any card on board";
+    }
+
+    public String printComputerPlacedActionCard() {
+        return null;
     }
 }
