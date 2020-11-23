@@ -27,25 +27,18 @@ public class TestGame {
 
     @Test
     public void testGameOver() {
-        boolean gameover = false;
-        int hp = 0;
         Player player = new Player();
+        player.setHp(20);
         ArrayList<Card> playerHand = player.getHand().getCardsInHand();
         ArrayList<Card> playerHandEmpty = (ArrayList<Card>) player.getHand().getCardsInHand().clone();
 
-        Assertions.assertArrayEquals(playerHand.toArray(), playerHandEmpty.toArray(), "Expected both to be equal");
+        assertTrue(game.gameOver(), "gameover should return true");
 
-        playerHandEmpty.clear();
+       // BooleanSupplier condition = () -> hp <= 0 || playerHandEmpty.size() == 0;
+        //assertTrue(condition, "should be true");
 
-        assertFalse(Arrays.equals(playerHand.toArray(), playerHandEmpty.toArray()), "Expected both not to be equal");
 
-        BooleanSupplier condition = () -> hp <= 0 || playerHandEmpty.size() == 0;
-        assertTrue(condition, "should be true");
 
-        //if condition is true, set boolean to true
-        gameover = true;
-
-        assertTrue(gameover == true);
 
     }
 
