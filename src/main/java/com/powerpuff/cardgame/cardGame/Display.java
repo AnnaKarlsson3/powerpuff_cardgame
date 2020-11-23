@@ -24,28 +24,31 @@ public class Display {
         enterNameMessage();
     }
 
+
     public void printEndMessage() {
         System.out.println("To continue press 1, to end game, press 0");
     }
-
-
     public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
     }
+
+
 
     public String enterNameMessage() {
         return enterNameMessage = "Enter player name:";
     }
 
 
+
     public void printPlayerName(String name) {
-        playerNameTurn();
-        System.out.println(name + playerNameTurn);
+        playerNameTurn(name);
+        System.out.println(playerNameTurn);
+    }
+    public String playerNameTurn(String name) {
+        return playerNameTurn;
     }
 
-    public String playerNameTurn() {
-        return playerNameTurn = " it´s your turn!";
-    }
+
 
     public void printComputerTurn() {
         printComputerTurnMessage();

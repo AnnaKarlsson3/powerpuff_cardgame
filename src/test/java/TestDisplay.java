@@ -10,11 +10,13 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestDisplay {
 
     Display display;
+    Player player;
 
     @BeforeEach
     void init() {
         System.out.println("@BeforeEach executed");
         display = new Display();
+        player = new Player();
     }
 
     @Test
@@ -26,13 +28,12 @@ public class TestDisplay {
     }
 
     @Test
-    public void testPlayerName() {
-        display.playerNameTurn();
+    public void testPlayerNameTurn() {
+        player.setName("Anders");
+        String expected = "It´s " + player.getName() + " turn";
 
-        String actual = display.playerNameTurn;
-        String expected = " it´s your turn!";
+       assertEquals(expected, display.playerNameTurn(player.getName()), "Strings should be equal");
 
-        assertEquals(expected, actual);
     }
 
 
