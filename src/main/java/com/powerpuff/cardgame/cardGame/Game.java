@@ -39,16 +39,16 @@ public class Game {
         setPlayerName();
 
         if (random_nr == 1) {
-            System.out.println("Player is starting first");
+            System.out.println("You are going first");
         } else {
-            System.out.println("Computer is starting first");
+            System.out.println("Computer is going first");
         }
 
 
         while (!gameOver) {
             round++;
             System.out.println("------------------| Round - " + round + " |------------------------------\n");
-
+            sleep(1000);
             if (random_nr == 1) {
                 playerTurn();
                 display.printEndMessage();
@@ -66,20 +66,22 @@ public class Game {
                 playerTurn();
 
             }
-
             gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
-
         }
         playAgain();
-
     }
 
+    private void sleep(int millis){
+        try{
+            Thread.sleep(millis);
+        }
+        catch(InterruptedException e){
+        }
+    }
 
     private void playAgain() {
         display.printPlayAgain();
         action.checkInput(this);
-
-
     }
 
     public void setPlayerName() {
@@ -88,25 +90,24 @@ public class Game {
         player.setName(action.playerName);
     }
 
-
     public void playerTurn() {
         display.printPlayerName(player.getName());
+        sleep(1000);
         display.printCardsInHand(player.getHand().getCardsInHand());
         //display.addNumbersToCards(player.getHand().getCardsInHand());
 
         Card selectedCardFromHand = action.selectCard(player.getHand());
-
-        System.out.println(" ");
-        System.out.println("Played card:");
+        sleep(1000);
+        System.out.println("You played:\n");
         display.printPlayedCard(selectedCardFromHand);
-        System.out.println(" ");
+        sleep(2000);
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
         if (round > 1) {
             if (gameboard.playerActiveCards.size() > 0) {
 
                 display.printAttackMessage();
-
                 display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                sleep(2000);
 
                 Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
 
@@ -123,9 +124,7 @@ public class Game {
                 }
 
             } else display.printAttackMessageNoCardsAvailable();
-
         }
-
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
         display.printBreakLine();
@@ -135,6 +134,7 @@ public class Game {
     public void computerTurn() {
         display.printBreakLine();
         display.printComputerTurn();
+        sleep(1000);
         computer.computerSendToBoard(gameboard);
 
         if (gameboard.getComputerActiveCards().isEmpty() && computer.getHand().getCardsInHand().isEmpty()) {
@@ -143,9 +143,10 @@ public class Game {
         if (round > 1) {
             if (gameboard.computerActiveCards.size() > 0) {
                 Card attackCard = computer.attackCard(gameboard);
-                System.out.println("\ncomputer's attack card");
+                System.out.println("\nComputer's attack card:");
                 //System.out.println(attackCard);
-                display.printBreakLine();
+               sleep(2000);
+               display.printBreakLine();
 
                 if (gameboard.playerActiveCards.size() == 0) {
                     player.setHp(player.getHp() - attackCard.getPoint());
@@ -153,6 +154,7 @@ public class Game {
                 } else {
                     display.printBlockMessage();
                     display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                    sleep(4000);
                     Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
                     gameLogic.attack(player, attackCard, selectedCardFromBoard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
@@ -161,7 +163,6 @@ public class Game {
                 computer.getHand().deletePlayedCard(attackCard);
             } else
                 display.printNoAttackCardsComputer();
-
 
         }
 
