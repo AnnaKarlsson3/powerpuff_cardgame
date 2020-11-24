@@ -51,11 +51,16 @@ public class Display {
     }
 
     public String printRulesMessage(){
-        return printRules = "Rules: \n *Player vs computer \n *You start round 1 randomly \n *Fighter-Cards has an attackPoint and a blockPoint, if you play an fighter-card you have to put it on the board \n " +
-                "*Action-Cards has an healthPoint and 0 in blockPoints, if you play an action-card, it gives you life according to the healthPoints \n *You can not attack the first round \n" +
-                "*If you have fighters-cards on the board, you have to attack \n *you can only attack with one fighter/round \n *If computer attacks and you have fighters-cards on board, you have to block \n " +
-                "*If your block-cards blockPoints is less then computers attackPoints, or you don't have any block-cards, you will take damage \n *The card with less blockPoints than attackPoints will die in an attack/block \n " +
-                "*You winn when computers health is 0 or it´s deck is empty \n *You loose when your health is 0 or your deck is empty ";
+        return printRules = PURPLE + "RULES: \n* You'll play against a computer. \n* Who starts will be random.\n" +
+                "* Fighter cards has " + PINK + "\uD83D\uDCA5" + PURPLE + "Attack points and "  + LIGHT_PURPLE + "⛨" + PURPLE
+                + "Block points. \n* If you play a Fighter card, you place it on the board. \n" +
+                "* Action cards will give you extra " + RED_BOLD + "❤" + PURPLE + "Health. \n* You can't  attack on the first round \n" +
+                "* If you have Fighter cards on the board, you have to attack. \n* You can only attack with one fighter per round. " +
+                "\n* If the computer attacks and you have Fighters on the board, you have to use them to block the attack. \n" +
+                "* If the block points aren't enough or you don't have cards to block attacks with, you will take damage. \n" +
+                "* When a Fighter runs out of Block points, it will die. \n" +
+                "* You win when computers health is 0 or it runs out of cards first. \n" +
+                "* You loose when your health is 0 or you run out of cards first. \n" + RESET_COLOR;
     }
 
 
