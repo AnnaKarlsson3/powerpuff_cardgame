@@ -40,7 +40,7 @@ public class Action {
 
     }
 
-    private int getIntInput() {
+    public int getIntInput() {
         Scanner scanner = new Scanner(System.in);
         while (!scanner.hasNextInt()) {
             scanner.next();

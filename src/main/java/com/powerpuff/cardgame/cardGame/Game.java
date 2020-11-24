@@ -103,7 +103,7 @@ public class Game {
         action.checkInput(this);
     }
 
-    public void setPlayerName() {
+    private void setPlayerName() {
         display.printEnterNameMessage();
         action.inputPlayerName();
         player.setName(action.playerName);
@@ -243,7 +243,7 @@ public class Game {
         gameOver = false;
     }
 
-    void reStart() {
+    public void reStart() {
         Game game = new Game();
         game.run();
     }

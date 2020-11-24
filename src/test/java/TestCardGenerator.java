@@ -21,10 +21,24 @@ public class TestCardGenerator {
 
     @Test
     void testGenerateCards() {
-        Assertions.assertEquals( 100 ,cardGenerator.generateCardsAndGet().size() );
+        assertEquals( 100 ,cardGenerator.generateCardsAndGet().size() );
         assertNotNull(cardGenerator.generateCardsAndGet());
 
+
     }
+
+    @Test
+    public void testShuffleMethod(){
+        cardGenerator.generateCardsAndGet();
+        cardGenerator.shuffledCards =  (ArrayList<Card>) cardGenerator.getCommonDeck().clone();
+        assertArrayEquals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray(), "Expected both to be equal");
+
+        cardGenerator.shuffleCards(cardGenerator.getCommonDeck());
+
+        assertFalse(Arrays.equals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray()), "Expected both not to be equal");
+
+    }
+
 
 
 
@@ -35,18 +49,6 @@ public class TestCardGenerator {
         System.out.println("@AfterEach executed");
     }
 
-    @Test
-        public void testShuffleMethod(){
-        cardGenerator.generateCardsAndGet();
-        cardGenerator.shuffledCards =  (ArrayList<Card>) cardGenerator.getCommonDeck().clone();
-        Assertions.assertArrayEquals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray(), "Expected both to be equal");
-
-        cardGenerator.shuffleCards(cardGenerator.getCommonDeck());
-
-        assertFalse(Arrays.equals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray()), "Expected both not to be equal");
-
-
-    }
 
 
 }
