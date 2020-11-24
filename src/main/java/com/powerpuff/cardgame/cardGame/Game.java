@@ -51,8 +51,6 @@ public class Game {
         while (!gameOver) {
             round++;
 
-
-
             System.out.println(Display.CYAN_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
             if (random_nr == 1) {
 
@@ -201,33 +199,8 @@ public class Game {
 
     public boolean gameOver() {
 
-        if(playerHand.isEmpty() && gameboard.getPlayerActiveCards().isEmpty() && computerHand.isEmpty() && gameboard.getComputerActiveCards().isEmpty()){
-            if (player.getHp() < computer.getHp()) {
-                display.printWinner(computer);
-            }
-            if (player.getHp() == computer.getHp()) {
-                display.printTie();
-            }
-            if (computer.getHp() < player.getHp()) {
-                display.printWinner(player);
-            }
-
-            gameOver = true;
-
-        }
-
-        if( player.getHp() < 0 || (playerHand.isEmpty() && gameboard.getPlayerActiveCards().isEmpty())) {
-            display.printWinner(computer);
-            gameOver = true;
-        }
-
-        if( computer.getHp() < 0 || (computerHand.isEmpty() && gameboard.getComputerActiveCards().isEmpty())) {
-            display.printWinner(player);
-            gameOver = true;
-        }
-
-
-        return gameOver;
+       
+         return gameOver;
     }
 
     void endGame() {
