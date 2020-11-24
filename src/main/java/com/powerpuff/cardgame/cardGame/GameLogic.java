@@ -16,7 +16,6 @@ public class GameLogic {
         player.getHand().deletePlayedCard(playedCard);
         player.getHand().addNewCardToHand();
         return playedCard.getType();
-        //return "";
 
     }
 
