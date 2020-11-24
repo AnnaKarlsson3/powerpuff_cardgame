@@ -32,14 +32,14 @@ public class TestDisplay {
     @Test
     public void testPlayerNameTurn() {
         player.setName("Anders");
-        String expected = BOLD + "It's " + player.getName() + "'s" + " turn" + RESET_COLOR;
+        String expected = BOLD + "It's your turn, " + player.getName() + RESET_COLOR;
         assertEquals(expected, display.playerNameTurn(player.getName()), "Strings should be equal");
     }
 
 
     @Test
     public void testPrintComputerTurnMessage() {
-       String expected = "It's computer's turn";
+       String expected = "It's computer's turn.";
        assertEquals(expected, display.printComputerTurnMessage(), "strings should be equal");
     }
 
@@ -94,7 +94,7 @@ public class TestDisplay {
     @Test
     public void testDisplayBlockMessage(){
         String actual = display.blockMessage();
-        String expected = "Choose which card you want to block with";
+        String expected = "Choose which card you want to block with.";
 
         assertEquals(expected, actual);
         assertNotNull(display.blockMessage(), "should not be empty");
@@ -119,7 +119,7 @@ public class TestDisplay {
     @Test
     public void testDisplayBlockMessageNoCardsAvailable(){
         String actual = display.attackMessageNoCardsAvailable();
-        String expected = "No attack cards left";
+        String expected = "No attack cards left.";
         assertEquals(expected, actual);
         assertNotNull(display.attackMessageNoCardsAvailable());
     }
@@ -127,7 +127,7 @@ public class TestDisplay {
     @Test
     public void testDisplayComputerNoCardsOnBoard(){
         String actual = display.computerNoCardsOnBoardMessage();
-        String expected = "Computer doesn't have any card on board";
+        String expected = "Computer doesn't have any cards on the board.";
 
         assertNotNull(display.computerNoCardsOnBoardMessage(), "should not be null");
         assertEquals(actual, expected);
@@ -136,7 +136,7 @@ public class TestDisplay {
     @Test
     public void testComputerPlacedActionCardPrint(){
         String actual = display.computerPlayedActionCard();
-        String expected = "Computer Played Action Card: ";
+        String expected = "Computer played an Action card: ";
 
         assertNotNull(display.computerPlayedActionCard());
         assertEquals(actual, expected);
@@ -145,7 +145,8 @@ public class TestDisplay {
     @Test
     public void testComputerPlayedFighterCard(){
         String actual = display.computerPlacedFighterCard();
-        String expected = "Computer placed a Fighter Card on the Board";
+        String expected = "Computer placed a Fighter card on the Board";
+
         assertNotNull(display.computerPlacedFighterCard());
         assertEquals(actual, expected);
     }
@@ -159,17 +160,12 @@ public class TestDisplay {
     }
 
     @Test
-    public void testPrintComputerNoAttachCardsMessage () {
+    public void testPrintComputerNoAttackCardsMessage () {
         String actual = display.computerNoAttackCardsMessage();
-        String expected = "computer is not having any cards on the board to attack with";
+        String expected = "Computer doesn't have any cards to attack with.";
         assertEquals(actual, expected);
         assertNotNull(display.computerNoAttackCardsMessage());
     }
-
-
-
-
-
 
     @AfterEach
     void cleanUp() {

@@ -242,7 +242,7 @@ public class Display {
     }
 
     public  String computerNoCardsOnBoardMessage(){
-        return computerNoCardsOnBoard ="Computer doesn't have any cards on the board";
+        return computerNoCardsOnBoard ="Computer doesn't have any cards on the board.";
     }
 
     public String printComputerNoCardsOnBoard() {
