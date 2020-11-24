@@ -36,6 +36,7 @@ public class Game {
 
         int random_nr = (int) Math.round(Math.random());
 
+        display.printRules();
         setPlayerName();
 
         if (random_nr == 1) {
@@ -47,7 +48,7 @@ public class Game {
 
         while (!gameOver) {
             round++;
-            System.out.println("------------------| Round - " + round + " |------------------------------\n");
+            System.out.println(Display.CYAN_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
             sleep(1000);
             if (random_nr == 1) {
                 playerTurn();
@@ -113,8 +114,10 @@ public class Game {
 
                 //computer blocking
                 Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
-                System.out.println("Computer blocked your attack with: \n");
-                display.printPlayedCard(computerBlockingCard);
+                if (computerBlockingCard != null) {
+                    System.out.println("Computer blocked your attack with: ");
+                    display.printPlayedCard(computerBlockingCard);
+                }
 
                 //-Computer choosing one card to block with/if its not null
                 if (gameboard.computerActiveCards.size() == 0) {

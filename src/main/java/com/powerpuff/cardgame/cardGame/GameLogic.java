@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 public class GameLogic {
 
-
+    Display display = new Display();
 
     public String manageSelectedCard(Card playedCard, Player player, Gameboard gameboard) {
         if (playedCard.getType().equals("Action")) {
             player.setHp(player.getHp() + playedCard.getPoint());
-
+            display.printaddHp(playedCard.getPoint());
         } else {
             gameboard.placePlayerCardOnGameboard(playedCard);
         }

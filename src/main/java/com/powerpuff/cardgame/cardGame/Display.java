@@ -1,7 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
@@ -23,6 +22,17 @@ public class Display {
     public String computerPlayedFighterCard ="";
     public String breakLine = "";
     public String computerNoAttackCard = "";
+    public String printRules = "";
+    String BOLD = "\u001b[1m";
+    String RESET_COLOR = "\u001B[0m";
+    public static final String RESET = "\033[0m";  // Text Reset
+    public static final String YELLOW_BOLD = "\033[1;33m"; // YELLOW
+    public static final String RED_BOLD = "\033[1;31m";    // RED
+    public static final String CYAN_BOLD = "\033[1;36m";   // CYAN
+    public static final String BLUE_BOLD = "\033[1;34m";   // BLUE
+    public static final String GREEN_BOLD_BRIGHT = "\033[1;92m"; // GREEN
+    public static final String PURPLE = "\u001B[35m";
+
 
     public Display() {
         enterNameMessage();
@@ -32,11 +42,26 @@ public class Display {
         System.out.println("To continue, press 1, to end game - press 0");
     }
 
+
+    public void printRules(){
+        printRulesMessage();
+        System.out.println(printRules);
+    }
+
+    public String printRulesMessage(){
+        return printRules = "Rules: \n *Player vs computer \n *You start round 1 randomly \n *Fighter-Cards has an attackPoint and a blockPoint, if you play an fighter-card you have to put it on the board \n " +
+                "*Action-Cards has an healthPoint and 0 in blockPoints, if you play an action-card, it gives you life according to the healthPoints \n *You can not attack the first round \n" +
+                "*If you have fighters-cards on the board, you have to attack \n *you can only attack with one fighter/round \n *If computer attacks and you have fighters-cards on board, you have to block \n " +
+                "*If your block-cards blockPoints is less then computers attackPoints, or you don't have any block-cards, you will take damage \n *The card with less blockPoints than attackPoints will die in an attack/block \n " +
+                "*You winn when computers health is 0 or it´s deck is empty \n *You loose when your health is 0 or your deck is empty ";
+    }
+
+
     public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
     }
     public String enterNameMessage() {
-        return enterNameMessage = "Enter player name: ";
+        return enterNameMessage = BOLD + "Enter player name: " + RESET_COLOR;
     }
 
     public void printPlayerName(String name) {
@@ -44,7 +69,7 @@ public class Display {
         System.out.println(playerNameTurn);
     }
     public String playerNameTurn(String name) {
-        return playerNameTurn = "Your turn, " + name + ".";
+        return playerNameTurn = BOLD + "It's your turn, " + name + RESET_COLOR;
     }
 
     public void printComputerTurn() {
@@ -52,7 +77,11 @@ public class Display {
         System.out.println(computerTurn);
     }
     public String printComputerTurnMessage() {
-        return computerTurn = "Computer's turn.";
+        return computerTurn = "It's computer's turn.";
+    }
+
+    public void printaddHp(int point){
+        System.out.println( point + " added to hp." + "\n");
     }
 
     public void printPlayerHp(int hp) {
@@ -60,7 +89,7 @@ public class Display {
         System.out.println(playerHp);
     }
     public String printPlayerHpMessage(int hp) {
-        return playerHp = "Player HP is: " + hp;
+        return playerHp = BOLD + "Player HP is: " + hp + RESET_COLOR;
     }
 
     public void printComputerHp(int hp) {
@@ -68,7 +97,7 @@ public class Display {
         System.out.println(computerHp);
     }
     public String printComputerHpMessage(int hp) {
-        return computerHp = "Computer HP is: " + hp;
+        return computerHp = BOLD + "Computer HP is: " + hp + RESET_COLOR;
     }
 
     public void printCards(ArrayList<Card> cards){
@@ -78,8 +107,7 @@ public class Display {
     private StringBuilder printAsciiCards(ArrayList<Card> cards) {
         StringBuilder asciiCards = new StringBuilder();
 
-        String PURPLE = "\u001B[35m";
-        String RESET_COLOR = "\u001B[0m";
+
         AtomicInteger cardNumber = new AtomicInteger(1);
         AtomicInteger numberInsideCard = new AtomicInteger(1);
 
@@ -87,24 +115,42 @@ public class Display {
                 .stream()
                 .map(card -> PURPLE + cardNumber.getAndIncrement() + ". " + RESET_COLOR + card.getType() + ": " + card.getName())
                 .collect(Collectors.joining(" | ")) + "\n");
-        cards.stream().forEach(card -> asciiCards.append(" ┌───────────┐     "));
+        cards.stream().forEach(card -> asciiCards.append(" ┌──────────┐     "));
         asciiCards.append("\n");
         asciiCards.append(cards
                 .stream()
-                .map(card -> " │ \uD83D\uDCA5" + card.getPoint())
-                .collect(Collectors.joining("       │     ")) + "       |\n");
+                .map(card -> (card.getType().equals("Action") ? " │" + RED_BOLD + " ❤" : " │" + YELLOW_BOLD + " \uD83D\uDCA5") + RESET + card.getPoint())
+                .collect(Collectors.joining("      │     ")) + "       |\n");
         asciiCards.append(cards
                 .stream()
-                .map(card -> " │ ⛨" + card.getBlockPointPoint())
-                .collect(Collectors.joining("       │     ")) + "       |\n");
+                .map(card -> card.getType().equals("Action") ? " │    " : " │" + YELLOW_BOLD + " ⛨" + RESET + card.getBlockPointPoint())
+                .collect(Collectors.joining("      │     ")) + "       |\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET_COLOR)
-                .collect(Collectors.joining("  │     ")) + "  │\n");
-        cards.stream().forEach(card -> asciiCards.append(" └───────────┘     "));
+                .collect(Collectors.joining(" │     ")) + "  │\n");
+        cards.stream().forEach(card -> asciiCards.append(" └──────────┘     "));
         asciiCards.append("\n");
         return asciiCards;
     }
+
+  /* public List<String> addNumbersToCards(ArrayList<Card> cardsInHand) {
+
+        AtomicInteger numbers = new AtomicInteger(1);
+
+        List<String> cardList = cardsInHand.stream()
+                .map(card -> numbers.getAndIncrement() + ". Type: " + card.getType()
+                        + " - Name: " + card.getName() + " - Points: " + card.getPoint() +" - block points: " + card.getBlockPointPoint() + "\n")
+                .collect(Collectors.toList());
+        return cardList;
+    }
+
+    public String formatCards(List<String> numberedCards) {
+        String formattedCards = (String) numberedCards
+                .stream()
+                .collect(Collectors.joining("", "", ""));
+        return formattedCards;
+    }*/
 
     public void printCardsInHand(ArrayList<Card> cardsInHand) {
         System.out.printf("The cards in your hand:\n");
@@ -123,15 +169,29 @@ public class Display {
     }
 
     public void printPlayedCard(Card chosenCard) {
+        if (chosenCard != null) {
+            String point = "";
+            String blockPoint = "    ";
+            if (chosenCard.getType().equals("Action")) {
+                point = RED_BOLD + " ❤" + RESET + chosenCard.getPoint();
 
-        final StringBuilder asciiCard = new StringBuilder();
-        asciiCard.append(chosenCard.getType() + ": " + chosenCard.getName() + "\n");
-        asciiCard.append("┌───────────┐\n");
-        asciiCard.append("│ \uD83D\uDCA5" + chosenCard.getPoint() + "       │\n");
-        asciiCard.append("│ ⛨" + chosenCard.getBlockPointPoint() + "       │\n");
-        asciiCard.append("│           │\n");
-        asciiCard.append("└───────────┘\n");
-        printPlayedCardMessage(asciiCard);
+            } else {
+                point = YELLOW_BOLD + " \uD83D\uDCA5" + RESET + chosenCard.getPoint();
+                blockPoint = YELLOW_BOLD + " ⛨" + RESET + chosenCard.getBlockPointPoint();
+
+            }
+
+            final StringBuilder asciiCard = new StringBuilder();
+            asciiCard.append(chosenCard.getType() + ": " + chosenCard.getName() + "\n");
+            asciiCard.append("┌───────────┐\n");
+            asciiCard.append("│ " + point + "      │\n");
+            asciiCard.append("│ " + blockPoint + "      │\n");
+            asciiCard.append("│           │\n");
+            asciiCard.append("└───────────┘\n");
+            printPlayedCardMessage(asciiCard);
+
+        }
+
     }
 
     public void printPlayedCardMessage(StringBuilder asciiCard) {
@@ -140,15 +200,14 @@ public class Display {
 
     public void printWinner(Player player) {
         System.out.println(" ");
-        System.out.println("------- Game Over -------");
-        System.out.println(" ");
+        System.out.println(GREEN_BOLD_BRIGHT+ "-------------- Game Over ----------------" + RESET);        System.out.println(" ");
         System.out.println("The Winner is:");
         System.out.println(player.getName());
     }
 
     public void printTie() {
         System.out.println(" ");
-        System.out.println("------- Game Over -------");
+        System.out.println(GREEN_BOLD_BRIGHT+ "-------------- Game Over ----------------" + RESET);
         System.out.println(" ");
         System.out.println("The game ended in a tie");
     }
