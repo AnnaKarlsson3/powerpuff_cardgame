@@ -22,20 +22,27 @@ public class Computer extends Player{
    public void computerSendToBoard(Gameboard gameboard){
         Card playedCard = playCard();
 
-           if (playedCard.getType().equals("Action")) {
-               setHp(getHp() + playedCard.getPoint());
-               display.printComputerPlayedActionCard();
-               //System.out.println(playedCard);
-               display.printPlayedCard(playedCard);
-               display.printaddHp(playedCard.getPoint());
-               display.printBreakLine();
-           } else {
-               gameboard.placeComputerCardOnGameboard(playedCard);
-               display.printComputerPlacedFighterCard();
-               display.printPlayedCard(playedCard);
-           }
+        if(playedCard != null){
+            if (playedCard.getType().equals("Action")) {
+                setHp(getHp() + playedCard.getPoint());
+                display.printComputerPlayedActionCard();
+                //System.out.println(playedCard);
+                display.printPlayedCard(playedCard);
+                display.printaddHp(playedCard.getPoint());
+                display.printBreakLine();
+            } else {
+                gameboard.placeComputerCardOnGameboard(playedCard);
+                display.printComputerPlacedFighterCard();
+                display.printPlayedCard(playedCard);
+            }
+
             getHand().deletePlayedCard(playedCard);
             getHand().addNewCardToHand();
+        } else {
+            System.out.println(" Computers hand is empty!");
+        }
+
+
     }
 
     public Card attackCard(Gameboard gameboard) {

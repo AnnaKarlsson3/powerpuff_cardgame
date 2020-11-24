@@ -18,13 +18,16 @@ public class Display {
     public String displayAttackMessage = "";
     public String displayAttackMessageNoCardsAvailable = "";
     public String computerNoCardsOnBoard = "";
-    public String computerPlayedActionCard ="";
-    public String computerPlayedFighterCard ="";
+    public String computerPlayedActionCard = "";
+    public String computerPlayedFighterCard = "";
     public String breakLine = "";
     public String computerNoAttackCard = "";
     public String printRules = "";
     String BOLD = "\u001b[1m";
     public static final String RESET = "\033[0m";  // Text Reset
+    public static final String RED = "\033[0;31m";     // RED
+    public static final String GREEN = "\033[0;32m";   // GREEN
+    public static final String YELLOW = "\033[0;33m";  // YELLOW
     public static final String YELLOW_BOLD = "\033[1;33m"; // YELLOW
     public static final String RED_BOLD = "\u001b[1m\u001b[38;5;197m";    // RED
     public static final String CYAN_BOLD = "\033[1;36m";   // CYAN
@@ -61,6 +64,7 @@ public class Display {
     public void printEnterNameMessage() {
         System.out.println(enterNameMessage);
     }
+
     public String enterNameMessage() {
         return enterNameMessage = BOLD + "Enter player name: " + RESET;
     }
@@ -69,6 +73,7 @@ public class Display {
         playerNameTurn(name);
         System.out.println(playerNameTurn);
     }
+
     public String playerNameTurn(String name) {
         return playerNameTurn = BOLD + "It's your turn, " + name + RESET;
     }
@@ -77,6 +82,7 @@ public class Display {
         printComputerTurnMessage();
         System.out.println(computerTurn);
     }
+
     public String printComputerTurnMessage() {
         return computerTurn = "It's computer's turn.";
     }
@@ -89,6 +95,7 @@ public class Display {
         printPlayerHpMessage(hp);
         System.out.println(playerHp);
     }
+
     public String printPlayerHpMessage(int hp) {
         return playerHp = BOLD + "Player HP is: " + hp + RESET;
     }
@@ -97,12 +104,13 @@ public class Display {
         printComputerHpMessage(hp);
         System.out.println(computerHp);
     }
+
     public String printComputerHpMessage(int hp) {
         return computerHp = BOLD + "Computer HP is: " + hp + RESET;
     }
 
-    public void printCards(ArrayList<Card> cards){
-        System.out.println(printAsciiCards(cards));
+    public void printCards(ArrayList<Card> cards) {
+        System.out.println(printAsciiCards(cards).toString());
     }
 
     private StringBuilder printAsciiCards(ArrayList<Card> cards) {
@@ -150,12 +158,13 @@ public class Display {
         printCards(cards);
     }
 
+
     public void printPlayedCard(Card chosenCard) {
         if (chosenCard != null) {
             String point = "";
             String blockPoint = "    ";
             if (chosenCard.getType().equals("Action")) {
-                point = RED_BOLD + " ❤" + RESET + chosenCard.getPoint();
+                point = RED + " ❤" + RESET + chosenCard.getPoint();
 
             } else {
                 point = PINK + " \uD83D\uDCA5" + RESET + chosenCard.getPoint();
@@ -168,7 +177,7 @@ public class Display {
             asciiCard.append("│ " + point + "      │\n");
             asciiCard.append("│ " + blockPoint + "      │\n");
             asciiCard.append("│           │\n");
-            asciiCard.append("└───────────┘\n");
+            asciiCard.append("└───────────┘");
             printPlayedCardMessage(asciiCard);
         }
     }
@@ -179,14 +188,15 @@ public class Display {
 
     public void printWinner(Player player) {
         System.out.println(" ");
-        System.out.println(GREEN_BOLD_BRIGHT+ "-------------- Game Over ----------------" + RESET);        System.out.println(" ");
+        System.out.println(GREEN_BOLD_BRIGHT + "-------------- Game Over ----------------" + RESET);
+        System.out.println(" ");
         System.out.println("The Winner is:");
         System.out.println(player.getName());
     }
 
     public void printTie() {
         System.out.println(" ");
-        System.out.println(GREEN_BOLD_BRIGHT+ "-------------- Game Over ----------------" + RESET);
+        System.out.println(GREEN_BOLD_BRIGHT + "-------------- Game Over ----------------" + RESET);
         System.out.println(" ");
         System.out.println("The game ended in a tie!");
     }
@@ -208,7 +218,7 @@ public class Display {
         return null;
     }
 
-    public String printBlockMessageNoBlockCardsAvailable () {
+    public String printBlockMessageNoBlockCardsAvailable() {
         System.out.println(blockMessageNoBlockCardsAvailable());
         return null;
     }
