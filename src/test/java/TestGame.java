@@ -25,7 +25,7 @@ public class TestGame {
         assertTrue(!game.gameOver);
     }
 
-    @Test
+   /* @Test
     public void testGameOver() {
         Player player = new Player();
         Computer computer = new Computer();
@@ -61,7 +61,7 @@ public class TestGame {
     @Test
     public void testEndGame() {
         assertFalse(game.gameOver);
-    }
+    }*/
 
 
     @Test

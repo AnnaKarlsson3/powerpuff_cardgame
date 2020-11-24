@@ -27,6 +27,8 @@ public class Game {
         action = new Action();
         gameboard = new Gameboard();
         gameLogic = new GameLogic();
+        playerHand = player.getHand().getCardsInHand();
+        computerHand = computer.getHand().getCardsInHand();
 
 
     }
@@ -48,26 +50,42 @@ public class Game {
 
         while (!gameOver) {
             round++;
+
+
+
             System.out.println(Display.CYAN_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
             if (random_nr == 1) {
+
                 playerTurn();
-                display.printEndMessage();
-                action.inputMenu(this);
+                gameOver();
+
                 if (gameOver) break;
+                display.printEndMessage();
+
+                action.inputMenu(this);
 
                 computerTurn();
+                gameOver();
+                if (gameOver) break;
 
             } else {
+
                 computerTurn();
-                display.printEndMessage();
-                action.inputMenu(this);
+                gameOver();
+
                 if (gameOver) break;
+                display.printEndMessage();
+
+                action.inputMenu(this);
+
 
                 playerTurn();
+                gameOver();
+                if (gameOver) break;
 
             }
 
-            gameOver(player.getHand().getCardsInHand(), player.getHp(), computer.getHand().getCardsInHand(), computer.getHp());
+
 
         }
         playAgain();
@@ -90,6 +108,7 @@ public class Game {
 
 
     public void playerTurn() {
+
         display.printPlayerName(player.getName());
         display.printCardsInHand(player.getHand().getCardsInHand());
         //display.addNumbersToCards(player.getHand().getCardsInHand());
@@ -132,9 +151,11 @@ public class Game {
         display.printComputerHp(computer.getHp());
         display.printBreakLine();
         System.out.println(" ");
+
     }
 
     public void computerTurn() {
+
         display.printBreakLine();
         display.printComputerTurn();
         computer.computerSendToBoard(gameboard);
@@ -175,28 +196,36 @@ public class Game {
 
         display.printBreakLine();
         System.out.println(" ");
+
     }
 
-    public boolean gameOver(ArrayList<Card> playerHand, int playerHp, ArrayList<Card> computerHand, int computerHp) {
+    public boolean gameOver() {
 
-        if (playerHp <= 0 || playerHand.size() == 0) {
-            if (playerHp < computerHp) {
+        if(playerHand.isEmpty() && gameboard.getPlayerActiveCards().isEmpty() && computerHand.isEmpty() && gameboard.getComputerActiveCards().isEmpty()){
+            if (player.getHp() < computer.getHp()) {
                 display.printWinner(computer);
             }
-            if (playerHp == computerHp) {
+            if (player.getHp() == computer.getHp()) {
                 display.printTie();
             }
-            gameOver = true;
-        }
-        if (computerHp <= 0 || computerHand.size() == 0) {
-            if (computerHp < playerHp) {
+            if (computer.getHp() < player.getHp()) {
                 display.printWinner(player);
             }
-            if (computerHp == playerHp) {
-                display.printTie();
-            }
+
+            gameOver = true;
+
+        }
+
+        if( player.getHp() < 0 || (playerHand.isEmpty() && gameboard.getPlayerActiveCards().isEmpty())) {
+            display.printWinner(computer);
             gameOver = true;
         }
+
+        if( computer.getHp() < 0 || (computerHand.isEmpty() && gameboard.getComputerActiveCards().isEmpty())) {
+            display.printWinner(player);
+            gameOver = true;
+        }
+
 
         return gameOver;
     }
