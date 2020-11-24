@@ -49,16 +49,16 @@ public class Display {
     }
 
     public String printRulesMessage(){
-        return printRules = PURPLE + "RULES: \n* You'll play against a computer and who starts will be random.\n" +
+        return printRules = PURPLE + "RULES: \n* You'll play against a computer and it will be random who starts.\n" +
                 "* Fighter cards has " + PINK + "\uD83D\uDCA5" + PURPLE + "Attack points and "  + LIGHT_PURPLE + "⛨" + PURPLE
                 + "Block points. \n* If you play a Fighter card, you place it on the board. \n" +
                 "* Action cards will give you extra " + RED_BOLD + "❤" + PURPLE + "Health. \n" +
-                "* If you have Fighter cards on the board, you have to attack once per round, but not on the first round. \n" +
+                "* If you have Fighter cards on the board, you have to attack once per round - but not the first round. \n" +
                 "* You use your Fighters on the board to block attacks.\n" +
                 "* If the block points aren't enough or you don't have cards to block attacks with, you will take damage. \n" +
                 "* When a Fighter runs out of Block points, it dies. \n" +
-                "* You win when computer runs out of HP or cards first. \n" +
-                "* You loose when your HP is 0 or you run out of cards first. \n" + RESET;
+                "* You win when the computer runs out of HP or cards first. \n" +
+                "* You loose when your HP is 0 or you run out of cards. \n" + RESET;
     }
 
     public void printEnterNameMessage() {
@@ -88,7 +88,7 @@ public class Display {
     }
 
     public void printaddHp(int point){
-        System.out.println( "You got " + point + " extra health." + RED_BOLD + "❤" + RESET +"\n");
+        System.out.println( "You got " + point + " extra Health points " + RED_BOLD + "❤" + RESET +"\n");
     }
 
     public void printPlayerHp(int hp) {
@@ -149,7 +149,7 @@ public class Display {
     }
 
     public void printPlayersCardsOnBoard(ArrayList<Card> cards) {
-        System.out.println("Your cards on the board: \n");
+        System.out.println(" from your cards on the board: \n");
         printCards(cards);
     }
 
@@ -164,7 +164,7 @@ public class Display {
             String point = "";
             String blockPoint = "    ";
             if (chosenCard.getType().equals("Action")) {
-                point = RED + " ❤" + RESET + chosenCard.getPoint();
+                point = RED_BOLD + " ❤" + RESET + chosenCard.getPoint();
 
             } else {
                 point = PINK + " \uD83D\uDCA5" + RESET + chosenCard.getPoint();
@@ -206,7 +206,7 @@ public class Display {
     }
 
     public String blockMessage() {
-        return displayBlockMessage = "Choose which card you want to block with.";
+        return displayBlockMessage = "Choose which card you want to block with";
     }
 
     public String blockMessageNoBlockCardsAvailable() {
@@ -214,7 +214,7 @@ public class Display {
     }
 
     public String printBlockMessage() {
-        System.out.println(blockMessage());
+        System.out.print(blockMessage());
         return null;
     }
 
@@ -224,11 +224,11 @@ public class Display {
     }
 
     public String attackMessage() {
-        return displayAttackMessage = "Choose attack card";
+        return displayAttackMessage = "Choose what card to attack with";
     }
 
     public String printAttackMessage() {
-        System.out.println(attackMessage());
+        System.out.print(attackMessage());
         return null;
     }
 
@@ -260,7 +260,7 @@ public class Display {
     }
 
     public String computerPlacedFighterCard() {
-        return computerPlayedFighterCard = "Computer placed a Fighter card on the Board";
+        return computerPlayedFighterCard = "Computer placed a card on the board.";
     }
 
     public String printComputerPlacedFighterCard() {

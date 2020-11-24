@@ -118,7 +118,7 @@ public class Game {
 
         Card selectedCardFromHand = action.selectCard(player.getHand());
         sleep(1000);
-        System.out.println("You played:\n");
+        System.out.print("You played ");
         display.printPlayedCard(selectedCardFromHand);
         sleep(2000);
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
@@ -167,7 +167,7 @@ public class Game {
         if (round > 1) {
             if (gameboard.computerActiveCards.size() > 0) {
                 Card attackCard = computer.attackCard(gameboard);
-                System.out.println("\nComputer's attack card:");
+                System.out.println("\nComputer attacked you with " + attackCard.getPoint() + " damage");
                 //System.out.println(attackCard);
                sleep(2000);
                display.printBreakLine();
@@ -178,6 +178,7 @@ public class Game {
                 } else {
                     display.printBlockMessage();
                     display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                    System.out.println("Enter a number:");
                     sleep(4000);
                     Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
                     gameLogic.attack(player, attackCard, selectedCardFromBoard, gameboard.computerActiveCards, gameboard.playerActiveCards);
