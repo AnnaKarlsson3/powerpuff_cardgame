@@ -121,11 +121,11 @@ public class Display {
         asciiCards.append(cards
                 .stream()
                 .map(card -> (card.getType().equals("Action") ? " │" + RED_BOLD + " ❤" : " │" + YELLOW_BOLD + " \uD83D\uDCA5") + RESET + card.getPoint())
-                .collect(Collectors.joining("      │     ")) + "       |\n");
+                .collect(Collectors.joining("      │     ")) + "      |\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> card.getType().equals("Action") ? " │    " : " │" + YELLOW_BOLD + " ⛨" + RESET + card.getBlockPointPoint())
-                .collect(Collectors.joining("      │     ")) + "       |\n");
+                .collect(Collectors.joining("      │     ")) + "      |\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET_COLOR)
