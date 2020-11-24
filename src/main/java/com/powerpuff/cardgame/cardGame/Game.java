@@ -83,7 +83,7 @@ public class Game {
 
     }
 
-    public void setPlayerName() {
+    private void setPlayerName() {
         display.printEnterNameMessage();
         action.inputPlayerName();
         player.setName(action.playerName);

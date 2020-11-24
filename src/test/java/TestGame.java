@@ -59,12 +59,6 @@ public class TestGame {
     }
 
     @Test
-    public void testEndGame() {
-        assertFalse(game.gameOver);
-    }
-
-
-    @Test
     public void testCreateNewGame(){
         try {
             new Game();
