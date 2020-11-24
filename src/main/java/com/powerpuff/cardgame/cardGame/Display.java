@@ -73,6 +73,10 @@ public class Display {
         return computerTurn = "It's computer's turn";
     }
 
+    public void printaddHp(int point){
+        System.out.println( point + " added to hp." + "\n");
+    }
+
     public void printPlayerHp(int hp) {
         printPlayerHpMessage(hp);
         System.out.println(playerHp);
