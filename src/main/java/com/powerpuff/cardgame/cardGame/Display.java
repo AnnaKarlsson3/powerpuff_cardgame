@@ -110,6 +110,7 @@ public class Display {
 
         AtomicInteger cardNumber = new AtomicInteger(1);
         AtomicInteger numberInsideCard = new AtomicInteger(1);
+        AtomicInteger cardNumber2 = new AtomicInteger(1);
 
         asciiCards.append(cards
                 .stream()
@@ -128,7 +129,7 @@ public class Display {
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET_COLOR)
-                .collect(Collectors.joining(" │     ")) + "  │\n");
+                .collect(Collectors.joining(" │     ")) + " "+ (numberInsideCard.toString().equals("5") ? " " : "" ) + "│\n");
         cards.stream().forEach(card -> asciiCards.append(" └──────────┘     "));
         asciiCards.append("\n");
         return asciiCards;
