@@ -54,7 +54,6 @@ public class Game {
                 playerTurn();
                 gameOver();
 
-
                 if (gameOver) break;
 
                 computerTurn();
@@ -69,9 +68,7 @@ public class Game {
                 computerTurn();
                 gameOver();
 
-
                 if (gameOver) break;
-
 
                 playerTurn();
                 gameOver();
