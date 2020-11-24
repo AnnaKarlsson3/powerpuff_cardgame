@@ -243,7 +243,7 @@ public class Game {
         gameOver = false;
     }
 
-    void reStart() {
+    public void reStart() {
         Game game = new Game();
         game.run();
     }

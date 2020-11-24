@@ -30,10 +30,11 @@ public class TestAction {
     @Test
     public void testInputPlayerName(){
         assertNotNull(action.playerName, "The name should not be null" );
-
+        String playerName = "TestPlayer";
+        assertNotNull(player.setName(playerName));
+        assertEquals(playerName, player.setName(playerName));
 
     }
-
 
 
     @Test

@@ -24,6 +24,7 @@ public class TestCardGenerator {
         assertEquals( 100 ,cardGenerator.generateCardsAndGet().size() );
         assertNotNull(cardGenerator.generateCardsAndGet());
 
+
     }
 
     @Test
