@@ -24,7 +24,7 @@ public class Hand {
         playerDeck.setPlayerCards(updatedDeck);
     }
 
-    public ArrayList getCardsInHand() {
+    public ArrayList<Card> getCardsInHand() {
         return cardsInHand;
     }
 

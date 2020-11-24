@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 public class GameLogic {
 
+    Display display = new Display();
+
     public String manageSelectedCard(Card playedCard, Player player, Gameboard gameboard) {
         if (playedCard.getType().equals("Action")) {
             player.setHp(player.getHp() + playedCard.getPoint());
+            display.printaddHp(playedCard.getPoint());
         } else {
             gameboard.placePlayerCardOnGameboard(playedCard);
         }
@@ -17,28 +20,40 @@ public class GameLogic {
 
     }
 
-    public void attack(Player computer, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards) {
-        int damage = attack.getPoint() - block.getBlockPointPoint();
-        if (attack.getPoint() > block.getBlockPointPoint()) {
-            computer.setHp(computer.getHp() - damage);
-            block(attack, block, playerActiveCards, computerActiveCards);
-        } else {
-            block(attack, block, playerActiveCards, computerActiveCards);
-        }
+    public int damage;
+    public boolean greater;
+    public boolean less;
 
+    public int attack(Player opponent, Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
+        damage = attack.getPoint() - block.getBlockPointPoint();
+        greater = attack.getPoint() > block.getBlockPointPoint();
+        if(greater){
+            opponent.setHp(opponent.getHp() - damage);
+            block(attack, block, playerActiveCards, opponentActiveCards);
+        }else {
+            block(attack, block, playerActiveCards, opponentActiveCards);
+        }
+        return opponent.getHp();
     }
 
-    public void block(Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> computerActiveCards) {
-        if (attack.getPoint() > block.getBlockPointPoint()) {
-            computerActiveCards.remove(block);
-        } else if (attack.getPoint() < block.getBlockPointPoint()) {
-            block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
-            playerActiveCards.remove(attack);
-        } else {
-            computerActiveCards.remove(block);
-            playerActiveCards.remove(attack);
+    public int block(Card attack, Card block, ArrayList<Card> playerActiveCards, ArrayList<Card> opponentActiveCards) {
+        greater = attack.getPoint() > block.getBlockPointPoint() && block.getPoint() < attack.getBlockPointPoint();
+        less = attack.getPoint() < block.getBlockPointPoint() && block.getPoint() > attack.getBlockPointPoint();
+        if(greater){
+            opponentActiveCards.remove(block);
+            System.out.println("opponent '" + block.getName() + "'  is dead\n");
+        }else if(less){
+                block.setBlockPoint(block.getBlockPointPoint() - attack.getPoint());
+                playerActiveCards.remove(attack);
+                System.out.println("'" + attack.getName() + "' is dead");
+                System.out.println(block.getName() + " blockpoints is now " + block.getBlockPointPoint());
+
         }
+         else {
+            opponentActiveCards.remove(block);
+            playerActiveCards.remove(attack);
+            System.out.println(" both attack card '" + attack.getName() + "' and block card '" + block.getName() + "' are dead");
+        }
+        return block.getBlockPointPoint();
     }
-
-
 }

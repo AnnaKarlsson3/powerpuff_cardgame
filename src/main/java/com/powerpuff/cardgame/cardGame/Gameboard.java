@@ -3,8 +3,8 @@ package com.powerpuff.cardgame.cardGame;
 import java.util.ArrayList;
 
 public class Gameboard {
-    ArrayList<Card> playerActiveCards;
-    ArrayList<Card> computerActiveCards;
+    public ArrayList<Card> playerActiveCards;
+    public ArrayList<Card> computerActiveCards;
 
     public Gameboard() {
         this.playerActiveCards = new ArrayList<>();

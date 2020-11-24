@@ -7,6 +7,7 @@ import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 public class Computer extends Player{
+    Display display = new Display();
 
     public Computer() {
         super.setName("Computer");
@@ -21,43 +22,51 @@ public class Computer extends Player{
    public void computerSendToBoard(Gameboard gameboard){
         Card playedCard = playCard();
 
-           if (playedCard.getType().equals("Action")) {
-               setHp(getHp() + playedCard.getPoint());
-               getHand().deletePlayedCard(playedCard);
-               getHand().addNewCardToHand();
-               System.out.println("Computer Played Action Card: ");
-               System.out.println(playedCard);
-               System.out.println("------------------------");
-           } else {
-               gameboard.placeComputerCardOnGameboard(playedCard);
-               System.out.println("Computer placed a Fighter Card on the Board");
-           }
+        if(playedCard != null){
+            if (playedCard.getType().equals("Action")) {
+                setHp(getHp() + playedCard.getPoint());
+                display.printComputerPlayedActionCard();
+                //System.out.println(playedCard);
+                display.printPlayedCard(playedCard);
+                display.printaddHp(playedCard.getPoint());
+                display.printBreakLine();
+            } else {
+                gameboard.placeComputerCardOnGameboard(playedCard);
+                display.printComputerPlacedFighterCard();
+                display.printPlayedCard(playedCard);
+            }
+
+            getHand().deletePlayedCard(playedCard);
+            getHand().addNewCardToHand();
+        } else {
+            System.out.println(" Computers hand is empty!");
+        }
 
 
     }
 
-    Card attackCard(Gameboard gameboard) {
+    public Card attackCard(Gameboard gameboard) {
         ArrayList<Card> playersCards = gameboard.getPlayerActiveCards();
         ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
 
-        Card maxPlayersCard = playersCards.stream()
-                .max(Comparator.comparing(Card::getPoint))
-                .orElseThrow(NoSuchElementException::new);
-
-        ArrayList<Card> options =  computersCards.stream()
-                .filter(c -> c.getPoint() >= maxPlayersCard.getPoint())
-                .collect(Collectors.toCollection(ArrayList::new));
-
         try {
+            Card maxPlayersCard = playersCards.stream()
+                    .max(Comparator.comparing(Card::getPoint))
+                    .orElseThrow(NoSuchElementException::new);
+
+            ArrayList<Card> options = computersCards.stream()
+                    .filter(c -> c.getPoint() >= maxPlayersCard.getPoint())
+                    .collect(Collectors.toCollection(ArrayList::new));
+
             Card choosenCard = options.stream()
                     .min(Comparator.comparing(Card::getPoint))
                     .orElseThrow(NoSuchElementException::new);
             return choosenCard;
+
         } catch (NoSuchElementException e) {
-            Card chooseMinCard = computersCards.stream()
-                    .min(Comparator.comparing(Card::getPoint))
-                    .orElseThrow(NoSuchElementException::new);
-            return chooseMinCard;
+            return computersCards.stream()
+                    .max(Comparator.comparing(Card::getPoint))
+                    .orElse(null);
         }
     }
 
@@ -77,15 +86,13 @@ public class Computer extends Player{
             } catch (NoSuchElementException e) {
                 Card chooseMaxCard = computersCards.stream()
                         .max(Comparator.comparing(Card::getPoint))
-                        .orElseThrow(NoSuchElementException::new);
+                        .orElse(null);
                 return chooseMaxCard;
             }
         } else{
-            System.out.println("Computer doesn't have any card on board");
+            display.printComputerNoCardsOnBoard();
             return  null;
         }
-
-
     }
 
     public Card playCard(){

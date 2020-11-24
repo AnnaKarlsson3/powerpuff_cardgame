@@ -26,61 +26,108 @@ public class TestGame {
     }
 
     @Test
-    public void testGameOver() {
-        boolean gameover = false;
-        int hp = 0;
-        Player player = new Player();
-        ArrayList<Card> playerHand = player.getHand().getCardsInHand();
-        ArrayList<Card> playerHandEmpty = (ArrayList<Card>) player.getHand().getCardsInHand().clone();
+    public void testGameOverisTie() {
+        game.player.setName("MockPlayer");
+        game.playerHand.clear();
+        game.computerHand.clear();
+        game.gameboard.getPlayerActiveCards().clear();
+        game.gameboard.getComputerActiveCards().clear();
+        game.player.setHp(0);
+        game.computer.setHp(0);
 
-        Assertions.assertArrayEquals(playerHand.toArray(), playerHandEmpty.toArray(), "Expected both to be equal");
-
-        playerHandEmpty.clear();
-
-        assertFalse(Arrays.equals(playerHand.toArray(), playerHandEmpty.toArray()), "Expected both not to be equal");
-
-        BooleanSupplier condition = () -> hp <= 0 || playerHandEmpty.size() == 0;
-        assertTrue(condition, "should be true");
-
-        //if condition is true, set boolean to true
-        gameover = true;
-
-        assertTrue(gameover == true);
+        System.out.println("Test for Tie");
+        if(game.playerHand.isEmpty() && game.gameboard.getPlayerActiveCards().isEmpty() && game.computerHand.isEmpty() && game.gameboard.getComputerActiveCards().isEmpty()){
+            assertTrue(game.gameOver());
+        } else {
+            assertFalse(game.gameOver());
+        }
 
     }
+
+    @Test
+    public void testGameOverComputerWin() {
+        game.player.setName("MockPlayer");
+        game.playerHand.clear();
+        game.computerHand.clear();
+        game.gameboard.getPlayerActiveCards().clear();
+        game.gameboard.getComputerActiveCards().clear();
+        game.player.setHp(0);
+        game.computer.setHp(1);
+
+        System.out.println("Test for Computer Win");
+        if(game.playerHand.isEmpty() && game.gameboard.getPlayerActiveCards().isEmpty() && game.computerHand.isEmpty() && game.gameboard.getComputerActiveCards().isEmpty()){
+            assertTrue(game.gameOver());
+        } else {
+            assertFalse(game.gameOver());
+        }
+    }
+
+    @Test
+    public void testGameOverPlayerWin() {
+        game.player.setName("MockPlayer");
+        game.playerHand.clear();
+        game.computerHand.clear();
+        game.gameboard.getPlayerActiveCards().clear();
+        game.gameboard.getComputerActiveCards().clear();
+        game.player.setHp(1);
+        game.computer.setHp(0);
+
+        System.out.println("Test for Player Win");
+        if(game.playerHand.isEmpty() && game.gameboard.getPlayerActiveCards().isEmpty() && game.computerHand.isEmpty() && game.gameboard.getComputerActiveCards().isEmpty()){
+            assertTrue(game.gameOver());
+        } else {
+            assertFalse(game.gameOver());
+        }
+    }
+
+    @Test
+    public void testGameOverJustTheComputerWin(){
+
+        System.out.println("Game Over when player's hp is less or equal to 0");
+        game.player.setHp(0);
+        assertTrue(game.gameOver());
+
+        System.out.println("\n" + "----------------------------------------");
+        System.out.println("Game Over when playerhand and board is empty");
+        game.player.setHp(5);
+        game.playerHand.clear();
+        game.gameboard.getPlayerActiveCards().clear();
+
+        if( game.player.getHp() <= 0 || (game.playerHand.isEmpty() && game.gameboard.getPlayerActiveCards().isEmpty())) {
+        assertTrue(game.gameOver());
+        } else {
+            assertFalse(game.gameOver());
+        }
+    }
+
+    @Test
+    public void testGameOverJustThePlayerWin(){
+        game.player.setName("MockPlayer");
+        System.out.println("Game Over when computer's hp is less or equal to 0");
+        game.computer.setHp(0);
+        assertTrue(game.gameOver());
+
+        System.out.println("\n" + "----------------------------------------");
+        System.out.println("Game Over when computerhand and board is empty");
+        game.computer.setHp(5);
+        game.computerHand.clear();
+        game.gameboard.getComputerActiveCards().clear();
+
+        if( game.computer.getHp() <= 0 || (game.computerHand.isEmpty() && game.gameboard.getComputerActiveCards().isEmpty())) {
+        assertTrue(game.gameOver()); }
+        else {
+            assertFalse(game.gameOver());
+        }
+    }
+
+
+
 
     @Test
     public void testEndGame() {
         assertFalse(game.gameOver);
     }
 
-    @Test
-    public void testUpdateHpOfPlayer() {
-        Player player = game.player;
-        Computer computer = game.computer;
-        int computerHpBeforeUpdate = computer.getHp();
-        Card playedCard1 = new Card("Action", "apple", 3, 5);
-        assertEquals(player.getHp() + 3, game.updateHpIfPlayersTurn(playedCard1));
-
-        Card playedCard2 = new Card("Fighter", "Orange", 5, 5);
-        game.updateHpIfPlayersTurn(playedCard2);
-        assertFalse(computerHpBeforeUpdate == computer.getHp());
-
-    }
-
-    @Test
-    public void testUpdateHpOfComputer() {
-        Player player = game.player;
-        Computer computer = game.computer;
-        int playerHpBeforeUpdate = player.getHp();
-        Card playedCard = new Card("Action", "hello", 5, 5);
-        assertEquals(computer.getHp() + 5, game.updateHpIfComputersTurn(playedCard));
-
-        Card playedCard2 = new Card("Fighter", "Hi", 3, 5);
-        game.updateHpIfComputersTurn(playedCard2);
-        assertFalse(playerHpBeforeUpdate == player.getHp());
-
-    }
 
     @Test
     public void testCreateNewGame(){
