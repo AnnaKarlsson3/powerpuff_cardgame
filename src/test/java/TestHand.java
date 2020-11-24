@@ -30,7 +30,7 @@ public class TestHand {
         assertEquals(5, cardsInHand.size());
     }
 
-    @Test //test checked again/snehal
+    @Test //test checked /snehal
     public void testAddNewCardToHand(){
         System.out.println("=== Executed test for adding a card to the hand ===");
 
