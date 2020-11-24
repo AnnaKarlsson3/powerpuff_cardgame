@@ -139,7 +139,7 @@ public class Game {
         display.printComputerTurn();
         sleep(1000);
         computer.computerSendToBoard(gameboard);
-
+        sleep(2000);
         if (gameboard.getComputerActiveCards().isEmpty() && computer.getHand().getCardsInHand().isEmpty()) {
             endGame();
         }

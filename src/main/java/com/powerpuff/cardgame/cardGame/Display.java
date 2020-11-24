@@ -46,16 +46,16 @@ public class Display {
     }
 
     public String printRulesMessage(){
-        return printRules = PURPLE + "RULES: \n* You'll play against a computer. \n* Who starts will be random.\n" +
+        return printRules = PURPLE + "RULES: \n* You'll play against a computer and who starts will be random.\n" +
                 "* Fighter cards has " + PINK + "\uD83D\uDCA5" + PURPLE + "Attack points and "  + LIGHT_PURPLE + "⛨" + PURPLE
                 + "Block points. \n* If you play a Fighter card, you place it on the board. \n" +
-                "* Action cards will give you extra " + RED_BOLD + "❤" + PURPLE + "Health. \n* You can't  attack on the first round \n" +
-                "* If you have Fighter cards on the board, you have to attack. \n* You can only attack with one fighter per round. " +
-                "\n* If the computer attacks and you have Fighters on the board, you have to use them to block the attack. \n" +
+                "* Action cards will give you extra " + RED_BOLD + "❤" + PURPLE + "Health. \n" +
+                "* If you have Fighter cards on the board, you have to attack once per round, but not on the first round. \n" +
+                "* You use your Fighters on the board to block attacks.\n" +
                 "* If the block points aren't enough or you don't have cards to block attacks with, you will take damage. \n" +
-                "* When a Fighter runs out of Block points, it will die. \n" +
-                "* You win when computers health is 0 or it runs out of cards first. \n" +
-                "* You loose when your health is 0 or you run out of cards first. \n" + RESET;
+                "* When a Fighter runs out of Block points, it dies. \n" +
+                "* You win when computer runs out of HP or cards first. \n" +
+                "* You loose when your HP is 0 or you run out of cards first. \n" + RESET;
     }
 
     public void printEnterNameMessage() {
@@ -158,8 +158,8 @@ public class Display {
                 point = RED_BOLD + " ❤" + RESET + chosenCard.getPoint();
 
             } else {
-                point = YELLOW_BOLD + " \uD83D\uDCA5" + RESET + chosenCard.getPoint();
-                blockPoint = YELLOW_BOLD + " ⛨" + RESET + chosenCard.getBlockPointPoint();
+                point = PINK + " \uD83D\uDCA5" + RESET + chosenCard.getPoint();
+                blockPoint = PURPLE + " ⛨" + RESET + chosenCard.getBlockPointPoint();
             }
 
             final StringBuilder asciiCard = new StringBuilder();
