@@ -42,9 +42,9 @@ public class Game {
         setPlayerName();
 
         if (random_nr == 1) {
-            System.out.println("Player is starting first");
+            System.out.println("You are going first");
         } else {
-            System.out.println("Computer is starting first");
+            System.out.println("Computer is going first");
         }
 
 
@@ -52,6 +52,7 @@ public class Game {
             round++;
 
             System.out.println(Display.CYAN_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
+            sleep(1000);
             if (random_nr == 1) {
 
                 playerTurn();
@@ -86,15 +87,19 @@ public class Game {
 
         }
         playAgain();
-
     }
 
+    private void sleep(int millis){
+        try{
+            Thread.sleep(millis);
+        }
+        catch(InterruptedException e){
+        }
+    }
 
     private void playAgain() {
         display.printPlayAgain();
         action.checkInput(this);
-
-
     }
 
     public void setPlayerName() {
@@ -103,26 +108,25 @@ public class Game {
         player.setName(action.playerName);
     }
 
-
     public void playerTurn() {
 
         display.printPlayerName(player.getName());
+        sleep(1000);
         display.printCardsInHand(player.getHand().getCardsInHand());
         //display.addNumbersToCards(player.getHand().getCardsInHand());
 
         Card selectedCardFromHand = action.selectCard(player.getHand());
-
-        System.out.println(" ");
-        System.out.println("Played card:");
+        sleep(1000);
+        System.out.print("You played ");
         display.printPlayedCard(selectedCardFromHand);
-        System.out.println(" ");
+        sleep(2000);
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
         if (round > 1) {
             if (gameboard.playerActiveCards.size() > 0) {
 
                 display.printAttackMessage();
-
                 display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                sleep(2000);
 
                 Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
                 //computer blocking
@@ -140,9 +144,7 @@ public class Game {
                 }
 
             } else display.printAttackMessageNoCardsAvailable();
-
         }
-
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
         display.printBreakLine();
@@ -154,14 +156,20 @@ public class Game {
 
         display.printBreakLine();
         display.printComputerTurn();
+        sleep(1000);
         computer.computerSendToBoard(gameboard);
 
+        sleep(2000);
+        if (gameboard.getComputerActiveCards().isEmpty() && computer.getHand().getCardsInHand().isEmpty()) {
+            endGame();
+        }
         if (round > 1) {
             if (gameboard.computerActiveCards.size() > 0) {
                 Card attackCard = computer.attackCard(gameboard);
-                System.out.println("\ncomputer's attack card");
-                display.printPlayedCard(attackCard);
-                display.printBreakLine();
+                System.out.println("\nComputer attacked you with " + attackCard.getPoint() + " damage");
+                //System.out.println(attackCard);
+               sleep(2000);
+               display.printBreakLine();
 
                 if (gameboard.playerActiveCards.size() == 0) {
                     player.setHp(player.getHp() - attackCard.getPoint());
@@ -169,13 +177,14 @@ public class Game {
                 } else {
                     display.printBlockMessage();
                     display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                    System.out.println("Enter a number:");
+                    sleep(4000);
                     Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
                     gameLogic.attack(player, attackCard, selectedCardFromBoard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
                 System.out.println(" ");
             } else
                 display.printNoAttackCardsComputer();
-
 
         }
 
