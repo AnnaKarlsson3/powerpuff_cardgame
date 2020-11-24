@@ -27,11 +27,13 @@ public class Display {
     String RESET_COLOR = "\u001B[0m";
     public static final String RESET = "\033[0m";  // Text Reset
     public static final String YELLOW_BOLD = "\033[1;33m"; // YELLOW
-    public static final String RED_BOLD = "\033[1;31m";    // RED
+    public static final String RED_BOLD = "\u001b[1m\u001b[38;5;197m";    // RED
     public static final String CYAN_BOLD = "\033[1;36m";   // CYAN
     public static final String BLUE_BOLD = "\033[1;34m";   // BLUE
     public static final String GREEN_BOLD_BRIGHT = "\033[1;92m"; // GREEN
-    public static final String PURPLE = "\u001B[35m";
+    public static final String PURPLE = "\u001b[1m\u001B[35m";
+    public static final String PINK = "\u001b[1m\u001b[38;5;211m";
+    public static final String LIGHT_PURPLE = "\u001b[1m\u001b[38;5;141m";
 
 
     public Display() {
@@ -120,11 +122,11 @@ public class Display {
         asciiCards.append("\n");
         asciiCards.append(cards
                 .stream()
-                .map(card -> (card.getType().equals("Action") ? " │" + RED_BOLD + " ❤" : " │" + YELLOW_BOLD + " \uD83D\uDCA5") + RESET + card.getPoint())
+                .map(card -> (card.getType().equals("Action") ? " │" + RED_BOLD + " ❤" : " │" + PINK + " \uD83D\uDCA5") + RESET + card.getPoint())
                 .collect(Collectors.joining("      │     ")) + "      |\n");
         asciiCards.append(cards
                 .stream()
-                .map(card -> card.getType().equals("Action") ? " │    " : " │" + YELLOW_BOLD + " ⛨" + RESET + card.getBlockPointPoint())
+                .map(card -> card.getType().equals("Action") ? " │    " : " │" + LIGHT_PURPLE + " ⛨" + RESET + card.getBlockPointPoint())
                 .collect(Collectors.joining("      │     ")) + "      |\n");
         asciiCards.append(cards
                 .stream()
