@@ -107,7 +107,7 @@ public class Game {
         display.printCardsInHand(player.getHand().getCardsInHand());
         Card selectedCardFromHand = action.selectCard(player.getHand());
         sleep(1000);
-        System.out.print("You played ");
+        System.out.print("You placed on board  ");
         display.printPlayedCard(selectedCardFromHand);
         sleep(2000);
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
@@ -127,7 +127,7 @@ public class Game {
                     Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
                     System.out.println("Computer blocked your attack with: ");
                     display.printPlayedCard(computerBlockingCard);
-                    gameLogic.attack(computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
+                    gameLogic.attack(player,computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
                 }
 
             } else display.printAttackMessageNoCardsAvailable();
@@ -164,7 +164,7 @@ public class Game {
                     System.out.println("Enter a number:");
                     sleep(4000);
                     Card playerBlockingCard = action.selectCardFromBoard(gameboard);
-                    gameLogic.attack(player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
+                    gameLogic.attack(computer,player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
                 System.out.println(" ");
             } else
