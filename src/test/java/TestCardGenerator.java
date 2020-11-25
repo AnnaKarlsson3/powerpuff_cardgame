@@ -21,28 +21,30 @@ public class TestCardGenerator {
 
     @Test // test checked again /snehal
     void testGenerateCards() {
+
         assertNotNull(cardGenerator.generateCardsAndGet());
         Assertions.assertEquals( 100 ,cardGenerator.generateCardsAndGet().size() );
 
     }
 
     @Test
-        public void testShuffleMethod(){
+    public void testShuffleMethod(){
         cardGenerator.generateCardsAndGet();
         cardGenerator.shuffledCards =  (ArrayList<Card>) cardGenerator.getCommonDeck().clone();
-        Assertions.assertArrayEquals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray(), "Expected both to be equal");
+        assertArrayEquals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray(), "Expected both to be equal");
 
         cardGenerator.shuffleCards(cardGenerator.getCommonDeck());
 
         assertFalse(Arrays.equals(cardGenerator.getCommonDeck().toArray(), cardGenerator.shuffledCards.toArray()), "Expected both not to be equal");
 
-
     }
+
 
     @AfterEach
     void cleanUp(){
         System.out.println("@AfterEach executed");
     }
+
 
 
 }

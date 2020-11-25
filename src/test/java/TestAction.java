@@ -5,31 +5,40 @@ import org.junit.jupiter.api.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestAction {
 
     Action action;
+    Hand hand;
+    Game game;
+    Gameboard gameboard;
+    Player player;
 
     @BeforeEach
     void init(){
         System.out.println("@BeforeEach executed");
         action = new Action();
+        hand = new Hand();
+        game = new Game();
+        gameboard = new Gameboard();
+        player = new Player();
     }
 
     @Test
     public void testInputPlayerName(){
-
         assertNotNull(action.playerName, "The name should not be null" );
-    }
+        String playerName = "TestPlayer";
+        assertNotNull(player.setName(playerName));
+        assertEquals(playerName, player.setName(playerName));
 
+    }
 
 
     @Test
     public void testChooseOneCard(){
-        Hand hand = new Hand();
-        Action action = new Action();
         int numberInHand = 3;
 
         Card card1 = hand.cardsInHand.get(numberInHand-1);
@@ -45,10 +54,9 @@ public class TestAction {
 
     }
 
+
     @Test
     public void testSelectCardFromGameBoard(){
-        Game game = new Game();
-        Gameboard gameboard = new Gameboard();
         int selectedCardOnBoard = 1;
 
         Card activeCard1 = new Card("Fighter", "MockCard 1", 3 ,3);
@@ -68,9 +76,6 @@ public class TestAction {
        assertEquals(placedCard, card2);
 
     }
-
-
-
 
     @AfterEach
     void cleanUp(){
