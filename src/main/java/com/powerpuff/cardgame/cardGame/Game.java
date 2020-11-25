@@ -169,6 +169,31 @@ public class Game {
 
        boolean attackAndOrBlockHappening = false;
 
+        if (round > 1) {
+            if (gameboard.computerActiveCards.size() > 0) {
+                Card attackCard = computer.attackCard(gameboard);
+                System.out.println("\nComputer attacked you with " + attackCard.getPoint() + " damage");
+                display.printPlayedCard(attackCard);
+                sleep(2000);
+                display.printBreakLine();
+
+                if (gameboard.playerActiveCards.size() == 0) {
+                    player.setHp(player.getHp() - attackCard.getPoint());
+                    display.printBlockMessageNoBlockCardsAvailable();
+
+                } else {
+                    display.printBlockMessage();
+                    display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                    System.out.println("Enter a number:");
+                    sleep(4000);
+                    Card playerBlockingCard = action.selectCardFromBoard(gameboard);
+                    gameLogic.attack(player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
+                }
+                System.out.println("/n");
+                attackAndOrBlockHappening = true;
+            } else
+                display.printNoAttackCardsComputer();
+        }
 
 
         return attackAndOrBlockHappening;
