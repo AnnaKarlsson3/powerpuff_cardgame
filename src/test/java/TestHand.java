@@ -30,7 +30,7 @@ public class TestHand {
         assertEquals(5, cardsInHand.size());
     }
 
-    @Test
+    @Test //test checked /snehal
     public void testAddNewCardToHand(){
         System.out.println("=== Executed test for adding a card to the hand ===");
 
@@ -40,8 +40,9 @@ public class TestHand {
         }else{
             int sizeBeforeRemove = testHand.getPlayerDeck().getPlayerCards().size();
             assertTrue(testHand.addNewCardToHand());
+            System.out.println("=== Executed test for removeCardsInHandFromDeck() which we call inside addNewCardToHand() ===");
             ArrayList<Card> cardsAfterRemovedOne = testHand.getPlayerDeck().getPlayerCards();
-            assertFalse(sizeBeforeRemove == cardsAfterRemovedOne.size());
+            assertFalse(sizeBeforeRemove == cardsAfterRemovedOne.size(),"test for removing that card(which added into hand) from deck");
         }
     }
 

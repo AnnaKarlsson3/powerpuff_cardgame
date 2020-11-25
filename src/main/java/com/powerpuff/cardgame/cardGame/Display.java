@@ -251,7 +251,7 @@ public class Display {
     }
 
     public String computerPlayedActionCard() {
-        return computerPlayedActionCard = "Computer played an Action card: ";
+        return computerPlayedActionCard = "Computer placed an Action card on board. ";
     }
 
     public String printComputerPlayedActionCard() {
@@ -260,7 +260,7 @@ public class Display {
     }
 
     public String computerPlacedFighterCard() {
-        return computerPlayedFighterCard = "Computer placed a card on the board.";
+        return computerPlayedFighterCard = "Computer placed a Fighter card on the board.";
     }
 
     public String printComputerPlacedFighterCard() {

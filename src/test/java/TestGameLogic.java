@@ -1,4 +1,3 @@
-
 import com.powerpuff.cardgame.cardGame.*;
 import org.junit.jupiter.api.*;
 
@@ -87,7 +86,7 @@ public class TestGameLogic {
 
 
 
-    @Test
+    @Test //test checked /snehal
     public void testManageSelectedCard() {
         System.out.println("== Test to check logic of manageSelectedCard(), it deletes played cards from hand ==");
         System.out.println("== Test to check logic of manageSelectedCard(), if card is \"fighter\" then playerActiveCardSize will increase by 1 ==");

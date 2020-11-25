@@ -55,5 +55,4 @@ public class GameLogic {
         }
         return block.getBlockPointPoint();
     }
-
 }
