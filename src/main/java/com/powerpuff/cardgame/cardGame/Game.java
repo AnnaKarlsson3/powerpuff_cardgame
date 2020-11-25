@@ -13,7 +13,7 @@ public class Game {
     public ArrayList<Card> computerHand;
     public Gameboard gameboard;
     public GameLogic gameLogic;
-    private int round = 0;
+    public int round = 0;
 
     public Game() {
         player = new Player();
@@ -111,32 +111,19 @@ public class Game {
         display.printPlayedCard(selectedCardFromHand);
         sleep(2000);
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
-        if (round > 1) {
-            if (gameboard.playerActiveCards.size() > 0) {
-
-                display.printAttackMessage();
-                display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
-                sleep(2000);
-
-                Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
-                //-Computer choosing one card to block with/if its not null
-                if (gameboard.computerActiveCards.size() == 0) {
-                    computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
-                } else {
-                    //computer blocking
-                    Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
-                    System.out.println("Computer blocked your attack with: ");
-                    display.printPlayedCard(computerBlockingCard);
-                    gameLogic.attack(computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
-                }
-
-            } else display.printAttackMessageNoCardsAvailable();
-        }
+        playerAttac();
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
         display.printBreakLine();
         System.out.println(" ");
 
+    }
+
+    public boolean playerAttac(){
+        boolean attackAndOrBlockHappening = false;
+
+
+        return attackAndOrBlockHappening;
     }
 
     public void computerTurn() {
