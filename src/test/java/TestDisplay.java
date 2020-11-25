@@ -121,7 +121,7 @@ public class TestDisplay {
     @Test
     public void testPrintBreakLine () {
         String actual = display.breakLineMessage();
-        String expected = "------------------------";
+        String expected = "------------------------------------------------------------------------------------";
         assertNotNull(display.breakLineMessage());
         assertEquals(actual, expected);
     }

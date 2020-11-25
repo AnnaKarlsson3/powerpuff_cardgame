@@ -264,12 +264,12 @@ public class Display {
     }
 
     public String printComputerPlacedFighterCard() {
-        System.out.println(computerPlacedFighterCard());
+        System.out.println(computerPlacedFighterCard() + "\n");
         return null;
     }
 
     public String breakLineMessage() {
-        return breakLine = "------------------------";
+        return breakLine = "------------------------------------------------------------------------------------";
     }
 
     public String printBreakLine() {
