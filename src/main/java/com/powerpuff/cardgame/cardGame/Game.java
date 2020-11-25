@@ -1,7 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 public class Game {
     Action action;
@@ -110,7 +109,7 @@ public class Game {
         display.printCardsInHand(player.getHand().getCardsInHand());
         Card selectedCardFromHand = action.selectCard(player.getHand());
         sleep(1000);
-        System.out.print("You placed on board  ");
+        System.out.print("You played  ");
         display.printPlayedCard(selectedCardFromHand);
         sleep(2000);
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
@@ -153,7 +152,7 @@ public class Game {
 
         sleep(2000);
 
-        computerAttackOrBlock();
+        computerAttackAndOrBlock();
 
         System.out.println("\n");
         display.printPlayerHp(player.getHp());
@@ -164,13 +163,15 @@ public class Game {
 
     }
 
-    public boolean computerAttackOrBlock(){
+    public boolean computerAttackAndOrBlock(){
 
 
        boolean attackAndOrBlockHappening = false;
 
         if (round > 1) {
             if (gameboard.computerActiveCards.size() > 0) {
+                display.printComputersCardsOnBoard(gameboard.computerActiveCards);
+                sleep(2000);
                 Card attackCard = computer.attackCard(gameboard);
                 System.out.println("\nComputer attacked you with " + attackCard.getPoint() + " damage");
                 display.printPlayedCard(attackCard);
@@ -189,7 +190,7 @@ public class Game {
                     Card playerBlockingCard = action.selectCardFromBoard(gameboard);
                     gameLogic.attack(computer,player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
-                System.out.println("/n");
+                System.out.println("\n");
                 attackAndOrBlockHappening = true;
             } else
                 display.printNoAttackCardsComputer();

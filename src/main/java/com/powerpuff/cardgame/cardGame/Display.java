@@ -257,7 +257,7 @@ public class Display {
     }
 
     public String computerPlayedActionCard() {
-        return computerPlayedActionCard = "Computer placed an Action card on board. ";
+        return computerPlayedActionCard = "Computer chose an Action card ";
     }
 
     public String printComputerPlayedActionCard() {
@@ -293,16 +293,16 @@ public class Display {
     }
 
     public void printCardIsDead(String playerName, String cardName) {
-        System.out.println(playerName + "'s '" + cardName + "'  is dead.\n");
+        System.out.println(playerName + "'s '" + cardName + "'  is dead.");
     }
 
     public void printBothCardDead(String attackCardName, String blockCardName) {
-        System.out.println("Both cards -  '" + attackCardName + "' and '" + blockCardName + "' are dead.\n");
+        System.out.println("Both cards -  '" + attackCardName + "' and '" + blockCardName + "' are dead.");
 
     }
 
     public void blockPointReduced(String blockerName, String blockCardName, int blockPoint) {
-        System.out.println(blockerName + "'s '" + blockCardName + "' block points is now " + blockPoint + "\n");
+        System.out.println(blockerName + "'s '" + blockCardName + "' block points is now " + blockPoint );
 
     }
 
