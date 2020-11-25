@@ -13,7 +13,8 @@ public class Game {
     public ArrayList<Card> computerHand;
     public Gameboard gameboard;
     public GameLogic gameLogic;
-    private int round = 0;
+    public int round = 0;
+
 
     public Game() {
         player = new Player();
@@ -56,6 +57,7 @@ public class Game {
 
                 if (gameOver) break;
 
+                display.printBreakLine();
                 computerTurn();
                 gameOver();
 
@@ -68,6 +70,7 @@ public class Game {
                 computerTurn();
                 gameOver();
 
+                display.printBreakLine();
                 if (gameOver) break;
 
                 playerTurn();
@@ -132,21 +135,40 @@ public class Game {
 
             } else display.printAttackMessageNoCardsAvailable();
         }
+
+        System.out.println("\n");
         display.printPlayerHp(player.getHp());
         display.printComputerHp(computer.getHp());
-        display.printBreakLine();
-        System.out.println(" ");
+        System.out.println("\n");
+
 
     }
 
     public void computerTurn() {
 
-        display.printBreakLine();
+
         display.printComputerTurn();
         sleep(1000);
         computer.computerSendToBoard(gameboard);
 
         sleep(2000);
+
+        computerAttackOrBlock();
+
+        System.out.println("\n");
+        display.printPlayerHp(player.getHp());
+        display.printComputerHp(computer.getHp());
+        System.out.println("\n");
+        //display.printBreakLine();
+        //System.out.println(" ");
+
+    }
+
+    public boolean computerAttackOrBlock(){
+
+
+       boolean attackAndOrBlockHappening = false;
+
         if (round > 1) {
             if (gameboard.computerActiveCards.size() > 0) {
                 Card attackCard = computer.attackCard(gameboard);
@@ -158,6 +180,7 @@ public class Game {
                 if (gameboard.playerActiveCards.size() == 0) {
                     player.setHp(player.getHp() - attackCard.getPoint());
                     display.printBlockMessageNoBlockCardsAvailable();
+
                 } else {
                     display.printBlockMessage();
                     display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
@@ -166,17 +189,14 @@ public class Game {
                     Card playerBlockingCard = action.selectCardFromBoard(gameboard);
                     gameLogic.attack(computer,player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
-                System.out.println(" ");
+                System.out.println("/n");
+                attackAndOrBlockHappening = true;
             } else
                 display.printNoAttackCardsComputer();
-
         }
 
-        System.out.println(" ");
-        display.printPlayerHp(player.getHp());
-        display.printComputerHp(computer.getHp());
-        display.printBreakLine();
-        System.out.println(" ");
+
+        return attackAndOrBlockHappening;
 
     }
 
