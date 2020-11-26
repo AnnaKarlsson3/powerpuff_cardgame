@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestGameLogic {
-    //Game game;
     GameLogic gameLogic;
     Gameboard gameboard;
 
@@ -16,7 +15,6 @@ public class TestGameLogic {
     @BeforeEach
     public void init() {
         System.out.println("@BeforeEach TestGameLogic");
-       // game = new Game();
         gameLogic = new GameLogic();
         gameboard = new Gameboard();
 
@@ -112,6 +110,10 @@ public class TestGameLogic {
         String fighter1 = gameLogic.manageSelectedCard(card2, player, gameboard);
         String fighter2 = gameLogic.manageSelectedCard(card3,player,gameboard);
 
+        Card playedCard = player.getHand().getCardsInHand().get(0);
+
+        gameLogic.manageSelectedCard(playedCard, player, gameboard);
+
         int afterPlayerActiveCardSize = gameboard.getPlayerActiveCards().size();
         System.out.println("after " + afterPlayerActiveCardSize);
 
@@ -120,6 +122,7 @@ public class TestGameLogic {
 
                 () -> assertEquals("Action", action1),
                 () -> assertEquals("Fighter", fighter2),
+                () -> assertFalse(player.getHand().getCardsInHand().contains(playedCard), "playedCard is not in hand anymore"),
                 () -> assertNotEquals(beforePlayerActiveCardSize, afterPlayerActiveCardSize, "size should not be equal")
 
         );
