@@ -41,7 +41,7 @@ public class TestAction {
     public void testChooseOneCard(){
         int numberInHand = 3;
 
-        Card card1 = hand.cardsInHand.get(numberInHand-1);
+        Card card1 = hand.getCardsInHand().get(numberInHand-1);
         Card card2 = action.findCardByNumber(numberInHand, hand);
 
         assertEquals(card1, card2 );

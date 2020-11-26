@@ -9,11 +9,11 @@ public class Hand {
     PlayerDeck playerDeck;
    public ArrayList<Card> cardsInHand;
 
-    public Hand(PlayerDeck playerDeck) {
+    public Hand() {
         this.playerDeck = new PlayerDeck();
-        ArrayList<Card> firstFiveCardsInDeck = (ArrayList<Card>) playerDeck.getPlayerCards().stream().limit(5).collect(Collectors.toList());
-        setCardsInHand(firstFiveCardsInDeck);
-        setPlayerDeck(removeCardsInHandFromDeck());
+
+        //setCardsInHand(firstFiveCardsInDeck);
+       // setPlayerDeck(removeCardsInHandFromDeck());
     }
 
     public PlayerDeck getPlayerDeck() {
@@ -29,7 +29,9 @@ public class Hand {
     }
 
     public void setCardsInHand(ArrayList<Card> firstFiveInDeck) {
-        this.cardsInHand = firstFiveInDeck;
+        ArrayList<Card> setCardsinHand = (ArrayList<Card>) firstFiveInDeck.stream().limit(5).collect(Collectors.toList());
+        this.cardsInHand = setCardsinHand;
+        removeCardsInHandFromDeck();
     }
 
     public Boolean addNewCardToHand() {

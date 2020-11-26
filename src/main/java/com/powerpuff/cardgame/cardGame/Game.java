@@ -17,6 +17,7 @@ public class Game {
 
 
     public Game() {
+        cardGenerator= new CardGenerator();
         player = new Player();
         computer = new Computer();
         computer.setHp(20);
@@ -25,12 +26,18 @@ public class Game {
         action = new Action();
         gameboard = new Gameboard();
         gameLogic = new GameLogic();
-        playerHand = player.getHand().getCardsInHand();
-        computerHand = computer.getHand().getCardsInHand();
-        cardGenerator= new CardGenerator();
-
         var playerdeck = player.getHand().getPlayerDeck().getCardsFromGeneratedCards(cardGenerator);
         var compDeck = computer.getHand().getPlayerDeck().getCardsFromGeneratedCards(cardGenerator);
+
+        player.getHand().setCardsInHand(playerdeck);
+        computer.getHand().setCardsInHand(compDeck);
+
+        playerHand = player.getHand().getCardsInHand();
+        computerHand = computer.getHand().getCardsInHand();
+
+
+        playerHand.forEach(System.out::println);
+        computerHand.forEach(System.out::println);
         System.out.println("Players deck " + playerdeck.size());
         System.out.println("Computers deck " + compDeck);
         System.out.println("Commondeck size " + cardGenerator.getCommonDeck().size());
