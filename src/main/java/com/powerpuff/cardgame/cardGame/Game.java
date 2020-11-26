@@ -123,10 +123,12 @@ public class Game {
                 Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
                 //-Computer choosing one card to block with/if its not null
                 if (gameboard.computerActiveCards.size() == 0) {
+                    System.out.println("Computer doesn't have card to block");
                     computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
                 } else {
                     //computer blocking
                     Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
+                    sleep(2000);
                     System.out.println("Computer blocked your attack with: ");
                     display.printPlayedCard(computerBlockingCard);
                     gameLogic.attack(player,computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
