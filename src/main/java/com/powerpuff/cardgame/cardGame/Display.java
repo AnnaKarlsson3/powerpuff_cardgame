@@ -188,11 +188,11 @@ public class Display {
 
             final StringBuilder asciiCard = new StringBuilder();
             asciiCard.append(chosenCard.getType() + ": " + chosenCard.getName() + "\n");
-            asciiCard.append("┌───────────┐\n");
-            asciiCard.append("│ " + point + "      │\n");
-            asciiCard.append("│ " + blockPoint + "      │\n");
-            asciiCard.append("│           │\n");
-            asciiCard.append("└───────────┘");
+            asciiCard.append("┌──────────┐\n");
+            asciiCard.append("│ " + point + "     │\n");
+            asciiCard.append("│ " + blockPoint + "     │\n");
+            asciiCard.append("│          │\n");
+            asciiCard.append("└──────────┘");
             printPlayedCardMessage(asciiCard);
         }
     }
