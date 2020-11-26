@@ -2,6 +2,10 @@ import com.powerpuff.cardgame.cardGame.Card;
 import com.powerpuff.cardgame.cardGame.Game;
 import org.junit.jupiter.api.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -20,20 +24,32 @@ public class TestGame {
     }
 
 
-   /* @Test
+    @Test
     public void testPlayerAttackIf(){
         game.round = 2;
-        new Card("Fighter", "Piner", 3, 3);
-        game.gameLogic.manageSelectedCard(new Card("Fighter", "Piner", 3, 3), game.player, game.gameboard);
+
+        Card playerCard = new Card("Fighter", "MockCard 2", 3 ,3);
+        game.gameboard.playerActiveCards.add(playerCard);
+
+
+        Card computerCard = new Card("Fighter", "MockCard 4", 1 ,1);
+        game.gameboard.computerActiveCards.add(computerCard);
+
+
+        String input = "1";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+
 
         if(game.round > 1 && game.gameboard.playerActiveCards.size() > 0){
             assertTrue(game.playerAttac());
         }else{
             assertFalse(game.playerAttac());
         }
-    }*/
+    }
 
-  /*  @Test
+    @Test
     public void testPlayerAttackElse(){
         game.round = 1;
         game.gameboard.playerActiveCards.clear();
@@ -43,7 +59,7 @@ public class TestGame {
         }else{
             assertFalse(game.playerAttac());
         }
-    }*/
+    }
 
     @Test
     public void testGameOverIsTie() {
