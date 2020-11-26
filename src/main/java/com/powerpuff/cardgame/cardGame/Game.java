@@ -27,6 +27,19 @@ public class Game {
         playerHand = player.getHand().getCardsInHand();
         computerHand = computer.getHand().getCardsInHand();
 
+        var playerdeck = player.getHand().getPlayerDeck().getPlayerCards();
+        var compdeck = computer.getHand().getPlayerDeck().getPlayerCards();
+        int size= CardGenerator.getInstance().getCommonDeck().size();
+        System.out.println("size " +size );
+        for(Card c:playerdeck){
+            for (Card c2: compdeck){
+                if(c.getName().equals(c2.getName())){
+                    System.out.println("common card");
+                    System.out.println(c);
+                }
+            }
+        }
+
 
     }
 

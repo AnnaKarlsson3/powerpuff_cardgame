@@ -1,7 +1,4 @@
-import com.powerpuff.cardgame.cardGame.Card;
-import com.powerpuff.cardgame.cardGame.Game;
-import com.powerpuff.cardgame.cardGame.Gameboard;
-import com.powerpuff.cardgame.cardGame.Hand;
+import com.powerpuff.cardgame.cardGame.*;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,6 +8,8 @@ public class TestGameboard {
 
     @BeforeEach
     public void init() {
+        System.out.println("@BeforeEch TestGameBoard");
+
         board = new Gameboard();
     }
 
@@ -23,6 +22,13 @@ public class TestGameboard {
 
         assertNotNull(playedCard);
         assertEquals(card, playedCard);
+    }
+
+    @AfterEach
+    void cleanUp() {
+        System.out.println("@AfterEach executed");
+        CardGenerator.getInstance().setCommonDeck(CardGenerator.getInstance().generateCardsAndGet());
+
     }
 
 

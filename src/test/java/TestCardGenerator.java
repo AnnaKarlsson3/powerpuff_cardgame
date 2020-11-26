@@ -15,7 +15,7 @@ public class TestCardGenerator {
 
     @BeforeEach
     void init(){
-        System.out.println("@BeforeEach executed");
+        System.out.println("@BeforeEach TestCardGenerator");
         cardGenerator = CardGenerator.getInstance();
     }
 
@@ -43,6 +43,8 @@ public class TestCardGenerator {
     @AfterEach
     void cleanUp(){
         System.out.println("@AfterEach executed");
+        CardGenerator.getInstance().setCommonDeck(CardGenerator.getInstance().generateCardsAndGet());
+
     }
 
 

@@ -1,4 +1,5 @@
 import com.powerpuff.cardgame.cardGame.Card;
+import com.powerpuff.cardgame.cardGame.CardGenerator;
 import com.powerpuff.cardgame.cardGame.Hand;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +19,7 @@ public class TestHand {
 
     @BeforeEach
     void init() {
-        System.out.println("@BeforeEach executed");
+        System.out.println("@BeforeEach TestHand");
         testHand = new Hand();
         cardsInHand = testHand.getCardsInHand();
     }
@@ -70,6 +71,7 @@ public class TestHand {
     @AfterEach
     void cleanUp() {
         System.out.println("@AfterEach executed");
-    }
+        CardGenerator.getInstance().setCommonDeck(CardGenerator.getInstance().generateCardsAndGet());
 
+    }
 }

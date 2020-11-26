@@ -15,7 +15,7 @@ public class TestPlayerDeck {
 
     @BeforeEach
     void init(){
-        System.out.println("@BeforeEach executed");
+        System.out.println("@BeforeEach PlayerDeck");
         playerDeck = new PlayerDeck();
     }
 
@@ -39,8 +39,10 @@ public class TestPlayerDeck {
     }
 
     @AfterEach
-    void cleanUp(){
+    void cleanUp() {
         System.out.println("@AfterEach executed");
+        CardGenerator.getInstance().setCommonDeck(CardGenerator.getInstance().generateCardsAndGet());
+
     }
 
 }

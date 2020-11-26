@@ -15,6 +15,7 @@ public class TestGameLogic {
 
     @BeforeEach
     public void init() {
+        System.out.println("@BeforeEach TestGameLogic");
        // game = new Game();
         gameLogic = new GameLogic();
         gameboard = new Gameboard();
@@ -123,6 +124,13 @@ public class TestGameLogic {
 
         );
 
+
+    }
+
+    @AfterEach
+    void cleanUp() {
+        System.out.println("@AfterEach executed");
+        CardGenerator.getInstance().setCommonDeck(CardGenerator.getInstance().generateCardsAndGet());
 
     }
 

@@ -19,7 +19,7 @@ public class TestAction {
 
     @BeforeEach
     void init(){
-        System.out.println("@BeforeEach executed");
+        System.out.println("@BeforeEach TestAction");
         action = new Action();
         hand = new Hand();
         game = new Game();
@@ -79,7 +79,9 @@ public class TestAction {
 
     @AfterEach
     void cleanUp(){
+
         System.out.println("@AfterEach executed");
+        CardGenerator.getInstance().setCommonDeck(CardGenerator.getInstance().generateCardsAndGet());
     }
 
 
