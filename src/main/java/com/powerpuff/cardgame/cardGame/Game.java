@@ -109,14 +109,14 @@ public class Game {
         display.printCardsInHand(player.getHand().getCardsInHand());
         Card selectedCardFromHand = action.selectCard(player.getHand());
         sleep(1000);
-        System.out.print("You played  ");
-        display.printPlayedCard(selectedCardFromHand);
+        display.printPlayedCard(selectedCardFromHand, Display.PINK, Display.LIGHT_PURPLE);
         sleep(2000);
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
         if (round > 1) {
             if (gameboard.playerActiveCards.size() > 0) {
 
                 display.printAttackMessage();
+                display.printComputersCardsOnBoard(gameboard.computerActiveCards);
                 display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
                 sleep(2000);
 
@@ -131,7 +131,7 @@ public class Game {
                     sleep(2000);
                     System.out.println("Computer blocked your attack with: ");
                     display.printPlayedCard(computerBlockingCard);
-                    gameLogic.attack(player,computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
+                    gameLogic.attack(computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
                 }
 
             } else display.printAttackMessageNoCardsAvailable();
@@ -151,10 +151,9 @@ public class Game {
         display.printComputerTurn();
         sleep(1000);
         computer.computerSendToBoard(gameboard);
-
         sleep(2000);
 
-        computerAttackAndOrBlock();
+        computerAttackOrBlock();
 
         System.out.println("\n");
         display.printPlayerHp(player.getHp());
@@ -162,7 +161,6 @@ public class Game {
         System.out.println("\n");
         //display.printBreakLine();
         //System.out.println(" ");
-
     }
 
     public boolean computerAttackAndOrBlock(){
@@ -176,7 +174,7 @@ public class Game {
                 sleep(2000);
                 Card attackCard = computer.attackCard(gameboard);
                 System.out.println("\nComputer attacked you with " + attackCard.getPoint() + " damage");
-                display.printPlayedCard(attackCard);
+                display.printPlayedCard(attackCard, Display.GREEN_BOLD_BRIGHT, Display.CYAN_BOLD);
                 sleep(2000);
                 display.printBreakLine();
 
@@ -192,7 +190,7 @@ public class Game {
                     Card playerBlockingCard = action.selectCardFromBoard(gameboard);
                     gameLogic.attack(computer,player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
-                System.out.println("\n");
+                System.out.println("/n");
                 attackAndOrBlockHappening = true;
             } else
                 display.printNoAttackCardsComputer();
