@@ -103,7 +103,7 @@ public class TestDisplay {
     @Test
     public void testComputerPlacedActionCardPrint(){
         String actual = display.computerPlayedActionCard();
-        String expected = "Computer placed an Action card on board. ";
+        String expected = "Computer chose an Action card ";
 
         assertNotNull(display.computerPlayedActionCard());
         assertEquals(actual, expected);
@@ -121,7 +121,7 @@ public class TestDisplay {
     @Test
     public void testPrintBreakLine () {
         String actual = display.breakLineMessage();
-        String expected = "------------------------";
+        String expected = "------------------------------------------------------------------------------------";
         assertNotNull(display.breakLineMessage());
         assertEquals(actual, expected);
     }

@@ -1,12 +1,6 @@
 import com.powerpuff.cardgame.cardGame.Card;
-import com.powerpuff.cardgame.cardGame.Computer;
 import com.powerpuff.cardgame.cardGame.Game;
-import com.powerpuff.cardgame.cardGame.Player;
 import org.junit.jupiter.api.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.BooleanSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,7 +46,7 @@ public class TestGame {
     }
 
     @Test
-    public void testGameOverisTie() {
+    public void testGameOverIsTie() {
         game.player.setName("MockPlayer");
         game.playerHand.clear();
         game.computerHand.clear();
@@ -147,6 +141,24 @@ public class TestGame {
     }
 
 
+    @Test
+    public void testComputerAttackFirstRound(){
+        game.round = 1;
+
+        if(game.round == 1) {
+            System.out.println("Computer's attack false");
+            assertFalse(game.computerAttackAndOrBlock());
+        }
+
+        game.round = 2;
+        Card computerCard = new Card("Fighter", "MockCard 2", 3 ,3);
+        game.gameboard.computerActiveCards.add(computerCard);
+        if(game.round > 1 && !game.gameboard.computerActiveCards.isEmpty()) {
+            System.out.println("Computer's attack true");
+            assertTrue(game.computerAttackAndOrBlock());
+        }
+
+    }
 
 
     @Test

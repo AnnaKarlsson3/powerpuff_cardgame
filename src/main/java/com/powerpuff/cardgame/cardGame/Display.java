@@ -39,18 +39,19 @@ public class Display {
     public Display() {
         enterNameMessage();
     }
+
     public void printEndMessage() {
         System.out.println("To continue, press 1, to end game - press 0");
     }
 
-    public void printRules(){
+    public void printRules() {
         printRulesMessage();
         System.out.println(printRules);
     }
 
-    public String printRulesMessage(){
+    public String printRulesMessage() {
         return printRules = PURPLE + "RULES: \n* You'll play against a computer and it will be random who starts.\n" +
-                "* Fighter cards has " + PINK + "\uD83D\uDCA5" + PURPLE + "Attack points and "  + LIGHT_PURPLE + "⛨" + PURPLE
+                "* Fighter cards has " + PINK + "\uD83D\uDCA5" + PURPLE + "Attack points and " + LIGHT_PURPLE + "⛨" + PURPLE
                 + "Block points. \n* If you play a Fighter card, you place it on the board. \n" +
                 "* Action cards will give you extra " + RED_BOLD + "❤" + PURPLE + "Health. \n" +
                 "* If you have Fighter cards on the board, you have to attack once per round - but not the first round. \n" +
@@ -87,9 +88,14 @@ public class Display {
         return computerTurn = "It's computer's turn.";
     }
 
-    public void printaddHp(int point){
-        System.out.println( "You got " + point + " extra Health points " + RED_BOLD + "❤" + RESET +"\n");
+    public void printAddHpForPlayer(int point) {
+        System.out.println("You got " + point + " extra Health points " + RED_BOLD + "❤" + RESET + "\n");
     }
+
+    public void printAddHpForComputer(int point) {
+        System.out.println("Computer got " + point + " extra Health points " + RED_BOLD + "❤" + RESET + "\n");
+    }
+
 
     public void printPlayerHp(int hp) {
         printPlayerHpMessage(hp);
@@ -128,15 +134,15 @@ public class Display {
         asciiCards.append(cards
                 .stream()
                 .map(card -> (card.getType().equals("Action") ? " │" + RED_BOLD + " ❤" : " │" + PINK + " \uD83D\uDCA5") + RESET + card.getPoint())
-                .collect(Collectors.joining("      │     ")) + "      |\n");
+                .collect(Collectors.joining("      │     ")) + "       |\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> card.getType().equals("Action") ? " │    " : " │" + LIGHT_PURPLE + " ⛨" + RESET + card.getBlockPointPoint())
-                .collect(Collectors.joining("      │     ")) + "      |\n");
+                .collect(Collectors.joining("      │     ")) + "       |\n");
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │        " + PURPLE + numberInsideCard.getAndIncrement() + RESET)
-                .collect(Collectors.joining(" │     ")) + " "+ (numberInsideCard.toString().equals("5") ? " " : "" ) + "│\n");
+                .collect(Collectors.joining(" │     ")) + " " + (numberInsideCard.toString().equals("5") ? " " : "") + "│\n");
         cards.stream().forEach(card -> asciiCards.append(" └──────────┘     "));
         asciiCards.append("\n");
         return asciiCards;
@@ -241,8 +247,8 @@ public class Display {
         return null;
     }
 
-    public  String computerNoCardsOnBoardMessage(){
-        return computerNoCardsOnBoard ="Computer doesn't have any cards on the board.";
+    public String computerNoCardsOnBoardMessage() {
+        return computerNoCardsOnBoard = "Computer doesn't have any cards on the board.";
     }
 
     public String printComputerNoCardsOnBoard() {
@@ -251,7 +257,7 @@ public class Display {
     }
 
     public String computerPlayedActionCard() {
-        return computerPlayedActionCard = "Computer placed an Action card on board. ";
+        return computerPlayedActionCard = "Computer chose an Action card ";
     }
 
     public String printComputerPlayedActionCard() {
@@ -264,12 +270,12 @@ public class Display {
     }
 
     public String printComputerPlacedFighterCard() {
-        System.out.println(computerPlacedFighterCard());
+        System.out.println(computerPlacedFighterCard() + "\n");
         return null;
     }
 
     public String breakLineMessage() {
-        return breakLine = "------------------------";
+        return breakLine = "------------------------------------------------------------------------------------";
     }
 
     public String printBreakLine() {
@@ -284,6 +290,20 @@ public class Display {
     public String printNoAttackCardsComputer() {
         System.out.println(computerNoAttackCard);
         return null;
+    }
+
+    public void printCardIsDead(String playerName, String cardName) {
+        System.out.println(playerName + "'s '" + cardName + "'  is dead.");
+    }
+
+    public void printBothCardDead(String attackCardName, String blockCardName) {
+        System.out.println("Both cards -  '" + attackCardName + "' and '" + blockCardName + "' are dead.");
+
+    }
+
+    public void blockPointReduced(String blockerName, String blockCardName, int blockPoint) {
+        System.out.println(blockerName + "'s '" + blockCardName + "' block points is now " + blockPoint );
+
     }
 
 }
