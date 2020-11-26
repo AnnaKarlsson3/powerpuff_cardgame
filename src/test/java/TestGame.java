@@ -49,7 +49,7 @@ public class TestGame {
         }
     }
 
-  /*  @Test
+    @Test
     public void testPlayerAttackElse(){
         game.round = 1;
         game.gameboard.playerActiveCards.clear();
@@ -59,7 +59,7 @@ public class TestGame {
         }else{
             assertFalse(game.playerAttac());
         }
-    }*/
+    }
 
     @Test
     public void testGameOverIsTie() {
