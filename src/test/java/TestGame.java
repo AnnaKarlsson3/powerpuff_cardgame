@@ -1,12 +1,6 @@
 import com.powerpuff.cardgame.cardGame.Card;
-import com.powerpuff.cardgame.cardGame.Computer;
 import com.powerpuff.cardgame.cardGame.Game;
-import com.powerpuff.cardgame.cardGame.Player;
 import org.junit.jupiter.api.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.function.BooleanSupplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -127,7 +121,7 @@ public class TestGame {
 
         if(game.round == 1) {
             System.out.println("Computer's attack false");
-            assertFalse(game.computerAttackOrBlock());
+            assertFalse(game.computerAttackAndOrBlock());
         }
 
         game.round = 2;
@@ -135,7 +129,7 @@ public class TestGame {
         game.gameboard.computerActiveCards.add(computerCard);
         if(game.round > 1 && !game.gameboard.computerActiveCards.isEmpty()) {
             System.out.println("Computer's attack true");
-            assertTrue(game.computerAttackOrBlock());
+            assertTrue(game.computerAttackAndOrBlock());
         }
 
     }
