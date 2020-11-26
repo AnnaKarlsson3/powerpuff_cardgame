@@ -26,18 +26,18 @@ public class TestGame {
     }
 
 
-    @Test
+   /* @Test
     public void testPlayerAttackIf(){
         game.round = 2;
+        new Card("Fighter", "Piner", 3, 3);
         game.gameLogic.manageSelectedCard(new Card("Fighter", "Piner", 3, 3), game.player, game.gameboard);
 
         if(game.round > 1 && game.gameboard.playerActiveCards.size() > 0){
             assertTrue(game.playerAttac());
-
         }else{
             assertFalse(game.playerAttac());
         }
-    }
+    }*/
 
     @Test
     public void testPlayerAttackElse(){

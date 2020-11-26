@@ -121,7 +121,27 @@ public class Game {
 
     public boolean playerAttac(){
         boolean attackAndOrBlockHappening = false;
+        if (round > 1) {
+            if (gameboard.playerActiveCards.size() > 0) {
+                display.printAttackMessage();
+                display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                sleep(2000);
 
+                Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
+                //-Computer choosing one card to block with/if its not null
+                if (gameboard.computerActiveCards.size() == 0) {
+                    computer.setHp(computer.getHp() - selectedCardFromBoard.getPoint());
+                } else {
+                    //computer blocking
+                    Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
+                    System.out.println("Computer blocked your attack with: ");
+                    display.printPlayedCard(computerBlockingCard);
+                    gameLogic.attack(computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
+                }
+                attackAndOrBlockHappening = true;
+            } else display.printAttackMessageNoCardsAvailable();
+
+        }
 
         return attackAndOrBlockHappening;
     }
