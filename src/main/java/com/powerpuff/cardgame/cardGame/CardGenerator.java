@@ -19,7 +19,7 @@ public class CardGenerator {
     }
 
 
-    public CardGenerator() {
+    private CardGenerator() {
         generateCardsAndGet();
         shuffleCards(commonDeck);
         setCommonDeck(commonDeck);
