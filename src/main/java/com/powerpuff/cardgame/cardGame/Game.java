@@ -3,7 +3,7 @@ package com.powerpuff.cardgame.cardGame;
 import java.util.ArrayList;
 
 public class Game {
-    Action action;
+    public Action action;
     Display display;
     public boolean gameOver = false;
     public Player player;
@@ -117,7 +117,7 @@ public class Game {
                 display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
                 display.printEnterNumber();
 
-                sleep(2000);
+                //sleep(2000);
 
                 Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
                 //-Computer choosing one card to block with/if its not null
@@ -127,7 +127,7 @@ public class Game {
                 } else {
                     //computer blocking
                     Card computerBlockingCard = computer.blockCard(selectedCardFromBoard, gameboard);
-                    sleep(2000);
+                    //sleep(2000);
                     System.out.println("Computer blocked your attack with: ");
                     display.printComputerPlayedCard(computerBlockingCard);
                     gameLogic.attack(computer, player, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
