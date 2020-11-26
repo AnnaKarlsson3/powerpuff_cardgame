@@ -23,12 +23,9 @@ public class Display {
     public String breakLine = "";
     public String computerNoAttackCard = "";
     public String printRules = "";
+    public String enterNumber = "";
     String BOLD = "\u001b[1m";
     public static final String RESET = "\033[0m";  // Text Reset
-    public static final String RED = "\033[0;31m";     // RED
-    public static final String GREEN = "\033[0;32m";   // GREEN
-    public static final String YELLOW = "\033[0;33m";  // YELLOW
-    public static final String YELLOW_BOLD = "\033[1;33m"; // YELLOW
     public static final String RED_BOLD = "\u001b[1m\u001b[38;5;197m";    // RED
     public static final String CYAN_BOLD = "\033[1;36m";   // CYAN
     public static final String GREEN_BOLD_BRIGHT = "\033[1;92m"; // GREEN
@@ -209,7 +206,7 @@ public class Display {
     }
 
     public String printEnterNumberMessage(){
-        return null;
+        return enterNumber = "Enter number: ";
     }
 
 

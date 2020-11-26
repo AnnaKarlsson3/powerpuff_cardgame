@@ -6,7 +6,7 @@ import java.util.Comparator;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
-public class Computer extends Player{
+public class Computer extends Player {
     Display display = new Display();
 
     public Computer() {
@@ -18,11 +18,10 @@ public class Computer extends Player{
         super(name, hp, hand);
     }
 
-
-   public void computerSendToBoard(Gameboard gameboard){
+    public void computerSendToBoard(Gameboard gameboard) {
         Card playedCard = playCard();
 
-        if(playedCard != null){
+        if (playedCard != null) {
             if (playedCard.getType().equals("Action")) {
                 setHp(getHp() + playedCard.getPoint());
                 display.printComputerPlayedActionCard();
@@ -33,14 +32,11 @@ public class Computer extends Player{
                 display.printComputerPlacedFighterCard();
                 display.printComputerPlayedCard(playedCard);
             }
-
             getHand().deletePlayedCard(playedCard);
             getHand().addNewCardToHand();
         } else {
             System.out.println(" Computers hand is empty!");
         }
-
-
     }
 
     public Card attackCard(Gameboard gameboard) {
@@ -68,11 +64,11 @@ public class Computer extends Player{
         }
     }
 
-    public Card blockCard(Card playersCard, Gameboard gameboard){
+    public Card blockCard(Card playersCard, Gameboard gameboard) {
         ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
 
-        if(!computersCards.isEmpty()){
-            ArrayList<Card> options =  computersCards.stream()
+        if (!computersCards.isEmpty()) {
+            ArrayList<Card> options = computersCards.stream()
                     .filter(c -> c.getPoint() > playersCard.getPoint())
                     .collect(Collectors.toCollection(ArrayList::new));
             try {
@@ -86,13 +82,13 @@ public class Computer extends Player{
                         .orElse(null);
                 return chooseMaxCard;
             }
-        } else{
+        } else {
             display.printComputerNoCardsOnBoard();
-            return  null;
+            return null;
         }
     }
 
-    public Card playCard(){
+    public Card playCard() {
         int currentHp = getHp();
         ArrayList<Card> cardsInHand = hand.cardsInHand;
 

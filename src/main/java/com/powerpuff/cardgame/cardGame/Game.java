@@ -50,36 +50,24 @@ public class Game {
             System.out.println(Display.CYAN_BOLD + "------------------| Round - " + round + " |--------------------------------------------------------------\n" + Display.RESET);
             sleep(1000);
             if (random_nr == 1) {
-
                 playerTurn();
                 gameOver();
-
                 if (gameOver) break;
-
                 display.printBreakLine();
                 computerTurn();
                 gameOver();
-
                 display.printEndMessage();
                 action.inputMenu(this);
-
-
             } else {
-
                 computerTurn();
                 gameOver();
-
                 display.printBreakLine();
                 if (gameOver) break;
-
                 playerTurn();
                 gameOver();
-
                 display.printEndMessage();
                 action.inputMenu(this);
-
             }
-
         }
         playAgain();
     }
@@ -119,6 +107,8 @@ public class Game {
                 display.printComputersCardsOnBoard(gameboard.computerActiveCards);
                 display.printAttackMessage();
                 display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
+                display.printEnterNumber();
+
                 sleep(2000);
 
                 Card selectedCardFromBoard = action.selectCardFromBoard(gameboard);
@@ -151,9 +141,9 @@ public class Game {
         display.printComputerHp(computer.getHp());
     }
 
-    public boolean computerAttackAndOrBlock(){
+    public boolean computerAttackAndOrBlock() {
 
-       boolean attackAndOrBlockHappening = false;
+        boolean attackAndOrBlockHappening = false;
 
         if (round > 1) {
             if (gameboard.computerActiveCards.size() > 0) {
@@ -172,10 +162,10 @@ public class Game {
                 } else {
                     display.printBlockMessage();
                     display.printPlayersCardsOnBoard(gameboard.playerActiveCards);
-                    System.out.println("Enter a number:");
+                    display.printEnterNumber();
                     sleep(4000);
                     Card playerBlockingCard = action.selectCardFromBoard(gameboard);
-                    gameLogic.attack(computer,player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
+                    gameLogic.attack(computer, player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
                 attackAndOrBlockHappening = true;
             } else
