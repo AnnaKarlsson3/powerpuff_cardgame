@@ -21,12 +21,14 @@ public class TestGameLogic {
 
     @Test
     public void testAttack() {
+        Player attacker = new Player();
+        attacker.setName("mockAttacker");
         Computer computer = new Computer();
         computer.setHp(20);
         Card attackCard = new Card("Fighter", "Piner", 3, 3);
         Card blockCard = new Card("Fighter", "Dora", 1,1);
 
-        assertEquals(18,  gameLogic.attack(computer, attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 18");
+        assertEquals(18,  gameLogic.attack(attacker,computer, attackCard, blockCard, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 18");
         assertTrue(gameLogic.damage == 2, "damage should be 2");
         assertTrue(gameLogic.greater == attackCard.getPoint() > blockCard.getBlockPointPoint(), "attackpoints are greater than blockpoints");
 
@@ -36,11 +38,14 @@ public class TestGameLogic {
         Card blockCard3 = new Card("Fighter", "Karlada", 3,3);
         computer.setHp(20);
 
-        assertEquals(20,  gameLogic.attack(computer, attackCard3, blockCard3, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 20");
+        assertEquals(20,  gameLogic.attack(attacker,computer, attackCard3, blockCard3, gameboard.getPlayerActiveCards(), gameboard.getComputerActiveCards()), "hpDamage should be 20");
     }
 
     @Test
     public void testBlock(){
+        Computer blocker = new Computer();
+        Player attacker = new Player();
+        attacker.setName("mockBlocker");
 
         Card attackCard = new Card("Fighter", "Piner", 3, 3);
         Card blockCard = new Card("Fighter", "Dora", 1,1);
@@ -62,14 +67,14 @@ public class TestGameLogic {
         ArrayList<Card> computerActiveCardsCopy = (ArrayList<Card>) computerActiveCards.clone();
 
         assertArrayEquals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray(), "Expected both to be equal");
-        assertEquals(1,  gameLogic.block(attackCard, blockCard, playerActiveCards, computerActiveCards), "blockpoints should be 1");
+        assertEquals(1,  gameLogic.block(attacker,blocker,attackCard, blockCard, playerActiveCards, computerActiveCards), "blockpoints should be 1");
         assertTrue(gameLogic.greater == attackCard.getPoint() > blockCard.getBlockPointPoint() && blockCard.getPoint() < attackCard.getBlockPointPoint(), "attackpoints are greater than blockpoints");
         assertFalse(Arrays.equals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray()), "Expected both not to be equal");
 
         //--------------------
 
         assertArrayEquals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray(), "Expected both to be equal");
-        assertEquals(3,  gameLogic.block(attackCard2, blockCard2, playerActiveCards, computerActiveCards), "blockpoints should be 3");
+        assertEquals(3,  gameLogic.block(attacker,blocker,attackCard2, blockCard2, playerActiveCards, computerActiveCards), "blockpoints should be 3");
         assertTrue(gameLogic.less == attackCard2.getPoint() < blockCard2.getBlockPointPoint() && blockCard2.getPoint() > attackCard2.getBlockPointPoint(), "attackpoints are less than blockpoints");
         assertFalse(Arrays.equals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray()), "Expected both not to be equal");
 
@@ -78,7 +83,7 @@ public class TestGameLogic {
         playerActiveCardsCopy.remove(attackCard2);
         assertArrayEquals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray(), "Expected both to be equal");
         assertArrayEquals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray(), "Expected both to be equal");
-        assertEquals(2,  gameLogic.block(attackCard3, blockCard3, playerActiveCards, computerActiveCards), "blockpoints should be 2");
+        assertEquals(2,  gameLogic.block(attacker,blocker,attackCard3, blockCard3, playerActiveCards, computerActiveCards), "blockpoints should be 2");
         assertFalse(Arrays.equals(computerActiveCards.toArray(), computerActiveCardsCopy.toArray()), "Expected both not to be equal");
         assertFalse(Arrays.equals(playerActiveCards.toArray(), playerActiveCardsCopy.toArray()), "Expected both not to be equal");
     }
