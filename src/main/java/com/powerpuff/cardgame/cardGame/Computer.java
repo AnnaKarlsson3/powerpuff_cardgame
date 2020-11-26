@@ -26,12 +26,12 @@ public class Computer extends Player{
             if (playedCard.getType().equals("Action")) {
                 setHp(getHp() + playedCard.getPoint());
                 display.printComputerPlayedActionCard();
-                display.printPlayedCard(playedCard, Display.GREEN_BOLD_BRIGHT, Display.CYAN_BOLD);
+                display.printComputerPlayedCard(playedCard);
                 display.printBreakLine();
             } else {
                 gameboard.placeComputerCardOnGameboard(playedCard);
                 display.printComputerPlacedFighterCard();
-//                display.printPlayedCard(playedCard);
+                display.printComputerPlayedCard(playedCard);
             }
 
             getHand().deletePlayedCard(playedCard);
@@ -67,7 +67,6 @@ public class Computer extends Player{
                     .orElse(null);
         }
     }
-
 
     public Card blockCard(Card playersCard, Gameboard gameboard){
         ArrayList<Card> computersCards = gameboard.getComputerActiveCards();
