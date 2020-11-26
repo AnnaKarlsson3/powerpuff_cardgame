@@ -76,6 +76,14 @@ public class TestDisplay {
     }
 
     @Test
+    public void testEnterNumberMessage(){
+        String actual = display.printEnterNumberMessage();
+        String expected = "Enter number: ";
+        assertEquals(expected, actual);
+        assertNotNull(display.blockMessageNoBlockCardsAvailable());
+    }
+
+    @Test
     public void testDisplayActionMessage() {
         String actual = display.attackMessage();
         String expected = "Choose what card to attack with";

@@ -204,6 +204,14 @@ public class Display {
         System.out.println(asciiCard);
     }
 
+    public void printEnterNumber(){
+        System.out.println(printEnterNumberMessage());
+    }
+
+    public String printEnterNumberMessage(){
+        return null;
+    }
+
 
     public void printWinner(Player player) {
         System.out.println(" ");
