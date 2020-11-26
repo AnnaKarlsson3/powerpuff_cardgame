@@ -18,7 +18,7 @@ public class TestGameboard {
     @Test
     public void testAddPlayedCardsToBoard() {
         Hand hand = new Hand();
-        Card card = (Card) hand.getCardsInHand().get(0);
+        Card card = new Card("Action", "action1", 3, 3);
         Card playedCard = board.placePlayerCardOnGameboard(card);
 
         assertNotNull(playedCard);

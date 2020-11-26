@@ -27,6 +27,7 @@ public class Game {
         playerHand = player.getHand().getCardsInHand();
         computerHand = computer.getHand().getCardsInHand();
 
+
     }
 
 

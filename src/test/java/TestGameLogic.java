@@ -8,15 +8,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 public class TestGameLogic {
-    Game game;
+    //Game game;
     GameLogic gameLogic;
     Gameboard gameboard;
 
+
     @BeforeEach
     public void init() {
-        game = new Game();
+       // game = new Game();
         gameLogic = new GameLogic();
         gameboard = new Gameboard();
+
+
     }
 
     @Test
@@ -93,28 +96,29 @@ public class TestGameLogic {
 
     @Test //test checked /snehal
     public void testManageSelectedCard() {
+        Player player = new Player();
         System.out.println("== Test to check logic of manageSelectedCard(), it deletes played cards from hand ==");
         System.out.println("== Test to check logic of manageSelectedCard(), if card is \"fighter\" then playerActiveCardSize will increase by 1 ==");
 
+        Card card1 = new Card("Action", "action1", 3, 3);
+        Card card2 = new Card("Fighter", "fighter1", 3, 3);
+        Card card3 = new Card("Fighter", "fighter2", 5, 5);
 
-        Player player = game.player;
 
+        int beforePlayerActiveCardSize = gameboard.getPlayerActiveCards().size();
+        System.out.println("before " + beforePlayerActiveCardSize);
+        String action1 = gameLogic.manageSelectedCard(card1, player, gameboard);
+        String fighter1 = gameLogic.manageSelectedCard(card2, player, gameboard);
+        String fighter2 = gameLogic.manageSelectedCard(card3,player,gameboard);
 
-        Card card1 = new Card("Action", "actionCard", 3, 3);
-        Card card2 = new Card("Fighter", "fighterCard", 3, 3);
-        Card playedCard = (Card) player.getHand().getCardsInHand().get(0);
+        int afterPlayerActiveCardSize = gameboard.getPlayerActiveCards().size();
+        System.out.println("after " + afterPlayerActiveCardSize);
 
-        int beforePlayerActiveCardSize = game.gameboard.getPlayerActiveCards().size();
-        String action = gameLogic.manageSelectedCard(card1, player, game.gameboard);
-        String fighter = gameLogic.manageSelectedCard(card2, player, game.gameboard);
-        gameLogic.manageSelectedCard(playedCard, player, game.gameboard);
-        int afterPlayerActiveCardSize = game.gameboard.getPlayerActiveCards().size();
 
         assertAll(
 
-                () -> assertEquals("Action", action),
-                () -> assertEquals("Fighter", fighter),
-                () -> assertFalse(player.getHand().getCardsInHand().contains(playedCard), "playedCard is not in hand anymore"),
+                () -> assertEquals("Action", action1),
+                () -> assertEquals("Fighter", fighter2),
                 () -> assertNotEquals(beforePlayerActiveCardSize, afterPlayerActiveCardSize, "size should not be equal")
 
         );

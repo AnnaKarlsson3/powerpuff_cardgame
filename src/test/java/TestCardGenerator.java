@@ -16,7 +16,7 @@ public class TestCardGenerator {
     @BeforeEach
     void init(){
         System.out.println("@BeforeEach executed");
-        cardGenerator = new CardGenerator();
+        cardGenerator = CardGenerator.getInstance();
     }
 
     @Test // test checked again /snehal

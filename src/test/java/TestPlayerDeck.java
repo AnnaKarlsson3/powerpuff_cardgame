@@ -1,4 +1,5 @@
 import com.powerpuff.cardgame.cardGame.Card;
+import com.powerpuff.cardgame.cardGame.CardGenerator;
 import com.powerpuff.cardgame.cardGame.PlayerDeck;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,8 +26,8 @@ public class TestPlayerDeck {
 
     @Test
     void testRemoveFromCommonDeck(){
-        playerDeck.getCardsFromGeneratedCards();
-        assertFalse(playerDeck.commonDeck.containsAll(playerDeck.playerCards));
+        //playerDeck.getCardsFromGeneratedCards();
+        assertFalse(CardGenerator.getInstance().getCommonDeck().containsAll(playerDeck.playerCards));
         System.out.println(playerDeck.commonDeck.size());
     }
 
