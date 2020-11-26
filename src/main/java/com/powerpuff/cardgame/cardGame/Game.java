@@ -99,8 +99,16 @@ public class Game {
         sleep(1000);
         display.printPlayerPlayedCard(selectedCardFromHand);
         gameLogic.manageSelectedCard(selectedCardFromHand, player, gameboard);
-        sleep(1000);
+        playerAttac();
 
+        System.out.println("\n");
+        display.printPlayerHp(player.getHp());
+        display.printComputerHp(computer.getHp());
+        System.out.println("\n");
+    }
+
+    public boolean playerAttac(){
+        boolean attackAndOrBlockHappening = false;
         if (round > 1) {
             if (gameboard.playerActiveCards.size() > 0) {
 
@@ -127,8 +135,8 @@ public class Game {
 
             } else display.printAttackMessageNoCardsAvailable();
         }
-        display.printPlayerHp(player.getHp());
-        display.printComputerHp(computer.getHp());
+
+        return attackAndOrBlockHappening;
     }
 
     public void computerTurn() {
