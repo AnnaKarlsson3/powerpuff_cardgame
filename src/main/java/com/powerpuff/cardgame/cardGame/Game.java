@@ -13,6 +13,7 @@ public class Game {
     public Gameboard gameboard;
     public GameLogic gameLogic;
     public int round = 0;
+    public CardGenerator cardGenerator;
 
 
     public Game() {
@@ -26,6 +27,22 @@ public class Game {
         gameLogic = new GameLogic();
         playerHand = player.getHand().getCardsInHand();
         computerHand = computer.getHand().getCardsInHand();
+        cardGenerator= new CardGenerator();
+
+        var playerdeck = player.getHand().getPlayerDeck().getCardsFromGeneratedCards(cardGenerator);
+        var compDeck = computer.getHand().getPlayerDeck().getCardsFromGeneratedCards(cardGenerator);
+        System.out.println("Players deck " + playerdeck.size());
+        System.out.println("Computers deck " + compDeck);
+        System.out.println("Commondeck size " + cardGenerator.getCommonDeck().size());
+        for(Card c:playerdeck){
+            for (Card c2: compDeck){
+                if(c.getName().equals(c2.getName())){
+                    System.out.println("common card");
+                    System.out.println(c);
+                }
+            }
+        }
+
 
     }
 
@@ -131,7 +148,7 @@ public class Game {
                     sleep(2000);
                     System.out.println("Computer blocked your attack with: ");
                     display.printPlayedCard(computerBlockingCard);
-                    gameLogic.attack(player,computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
+                    gameLogic.attack(player, computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
                 }
 
             } else display.printAttackMessageNoCardsAvailable();
@@ -165,10 +182,10 @@ public class Game {
 
     }
 
-    public boolean computerAttackAndOrBlock(){
+    public boolean computerAttackAndOrBlock() {
 
 
-       boolean attackAndOrBlockHappening = false;
+        boolean attackAndOrBlockHappening = false;
 
         if (round > 1) {
             if (gameboard.computerActiveCards.size() > 0) {
@@ -190,7 +207,7 @@ public class Game {
                     System.out.println("Enter a number:");
                     sleep(4000);
                     Card playerBlockingCard = action.selectCardFromBoard(gameboard);
-                    gameLogic.attack(computer,player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
+                    gameLogic.attack(computer, player, attackCard, playerBlockingCard, gameboard.computerActiveCards, gameboard.playerActiveCards);
                 }
                 System.out.println("\n");
                 attackAndOrBlockHappening = true;

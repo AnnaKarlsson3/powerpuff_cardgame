@@ -9,7 +9,7 @@ public class Hand {
     PlayerDeck playerDeck;
    public ArrayList<Card> cardsInHand;
 
-    public Hand() {
+    public Hand(PlayerDeck playerDeck) {
         this.playerDeck = new PlayerDeck();
         ArrayList<Card> firstFiveCardsInDeck = (ArrayList<Card>) playerDeck.getPlayerCards().stream().limit(5).collect(Collectors.toList());
         setCardsInHand(firstFiveCardsInDeck);
