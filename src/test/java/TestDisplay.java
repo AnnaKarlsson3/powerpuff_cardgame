@@ -70,9 +70,17 @@ public class TestDisplay {
     @Test
     public void testDisplayBlockMessageNoCardsAvailible(){
         String actual = display.blockMessageNoBlockCardsAvailable();
-        String expected = "No block cards left";
+        String expected = "No block cards left \n";
         assertEquals(expected, actual);
         assertNotNull(display.blockMessageNoBlockCardsAvailable());
+    }
+
+    @Test
+    public void testEnterNumberMessage(){
+        String actual = display.printEnterNumberMessage();
+        String expected = "Enter number: ";
+        assertEquals(expected, actual);
+        assertNotNull(display.printEnterNumberMessage());
     }
 
     @Test
