@@ -8,17 +8,22 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestGameboard {
 
     Gameboard board;
+    Game game;
+    Hand hand;
 
     @BeforeEach
     public void init() {
+
         board = new Gameboard();
+        game = new Game();
+        hand = game.player.getHand();
+
     }
 
 
     @Test
     public void testAddPlayedCardsToBoard() {
-        Hand hand = new Hand();
-        Card card = (Card) hand.getCardsInHand().get(0);
+        Card card = hand.getCardsInHand().get(0);
         Card playedCard = board.placePlayerCardOnGameboard(card);
 
         assertNotNull(playedCard);

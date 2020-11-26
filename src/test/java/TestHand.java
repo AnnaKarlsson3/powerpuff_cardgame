@@ -1,4 +1,5 @@
 import com.powerpuff.cardgame.cardGame.Card;
+import com.powerpuff.cardgame.cardGame.CardGenerator;
 import com.powerpuff.cardgame.cardGame.Hand;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,11 +16,17 @@ public class TestHand {
 
     Hand testHand;
     ArrayList<Card> cardsInHand;
+    ArrayList<Card> playerdeck;
+    CardGenerator cardGenerator;
 
     @BeforeEach
     void init() {
+        cardGenerator = new CardGenerator();
         System.out.println("@BeforeEach executed");
         testHand = new Hand();
+        playerdeck = testHand.getPlayerDeck().getCardsFromGeneratedCards(cardGenerator);
+
+        testHand.setCardsInHand(playerdeck);
         cardsInHand = testHand.getCardsInHand();
     }
 

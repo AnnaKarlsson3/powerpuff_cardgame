@@ -15,7 +15,7 @@ public class TestComputer {
     void init(){
         System.out.println("@BeforeEach executed");
         game = new Game();
-        computer = new Computer();
+        computer = game.computer;
 
     }
 

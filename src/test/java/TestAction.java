@@ -21,10 +21,12 @@ public class TestAction {
     void init(){
         System.out.println("@BeforeEach executed");
         action = new Action();
-        hand = new Hand();
         game = new Game();
         gameboard = new Gameboard();
-        player = new Player();
+        player = game.player;
+        hand = player.getHand();
+
+
     }
 
     @Test

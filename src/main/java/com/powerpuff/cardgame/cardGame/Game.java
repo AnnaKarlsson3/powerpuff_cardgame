@@ -36,10 +36,9 @@ public class Game {
         computerHand = computer.getHand().getCardsInHand();
 
 
-        playerHand.forEach(System.out::println);
-        computerHand.forEach(System.out::println);
+
         System.out.println("Players deck " + playerdeck.size());
-        System.out.println("Computers deck " + compDeck);
+        System.out.println("Computers deck " + compDeck.size());
         System.out.println("Commondeck size " + cardGenerator.getCommonDeck().size());
         for(Card c:playerdeck){
             for (Card c2: compDeck){
@@ -49,6 +48,9 @@ public class Game {
                 }
             }
         }
+        playerHand.forEach(System.out::println);
+        System.out.println("--------------------------------------------------------------------------");
+        computerHand.forEach(System.out::println);
 
 
     }
