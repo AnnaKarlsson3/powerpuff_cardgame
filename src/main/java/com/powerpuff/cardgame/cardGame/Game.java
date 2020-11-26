@@ -3,7 +3,7 @@ package com.powerpuff.cardgame.cardGame;
 import java.util.ArrayList;
 
 public class Game {
-    Action action;
+    public Action action;
     Display display;
     public boolean gameOver = false;
     public Player player;
@@ -132,7 +132,7 @@ public class Game {
                     display.printComputerPlayedCard(computerBlockingCard);
                     gameLogic.attack(player, computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
                 }
-
+                attackAndOrBlockHappening = true;
             } else display.printAttackMessageNoCardsAvailable();
         }
 
