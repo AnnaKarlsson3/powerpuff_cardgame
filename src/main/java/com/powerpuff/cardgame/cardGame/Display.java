@@ -114,6 +114,7 @@ public class Display {
     public void printComputerCards(ArrayList<Card> cards) {
         System.out.println(printAsciiCards(cards, CYAN_BOLD, GREEN_BOLD_BRIGHT).toString());
     }
+
     public void printPlayerCards(ArrayList<Card> cards) {
         System.out.println(printAsciiCards(cards, PINK, LIGHT_PURPLE).toString());
     }
@@ -144,7 +145,7 @@ public class Display {
         asciiCards.append(cards
                 .stream()
                 .map(card -> " │        " + (COLOR1.equals(CYAN_BOLD) ? " " : PURPLE + numberInsideCard.getAndIncrement() + RESET))
-                .collect(Collectors.joining(" │     ")) + " "+ (numberInsideCard.toString().equals("5") ? " " : "" ) + "│\n");
+                .collect(Collectors.joining(" │     ")) + " " + (numberInsideCard.toString().equals("5") ? " " : "") + "│\n");
         cards.stream().forEach(card -> asciiCards.append(" └──────────┘     "));
         asciiCards.append("\n");
         return asciiCards;
@@ -161,15 +162,18 @@ public class Display {
     }
 
     public void printComputersCardsOnBoard(ArrayList<Card> cardlist) {
-        System.out.print("Computer's cards on the board: ");
-        printComputerCards(cardlist);
+        if (cardlist.size() > 0) {
+            System.out.print("Computer's cards on the board: ");
+            printComputerCards(cardlist);
+
+        }
     }
 
-    public void printComputerPlayedCard(Card playedCard){
+    public void printComputerPlayedCard(Card playedCard) {
         printPlayedCard(playedCard, CYAN_BOLD, GREEN_BOLD_BRIGHT);
     }
 
-    public void printPlayerPlayedCard(Card playedCard){
+    public void printPlayerPlayedCard(Card playedCard) {
         System.out.print("You played ");
         printPlayedCard(playedCard, PINK, LIGHT_PURPLE);
     }
@@ -201,11 +205,11 @@ public class Display {
         System.out.println(asciiCard);
     }
 
-    public void printEnterNumber(){
+    public void printEnterNumber() {
         System.out.println(printEnterNumberMessage());
     }
 
-    public String printEnterNumberMessage(){
+    public String printEnterNumberMessage() {
         return enterNumber = "Enter number: ";
     }
 
@@ -320,7 +324,7 @@ public class Display {
     }
 
     public void blockPointReduced(String blockerName, String blockCardName, int blockPoint) {
-        System.out.println(blockerName + "'s '" + blockCardName + "' block points is now " + blockPoint );
+        System.out.println(blockerName + "'s '" + blockCardName + "' block points is now " + blockPoint);
 
     }
 
