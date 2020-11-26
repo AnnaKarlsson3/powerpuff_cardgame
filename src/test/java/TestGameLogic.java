@@ -18,7 +18,6 @@ public class TestGameLogic {
         gameLogic = new GameLogic();
         gameboard = new Gameboard();
 
-
     }
 
     @Test
