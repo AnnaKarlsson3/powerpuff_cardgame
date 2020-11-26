@@ -130,7 +130,7 @@ public class Game {
                     sleep(2000);
                     System.out.println("Computer blocked your attack with: ");
                     display.printComputerPlayedCard(computerBlockingCard);
-                    gameLogic.attack(computer, player, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
+                    gameLogic.attack(player, computer, selectedCardFromBoard, computerBlockingCard, gameboard.playerActiveCards, gameboard.computerActiveCards);
                 }
 
             } else display.printAttackMessageNoCardsAvailable();
