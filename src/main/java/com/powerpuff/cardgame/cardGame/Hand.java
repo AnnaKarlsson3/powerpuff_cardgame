@@ -1,7 +1,6 @@
 package com.powerpuff.cardgame.cardGame;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class Hand {
@@ -24,7 +23,7 @@ public class Hand {
         playerDeck.setPlayerCards(updatedDeck);
     }
 
-    public ArrayList getCardsInHand() {
+    public ArrayList<Card> getCardsInHand() {
         return cardsInHand;
     }
 

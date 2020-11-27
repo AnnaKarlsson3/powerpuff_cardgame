@@ -1,4 +1,5 @@
 import com.powerpuff.cardgame.cardGame.Card;
+import com.powerpuff.cardgame.cardGame.CardGenerator;
 import com.powerpuff.cardgame.cardGame.Hand;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,7 +19,7 @@ public class TestHand {
 
     @BeforeEach
     void init() {
-        System.out.println("@BeforeEach executed");
+        System.out.println("@BeforeEach TestHand");
         testHand = new Hand();
         cardsInHand = testHand.getCardsInHand();
     }
@@ -30,7 +31,7 @@ public class TestHand {
         assertEquals(5, cardsInHand.size());
     }
 
-    @Test
+    @Test //test checked /snehal
     public void testAddNewCardToHand(){
         System.out.println("=== Executed test for adding a card to the hand ===");
 
@@ -40,8 +41,9 @@ public class TestHand {
         }else{
             int sizeBeforeRemove = testHand.getPlayerDeck().getPlayerCards().size();
             assertTrue(testHand.addNewCardToHand());
+            System.out.println("=== Executed test for removeCardsInHandFromDeck() which we call inside addNewCardToHand() ===");
             ArrayList<Card> cardsAfterRemovedOne = testHand.getPlayerDeck().getPlayerCards();
-            assertFalse(sizeBeforeRemove == cardsAfterRemovedOne.size());
+            assertFalse(sizeBeforeRemove == cardsAfterRemovedOne.size(),"test for removing that card(which added into hand) from deck");
         }
     }
 
@@ -69,6 +71,7 @@ public class TestHand {
     @AfterEach
     void cleanUp() {
         System.out.println("@AfterEach executed");
-    }
+        CardGenerator.getInstance().setCommonDeck(CardGenerator.getInstance().generateCardsAndGet());
 
+    }
 }

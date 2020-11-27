@@ -6,8 +6,7 @@ import java.util.stream.Collectors;
 public class PlayerDeck {
 
     public ArrayList<Card> playerCards = new ArrayList<>();
-    public CardGenerator cardGenerator = new CardGenerator();
-    public ArrayList<Card> commonDeck = cardGenerator.getCommonDeck();
+    public ArrayList<Card> commonDeck = CardGenerator.getInstance().getCommonDeck();
     public Boolean isEmpty;
 
     public PlayerDeck(){
@@ -28,7 +27,7 @@ public class PlayerDeck {
     public ArrayList<Card> removeFromCommonDeck(ArrayList<Card> playerCardsFromGen){
 
         commonDeck.removeAll(playerCardsFromGen);
-        cardGenerator.setCommonDeck(commonDeck);
+        CardGenerator.getInstance().setCommonDeck(commonDeck);
         return commonDeck;
     }
 
