@@ -13,8 +13,13 @@ public class CardGenerator {
     private ArrayList<Card> commonDeck = new ArrayList<>();
     public  ArrayList <Card> shuffledCards = (ArrayList<Card>) commonDeck.clone();
 
+    private static final CardGenerator instance = new CardGenerator();
+    public static CardGenerator getInstance(){
+        return instance;
+    }
 
-    public CardGenerator() {
+
+    private CardGenerator() {
         generateCardsAndGet();
         shuffleCards(commonDeck);
         setCommonDeck(commonDeck);

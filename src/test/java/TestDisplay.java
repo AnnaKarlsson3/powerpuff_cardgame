@@ -17,7 +17,7 @@ public class TestDisplay {
 
     @BeforeEach
     void init() {
-        System.out.println("@BeforeEach executed");
+        System.out.println("@BeforeEach TestDisplay");
         display = new Display();
         player = new Player();
         computer = new Computer();
@@ -145,5 +145,7 @@ public class TestDisplay {
     @AfterEach
     void cleanUp() {
         System.out.println("@AfterEach executed");
+        CardGenerator.getInstance().setCommonDeck(CardGenerator.getInstance().generateCardsAndGet());
+
     }
 }
