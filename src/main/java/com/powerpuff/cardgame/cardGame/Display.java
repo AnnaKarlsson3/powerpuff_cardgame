@@ -47,7 +47,7 @@ public class Display {
     }
 
     public String printRulesMessage() {
-        return printRules = PURPLE + "RULES: \n* You'll play against a computer and it will be random who starts.\n" +
+        return printRules = PURPLE + BOLD + "\n~~ Welcome to the Power Puff Card Game! ~~" + RESET +  PURPLE + "\n\nRULES: \n* You'll play against a computer and it will be random who starts.\n" +
                 "* Fighter cards has " + PINK + "\uD83D\uDCA5" + PURPLE + "Attack points and " + LIGHT_PURPLE + "⛨" + PURPLE
                 + "Block points. \n* If you play a Fighter card, you place it on the board. \n" +
                 "* Action cards will give you extra " + RED_BOLD + "❤" + PURPLE + "Health. \n" +
@@ -112,7 +112,7 @@ public class Display {
     }
 
     public void printComputerCards(ArrayList<Card> cards) {
-        System.out.println(printAsciiCards(cards, CYAN_BOLD, GREEN_BOLD_BRIGHT).toString());
+        System.out.println(printAsciiCards(cards, GREEN_BOLD_BRIGHT, CYAN_BOLD).toString());
     }
 
     public void printPlayerCards(ArrayList<Card> cards) {
@@ -124,9 +124,8 @@ public class Display {
 
         AtomicInteger cardNumber = new AtomicInteger(1);
         AtomicInteger numberInsideCard = new AtomicInteger(1);
-
         asciiCards.append("\n");
-        if (!COLOR1.equals(CYAN_BOLD)) {
+        if (!COLOR1.equals(GREEN_BOLD_BRIGHT)) {
             asciiCards.append(cards
                     .stream()
                     .map(card -> PURPLE + cardNumber.getAndIncrement() + ". " + RESET + card.getType() + ": " + card.getName())
@@ -136,7 +135,7 @@ public class Display {
         asciiCards.append("\n");
         asciiCards.append(cards
                 .stream()
-                .map(card -> (card.getType().equals("Action") ? " │" + RED_BOLD + " ❤" : " │" + COLOR1 + " \uD83D\uDCA5") + RESET + card.getPoint())
+                .map(card -> (card.getType().equals("Action") ? " │" + RED_BOLD + " \uD83D\uDDA4" : " │" + COLOR1 + " \uD83D\uDCA5") + RESET + card.getPoint())
                 .collect(Collectors.joining("      │     ")) + "      |\n");
         asciiCards.append(cards
                 .stream()
@@ -144,8 +143,8 @@ public class Display {
                 .collect(Collectors.joining("      │     ")) + "      |\n");
         asciiCards.append(cards
                 .stream()
-                .map(card -> " │        " + (COLOR1.equals(CYAN_BOLD) ? " " : PURPLE + numberInsideCard.getAndIncrement() + RESET))
-                .collect(Collectors.joining(" │     ")) + " " + (numberInsideCard.toString().equals("5") ? " " : "") + "│\n");
+                .map(card -> " │        " + (COLOR1.equals(GREEN_BOLD_BRIGHT) ? " " : PURPLE + numberInsideCard.getAndIncrement() + RESET))
+                .collect(Collectors.joining(" │     ")) + " "+ (numberInsideCard.toString().equals("5") ? " " : "" ) + "│\n");
         cards.stream().forEach(card -> asciiCards.append(" └──────────┘     "));
         asciiCards.append("\n");
         return asciiCards;
@@ -165,7 +164,6 @@ public class Display {
         if (cardlist.size() > 0) {
             System.out.print("Computer's cards on the board: ");
             printComputerCards(cardlist);
-
         }
     }
 
@@ -183,7 +181,7 @@ public class Display {
             String point = "";
             String blockPoint = "    ";
             if (chosenCard.getType().equals("Action")) {
-                point = RED_BOLD + " ❤" + RESET + chosenCard.getPoint();
+                point = RED_BOLD + " \uD83D\uDDA4" + RESET + chosenCard.getPoint();
 
             } else {
                 point = color1 + " \uD83D\uDCA5" + RESET + chosenCard.getPoint();

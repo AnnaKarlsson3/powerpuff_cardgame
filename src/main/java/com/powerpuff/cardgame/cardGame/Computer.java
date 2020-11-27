@@ -30,7 +30,6 @@ public class Computer extends Player {
             } else {
                 gameboard.placeComputerCardOnGameboard(playedCard);
                 display.printComputerPlacedFighterCard();
-                display.printComputerPlayedCard(playedCard);
             }
             getHand().deletePlayedCard(playedCard);
             getHand().addNewCardToHand();
