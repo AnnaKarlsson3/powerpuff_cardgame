@@ -18,8 +18,8 @@ public class Game {
     public Game() {
         player = new Player();
         computer = new Computer();
-        computer.setHp(10);
-        player.setHp(10);
+        computer.setHp(20);
+        player.setHp(20);
         display = new Display();
         action = new Action();
         gameboard = new Gameboard();
